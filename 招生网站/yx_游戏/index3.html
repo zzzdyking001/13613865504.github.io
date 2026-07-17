@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes, viewport-fit=cover">
+  <title>生物首页 · 手机适配</title>
+  <style>
+    /* 全局重置 & 字体放大适配 */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    body {
+      font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+      background: #f5f9f5;
+      color: #1e2e1e;
+      padding: 18px 16px 30px;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      line-height: 1.6;
+      /* 大字体基础 —— 适配手机 */
+      font-size: 18px;
+    }
+
+    /* 所有文字基础放大，同时保持可读性 */
+    html {
+      font-size: 18px; /* 基准，配合 rem 或 em 使用 */
+    }
+
+    /* 标题区 —— 学校名称 */
+    .school-header {
+      background: #1f4f2b;
+      color: #f0f9ef;
+      padding: 18px 14px;
+      border-radius: 40px 12px 40px 12px;
+      text-align: center;
+      font-size: 1.8rem;
+      font-weight: 700;
+      letter-spacing: 2px;
+      box-shadow: 0 6px 12px rgba(0, 30, 0, 0.15);
+      margin-bottom: 28px;
+      word-break: break-word;
+    }
+
+    /* 有序列表 —— 游戏卡片列表 */
+    ol {
+      list-style: none;
+      padding: 0;
+      margin: 0 0 30px 0;
+      display: flex;
+      flex-direction: column;
+      gap: 18px;
+    }
+
+    ol li {
+      background: white;
+      border-radius: 28px;
+      box-shadow: 0 4px 10px rgba(0, 20, 0, 0.08);
+      transition: all 0.15s ease;
+      border: 1px solid #d9e8d9;
+      padding: 0;
+      /* 让整个卡片可点 */
+    }
+
+    ol li a {
+      display: block;
+      padding: 20px 20px 20px 26px;
+      text-decoration: none;
+      color: #0d3d1a;
+      font-weight: 550;
+      font-size: 1.25rem;  /* 相对于 body 字体更大 */
+      background: transparent;
+      border-radius: 28px;
+      width: 100%;
+      position: relative;
+      transition: background 0.1s;
+      word-break: break-word;
+      line-height: 1.5;
+      /* 加一点左内边距，更舒服 */
+    }
+
+    /* 箭头装饰 + 手感 */
+    ol li a::after {
+      content: "›";
+      position: absolute;
+      right: 22px;
+      top: 50%;
+      transform: translateY(-50%);
+      font-size: 2.2rem;
+      font-weight: 300;
+      color: #3f784a;
+      opacity: 0.7;
+      transition: transform 0.15s;
+    }
+
+    ol li a:active {
+      background: #e2f0e0;
+      transform: scale(0.98);
+    }
+
+    ol li a:active::after {
+      transform: translateY(-50%) translateX(6px);
+    }
+
+    /* 注释掉的 li 不显示 (保留了注释，但不会渲染) */
+
+    /* 底部导航栏 —— 回顶部 / 回上页 / 回首页 */
+    .nav-footer {
+      margin-top: 20px;
+      padding: 16px 0 8px;
+      border-top: 2px dashed #b8d0b5;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 12px 24px;
+      background: #f0f7ef;
+      border-radius: 60px 60px 30px 30px;
+      padding: 18px 12px;
+      box-shadow: inset 0 1px 4px rgba(0,0,0,0.02);
+    }
+
+    .nav-footer a {
+      display: inline-block;
+      padding: 12px 20px;
+      background: #ffffff;
+      border-radius: 60px;
+      font-size: 1.2rem;
+      font-weight: 500;
+      color: #1d4a27;
+      text-decoration: none;
+      box-shadow: 0 2px 6px rgba(60, 100, 60, 0.12);
+      border: 1px solid #c6ddc4;
+      transition: all 0.15s ease;
+      flex: 0 1 auto;
+      min-width: 80px;
+      text-align: center;
+      letter-spacing: 0.5px;
+      background: #fafffa;
+    }
+
+    .nav-footer a:active {
+      background: #cbe5c7;
+      transform: scale(0.94);
+      box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+    }
+
+    /* 特别为小屏优化 (宽度 < 400px) */
+    @media (max-width: 400px) {
+      body {
+        font-size: 17px;
+        padding: 12px 12px 20px;
+      }
+      .school-header {
+        font-size: 1.6rem;
+        padding: 16px 10px;
+      }
+      ol li a {
+        font-size: 1.15rem;
+        padding: 18px 18px 18px 22px;
+      }
+      ol li a::after {
+        font-size: 2rem;
+        right: 16px;
+      }
+      .nav-footer a {
+        font-size: 1.05rem;
+        padding: 10px 14px;
+        min-width: 70px;
+      }
+    }
+
+    /* 大屏手机/平板 保持舒适 */
+    @media (min-width: 600px) {
+      body {
+        padding: 30px 40px;
+        max-width: 700px;
+        margin: 0 auto;
+        font-size: 20px;
+      }
+      .school-header {
+        font-size: 2.2rem;
+        padding: 24px 20px;
+      }
+      ol li a {
+        font-size: 1.4rem;
+        padding: 24px 32px 24px 32px;
+      }
+      .nav-footer a {
+        font-size: 1.3rem;
+        padding: 14px 28px;
+      }
+    }
+
+    /* 隐藏的顶部锚点 （保留功能） */
+    #top {
+      display: block;
+      height: 0;
+      visibility: hidden;
+    }
+
+    /* 额外小点缀 */
+    .footer-note {
+      text-align: center;
+      font-size: 0.9rem;
+      color: #5a7a5a;
+      margin-top: 12px;
+      opacity: 0.7;
+      letter-spacing: 1px;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- 顶部锚点（不可见） -->
+  <a id="top" style="display: block; height: 0; visibility: hidden;">顶部</a>
+
+  <!-- 学校名称 - 放大醒目 -->
+  <div class="school-header">
+    🌿 汝州市新时代精英学校
+  </div>
+
+  <!-- 游戏列表 - 全部放大，适合手指点击 -->
+  <ol>
+    <li>
+      <a href="yx_sw_游戏生物/xxl_消消乐之动物分类_sjb_v03.html">
+        xxl_消消乐之动物分类_sjb_v03
+      </a>
+    </li>
+    <!-- 
+      已注释掉显微镜链接，保留但不在页面显示
+      <li>
+        <a href="yx_sw_游戏生物/xxl_显微镜的操作难点v01.html">xxl_显微镜的操作难点v01</a>
+      </li>
+    -->
+    <li>
+      <a href="yx_sw_游戏生物/xxl_光合呼吸蒸腾 促进or抑制 目的_红色_dnb_v01.html">
+        xxl_光合呼吸蒸腾 促进or抑制 目的_红色_dnb_v01
+      </a>
+    </li>
+    <li>
+      <a href="yx_sw_游戏生物/xxl_光合呼吸蒸腾 促进or抑制 目的_红色_sjb_v02.html">
+        xxl_光合呼吸蒸腾 促进or抑制 目的_红色_sjb_v02
+      </a>
+    </li>
+    <li>
+      <a href="yx_sw_游戏生物/lxt_连线题_植物的三大作用促进or抑制v01.html">
+        lxt_连线题_植物的三大作用促进or抑制v01
+      </a>
+    </li>
+  </ol>
+
+  <!-- 底部导航：回顶部 / 回上页 / 回首页  字体放大，触摸友好 -->
+  <div class="nav-footer">
+    <a href="#top">⬆ 回顶部</a>
+    <a href="#" onclick="history.go(-1); return false;">↩ 回上页</a>
+    <a href="个人相册网页2024/2024首页.html">🏠 回首页</a>
+  </div>
+
+  <!-- 小字提示（可选），不影响主体 -->
+  <div class="footer-note">
+    —— 生物学习 · 指尖探索 ——
+  </div>
+
+</body>
+</html>

@@ -1,0 +1,420 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+    <title>光合呼吸蒸腾 促进or抑制</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+        body {
+            font-family: 'Microsoft YaHei', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            text-align: center;
+            background-color: #e6f2f0;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: flex-start;
+            padding: 12px 10px 20px;
+            -webkit-tap-highlight-color: transparent;
+            touch-action: manipulation;
+        }
+        h1 {
+            color: #1a6b4a;
+            font-size: clamp(1.4rem, 6vw, 2rem);
+            margin-bottom: 6px;
+            letter-spacing: 1px;
+            font-weight: 600;
+        }
+        .game-info {
+            display: flex;
+            justify-content: space-between;
+            width: 100%;
+            max-width: 600px;
+            padding: 6px 8px;
+            margin-bottom: 12px;
+            font-size: clamp(1rem, 4vw, 1.2rem);
+            background: rgba(255, 255, 255, 0.5);
+            border-radius: 30px;
+            backdrop-filter: blur(2px);
+            font-weight: 500;
+        }
+        #score {
+            font-weight: 700;
+            color: #c0392b;
+            font-size: clamp(1.2rem, 5vw, 1.6rem);
+            margin-left: 4px;
+        }
+        .timer {
+            font-weight: 500;
+            color: #2c3e50;
+        }
+        #time {
+            font-weight: 700;
+            color: #1e6f5c;
+            font-size: clamp(1.2rem, 5vw, 1.6rem);
+            margin-left: 4px;
+        }
+        #game-board {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 10px;
+            width: 100%;
+            max-width: 600px;
+            margin: 0 auto 16px;
+            aspect-ratio: 4 / 4;
+        }
+        .card {
+            background: linear-gradient(145deg, #3d7ea6, #2a5f7a);
+            color: #f0f9ff;
+            border-radius: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: clamp(0.6rem, 2.2vw, 0.9rem);
+            font-weight: 500;
+            line-height: 1.3;
+            padding: 4px 2px;
+            box-shadow: 0 6px 12px rgba(0,20,30,0.2), inset 0 -2px 4px rgba(0,0,0,0.2);
+            transition: all 0.15s ease;
+            cursor: pointer;
+            text-align: center;
+            word-break: break-word;
+            user-select: none;
+            -webkit-user-select: none;
+            touch-action: manipulation;
+            border: 2px solid rgba(255,255,255,0.15);
+            transform: scale(1);
+            will-change: transform;
+        }
+        .card:active {
+            transform: scale(0.96);
+        }
+        .card.selected {
+            background: linear-gradient(145deg, #f39c12, #d68910);
+            border-color: #f1c40f;
+            box-shadow: 0 0 0 3px #ffe484, 0 6px 12px rgba(0,0,0,0.3);
+            transform: scale(1.02);
+        }
+        .card.matched {
+            visibility: hidden;
+            pointer-events: none;
+            opacity: 0;
+            transform: scale(0.8);
+            transition: visibility 0.2s, opacity 0.2s;
+        }
+        /* 红色目的样式（保留原设计） */
+        .card [data-purpose] {
+            color: #ff3b30 !important;
+            font-weight: 700;
+        }
+        .card .purpose-highlight {
+            color: #ff3b30 !important;
+            font-weight: 700;
+        }
+        #restart-btn {
+            padding: 14px 34px;
+            background: #1e6f5c;
+            color: white;
+            border: none;
+            border-radius: 60px;
+            font-size: clamp(1.1rem, 4.5vw, 1.4rem);
+            font-weight: 600;
+            letter-spacing: 1px;
+            cursor: pointer;
+            box-shadow: 0 8px 0 #0f4a3a, 0 6px 16px rgba(0,0,0,0.2);
+            transition: all 0.08s linear;
+            touch-action: manipulation;
+            width: fit-content;
+            min-width: 160px;
+            margin-top: 4px;
+        }
+        #restart-btn:active {
+            transform: translateY(6px);
+            box-shadow: 0 2px 0 #0f4a3a;
+        }
+        /* 手机小屏适配 */
+        @media (max-width: 480px) {
+            #game-board {
+                gap: 8px;
+            }
+            .card {
+                border-radius: 12px;
+                padding: 3px 1px;
+                border-width: 1.5px;
+            }
+            .game-info {
+                padding: 4px 12px;
+                border-radius: 40px;
+            }
+        }
+        @media (max-width: 380px) {
+            #game-board {
+                gap: 6px;
+            }
+            .card {
+                border-radius: 10px;
+                font-size: clamp(0.5rem, 2vw, 0.7rem);
+                padding: 2px 1px;
+            }
+        }
+        /* 横屏提示或安全区 */
+        @media (orientation: landscape) and (max-height: 500px) {
+            #game-board {
+                max-height: 70vh;
+                aspect-ratio: 4 / 3;
+            }
+            .card {
+                font-size: clamp(0.5rem, 2vw, 0.8rem);
+            }
+        }
+    </style>
+</head>
+<body>
+    <h1>🌿 光合·呼吸·蒸腾</h1>
+    <div class="game-info">
+        <span>🏆 得分 <span id="score">0</span></span>
+        <span class="timer">⏱️ <span id="time">60</span>s</span>
+    </div>
+    <div id="game-board"></div>
+    <button id="restart-btn">🔄 重新开始</button>
+
+    <script>
+        (function(){
+            // ---------- 生物数据（保留原意，增加红色目的标记） ----------
+            const biologyData = [
+                { term: "目的↓降低蒸腾作用", definition: "剪去部分枝叶" },
+                { term: "目的↓降低蒸腾作用", definition: "阴天、傍晚移栽" },
+                { term: "目的↓降低蒸腾作用", definition: "遮阳网" },
+                { term: "目的↓抑制呼吸作用", definition: "降低温度" },
+                { term: "目的↓抑制呼吸作用", definition: "减少氧气" },
+                { term: "目的↓抑制呼吸作用", definition: "降低含水量" },
+                { term: "目的↑促进呼吸作用", definition: "播种前松土" },
+                { term: "目的↑促进呼吸作用", definition: "种植花卉松土" },
+                { term: "目的↑促进呼吸作用", definition: "不踩踏草坪" },
+                { term: "目的↑促进呼吸作用", definition: "农田雨水多时排水" },
+                { term: "目的↑促进光合作用", definition: "适当增加二氧化碳" },
+                { term: "目的↑促进光合作用", definition: "合理密植" },
+                { term: "目的↑促进光合作用", definition: "适当增加光照" },
+                { term: "目的↑促进光合作用", definition: "适当增加水分" },
+                { term: "目的↑促进光合作用", definition: "提供合适的温度" }
+            ];
+
+            // 游戏核心变量
+            let selectedCards = [];
+            let matchedPairs = 0;
+            let score = 0;
+            let timeLeft = 60;
+            let timer = null;
+            let gameActive = true;
+            let lockBoard = false;   // 防止连点/动画期间重复触发
+
+            const boardEl = document.getElementById('game-board');
+            const scoreEl = document.getElementById('score');
+            const timeEl = document.getElementById('time');
+            const restartBtn = document.getElementById('restart-btn');
+
+            // ---------- 辅助: 将"目的"用红色标记 (同时保留原data-purpose属性) ----------
+            function stylePurpose(term) {
+                // 将 "目的↓" 或 "目的↑" 中的 "目的" 替换为带红色span
+                return term.replace(/(目的)([↑↓])/g, (match, p1, p2) => {
+                    return `<span class="purpose-highlight" data-purpose>${p1}</span>${p2}`;
+                });
+            }
+
+            // ---------- 初始化游戏 ----------
+            function initGame() {
+                // 清除旧计时器
+                if (timer) {
+                    clearInterval(timer);
+                    timer = null;
+                }
+
+                // 重置状态
+                boardEl.innerHTML = '';
+                selectedCards = [];
+                matchedPairs = 0;
+                score = 0;
+                timeLeft = 60;
+                gameActive = true;
+                lockBoard = false;
+
+                scoreEl.textContent = '0';
+                timeEl.textContent = '60';
+
+                // 从数据中随机选12对 (从15对中选12对)
+                const shuffledData = [...biologyData].sort(() => 0.5 - Math.random()).slice(0, 12);
+
+                // 构建卡片对 (每个pair生成两张卡片: term 和 definition)
+                const gameCards = [];
+                shuffledData.forEach(item => {
+                    const termStyled = stylePurpose(item.term);
+                    // 存储纯文本用于匹配（但保留pair匹配逻辑使用原始term/definition）
+                    gameCards.push({
+                        content: termStyled,
+                        rawContent: item.term,
+                        type: 'term',
+                        pairKey: item.definition,   // 匹配时对比 definition
+                        pairRaw: item.definition
+                    });
+                    gameCards.push({
+                        content: item.definition,
+                        rawContent: item.definition,
+                        type: 'definition',
+                        pairKey: item.term,         // 匹配时对比 term
+                        pairRaw: item.term
+                    });
+                });
+
+                // 洗牌 (Fisher–Yates)
+                for (let i = gameCards.length - 1; i > 0; i--) {
+                    const j = Math.floor(Math.random() * (i + 1));
+                    [gameCards[i], gameCards[j]] = [gameCards[j], gameCards[i]];
+                }
+
+                // 创建卡片DOM
+                gameCards.forEach((cardData, index) => {
+                    const card = document.createElement('div');
+                    card.className = 'card';
+                    card.dataset.index = index;
+                    // 存储匹配依据: 使用pairKey (原始term或definition)
+                    card.dataset.pairKey = cardData.pairKey;
+                    // 存储自身原始内容 (用于匹配时比较)
+                    card.dataset.rawContent = cardData.rawContent;
+                    // 存储类型
+                    card.dataset.type = cardData.type;
+
+                    // 渲染内容 (包含红色目的)
+                    card.innerHTML = cardData.content;
+
+                    // 点击事件
+                    card.addEventListener('click', cardClickHandler);
+                    boardEl.appendChild(card);
+                });
+
+                // 启动计时器
+                timer = setInterval(updateTimer, 1000);
+            }
+
+            // ---------- 卡片点击处理 (防连点/锁) ----------
+            function cardClickHandler(e) {
+                const card = e.currentTarget;
+
+                // 各种禁止点击条件
+                if (!gameActive) return;
+                if (lockBoard) return;
+                if (card.classList.contains('selected')) return;
+                if (card.classList.contains('matched')) return;
+                if (selectedCards.length >= 2) return;
+
+                // 选中卡片
+                card.classList.add('selected');
+                selectedCards.push(card);
+
+                // 如果恰好选了两张，进行匹配检查
+                if (selectedCards.length === 2) {
+                    lockBoard = true;   // 锁定界面
+                    checkMatch();
+                } else {
+                    // 只选了一张，解锁（但lockBoard本来就是false）
+                    lockBoard = false;
+                }
+            }
+
+            // ---------- 匹配检查 ----------
+            function checkMatch() {
+                const [card1, card2] = selectedCards;
+
+                // 匹配逻辑: card1的pairKey 等于 card2的rawContent 或者反过来
+                const pair1 = card1.dataset.pairKey;
+                const pair2 = card2.dataset.pairKey;
+                const raw1 = card1.dataset.rawContent;
+                const raw2 = card2.dataset.rawContent;
+
+                // 判断是否匹配: (card1的pairKey === card2的raw) 或 (card2的pairKey === card1的raw)
+                const isMatch = (pair1 === raw2) || (pair2 === raw1);
+
+                if (isMatch) {
+                    // 匹配成功
+                    card1.classList.add('matched');
+                    card2.classList.add('matched');
+                    // 从selected中移除 (已经匹配)
+                    selectedCards = [];
+                    matchedPairs++;
+                    score += 10;
+                    scoreEl.textContent = score;
+
+                    // 解锁
+                    lockBoard = false;
+
+                    // 检查是否胜利
+                    if (matchedPairs === 12) {
+                        gameActive = false;
+                        if (timer) clearInterval(timer);
+                        setTimeout(() => {
+                            alert(`🎉 恭喜！全部配对成功！\n最终得分: ${score}`);
+                        }, 300);
+                    }
+                } else {
+                    // 匹配失败：延迟翻回
+                    gameActive = false;  // 暂时禁用点击
+                    setTimeout(() => {
+                        // 移除选中样式 (如果还没被匹配掉)
+                        if (card1 && card1.parentNode) card1.classList.remove('selected');
+                        if (card2 && card2.parentNode) card2.classList.remove('selected');
+                        // 清空选中数组
+                        selectedCards = [];
+                        // 解锁并恢复游戏激活
+                        lockBoard = false;
+                        gameActive = true;
+                    }, 800);
+                }
+            }
+
+            // ---------- 计时器 ----------
+            function updateTimer() {
+                if (!gameActive) return; // 如果游戏结束，停止倒计时（但计时器还会跑，通过clear控制）
+                timeLeft--;
+                timeEl.textContent = timeLeft;
+
+                if (timeLeft <= 0) {
+                    timeLeft = 0;
+                    timeEl.textContent = '0';
+                    gameActive = false;
+                    if (timer) clearInterval(timer);
+                    // 弹出结束提示
+                    setTimeout(() => {
+                        alert(`⏰ 时间到！\n最终得分: ${score}`);
+                    }, 200);
+                    // 禁用卡片点击通过gameActive控制，无需额外操作
+                }
+            }
+
+            // ---------- 重新开始 ----------
+            function restartGame() {
+                if (timer) {
+                    clearInterval(timer);
+                    timer = null;
+                }
+                // 重置所有
+                initGame();
+            }
+
+            // ---------- 事件绑定 ----------
+            restartBtn.addEventListener('click', restartGame);
+
+            // 防止手机双击缩放干扰 (但保留)
+            document.addEventListener('dblclick', (e) => e.preventDefault());
+
+            // 启动游戏
+            initGame();
+
+            // 额外: 如果有卡片在匹配失败时被快速点击, 通过lockBoard和gameActive双重防护
+        })();
+    </script>
+</body>
+</html>

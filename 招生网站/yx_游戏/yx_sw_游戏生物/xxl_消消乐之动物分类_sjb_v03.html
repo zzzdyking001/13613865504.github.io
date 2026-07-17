@@ -1,0 +1,918 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+    <title>动物分类消消乐 · 初中生物</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            -webkit-tap-highlight-color: transparent;
+            font-family: 'Segoe UI', 'PingFang SC', 'Microsoft YaHei', system-ui, sans-serif;
+        }
+        body {
+            background: linear-gradient(145deg, #f0f4fa 0%, #d9e0ed 100%);
+            min-height: 100vh;
+            padding: 12px 10px 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            color: #1e2b3c;
+            touch-action: manipulation;
+        }
+        .container {
+            max-width: 700px;
+            width: 100%;
+            margin: 0 auto;
+        }
+        header {
+            text-align: center;
+            padding: 14px 12px 12px;
+            background: linear-gradient(135deg, #3a5f8a, #1f3a5f);
+            color: white;
+            border-radius: 24px;
+            box-shadow: 0 8px 20px rgba(0, 20, 40, 0.25);
+            margin-bottom: 18px;
+        }
+        h1 {
+            font-size: 1.9rem;
+            letter-spacing: 1px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            flex-wrap: wrap;
+        }
+        h1 i {
+            font-size: 2rem;
+        }
+        .subtitle {
+            font-size: 0.9rem;
+            opacity: 0.9;
+            margin-top: 4px;
+            font-weight: 300;
+            letter-spacing: 0.3px;
+        }
+        .score-board {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr 1fr;
+            gap: 8px;
+            background: rgba(255,255,255,0.75);
+            backdrop-filter: blur(4px);
+            -webkit-backdrop-filter: blur(4px);
+            border-radius: 20px;
+            padding: 14px 8px;
+            margin-bottom: 18px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.06);
+            border: 1px solid rgba(255,255,255,0.5);
+        }
+        .score-item {
+            text-align: center;
+            padding: 4px 0;
+        }
+        .score-label {
+            font-size: 0.65rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            color: #3d4f66;
+            font-weight: 600;
+        }
+        .score-value, .matches-value, .timer-value, .level-value {
+            font-size: 1.6rem;
+            font-weight: 700;
+            color: #1f3a5f;
+            line-height: 1.3;
+        }
+        .timer-value {
+            color: #2b5a4b;
+            font-family: 'Courier New', monospace;
+        }
+        .timer-value.warning {
+            color: #c73b3b;
+            animation: pulse 0.9s infinite;
+        }
+        .level-value {
+            font-size: 1.2rem;
+            background: #dce5f2;
+            padding: 0 10px;
+            border-radius: 30px;
+            display: inline-block;
+        }
+        .matches-value span {
+            font-size: 1.3rem;
+        }
+        @keyframes pulse {
+            0%, 100% { opacity: 1; transform: scale(1); }
+            50% { opacity: 0.6; transform: scale(0.95); }
+        }
+
+        /* 类别行 - 手机自适应 */
+        .categories-row {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 8px;
+            margin-bottom: 16px;
+        }
+        .category {
+            background: #2d5a4b;
+            color: white;
+            padding: 16px 4px;
+            text-align: center;
+            border-radius: 16px;
+            font-size: 0.95rem;
+            font-weight: 600;
+            box-shadow: 0 6px 10px rgba(0,0,0,0.08);
+            min-height: 80px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 2px solid transparent;
+            transition: all 0.1s ease;
+            word-break: break-word;
+            line-height: 1.3;
+            touch-action: manipulation;
+        }
+        .category.valid-drop {
+            border-color: #5b8c7a;
+            box-shadow: 0 0 0 3px rgba(74, 130, 110, 0.3);
+        }
+        .category.invalid-drop {
+            border-color: #d45c5c;
+            box-shadow: 0 0 0 3px rgba(212, 92, 92, 0.3);
+        }
+
+        /* 动物网格 - 手机优化 */
+        .animals-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 10px;
+            margin-bottom: 10px;
+        }
+        .animal {
+            background: white;
+            padding: 14px 6px;
+            text-align: center;
+            border-radius: 18px;
+            font-size: 1rem;
+            font-weight: 500;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+            border: 2px solid #e8edf5;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 80px;
+            transition: all 0.15s;
+            touch-action: manipulation;
+            color: #1e2b3c;
+            background: #ffffff;
+            cursor: grab;
+            user-select: none;
+            -webkit-user-select: none;
+        }
+        .animal:active {
+            cursor: grabbing;
+        }
+        .animal.matched {
+            opacity: 0.3;
+            cursor: default;
+            transform: scale(0.94);
+            background: #d4e6d8;
+            border-color: #b8d0c2;
+            pointer-events: none;
+        }
+        .animal.incorrect {
+            animation: shake 0.45s;
+            border-color: #e67a7a;
+            background: #ffe2e2;
+        }
+        @keyframes shake {
+            0%, 100% { transform: translateX(0); }
+            20% { transform: translateX(-6px); }
+            40% { transform: translateX(6px); }
+            60% { transform: translateX(-4px); }
+            80% { transform: translateX(4px); }
+        }
+
+        .controls {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 12px;
+            margin: 16px 0 14px;
+        }
+        .btn {
+            padding: 12px 22px;
+            font-size: 1rem;
+            border: none;
+            border-radius: 60px;
+            font-weight: 600;
+            background: white;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.06);
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            flex: 1 0 auto;
+            justify-content: center;
+            min-width: 90px;
+            transition: all 0.15s;
+            border: 1px solid rgba(0,0,0,0.02);
+            touch-action: manipulation;
+        }
+        .btn:active {
+            transform: scale(0.96);
+        }
+        .btn-reset { background: #3a5f8a; color: white; }
+        .btn-pause { background: #2d5a4b; color: white; }
+        .btn-hint { background: #f0c27a; color: #1e2b3c; }
+
+        .instructions {
+            background: rgba(255,255,255,0.7);
+            backdrop-filter: blur(4px);
+            -webkit-backdrop-filter: blur(4px);
+            border-radius: 24px;
+            padding: 16px 18px;
+            margin-top: 12px;
+            border: 1px solid rgba(255,255,255,0.6);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.03);
+        }
+        .instructions h3 {
+            color: #1f3a5f;
+            margin-bottom: 8px;
+            font-size: 1.2rem;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+        .instructions ol {
+            padding-left: 18px;
+            font-size: 0.85rem;
+            line-height: 1.5;
+            color: #2b3f54;
+        }
+        .instructions li {
+            margin-bottom: 6px;
+        }
+
+        .footer {
+            text-align: center;
+            color: #5a6f82;
+            font-size: 0.7rem;
+            margin-top: 18px;
+            padding: 10px 0 4px;
+        }
+
+        /* 消息提示 */
+        .message {
+            position: fixed;
+            top: 16px;
+            left: 50%;
+            transform: translateX(-50%);
+            padding: 12px 24px;
+            border-radius: 60px;
+            color: white;
+            font-weight: 600;
+            box-shadow: 0 8px 24px rgba(0,0,0,0.15);
+            z-index: 999;
+            opacity: 0;
+            transition: opacity 0.25s;
+            pointer-events: none;
+            white-space: nowrap;
+            max-width: 90%;
+            font-size: 0.95rem;
+            background: #1f3a5f;
+        }
+        .message.success { background: #2b6e4e; opacity: 1; }
+        .message.error { background: #b13e3e; opacity: 1; }
+        .message.info { background: #2f5980; opacity: 1; }
+
+        /* 匹配特效 */
+        .match-effect {
+            position: fixed;
+            pointer-events: none;
+            font-size: 2.8rem;
+            font-weight: 700;
+            z-index: 100;
+            animation: floatUp 0.9s forwards;
+            text-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+        @keyframes floatUp {
+            0% { transform: translateY(0) scale(0.8); opacity: 1; }
+            100% { transform: translateY(-90px) scale(1.2); opacity: 0; }
+        }
+
+        /* 弹窗 */
+        .game-over-modal {
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(0, 0, 0, 0.6);
+            backdrop-filter: blur(6px);
+            -webkit-backdrop-filter: blur(6px);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 2000;
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.3s, visibility 0.3s;
+            padding: 20px;
+        }
+        .game-over-modal.active {
+            opacity: 1;
+            visibility: visible;
+        }
+        .modal-content {
+            background: white;
+            border-radius: 40px;
+            padding: 32px 24px 30px;
+            max-width: 400px;
+            width: 100%;
+            box-shadow: 0 30px 60px rgba(0,0,0,0.3);
+            text-align: center;
+        }
+        .modal-content h2 {
+            color: #1f3a5f;
+            font-size: 2.2rem;
+            margin-bottom: 12px;
+        }
+        .modal-stats {
+            display: flex;
+            justify-content: space-around;
+            margin: 20px 0;
+        }
+        .modal-stat {
+            text-align: center;
+        }
+        .modal-stat-value {
+            font-size: 2.2rem;
+            font-weight: 700;
+            color: #2d5a4b;
+        }
+        .modal-stat-label {
+            font-size: 0.8rem;
+            color: #5f7489;
+        }
+        .modal-buttons {
+            display: flex;
+            gap: 14px;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-top: 22px;
+        }
+        .modal-btn {
+            padding: 12px 28px;
+            border: none;
+            border-radius: 60px;
+            font-weight: 600;
+            font-size: 1rem;
+            background: #eef3f9;
+            color: #1e2b3c;
+            flex: 1 0 auto;
+            min-width: 120px;
+            transition: 0.1s;
+            touch-action: manipulation;
+        }
+        .modal-btn:active { transform: scale(0.96); }
+        .modal-restart { background: #3a5f8a; color: white; }
+        .modal-close { background: #d9e0ed; color: #1f3a5f; }
+
+        /* 小屏优化 */
+        @media (max-width: 600px) {
+            h1 { font-size: 1.6rem; }
+            .score-board { grid-template-columns: 1fr 1fr; gap: 6px; padding: 12px 6px; }
+            .score-value, .matches-value, .timer-value, .level-value { font-size: 1.5rem; }
+            .categories-row { grid-template-columns: repeat(5, 1fr); gap: 5px; }
+            .category { font-size: 0.7rem; padding: 12px 2px; min-height: 60px; border-radius: 12px; }
+            .animals-grid { grid-template-columns: repeat(4, 1fr); gap: 8px; }
+            .animal { font-size: 0.9rem; padding: 12px 4px; min-height: 70px; border-radius: 14px; }
+            .btn { padding: 10px 14px; font-size: 0.85rem; min-width: 70px; }
+            .instructions ol { font-size: 0.8rem; }
+            .modal-content { padding: 26px 18px; }
+        }
+        @media (max-width: 420px) {
+            .categories-row { gap: 4px; }
+            .category { font-size: 0.6rem; padding: 10px 2px; min-height: 50px; }
+            .animals-grid { gap: 6px; }
+            .animal { font-size: 0.75rem; padding: 10px 2px; min-height: 60px; }
+            .btn { font-size: 0.75rem; padding: 8px 12px; min-width: 60px; }
+            .score-value, .matches-value, .timer-value, .level-value { font-size: 1.2rem; }
+        }
+
+        /* 辅助触摸 */
+        .drop-indicator {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            border-radius: 16px;
+            pointer-events: none;
+            opacity: 0;
+            transition: opacity 0.15s;
+            top: 0; left: 0;
+        }
+        .drop-indicator.valid {
+            background: rgba(50, 130, 100, 0.12);
+            border: 2px dashed #3a7a62;
+            opacity: 1;
+        }
+        .drop-indicator.invalid {
+            background: rgba(200, 70, 70, 0.12);
+            border: 2px dashed #c95a5a;
+            opacity: 1;
+        }
+        .category {
+            position: relative;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <header>
+        <h1><i class="fas fa-paw"></i> 动物消消乐</h1>
+        <div class="subtitle">初中生物 · 拖拽分类</div>
+    </header>
+
+    <div class="score-board">
+        <div class="score-item"><div class="score-label">得分</div><div class="score-value" id="score">0</div></div>
+        <div class="score-item"><div class="score-label">匹配</div><div class="matches-value"><span id="matches-count">0</span>/20</div></div>
+        <div class="score-item"><div class="score-label">时间</div><div class="timer-value" id="timer">03:00</div></div>
+        <div class="score-item"><div class="score-label">难度</div><div class="level-value" id="level">普通</div></div>
+    </div>
+
+    <div class="categories-row" id="categories-row"></div>
+    <div class="animals-grid" id="animals-grid"></div>
+
+    <div class="controls">
+        <button class="btn btn-reset" id="reset-btn"><i class="fas fa-redo"></i> 重开</button>
+        <button class="btn btn-pause" id="pause-btn"><i class="fas fa-pause"></i> 暂停</button>
+        <button class="btn btn-hint" id="hint-btn"><i class="fas fa-lightbulb"></i> 提示 <span id="hint-count">3</span></button>
+    </div>
+
+    <div class="instructions">
+        <h3><i class="fas fa-info-circle"></i> 怎么玩</h3>
+        <ol>
+            <li>将下方动物 <strong>拖拽</strong> 到上方对应的类别框。</li>
+            <li>正确 +10分，错误 -5分（不扣至负数）。</li>
+            <li>限时3分钟，匹配全部20个动物获胜。</li>
+            <li><strong>手机操作：</strong>长按动物拖拽，移动到类别上方松开。</li>
+        </ol>
+    </div>
+    <div class="footer">🐾 初中生物 · 动物分类</div>
+</div>
+
+<!-- 消息 -->
+<div id="message" class="message"></div>
+
+<!-- 弹窗 -->
+<div class="game-over-modal" id="game-over-modal">
+    <div class="modal-content">
+        <h2 id="game-result-title">⏰ 时间到</h2>
+        <div class="modal-stats">
+            <div class="modal-stat"><div class="modal-stat-value" id="final-score">0</div><div class="modal-stat-label">得分</div></div>
+            <div class="modal-stat"><div class="modal-stat-value" id="final-matches">0</div><div class="modal-stat-label">匹配</div></div>
+            <div class="modal-stat"><div class="modal-stat-value" id="final-time">00:00</div><div class="modal-stat-label">剩余</div></div>
+        </div>
+        <p id="game-result-message" style="color:#3d5a78;">再试一次吧！</p>
+        <div class="modal-buttons">
+            <button class="modal-btn modal-restart" id="modal-restart-btn"><i class="fas fa-redo"></i> 重来</button>
+            <button class="modal-btn modal-close" id="modal-close-btn"><i class="fas fa-times"></i> 关闭</button>
+        </div>
+    </div>
+</div>
+
+<script>
+    (function() {
+        const animalData = {
+            "哺乳动物": [ "大熊猫", "海豚", "鲸鱼", "河马"],
+            "鸟类": [ "鸵鸟", "企鹅", "猫头鹰"],
+            "爬行动物": ["鳄鱼", "乌龟", "蜥蜴"],
+            "两栖动物": ["蝾螈", "蟾蜍", "娃娃鱼"],
+            "鱼类": ["鲨鱼", "金鱼", "海马"]
+        };
+
+        // ---- 状态 ----
+        let score = 0;
+        let matchedCount = 0;
+        const totalMatches = 16;
+			//匹配数量，实际动物数量
+        let hintsLeft = 3;
+        let gameActive = true;
+        let gamePaused = false;
+        let timeLeft = 180;
+        let timerInterval = null;
+        let currentDifficulty = "normal";
+        const difficultyLevels = { easy: { time: 240, name: "简单" }, normal: { time: 180, name: "普通" }, hard: { time: 120, name: "困难" } };
+
+        // DOM
+        const categoriesRow = document.getElementById('categories-row');
+        const animalsGrid = document.getElementById('animals-grid');
+        const scoreEl = document.getElementById('score');
+        const matchesCountEl = document.getElementById('matches-count');
+        const timerEl = document.getElementById('timer');
+        const hintCountEl = document.getElementById('hint-count');
+        const levelEl = document.getElementById('level');
+        const resetBtn = document.getElementById('reset-btn');
+        const pauseBtn = document.getElementById('pause-btn');
+        const hintBtn = document.getElementById('hint-btn');
+        const msgEl = document.getElementById('message');
+
+        const modal = document.getElementById('game-over-modal');
+        const finalScore = document.getElementById('final-score');
+        const finalMatches = document.getElementById('final-matches');
+        const finalTime = document.getElementById('final-time');
+        const resultTitle = document.getElementById('game-result-title');
+        const resultMsg = document.getElementById('game-result-message');
+        const modalRestart = document.getElementById('modal-restart-btn');
+        const modalClose = document.getElementById('modal-close-btn');
+
+        // 用于拖拽
+        let draggedAnimal = null;
+        let dragOffsetX = 0, dragOffsetY = 0; // 触摸偏移
+
+        // ---- 辅助 ----
+        function shuffleArray(arr) {
+            for (let i = arr.length - 1; i > 0; i--) {
+                const j = Math.floor(Math.random() * (i + 1));
+                [arr[i], arr[j]] = [arr[j], arr[i]];
+            }
+            return arr;
+        }
+
+        function formatTime(seconds) {
+            const m = Math.floor(seconds / 60);
+            const s = seconds % 60;
+            return `${m.toString().padStart(2, '0')}:${s.toString().padStart(2, '0')}`;
+        }
+
+        function updateTimerDisplay() {
+            timerEl.textContent = formatTime(timeLeft);
+            if (timeLeft <= 30) timerEl.classList.add('warning');
+            else timerEl.classList.remove('warning');
+        }
+
+        function showMessage(text, type = 'info') {
+            msgEl.textContent = text;
+            msgEl.className = `message ${type}`;
+            clearTimeout(msgEl._hide);
+            msgEl._hide = setTimeout(() => { msgEl.className = 'message'; }, 2800);
+        }
+
+        function showMatchEffect(animalEl, categoryEl, text) {
+            const effect = document.createElement('div');
+            effect.className = 'match-effect';
+            effect.textContent = text;
+            effect.style.color = text.startsWith('+') ? '#1f7a4a' : '#b13e3e';
+            const rectA = animalEl.getBoundingClientRect();
+            const rectC = categoryEl.getBoundingClientRect();
+            const x = (rectA.left + rectA.right) / 2;
+            const y = (rectA.top + rectA.bottom) / 2 - 20;
+            effect.style.left = x + 'px';
+            effect.style.top = y + 'px';
+            document.body.appendChild(effect);
+            setTimeout(() => effect.remove(), 950);
+        }
+
+        // ---- 核心 ----
+        function initGame() {
+            score = 0; matchedCount = 0; hintsLeft = 3;
+            gameActive = true; gamePaused = false;
+            currentDifficulty = "normal";
+            timeLeft = difficultyLevels[currentDifficulty].time;
+            scoreEl.textContent = score;
+            matchesCountEl.textContent = matchedCount;
+            hintCountEl.textContent = hintsLeft;
+            levelEl.textContent = difficultyLevels[currentDifficulty].name;
+            updateTimerDisplay();
+            if (timerInterval) clearInterval(timerInterval);
+            startTimer();
+            pauseBtn.innerHTML = '<i class="fas fa-pause"></i> 暂停';
+            modal.classList.remove('active');
+
+            // 重建类别
+            categoriesRow.innerHTML = '';
+            Object.keys(animalData).forEach(cat => {
+                const div = document.createElement('div');
+                div.className = 'category';
+                div.dataset.category = cat;
+                div.textContent = cat;
+                const indicator = document.createElement('div');
+                indicator.className = 'drop-indicator';
+                div.appendChild(indicator);
+                // 监听拖拽事件 (PC + 触摸)
+                div.addEventListener('dragover', handleDragOver);
+                div.addEventListener('dragleave', handleDragLeave);
+                div.addEventListener('drop', handleDrop);
+                // 触摸事件用 pointer 模拟
+                categoriesRow.appendChild(div);
+            });
+
+            // 动物列表
+            animalsGrid.innerHTML = '';
+            let all = [];
+            Object.keys(animalData).forEach(cat => {
+                animalData[cat].forEach(name => all.push({ name, category: cat }));
+            });
+            all = shuffleArray(all);
+            all.forEach(item => {
+                const el = document.createElement('div');
+                el.className = 'animal';
+                el.textContent = item.name;
+                el.dataset.name = item.name;
+                el.dataset.category = item.category;
+                el.draggable = true;
+                el.addEventListener('dragstart', handleDragStart);
+                el.addEventListener('dragend', handleDragEnd);
+                // 触摸事件
+                el.addEventListener('touchstart', handleTouchStart, { passive: true });
+                el.addEventListener('touchmove', handleTouchMove, { passive: false });
+                el.addEventListener('touchend', handleTouchEnd, { passive: true });
+                animalsGrid.appendChild(el);
+            });
+
+            // 移除所有高亮
+            document.querySelectorAll('.drop-indicator').forEach(d => d.classList.remove('valid', 'invalid'));
+        }
+
+        // ---- 计时器 ----
+        function startTimer() {
+            timerInterval = setInterval(() => {
+                if (!gamePaused && gameActive && timeLeft > 0) {
+                    timeLeft--;
+                    updateTimerDisplay();
+                    if (timeLeft <= 0) {
+                        endGame('time');
+                    }
+                }
+            }, 1000);
+        }
+
+        // ---- 结束 ----
+        function endGame(reason) {
+            if (!gameActive) return;
+            gameActive = false;
+            clearInterval(timerInterval);
+            finalScore.textContent = score;
+            finalMatches.textContent = matchedCount;
+            finalTime.textContent = timerEl.textContent;
+
+            if (reason === 'time') {
+                resultTitle.textContent = '⏰ 时间到';
+                resultMsg.textContent = `完成 ${matchedCount}/20 · 得分 ${score}`;
+            } else if (reason === 'complete') {
+                const used = difficultyLevels[currentDifficulty].time - timeLeft;
+                resultTitle.textContent = '🎉 恭喜通关！';
+                resultMsg.textContent = `用时 ${formatTime(used)} · 得分 ${score}`;
+            }
+            setTimeout(() => modal.classList.add('active'), 500);
+        }
+
+        // ---- 拖拽事件 (PC) ----
+        function handleDragStart(e) {
+            if (!gameActive || gamePaused || this.classList.contains('matched')) {
+                e.preventDefault(); return false;
+            }
+            draggedAnimal = this;
+            this.classList.add('dragging');
+            e.dataTransfer.setData('text/plain', this.dataset.name);
+            // 所有类别显示通用放置区
+            document.querySelectorAll('.category .drop-indicator').forEach(d => d.classList.add('valid'));
+        }
+
+        function handleDragEnd() {
+            this.classList.remove('dragging');
+            draggedAnimal = null;
+            document.querySelectorAll('.category .drop-indicator').forEach(d => d.classList.remove('valid', 'invalid'));
+        }
+
+        function handleDragOver(e) {
+            e.preventDefault();
+            if (draggedAnimal) {
+                const ind = this.querySelector('.drop-indicator');
+                if (ind) ind.classList.add('valid');
+            }
+        }
+
+        function handleDragLeave(e) {
+            if (!this.contains(e.relatedTarget)) {
+                const ind = this.querySelector('.drop-indicator');
+                if (ind) ind.classList.remove('valid', 'invalid');
+            }
+        }
+
+        function handleDrop(e) {
+            e.preventDefault();
+            if (!draggedAnimal || !gameActive || gamePaused) return;
+            const categoryEl = this;
+            const indicator = categoryEl.querySelector('.drop-indicator');
+            indicator.classList.remove('valid', 'invalid');
+
+            const cat = categoryEl.dataset.category;
+            const animalCat = draggedAnimal.dataset.category;
+            if (cat === animalCat) {
+                // 正确
+                score += 10; matchedCount++;
+                scoreEl.textContent = score;
+                matchesCountEl.textContent = matchedCount;
+                draggedAnimal.classList.add('matched');
+                draggedAnimal.draggable = false;
+                showMatchEffect(draggedAnimal, categoryEl, '+10');
+                showMessage(`✔ ${draggedAnimal.textContent} → ${cat}`, 'success');
+
+                if (matchedCount === totalMatches) {
+                    const bonus = Math.floor(timeLeft / 10) * 5;
+                    if (bonus > 0) { score += bonus; scoreEl.textContent = score; showMessage(`⏱ 时间奖励 +${bonus}`, 'success'); }
+                    setTimeout(() => endGame('complete'), 1200);
+                }
+            } else {
+                // 错误
+                score = Math.max(0, score - 5);
+                scoreEl.textContent = score;
+                draggedAnimal.classList.add('incorrect');
+                showMatchEffect(draggedAnimal, categoryEl, '-5');
+                showMessage(`✖ ${draggedAnimal.textContent} 不属于 ${cat}`, 'error');
+                setTimeout(() => draggedAnimal.classList.remove('incorrect'), 500);
+            }
+            // 清理
+            document.querySelectorAll('.category .drop-indicator').forEach(d => d.classList.remove('valid', 'invalid'));
+            draggedAnimal = null;
+        }
+
+        // ---- 触摸事件 (移动端) ----
+        let touchAnimal = null;
+        let touchClone = null;
+        let touchStartX = 0, touchStartY = 0;
+
+        function handleTouchStart(e) {
+            if (!gameActive || gamePaused || this.classList.contains('matched')) return;
+            const touch = e.touches[0];
+            touchAnimal = this;
+            touchStartX = touch.clientX;
+            touchStartY = touch.clientY;
+            // 不立即创建克隆，在移动时创建
+        }
+
+        function handleTouchMove(e) {
+            if (!touchAnimal || !gameActive || gamePaused) return;
+            e.preventDefault();
+            const touch = e.touches[0];
+            if (!touchClone) {
+                // 创建克隆视觉
+                touchClone = touchAnimal.cloneNode(true);
+                touchClone.style.position = 'fixed';
+                touchClone.style.width = touchAnimal.offsetWidth + 'px';
+                touchClone.style.height = touchAnimal.offsetHeight + 'px';
+                touchClone.style.pointerEvents = 'none';
+                touchClone.style.zIndex = '999';
+                touchClone.style.opacity = '0.85';
+                touchClone.style.border = '2px solid #3a7a62';
+                touchClone.style.borderRadius = '18px';
+                touchClone.style.background = '#f5faff';
+                touchClone.style.boxShadow = '0 12px 28px rgba(0,0,0,0.2)';
+                touchClone.style.transform = 'scale(1.02)';
+                document.body.appendChild(touchClone);
+                // 高亮所有类别
+                document.querySelectorAll('.category .drop-indicator').forEach(d => d.classList.add('valid'));
+            }
+            const rect = touchAnimal.getBoundingClientRect();
+            touchClone.style.left = (touch.clientX - rect.width/2) + 'px';
+            touchClone.style.top = (touch.clientY - rect.height/2) + 'px';
+
+            // 检测悬停类别
+            const categories = document.querySelectorAll('.category');
+            categories.forEach(cat => {
+                const r = cat.getBoundingClientRect();
+                const ind = cat.querySelector('.drop-indicator');
+                if (touch.clientX >= r.left && touch.clientX <= r.right &&
+                    touch.clientY >= r.top && touch.clientY <= r.bottom) {
+                    ind.classList.add('valid');
+                } else {
+                    ind.classList.remove('valid');
+                }
+            });
+        }
+
+        function handleTouchEnd(e) {
+            if (!touchAnimal) return;
+            const touch = e.changedTouches[0];
+            // 查找放置目标
+            let targetCategory = null;
+            const categories = document.querySelectorAll('.category');
+            categories.forEach(cat => {
+                const r = cat.getBoundingClientRect();
+                if (touch.clientX >= r.left && touch.clientX <= r.right &&
+                    touch.clientY >= r.top && touch.clientY <= r.bottom) {
+                    targetCategory = cat;
+                }
+            });
+
+            // 移除克隆
+            if (touchClone) {
+                touchClone.remove();
+                touchClone = null;
+            }
+            document.querySelectorAll('.category .drop-indicator').forEach(d => d.classList.remove('valid', 'invalid'));
+
+            if (targetCategory && gameActive && !gamePaused) {
+                // 模拟drop
+                const cat = targetCategory.dataset.category;
+                const animalCat = touchAnimal.dataset.category;
+                if (cat === animalCat) {
+                    score += 10; matchedCount++;
+                    scoreEl.textContent = score;
+                    matchesCountEl.textContent = matchedCount;
+                    touchAnimal.classList.add('matched');
+                    touchAnimal.draggable = false;
+                    showMatchEffect(touchAnimal, targetCategory, '+10');
+                    showMessage(`✔ ${touchAnimal.textContent} → ${cat}`, 'success');
+                    if (matchedCount === totalMatches) {
+                        const bonus = Math.floor(timeLeft / 10) * 5;
+                        if (bonus > 0) { score += bonus; scoreEl.textContent = score; showMessage(`⏱ 时间奖励 +${bonus}`, 'success'); }
+                        setTimeout(() => endGame('complete'), 1200);
+                    }
+                } else {
+                    score = Math.max(0, score - 5);
+                    scoreEl.textContent = score;
+                    touchAnimal.classList.add('incorrect');
+                    showMatchEffect(touchAnimal, targetCategory, '-5');
+                    showMessage(`✖ ${touchAnimal.textContent} 不属于 ${cat}`, 'error');
+                    setTimeout(() => touchAnimal.classList.remove('incorrect'), 500);
+                }
+            }
+            touchAnimal = null;
+        }
+
+        // ---- 暂停 / 提示 ----
+        function togglePause() {
+            if (!gameActive) return;
+            gamePaused = !gamePaused;
+            pauseBtn.innerHTML = gamePaused ? '<i class="fas fa-play"></i> 继续' : '<i class="fas fa-pause"></i> 暂停';
+            showMessage(gamePaused ? '⏸ 暂停' : '▶ 继续', 'info');
+        }
+
+        function giveHint() {
+            if (hintsLeft <= 0 || !gameActive || gamePaused || matchedCount === totalMatches) {
+                showMessage('提示次数用完了', 'error');
+                return;
+            }
+            const unmatched = document.querySelectorAll('.animal:not(.matched)');
+            if (!unmatched.length) return;
+            const rand = Math.floor(Math.random() * unmatched.length);
+            const animal = unmatched[rand];
+            const correctCat = animal.dataset.category;
+            // 高亮动物
+            const origBg = animal.style.backgroundColor;
+            const origShadow = animal.style.boxShadow;
+            animal.style.backgroundColor = '#f7d44a';
+            animal.style.boxShadow = '0 0 20px #f7d44a';
+            // 高亮类别
+            const categories = document.querySelectorAll('.category');
+            let targetCatEl = null;
+            categories.forEach(cat => {
+                if (cat.dataset.category === correctCat) {
+                    targetCatEl = cat;
+                    const origC = cat.style.backgroundColor;
+                    const origCol = cat.style.color;
+                    cat.style.backgroundColor = '#f7d44a';
+                    cat.style.color = '#1e2b3c';
+                    cat.style.boxShadow = '0 0 20px #f7d44a';
+                    setTimeout(() => {
+                        cat.style.backgroundColor = origC;
+                        cat.style.color = origCol;
+                        cat.style.boxShadow = 'none';
+                    }, 1500);
+                }
+            });
+            setTimeout(() => {
+                animal.style.backgroundColor = origBg;
+                animal.style.boxShadow = origShadow;
+            }, 1500);
+            hintsLeft--;
+            hintCountEl.textContent = hintsLeft;
+            showMessage('💡 观察高亮区域', 'info');
+        }
+
+        // ---- 事件绑定 ----
+        resetBtn.addEventListener('click', initGame);
+        pauseBtn.addEventListener('click', togglePause);
+        hintBtn.addEventListener('click', giveHint);
+        modalRestart.addEventListener('click', initGame);
+        modalClose.addEventListener('click', () => modal.classList.remove('active'));
+
+        // 启动
+        initGame();
+
+        // 额外：防止页面滚动干扰拖拽
+        document.addEventListener('touchmove', function(e) {
+            if (touchClone) e.preventDefault();
+        }, { passive: false });
+
+        // 清理所有高亮
+        window.addEventListener('scroll', function() {
+            document.querySelectorAll('.drop-indicator').forEach(d => d.classList.remove('valid', 'invalid'));
+        });
+
+    })();
+</script>
+</body>
+</html>

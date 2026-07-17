@@ -1,0 +1,464 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes, viewport-fit=cover">
+    <title>生物首页 · 字体调节 + 序号</title>
+    <style>
+        /* 全局重置 & 字体适配 */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        body {
+            font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+            background: #f5f9f5;
+            color: #1e2e1e;
+            padding: 18px 16px 30px;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            line-height: 1.6;
+            font-size: 18px; /* 基准字体，由JS控制动态调整 */
+            transition: font-size 0.1s ease;
+        }
+
+        /* 所有文字继承 body 字体大小，统一缩放 */
+        body * {
+            /* 继承 body 字体大小，但部分元素单独用 rem/em 可灵活调整 */
+        }
+
+        /* 标题区 —— 学校名称 */
+        .school-header {
+            background: #1f4f2b;
+            color: #f0f9ef;
+            padding: 18px 14px;
+            border-radius: 40px 12px 40px 12px;
+            text-align: center;
+            font-size: 1.8rem;
+            font-weight: 700;
+            letter-spacing: 2px;
+            box-shadow: 0 6px 12px rgba(0, 30, 0, 0.15);
+            margin-bottom: 20px;
+            word-break: break-word;
+        }
+
+        /* ---- 字体控制栏 ---- */
+        .font-control-bar {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px 18px;
+            flex-wrap: wrap;
+            background: #e9f2e7;
+            padding: 12px 16px;
+            border-radius: 60px;
+            margin-bottom: 28px;
+            box-shadow: inset 0 1px 4px rgba(0, 30, 0, 0.06);
+            border: 1px solid #d0e2ce;
+        }
+
+        .font-control-bar span {
+            font-weight: 500;
+            color: #1f4a27;
+            font-size: 1rem;
+            letter-spacing: 0.5px;
+        }
+
+        .font-btn-group {
+            display: flex;
+            gap: 10px;
+        }
+
+        .font-btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            min-width: 52px;
+            padding: 8px 16px;
+            background: white;
+            border: 1px solid #b3cfb0;
+            border-radius: 40px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: #1e4626;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.03);
+            transition: all 0.12s ease;
+            cursor: pointer;
+            user-select: none;
+            touch-action: manipulation;
+        }
+
+        .font-btn:active {
+            background: #c8e0c4;
+            transform: scale(0.94);
+        }
+
+        .font-btn.reset-btn {
+            background: #dcecd9;
+            border-color: #8fb58b;
+            min-width: 60px;
+        }
+
+        .font-btn.reset-btn:active {
+            background: #bdd8b9;
+        }
+
+        /* 当前字体大小指示 */
+        .font-size-indicator {
+            background: #ffffffcc;
+            padding: 4px 16px;
+            border-radius: 40px;
+            font-size: 0.95rem;
+            font-weight: 450;
+            color: #1f4a27;
+            border: 1px solid #bdd6bb;
+            backdrop-filter: blur(2px);
+            white-space: nowrap;
+        }
+
+        /* ---- 有序列表 —— 游戏卡片列表 (带序号) ---- */
+        ol {
+            list-style: none;
+            padding: 0;
+            margin: 0 0 30px 0;
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+        }
+
+        ol li {
+            background: white;
+            border-radius: 28px;
+            box-shadow: 0 4px 10px rgba(0, 20, 0, 0.08);
+            border: 1px solid #d9e8d9;
+            padding: 0;
+            transition: all 0.1s ease;
+            display: flex;
+            align-items: stretch;
+            overflow: hidden;
+        }
+
+        /* 序号区域 - 独立显示学号 */
+        .list-index {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-width: 48px;
+            width: 48px;
+            background: #e7f3e5;
+            color: #1d5429;
+            font-weight: 700;
+            font-size: 1.3rem;
+            border-right: 2px solid #cde0cb;
+            flex-shrink: 0;
+            padding: 0 4px;
+            letter-spacing: 0.5px;
+        }
+
+        /* 链接区域 */
+        ol li a {
+            display: flex;
+            align-items: center;
+            flex: 1;
+            padding: 18px 20px 18px 18px;
+            text-decoration: none;
+            color: #0d3d1a;
+            font-weight: 550;
+            font-size: 1.2rem;
+            background: transparent;
+            border-radius: 0 28px 28px 0;
+            position: relative;
+            word-break: break-word;
+            line-height: 1.5;
+            min-height: 64px;
+            transition: background 0.1s;
+        }
+
+        /* 箭头装饰 */
+        ol li a::after {
+            content: "›";
+            position: absolute;
+            right: 18px;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 2rem;
+            font-weight: 300;
+            color: #3f784a;
+            opacity: 0.6;
+            transition: transform 0.12s;
+        }
+
+        ol li a:active {
+            background: #e2f0e0;
+        }
+
+        ol li a:active::after {
+            transform: translateY(-50%) translateX(4px);
+        }
+
+        /* 针对小屏优化序号宽度 */
+        @media (max-width: 420px) {
+            .list-index {
+                min-width: 38px;
+                width: 38px;
+                font-size: 1.1rem;
+            }
+            ol li a {
+                font-size: 1.05rem;
+                padding: 14px 16px 14px 14px;
+                min-height: 56px;
+            }
+            ol li a::after {
+                font-size: 1.8rem;
+                right: 12px;
+            }
+        }
+
+        /* 底部导航 */
+        .nav-footer {
+            margin-top: 20px;
+            padding: 16px 0 8px;
+            border-top: 2px dashed #b8d0b5;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 12px 24px;
+            background: #f0f7ef;
+            border-radius: 60px 60px 30px 30px;
+            padding: 18px 12px;
+            box-shadow: inset 0 1px 4px rgba(0,0,0,0.02);
+        }
+
+        .nav-footer a {
+            display: inline-block;
+            padding: 12px 20px;
+            background: #ffffff;
+            border-radius: 60px;
+            font-size: 1.1rem;
+            font-weight: 500;
+            color: #1d4a27;
+            text-decoration: none;
+            box-shadow: 0 2px 6px rgba(60, 100, 60, 0.12);
+            border: 1px solid #c6ddc4;
+            transition: all 0.15s ease;
+            flex: 0 1 auto;
+            min-width: 80px;
+            text-align: center;
+            letter-spacing: 0.5px;
+            background: #fafffa;
+        }
+
+        .nav-footer a:active {
+            background: #cbe5c7;
+            transform: scale(0.94);
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+        }
+
+        /* 大屏优化 */
+        @media (min-width: 600px) {
+            body {
+                padding: 30px 40px;
+                max-width: 720px;
+                margin: 0 auto;
+                font-size: 20px;
+            }
+            .school-header {
+                font-size: 2rem;
+                padding: 22px 20px;
+            }
+            .list-index {
+                min-width: 56px;
+                width: 56px;
+                font-size: 1.5rem;
+            }
+            ol li a {
+                font-size: 1.3rem;
+                padding: 22px 28px 22px 22px;
+                min-height: 72px;
+            }
+            .nav-footer a {
+                font-size: 1.2rem;
+                padding: 14px 28px;
+            }
+        }
+
+        /* 锚点隐藏 */
+        #top {
+            display: block;
+            height: 0;
+            visibility: hidden;
+        }
+
+        /* 小提示 */
+        .footer-note {
+            text-align: center;
+            font-size: 0.85rem;
+            color: #5a7a5a;
+            margin-top: 12px;
+            opacity: 0.7;
+            letter-spacing: 1px;
+        }
+
+        /* 重置按钮特殊 */
+        .font-btn.reset-btn {
+            background: #dcecd9;
+            border-color: #8fb58b;
+        }
+
+        /* 适配极窄屏 */
+        @media (max-width: 360px) {
+            .font-control-bar {
+                gap: 6px 10px;
+                padding: 10px 10px;
+            }
+            .font-btn {
+                min-width: 44px;
+                padding: 6px 12px;
+                font-size: 1rem;
+            }
+            .font-size-indicator {
+                font-size: 0.8rem;
+                padding: 2px 12px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- 顶部锚点（不可见） -->
+    <a id="top" style="display: block; height: 0; visibility: hidden;">顶部</a>
+
+    <!-- 学校名称 -->
+    <div class="school-header">
+        🌿 汝州市新时代精英学校
+    </div>
+
+    
+
+    <!-- 游戏列表 - 带序号 (学号) -->
+    <ol>
+        <li>
+            <span class="list-index">1</span>
+            <a href="yx_sw_游戏生物/xxl_消消乐之动物分类_sjb_v03.html">
+                xxl_消消乐之动物分类_sjb_v03
+            </a>
+        </li>
+        
+        
+        <li>
+            <span class="list-index">2</span>
+            <a href="yx_sw_游戏生物/xxl_光合呼吸蒸腾 促进or抑制 目的_红色_sjb_v02.html">
+                xxl_光合呼吸蒸腾 促进or抑制 目的_红色_sjb_v02
+            </a>
+        </li>
+        <li>
+            <span class="list-index">3</span>
+            <a href="yx_sw_游戏生物/lxt_连线题_植物的三大作用促进or抑制v01.html">
+                lxt_连线题_植物的三大作用促进or抑制v01
+            </a>
+        </li>
+		<li>
+            <span class="list-index">4</span>
+            <a href="yx_sw_游戏生物/xxl_花和果实的关系_sjb_v01.html">
+                xxl_花和果实的关系_sjb_v01
+            </a>
+        </li>
+		<li>
+            <span class="list-index">5</span>
+            <a href="yx_sw_游戏生物/xxl_光合呼吸蒸腾 促进or抑制 目的_红色_dnb_v01.html">
+                xxl_光合呼吸蒸腾 促进or抑制 目的_红色_dnb_v01
+            </a>
+        </li>
+		
+    </ol>
+	<!-- 字体控制栏 + 当前大小显示 -->
+    <div class="font-control-bar">
+        <span>🔤 字体</span>
+        <div class="font-btn-group">
+            <button class="font-btn" id="fontDecrease" aria-label="减小字体">A−</button>
+            <button class="font-btn" id="fontIncrease" aria-label="增大字体">A+</button>
+            <button class="font-btn reset-btn" id="fontReset" aria-label="重置字体大小">⟲ 重置</button>
+        </div>
+        <span class="font-size-indicator" id="fontSizeDisplay">18px</span>
+    </div>
+    <!-- 底部导航 -->
+    <div class="nav-footer">
+        <a href="#top">⬆ 回顶部</a>
+        <a href="#" onclick="history.go(-1); return false;">↩ 回上页</a>
+        <a href="../index.html">🏠 回首页</a>
+    </div>
+
+    <div class="footer-note">
+        —— 生物学习 · 指尖探索 ——
+    </div>
+
+    <script>
+        (function() {
+            // 字体调节逻辑
+            const body = document.body;
+            const display = document.getElementById('fontSizeDisplay');
+            // 默认字体大小 (px)
+            const DEFAULT_SIZE = 18;
+            // 最小 / 最大 限制
+            const MIN_SIZE = 14;
+            const MAX_SIZE = 32;
+            let currentSize = DEFAULT_SIZE;
+
+            // 从 localStorage 读取保存的大小 (可选)
+            try {
+                const saved = localStorage.getItem('bioFontSize');
+                if (saved) {
+                    const parsed = parseInt(saved, 10);
+                    if (!isNaN(parsed) && parsed >= MIN_SIZE && parsed <= MAX_SIZE) {
+                        currentSize = parsed;
+                    }
+                }
+            } catch (e) {}
+
+            // 更新字体 & 显示
+            function updateFontSize(size) {
+                let newSize = Math.round(size);
+                if (newSize < MIN_SIZE) newSize = MIN_SIZE;
+                if (newSize > MAX_SIZE) newSize = MAX_SIZE;
+                currentSize = newSize;
+                body.style.fontSize = currentSize + 'px';
+                display.textContent = currentSize + 'px';
+                // 存到 localStorage
+                try {
+                    localStorage.setItem('bioFontSize', String(currentSize));
+                } catch (e) {}
+            }
+
+            // 初始化
+            updateFontSize(currentSize);
+
+            // 绑定按钮
+            document.getElementById('fontDecrease').addEventListener('click', function(e) {
+                e.preventDefault();
+                updateFontSize(currentSize - 2);
+            });
+
+            document.getElementById('fontIncrease').addEventListener('click', function(e) {
+                e.preventDefault();
+                updateFontSize(currentSize + 2);
+            });
+
+            document.getElementById('fontReset').addEventListener('click', function(e) {
+                e.preventDefault();
+                updateFontSize(DEFAULT_SIZE);
+            });
+
+            // 触摸优化: 防止按钮点击时页面缩放或滚动 (已通过 CSS touch-action)
+            // 另外可加 passive 但没必要
+
+            // 若用户双击缩放等，不影响字体逻辑
+            console.log('字体控制已启动，当前大小:', currentSize);
+        })();
+    </script>
+
+</body>
+</html>

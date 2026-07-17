@@ -1,0 +1,702 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.5, user-scalable=yes">
+    <title>初中生物 · 一对多连线</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+        body {
+            font-family: 'Microsoft YaHei', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: #f0f4f8;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 12px;
+        }
+        .game-container {
+            background: white;
+            border-radius: 28px;
+            padding: 20px 16px 16px;
+            max-width: 700px;
+            width: 100%;
+            box-shadow: 0 8px 24px rgba(0, 20, 40, 0.08);
+            transition: all 0.2s;
+        }
+        h1 {
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: #1e293b;
+            text-align: center;
+            letter-spacing: 1px;
+            margin-bottom: 8px;
+        }
+        .instructions {
+            background: #f8fafc;
+            padding: 12px 14px;
+            border-radius: 16px;
+            font-size: 0.88rem;
+            color: #1e293b;
+            border-left: 5px solid #3b82f6;
+            margin-bottom: 16px;
+            box-shadow: inset 0 1px 3px rgba(0,0,0,0.02);
+        }
+        .instructions p {
+            margin: 0;
+            line-height: 1.5;
+        }
+        .info-panel {
+            display: flex;
+            justify-content: space-between;
+            background: #f1f5f9;
+            padding: 10px 16px;
+            border-radius: 40px;
+            font-weight: 500;
+            font-size: 0.95rem;
+            margin-bottom: 14px;
+            color: #0f172a;
+        }
+        .timer, .score {
+            background: white;
+            padding: 2px 14px;
+            border-radius: 30px;
+            box-shadow: 0 1px 4px rgba(0,0,0,0.02);
+        }
+        .score span, .timer span {
+            font-weight: 700;
+            color: #2563eb;
+        }
+        .feedback {
+            text-align: center;
+            font-size: 1rem;
+            min-height: 2.2rem;
+            padding: 6px 0;
+            margin: 4px 0 10px;
+            border-radius: 40px;
+            font-weight: 500;
+            background: #f8fafc;
+            transition: 0.15s;
+        }
+        .feedback.correct { color: #16a34a; background: #dcfce7; }
+        .feedback.incorrect { color: #dc2626; background: #fee2e2; }
+        .feedback.partially-correct { color: #d97706; background: #fef3c7; }
+
+        /* 双栏布局 — 手机友好 */
+        .items-container {
+            display: flex;
+            gap: 12px;
+            margin: 4px 0 8px;
+        }
+        .items-column {
+            background: #ffffff;
+            border-radius: 20px;
+            padding: 8px 4px;
+            border: 1px solid #e9edf2;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.01);
+            max-height: 380px;
+            overflow-y: auto;
+        }
+        .left-column {
+            width: 38%;
+            flex-shrink: 0;
+        }
+        .right-column {
+            width: 62%;
+            flex-shrink: 0;
+        }
+        /* 自定义滚动 */
+        .items-column::-webkit-scrollbar { width: 4px; }
+        .items-column::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 12px; }
+
+        .item {
+            padding: 12px 8px;
+            margin: 6px 4px;
+            border-radius: 30px;
+            background: #f8fafc;
+            border: 1.5px solid #e2e8f0;
+            font-size: 0.9rem;
+            font-weight: 500;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.12s ease;
+            box-shadow: 0 1px 2px rgba(0,0,0,0.02);
+            color: #1e293b;
+            word-break: break-word;
+            line-height: 1.3;
+        }
+        .item:active { transform: scale(0.96); }
+        .item.selected {
+            background: #3b82f6;
+            color: white;
+            border-color: #2563eb;
+            box-shadow: 0 4px 10px rgba(59,130,246,0.25);
+        }
+        .item.matched {
+            background: #22c55e;
+            color: white;
+            border-color: #16a34a;
+            box-shadow: 0 2px 6px rgba(34,197,94,0.2);
+            opacity: 0.85;
+            cursor: default;
+        }
+        .item.partially-matched {
+            background: #f59e0b;
+            color: white;
+            border-color: #d97706;
+            box-shadow: 0 2px 6px rgba(245,158,11,0.2);
+        }
+        .item.disabled-touch {
+            pointer-events: none;
+            opacity: 0.7;
+        }
+
+        /* 画布容器 — 去除大方框，只留必要区域 */
+        .canvas-wrapper {
+            position: relative;
+            width: 100%;
+            height: 180px;           /* 固定高度，不再出现大空白 */
+            margin: 6px 0 10px;
+            border-radius: 24px;
+            background: #fafcff;
+            border: 1px solid #e2e8f0;
+            overflow: hidden;
+            box-shadow: inset 0 1px 3px rgba(0,0,0,0.02);
+        }
+        #lines-canvas {
+            display: block;
+            width: 100%;
+            height: 100%;
+            background: transparent;
+        }
+
+        .controls {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 10px 8px;
+            margin-top: 12px;
+        }
+        button {
+            padding: 10px 18px;
+            border: none;
+            border-radius: 60px;
+            font-weight: 600;
+            font-size: 0.9rem;
+            background: #f1f5f9;
+            color: #1e293b;
+            transition: 0.15s;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.02);
+            flex: 1 0 auto;
+            max-width: 140px;
+            cursor: pointer;
+            border: 1px solid transparent;
+        }
+        button:active { transform: scale(0.94); }
+        button:disabled {
+            opacity: 0.4;
+            pointer-events: none;
+            filter: grayscale(0.4);
+        }
+        button#confirm-btn {
+            background: #2563eb;
+            color: white;
+            box-shadow: 0 4px 10px rgba(37,99,235,0.2);
+        }
+        button#confirm-btn:active { background: #1d4ed8; }
+        button#clear-btn {
+            background: #e2e8f0;
+        }
+        button#check-all-btn {
+            background: #f59e0b;
+            color: white;
+            box-shadow: 0 4px 10px rgba(245,158,11,0.2);
+        }
+        button#new-game-btn {
+            background: #475569;
+            color: white;
+        }
+
+        @media (max-width: 480px) {
+            .game-container { padding: 16px 12px; }
+            .item { font-size: 0.8rem; padding: 10px 4px; margin: 4px 2px; }
+            .left-column { width: 36%; }
+            .right-column { width: 64%; }
+            .canvas-wrapper { height: 150px; }
+            button { font-size: 0.8rem; padding: 8px 10px; max-width: 110px; }
+            .info-panel { font-size: 0.8rem; padding: 6px 12px; }
+            h1 { font-size: 1.2rem; }
+        }
+        @media (max-width: 380px) {
+            .item { font-size: 0.7rem; padding: 8px 2px; }
+        }
+    </style>
+</head>
+<body>
+<div class="game-container">
+    <h1>🧬 生物 · 一对多连线</h1>
+    <div class="instructions">
+        <p>👆 点左侧概念 → 再点右侧多个描述 → 点「确认连线」。</p>
+    </div>
+
+    <div class="info-panel">
+        <div class="timer">⏱️ <span id="time">00:00</span></div>
+        <div class="score">⭐ <span id="score">0</span> / <span id="total-score">0</span></div>
+    </div>
+
+    <div class="feedback" id="feedback"></div>
+
+    <div class="items-container">
+        <div class="items-column left-column" id="left-column"></div>
+        <div class="items-column right-column" id="right-column"></div>
+    </div>
+
+    <!-- 画布容器：高度固定，无多余空白 -->
+    <div class="canvas-wrapper">
+        <canvas id="lines-canvas"></canvas>
+    </div>
+
+    <div class="controls">
+        <button id="confirm-btn" disabled>✅ 确认连线</button>
+        <button id="clear-btn" disabled>↩️ 清除选择</button>
+        <button id="check-all-btn">📋 检查全部</button>
+        <button id="new-game-btn">🔄 新游戏</button>
+    </div>
+</div>
+
+<script>
+    (function() {
+        "use strict";
+
+        // ----- 题库 -----
+        const questions = [
+            { left: "降低蒸腾作用", right: ["剪去部分枝叶", "阴天、傍晚移栽", "遮阳网"] },
+            { left: "降低呼吸作用", right: ["降低温度", "减少氧气", "降低含水量"] },
+            { left: "促进呼吸作用", right: ["播种前松土", "种植花卉松土", "不踩踏草坪", "农田雨水多时排水"] },
+            { left: "促进光合作用", right: ["适当增加二氧化碳", "适当增加光照", "适当增加水分", "提供合适的温度", "合理密植"] }
+        ];
+
+        // ----- 游戏状态 -----
+        let selectedLeft = null;             // DOM元素
+        let selectedRights = [];            // 值 (string)
+        let matches = [];                  // { left: DOM, rights: [DOM] }
+        let score = 0;
+        let totalPossibleScore = 0;
+        let time = 0;
+        let timerInterval = null;
+        let canvas, ctx;
+
+        // DOM 引用
+        const leftCol = document.getElementById('left-column');
+        const rightCol = document.getElementById('right-column');
+        const scoreSpan = document.getElementById('score');
+        const totalSpan = document.getElementById('total-score');
+        const timeSpan = document.getElementById('time');
+        const feedbackEl = document.getElementById('feedback');
+        const confirmBtn = document.getElementById('confirm-btn');
+        const clearBtn = document.getElementById('clear-btn');
+        const checkAllBtn = document.getElementById('check-all-btn');
+        const newGameBtn = document.getElementById('new-game-btn');
+
+        // ----- 辅助函数 -----
+        function formatTime(sec) {
+            const m = String(Math.floor(sec / 60)).padStart(2, '0');
+            const s = String(sec % 60).padStart(2, '0');
+            return m + ':' + s;
+        }
+
+        function findRightItemByValue(val) {
+            const items = rightCol.querySelectorAll('.item');
+            for (let el of items) {
+                if (el.dataset.value === val) return el;
+            }
+            return null;
+        }
+
+        function updateScoreUI() {
+            scoreSpan.textContent = score;
+            totalSpan.textContent = totalPossibleScore;
+        }
+
+        function updateTimerUI() {
+            timeSpan.textContent = formatTime(time);
+        }
+
+        // 重置所有高亮/匹配状态 (保留数据)
+        function resetSelectionState() {
+            if (selectedLeft) {
+                selectedLeft.classList.remove('selected');
+                selectedLeft = null;
+            }
+            selectedRights.forEach(v => {
+                const el = findRightItemByValue(v);
+                if (el) el.classList.remove('selected');
+            });
+            selectedRights = [];
+            confirmBtn.disabled = true;
+            clearBtn.disabled = true;
+        }
+
+        // 清除选择 (UI + 状态)
+        function clearSelection() {
+            resetSelectionState();
+            drawLines();
+        }
+
+        // ----- 核心交互 -----
+        function selectLeftItem(e) {
+            const item = e.currentTarget;
+            // 如果已经匹配 或 部分匹配 => 不可选
+            if (item.classList.contains('matched') || item.classList.contains('partially-matched')) {
+                return;
+            }
+            // 如果点的是同一个左侧，则取消选择？
+            if (selectedLeft === item) {
+                clearSelection();
+                return;
+            }
+            // 清除之前的选择
+            resetSelectionState();
+            // 选中新的
+            selectedLeft = item;
+            item.classList.add('selected');
+            clearBtn.disabled = false;
+            confirmBtn.disabled = true;   // 没有右侧选择
+            drawLines();
+        }
+
+        function selectRightItem(e) {
+            const item = e.currentTarget;
+            // 已匹配或部分匹配不可再选
+            if (item.classList.contains('matched') || item.classList.contains('partially-matched')) {
+                return;
+            }
+            if (!selectedLeft) {
+                // 未选左侧，轻提示
+                feedbackEl.textContent = '👈 请先点击左侧概念';
+                feedbackEl.className = 'feedback';
+                setTimeout(() => { if (!feedbackEl.textContent.includes('请先')) feedbackEl.textContent = ''; }, 1500);
+                return;
+            }
+            const val = item.dataset.value;
+            const idx = selectedRights.indexOf(val);
+            if (idx !== -1) {
+                // 已选中 => 取消
+                selectedRights.splice(idx, 1);
+                item.classList.remove('selected');
+            } else {
+                // 添加
+                selectedRights.push(val);
+                item.classList.add('selected');
+            }
+            confirmBtn.disabled = (selectedRights.length === 0);
+            clearBtn.disabled = false;
+            drawLines();
+        }
+
+        // ----- 确认连线 -----
+        function confirmMatch() {
+            if (!selectedLeft || selectedRights.length === 0) return;
+
+            const leftIndex = Number(selectedLeft.dataset.index);
+            const question = questions[leftIndex];
+            const correctRights = question.right;
+
+            // 统计正确个数
+            let correctCount = 0;
+            for (let val of selectedRights) {
+                if (correctRights.includes(val)) correctCount++;
+            }
+
+            const points = correctCount * 5;
+            score += points;
+            updateScoreUI();
+
+            let feedbackMsg = '';
+            let feedbackClass = '';
+
+            const allCorrect = (correctCount === selectedRights.length && correctCount === correctRights.length);
+            const partial = (correctCount > 0 && !allCorrect);
+
+            if (allCorrect) {
+                feedbackMsg = '✅ 完全正确！ +' + points + '分';
+                feedbackClass = 'correct';
+                // 标记左侧为已完成
+                selectedLeft.classList.remove('selected');
+                selectedLeft.classList.add('matched');
+                // 右侧标记
+                selectedRights.forEach(v => {
+                    const el = findRightItemByValue(v);
+                    if (el) {
+                        el.classList.remove('selected');
+                        el.classList.add('matched');
+                    }
+                });
+                // 记录匹配
+                const rightDomList = selectedRights.map(v => findRightItemByValue(v)).filter(Boolean);
+                matches.push({ left: selectedLeft, rights: rightDomList });
+
+            } else if (partial) {
+                feedbackMsg = '⚠️ 部分正确 (' + correctCount + '/' + correctRights.length + ') +' + points + '分';
+                feedbackClass = 'partially-correct';
+                selectedLeft.classList.remove('selected');
+                selectedLeft.classList.add('partially-matched');
+                selectedRights.forEach(v => {
+                    const el = findRightItemByValue(v);
+                    if (el) {
+                        el.classList.remove('selected');
+                        if (correctRights.includes(v)) {
+                            el.classList.add('matched');
+                        } else {
+                            el.classList.add('partially-matched');
+                        }
+                    }
+                });
+                const rightDomList = selectedRights.map(v => findRightItemByValue(v)).filter(Boolean);
+                matches.push({ left: selectedLeft, rights: rightDomList });
+
+            } else {
+                // 全部错误
+                feedbackMsg = '❌ 全部错误，再试试吧';
+                feedbackClass = 'incorrect';
+                // 不标记，保留选择状态，但清除选择以便重新尝试
+                // 但为了体验，我们清除选中的右侧，保留左侧选择
+                selectedRights.forEach(v => {
+                    const el = findRightItemByValue(v);
+                    if (el) el.classList.remove('selected');
+                });
+                selectedRights = [];
+                confirmBtn.disabled = true;
+                clearBtn.disabled = false;
+                // 左侧依然高亮
+                feedbackEl.textContent = feedbackMsg;
+                feedbackEl.className = 'feedback ' + feedbackClass;
+                drawLines();
+                return; // 不重置左侧
+            }
+
+            // 反馈展示
+            feedbackEl.textContent = feedbackMsg;
+            feedbackEl.className = 'feedback ' + feedbackClass;
+
+            // 重置选择状态 (左侧、右侧选中清除)
+            resetSelectionState();
+            // 但左侧可能已经被标记为 matched/partial，所以重置时保留标记
+            drawLines();
+
+            // 检查是否全部完成
+            checkGameCompletion();
+        }
+
+        // 检查是否所有左侧都已完成 (matched 或 partially-matched)
+        function checkGameCompletion() {
+            const leftItems = leftCol.querySelectorAll('.item');
+            let allDone = true;
+            for (let el of leftItems) {
+                if (!el.classList.contains('matched') && !el.classList.contains('partially-matched')) {
+                    allDone = false;
+                    break;
+                }
+            }
+            if (allDone) {
+                if (timerInterval) {
+                    clearInterval(timerInterval);
+                    timerInterval = null;
+                }
+                const pct = Math.round((score / totalPossibleScore) * 100);
+                feedbackEl.textContent = '🎉 全部完成！ 得分: ' + score + '/' + totalPossibleScore + ' (' + pct + '%)';
+                feedbackEl.className = 'feedback correct';
+            }
+        }
+
+        // ----- 画线 -----
+        function drawLines() {
+            if (!ctx) return;
+            const w = canvas.width;
+            const h = canvas.height;
+            ctx.clearRect(0, 0, w, h);
+
+            const canvasRect = canvas.getBoundingClientRect();
+
+            // 绘制已匹配的线 (灰色/蓝色)
+            ctx.lineWidth = 2.5;
+            ctx.strokeStyle = '#3b82f6';
+            ctx.globalAlpha = 0.7;
+            for (let match of matches) {
+                if (!match.left) continue;
+                const leftRect = match.left.getBoundingClientRect();
+                const startX = leftRect.right - canvasRect.left;
+                const startY = leftRect.top - canvasRect.top + leftRect.height / 2;
+                for (let rightEl of match.rights) {
+                    if (!rightEl) continue;
+                    const rightRect = rightEl.getBoundingClientRect();
+                    const endX = rightRect.left - canvasRect.left;
+                    const endY = rightRect.top - canvasRect.top + rightRect.height / 2;
+                    ctx.beginPath();
+                    ctx.moveTo(startX, startY);
+                    ctx.lineTo(endX, endY);
+                    ctx.stroke();
+                }
+            }
+
+            // 当前选择的连线 (红色)
+            if (selectedLeft) {
+                const leftRect = selectedLeft.getBoundingClientRect();
+                const startX = leftRect.right - canvasRect.left;
+                const startY = leftRect.top - canvasRect.top + leftRect.height / 2;
+                ctx.strokeStyle = '#dc2626';
+                ctx.lineWidth = 2.8;
+                ctx.globalAlpha = 0.9;
+                for (let val of selectedRights) {
+                    const rightEl = findRightItemByValue(val);
+                    if (!rightEl) continue;
+                    const rightRect = rightEl.getBoundingClientRect();
+                    const endX = rightRect.left - canvasRect.left;
+                    const endY = rightRect.top - canvasRect.top + rightRect.height / 2;
+                    ctx.beginPath();
+                    ctx.moveTo(startX, startY);
+                    ctx.lineTo(endX, endY);
+                    ctx.stroke();
+                }
+            }
+            ctx.globalAlpha = 1.0;
+        }
+
+        // 重置画布尺寸
+        function resizeCanvas() {
+            const wrapper = canvas.parentElement;
+            const rect = wrapper.getBoundingClientRect();
+            canvas.width = rect.width || 400;
+            canvas.height = rect.height || 180;
+            drawLines();
+        }
+
+        // ----- 初始化 / 新游戏 -----
+        function initGame() {
+            // 停止计时
+            if (timerInterval) {
+                clearInterval(timerInterval);
+                timerInterval = null;
+            }
+
+            // 重置数据
+            selectedLeft = null;
+            selectedRights = [];
+            matches = [];
+            score = 0;
+            time = 0;
+            totalPossibleScore = questions.reduce((sum, q) => sum + q.right.length * 5, 0);
+            updateScoreUI();
+            updateTimerUI();
+            feedbackEl.textContent = '';
+            feedbackEl.className = 'feedback';
+            confirmBtn.disabled = true;
+            clearBtn.disabled = true;
+
+            // 清空列
+            leftCol.innerHTML = '';
+            rightCol.innerHTML = '';
+
+            // 渲染左侧
+            questions.forEach((q, idx) => {
+                const div = document.createElement('div');
+                div.className = 'item';
+                div.textContent = q.left;
+                div.dataset.index = idx;
+                div.addEventListener('click', selectLeftItem);
+                leftCol.appendChild(div);
+            });
+
+            // 右侧打乱
+            const allRight = questions.flatMap(q => q.right);
+            const shuffled = [...allRight].sort(() => Math.random() - 0.5);
+            shuffled.forEach(val => {
+                const div = document.createElement('div');
+                div.className = 'item';
+                div.textContent = val;
+                div.dataset.value = val;
+                div.addEventListener('click', selectRightItem);
+                rightCol.appendChild(div);
+            });
+
+            // 画布
+            canvas = document.getElementById('lines-canvas');
+            ctx = canvas.getContext('2d');
+            resizeCanvas();
+
+            // 计时
+            timerInterval = setInterval(() => {
+                time++;
+                updateTimerUI();
+            }, 1000);
+
+            drawLines();
+        }
+
+        // ----- 检查全部 (显示答案) -----
+        function checkAllConnections() {
+            if (timerInterval) {
+                clearInterval(timerInterval);
+                timerInterval = null;
+            }
+
+            // 强制把所有左侧标记为完成，右侧匹配全部标绿
+            questions.forEach((q, idx) => {
+                const leftItem = leftCol.querySelector(`.item[data-index="${idx}"]`);
+                if (!leftItem) return;
+                if (!leftItem.classList.contains('matched') && !leftItem.classList.contains('partially-matched')) {
+                    leftItem.classList.add('partially-matched');
+                }
+                q.right.forEach(val => {
+                    const rightItem = findRightItemByValue(val);
+                    if (rightItem && !rightItem.classList.contains('matched')) {
+                        rightItem.classList.add('matched');
+                        // 记录匹配 (去重)
+                        const exist = matches.some(m => m.left === leftItem && m.rights.includes(rightItem));
+                        if (!exist) {
+                            const found = matches.find(m => m.left === leftItem);
+                            if (found) {
+                                if (!found.rights.includes(rightItem)) found.rights.push(rightItem);
+                            } else {
+                                matches.push({ left: leftItem, rights: [rightItem] });
+                            }
+                        }
+                    }
+                });
+            });
+
+            // 满分
+            score = totalPossibleScore;
+            updateScoreUI();
+            feedbackEl.textContent = '📋 已显示所有正确连线';
+            feedbackEl.className = 'feedback correct';
+            resetSelectionState();
+            drawLines();
+            checkGameCompletion(); // 更新完成状态
+        }
+
+        // ----- 事件绑定 -----
+        confirmBtn.addEventListener('click', confirmMatch);
+        clearBtn.addEventListener('click', clearSelection);
+        checkAllBtn.addEventListener('click', checkAllConnections);
+        newGameBtn.addEventListener('click', initGame);
+
+        // 窗口变化重绘
+        let resizeTimer;
+        window.addEventListener('resize', () => {
+            clearTimeout(resizeTimer);
+            resizeTimer = setTimeout(() => {
+                resizeCanvas();
+            }, 100);
+        });
+
+        // 启动
+        initGame();
+    })();
+</script>
+</body>
+</html>
