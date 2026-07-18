@@ -1,0 +1,473 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+    <title>显微镜的操作难点 配对挑战</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+        body {
+            font-family: 'Microsoft YaHei', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            text-align: center;
+            background-color: #e6f2f0;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: flex-start;
+            padding: 12px 10px 20px;
+            -webkit-tap-highlight-color: transparent;
+            touch-action: manipulation;
+        }
+        h1 {
+            color: #1a6b4a;
+            font-size: clamp(1.6rem, 7vw, 2.2rem);
+            margin-bottom: 4px;
+            letter-spacing: 1px;
+            font-weight: 700;
+        }
+        .user-area {
+            width: 100%;
+            max-width: 600px;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 10px 12px;
+            background: rgba(255, 255, 255, 0.6);
+            backdrop-filter: blur(4px);
+            padding: 12px 16px;
+            border-radius: 48px;
+            margin-bottom: 14px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.06);
+            align-items: center;
+        }
+        .user-area label {
+            font-weight: 600;
+            color: #1d4d3e;
+            font-size: clamp(0.9rem, 3vw, 1.1rem);
+            display: flex;
+            align-items: center;
+            gap: 4px;
+        }
+        .user-area input {
+            border: none;
+            border-radius: 40px;
+            padding: 8px 14px;
+            font-size: clamp(0.9rem, 3vw, 1.1rem);
+            background: white;
+            box-shadow: inset 0 2px 6px rgba(0,0,0,0.05);
+            width: 110px;
+            max-width: 150px;
+            outline: 1px solid #bcd9d0;
+            transition: 0.2s;
+            font-weight: 500;
+            color: #1f3d35;
+        }
+        .user-area input:focus {
+            outline: 2px solid #2b8c6e;
+            background: #fafffe;
+        }
+        .game-info {
+            display: flex;
+            justify-content: space-between;
+            width: 100%;
+            max-width: 600px;
+            padding: 8px 16px;
+            margin-bottom: 14px;
+            font-size: clamp(1.2rem, 5vw, 1.5rem);
+            background: rgba(255, 255, 255, 0.6);
+            border-radius: 40px;
+            backdrop-filter: blur(2px);
+            font-weight: 600;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+        }
+        #score {
+            font-weight: 700;
+            color: #c0392b;
+            font-size: clamp(1.4rem, 5.5vw, 1.8rem);
+            margin-left: 6px;
+        }
+        .timer {
+            font-weight: 600;
+            color: #1e3d3a;
+        }
+        #time {
+            font-weight: 700;
+            color: #1e6f5c;
+            font-size: clamp(1.4rem, 5.5vw, 1.8rem);
+            margin-left: 6px;
+        }
+        #game-board {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 14px;
+            width: 100%;
+            max-width: 540px;
+            margin: 0 auto 20px;
+            aspect-ratio: 3 / 4;
+        }
+        .card {
+            background: linear-gradient(145deg, #3d7ea6, #2a5f7a);
+            color: #f0f9ff;
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: clamp(0.95rem, 3.8vw, 1.4rem);
+            font-weight: 600;
+            line-height: 1.4;
+            padding: 8px 6px;
+            box-shadow: 0 8px 16px rgba(0,20,30,0.25), inset 0 -3px 6px rgba(0,0,0,0.2);
+            transition: all 0.12s ease;
+            cursor: pointer;
+            text-align: center;
+            word-break: break-word;
+            user-select: none;
+            -webkit-user-select: none;
+            touch-action: manipulation;
+            border: 2px solid rgba(255,255,255,0.2);
+            transform: scale(1);
+            will-change: transform;
+        }
+        .card:active {
+            transform: scale(0.95);
+        }
+        .card.selected {
+            background: linear-gradient(145deg, #f39c12, #d68910);
+            border-color: #f1c40f;
+            box-shadow: 0 0 0 4px #ffe484, 0 8px 16px rgba(0,0,0,0.3);
+            transform: scale(1.02);
+        }
+        .card.matched {
+            visibility: hidden;
+            pointer-events: none;
+            opacity: 0;
+            transform: scale(0.8);
+            transition: visibility 0.2s, opacity 0.2s;
+        }
+        .card .purpose-highlight {
+            color: #ff3b30 !important;
+            font-weight: 800;
+            text-shadow: 0 0 6px rgba(255, 60, 50, 0.3);
+        }
+        .card [data-purpose] {
+            color: #ff3b30 !important;
+            font-weight: 800;
+        }
+        #restart-btn {
+            padding: 16px 40px;
+            background: #1e6f5c;
+            color: white;
+            border: none;
+            border-radius: 60px;
+            font-size: clamp(1.2rem, 5vw, 1.6rem);
+            font-weight: 700;
+            letter-spacing: 1.5px;
+            cursor: pointer;
+            box-shadow: 0 10px 0 #0f4a3a, 0 8px 20px rgba(0,0,0,0.2);
+            transition: all 0.08s linear;
+            touch-action: manipulation;
+            width: fit-content;
+            min-width: 180px;
+            margin-top: 6px;
+        }
+        #restart-btn:active {
+            transform: translateY(8px);
+            box-shadow: 0 2px 0 #0f4a3a;
+        }
+        @media (max-width: 480px) {
+            #game-board {
+                gap: 12px;
+                max-width: 100%;
+            }
+            .card {
+                border-radius: 16px;
+                padding: 6px 4px;
+                border-width: 2px;
+            }
+            .game-info {
+                padding: 6px 14px;
+                border-radius: 40px;
+            }
+            .user-area {
+                gap: 8px;
+                padding: 10px 14px;
+                border-radius: 40px;
+            }
+            .user-area input {
+                width: 90px;
+            }
+        }
+        @media (max-width: 380px) {
+            #game-board {
+                gap: 8px;
+            }
+            .card {
+                border-radius: 14px;
+                font-size: clamp(0.85rem, 3.5vw, 1.1rem);
+                padding: 4px 3px;
+            }
+        }
+        @media (orientation: landscape) and (max-height: 500px) {
+            #game-board {
+                max-height: 70vh;
+                aspect-ratio: 3 / 2;
+            }
+            .card {
+                font-size: clamp(0.8rem, 2.8vw, 1.2rem);
+            }
+        }
+    </style>
+</head>
+<body>
+    <h1>🌿 显微镜的操作难点 配对</h1>
+    <div class="user-area">
+        <label>📚 班级 <input type="text" id="classInput" placeholder="如: 初二3班" maxlength="20"></label>
+        <label>🧑‍🎓 姓名 <input type="text" id="nameInput" placeholder="你的名字" maxlength="12"></label>
+    </div>
+
+    <div class="game-info">
+        <span>🏆 得分 <span id="score">0</span></span>
+        <span class="timer">⏱️ <span id="time">60</span>s</span>
+    </div>
+    <div id="game-board"></div>
+    <button id="restart-btn">🔄 重新开始</button>
+
+    <script>
+        (function() {
+            // ========== 数据区：在此添加/删除/修改配对 ==========
+            const biologyData = [
+            
+
+			{ term: "问题↓物镜下降时，眼睛看哪里？", definition: "物镜" },
+            { term: "问题↓物镜上升时，眼睛看哪里？", definition: "目镜" },
+            { term: "问题↓擦拭目镜和物镜用？", definition: "擦镜纸" },
+            { term: "问题↓对光时", definition: "转动反光镜" },
+            { term: "问题↓更换物镜时", definition: "转动转换器" },
+            { term: "问题↓对光成功的标志？", definition: "看到明亮的视野" },
+            
+			{ term: "问题↓光线暗时，选择？", definition: "大光圈、凹面镜" },
+            { term: "问题↓光线亮时，选择？", definition: "小光圈、平面镜" },
+            { term: "问题↓目镜越长，倍数越？", definition: "低" },
+            { term: "问题↓物镜越长，倍数越？", definition: "高" },
+            { term: "问题↓倍数越高，细胞数量越？", definition: "少" },
+            { term: "问题↓倍数越低，细胞数量越？", definition: "多" }
+
+                //{ term: "问题↓", definition: "" },
+                //{ term: "问题↓", definition: "" },
+                //{ term: "问题↓", definition: "" },
+				//{ term: "问题↓", definition: "" },
+				//{ term: "问题↓", definition: "" },
+                //{ term: "问题↓", definition: "" },
+                //{ term: "问题↓", definition: "" },
+                //{ term: "问题↓", definition: "" },
+				//{ term: "问题↓", definition: "" },
+				//{ term: "问题↓", definition: "" },
+                //{ term: "问题↓", definition: "" },
+                //{ term: "问题↓", definition: "" },
+                //{ term: "问题↓", definition: "" },
+				//{ term: "问题↓", definition: "" },
+                //{ term: "问题↓", definition: "" }
+                // 🔽 在此处追加新配对，例如：
+                // { term: "问题↓肥胖症", definition: "甲状腺素少" },
+                // 游戏会自动识别总对数，无需修改其他代码
+            ];
+            // ===================================================
+
+            // --- 自动计算总对数 ---
+            const TOTAL_PAIRS = biologyData.length;
+
+            // 游戏核心变量
+            let selectedCards = [];
+            let matchedPairs = 0;
+            let score = 0;
+            let timeLeft = 60;
+            let timer = null;
+            let gameActive = true;
+            let lockBoard = false;
+            let gameFinished = false;
+
+            const boardEl = document.getElementById('game-board');
+            const scoreEl = document.getElementById('score');
+            const timeEl = document.getElementById('time');
+            const restartBtn = document.getElementById('restart-btn');
+            const classInput = document.getElementById('classInput');
+            const nameInput = document.getElementById('nameInput');
+
+            // 将"问题"标红
+            function stylePurpose(term) {
+                return term.replace(/(问题)([↑↓])/g, (match, p1, p2) => {
+                    return `<span class="purpose-highlight" data-purpose>${p1}</span>${p2}`;
+                });
+            }
+
+            // 弹出最终成绩
+            function showFinalResult(win = false) {
+                if (gameFinished) return;
+                gameFinished = true;
+                if (timer) {
+                    clearInterval(timer);
+                    timer = null;
+                }
+                const className = classInput.value.trim() || '未填写';
+                const userName = nameInput.value.trim() || '同学';
+                const title = win ? '🎉 全部配对成功！' : '⏰ 时间到！';
+                const msg = `${title}\n\n📚 班级：${className}\n🧑‍🎓 姓名：${userName}\n🏆 最终得分：${score}\n✅ 配对对数：${matchedPairs} / ${TOTAL_PAIRS}`;
+                setTimeout(() => {
+                    alert(msg);
+                }, 350);
+            }
+
+            // 初始化游戏
+            function initGame() {
+                if (timer) {
+                    clearInterval(timer);
+                    timer = null;
+                }
+                gameFinished = false;
+                boardEl.innerHTML = '';
+                selectedCards = [];
+                matchedPairs = 0;
+                score = 0;
+                timeLeft = 60;
+                gameActive = true;
+                lockBoard = false;
+
+                scoreEl.textContent = '0';
+                timeEl.textContent = '60';
+
+                // 打乱数据顺序
+                const shuffledData = [...biologyData].sort(() => 0.5 - Math.random());
+
+                const gameCards = [];
+                shuffledData.forEach(item => {
+                    const termStyled = stylePurpose(item.term);
+                    gameCards.push({
+                        content: termStyled,
+                        rawContent: item.term,
+                        type: 'term',
+                        pairKey: item.definition,
+                        pairRaw: item.definition
+                    });
+                    gameCards.push({
+                        content: item.definition,
+                        rawContent: item.definition,
+                        type: 'definition',
+                        pairKey: item.term,
+                        pairRaw: item.term
+                    });
+                });
+
+                // 洗牌
+                for (let i = gameCards.length - 1; i > 0; i--) {
+                    const j = Math.floor(Math.random() * (i + 1));
+                    [gameCards[i], gameCards[j]] = [gameCards[j], gameCards[i]];
+                }
+
+                // 创建卡片
+                gameCards.forEach((cardData) => {
+                    const card = document.createElement('div');
+                    card.className = 'card';
+                    card.dataset.pairKey = cardData.pairKey;
+                    card.dataset.rawContent = cardData.rawContent;
+                    card.dataset.type = cardData.type;
+                    card.innerHTML = cardData.content;
+                    card.addEventListener('click', cardClickHandler);
+                    boardEl.appendChild(card);
+                });
+
+                timer = setInterval(updateTimer, 1000);
+            }
+
+            // 卡片点击
+            function cardClickHandler(e) {
+                const card = e.currentTarget;
+                if (!gameActive) return;
+                if (lockBoard) return;
+                if (card.classList.contains('selected')) return;
+                if (card.classList.contains('matched')) return;
+                if (selectedCards.length >= 2) return;
+
+                card.classList.add('selected');
+                selectedCards.push(card);
+
+                if (selectedCards.length === 2) {
+                    lockBoard = true;
+                    checkMatch();
+                }
+            }
+
+            // 匹配检查
+            function checkMatch() {
+                const [card1, card2] = selectedCards;
+                const pair1 = card1.dataset.pairKey;
+                const pair2 = card2.dataset.pairKey;
+                const raw1 = card1.dataset.rawContent;
+                const raw2 = card2.dataset.rawContent;
+
+                const isMatch = (pair1 === raw2) || (pair2 === raw1);
+
+                if (isMatch) {
+                    card1.classList.add('matched');
+                    card2.classList.add('matched');
+                    selectedCards = [];
+                    matchedPairs++;
+                    score += 10;
+                    scoreEl.textContent = score;
+                    lockBoard = false;
+
+                    // ✅ 自动判断：匹配对数是否等于总对数
+                    if (matchedPairs === TOTAL_PAIRS) {
+                        gameActive = false;
+                        if (timer) clearInterval(timer);
+                        showFinalResult(true);
+                    }
+                } else {
+                    gameActive = false;
+                    setTimeout(() => {
+                        if (card1 && card1.parentNode) card1.classList.remove('selected');
+                        if (card2 && card2.parentNode) card2.classList.remove('selected');
+                        selectedCards = [];
+                        lockBoard = false;
+                        gameActive = true;
+                    }, 800);
+                }
+            }
+
+            // 计时器
+            function updateTimer() {
+                if (!gameActive) return;
+                timeLeft--;
+                timeEl.textContent = timeLeft;
+
+                if (timeLeft <= 0) {
+                    timeLeft = 0;
+                    timeEl.textContent = '0';
+                    gameActive = false;
+                    if (timer) clearInterval(timer);
+                    showFinalResult(false);
+                }
+            }
+
+            // 重新开始
+            function restartGame() {
+                if (timer) {
+                    clearInterval(timer);
+                    timer = null;
+                }
+                gameFinished = false;
+                initGame();
+            }
+
+            restartBtn.addEventListener('click', restartGame);
+            document.addEventListener('dblclick', (e) => e.preventDefault());
+
+            initGame();
+        })();
+    </script>
+</body>
+</html>
