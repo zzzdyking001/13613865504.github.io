@@ -1,0 +1,484 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>初中生物 · 核心知识点梳理</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, "PingFang SC", "Microsoft YaHei", "Helvetica Neue", Arial, sans-serif;
+            background: #f0f7f2;
+            color: #1a2e2a;
+            padding: 20px;
+            line-height: 1.8;
+        }
+
+        .container {
+            max-width: 960px;
+            margin: 0 auto;
+            background: #ffffff;
+            border-radius: 24px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.08);
+            padding: 40px 48px;
+        }
+
+        @media (max-width: 640px) {
+            .container {
+                padding: 20px 16px;
+            }
+        }
+
+        h1 {
+            font-size: 28px;
+            font-weight: 700;
+            text-align: center;
+            padding-bottom: 18px;
+            border-bottom: 3px solid #2d8f5c;
+            margin-bottom: 24px;
+            letter-spacing: 2px;
+            color: #0b2a1e;
+        }
+
+        .subtitle {
+            text-align: center;
+            font-size: 15px;
+            color: #4a6b5a;
+            margin-top: -12px;
+            margin-bottom: 32px;
+            background: #e8f5ee;
+            padding: 6px 20px;
+            border-radius: 40px;
+            display: inline-block;
+            margin-left: auto;
+            margin-right: auto;
+            width: auto;
+        }
+
+        .subtitle-wrap {
+            text-align: center;
+        }
+
+        h2 {
+            font-size: 22px;
+            font-weight: 700;
+            margin: 32px 0 14px 0;
+            padding-left: 14px;
+            border-left: 6px solid #2d8f5c;
+            color: #0b2a1e;
+        }
+
+        h3 {
+            font-size: 17px;
+            font-weight: 700;
+            margin: 22px 0 10px 0;
+            color: #1a4a35;
+            background: #ecf7f0;
+            padding: 5px 16px;
+            border-radius: 30px;
+            display: inline-block;
+        }
+
+        h4 {
+            font-size: 15px;
+            font-weight: 600;
+            margin: 16px 0 6px 0;
+            color: #1e5a3a;
+            padding-left: 4px;
+        }
+
+        .grid-list {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4px 20px;
+            background: #f7fcf9;
+            padding: 14px 20px;
+            border-radius: 18px;
+            margin: 6px 0 14px 0;
+            border: 1px solid #e0ede6;
+        }
+
+        @media (max-width: 640px) {
+            .grid-list {
+                grid-template-columns: 1fr;
+                padding: 10px 14px;
+            }
+        }
+
+        .grid-item {
+            padding: 5px 4px;
+            border-bottom: 1px dashed #dce8e0;
+            font-size: 14.5px;
+            display: flex;
+            align-items: baseline;
+            gap: 6px;
+        }
+
+        .grid-item:last-child {
+            border-bottom: none;
+        }
+
+        .num {
+            font-weight: 700;
+            color: #2d8f5c;
+            font-size: 13px;
+            min-width: 30px;
+            display: inline-block;
+        }
+
+        .highlight {
+            background: #e6f5ec;
+            padding: 0 6px;
+            border-radius: 4px;
+            font-weight: 500;
+            color: #1a4a35;
+        }
+
+        .tag {
+            display: inline-block;
+            background: #e0ede6;
+            color: #1a4a35;
+            font-size: 12px;
+            padding: 0 12px;
+            border-radius: 30px;
+            font-weight: 500;
+            margin-right: 4px;
+            white-space: nowrap;
+        }
+
+        .tip-box {
+            background: #eaf5ef;
+            border-radius: 20px;
+            padding: 20px 28px;
+            margin: 32px 0 12px 0;
+            border-left: 6px solid #2d8f5c;
+        }
+
+        .tip-box strong {
+            color: #0b2a1e;
+        }
+
+        .tip-box ul {
+            margin-top: 8px;
+            padding-left: 20px;
+            list-style-type: none;
+        }
+
+        .tip-box ul li {
+            padding: 2px 0;
+        }
+
+        .tip-box ul li::before {
+            content: "✓ ";
+            color: #2d8f5c;
+            font-weight: 700;
+        }
+
+        .footer-note {
+            text-align: center;
+            font-size: 14px;
+            color: #6a8a7a;
+            margin-top: 32px;
+            border-top: 1px solid #dce8e0;
+            padding-top: 24px;
+        }
+
+        .badge {
+            background: #cde4d8;
+            color: #0b2a1e;
+            font-size: 13px;
+            border-radius: 30px;
+            padding: 0 14px;
+            font-weight: 600;
+        }
+
+        hr {
+            border: none;
+            border-top: 2px dotted #cde0d4;
+            margin: 24px 0;
+        }
+
+        .inline-code {
+            background: #e6f5ec;
+            padding: 0 8px;
+            border-radius: 6px;
+            font-size: 14px;
+            color: #1a4a35;
+        }
+
+        .example-box {
+            background: #f4fbf7;
+            padding: 8px 16px;
+            border-radius: 12px;
+            margin: 4px 0 8px 0;
+            font-size: 14px;
+            color: #1a4a35;
+            border: 1px solid #dce8e0;
+        }
+
+        .term {
+            font-weight: 600;
+            color: #1e5a3a;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+
+    <h1>🧬 初中生物 · 核心知识点梳理</h1>
+    <div class="subtitle-wrap">
+        <span class="subtitle">🔹 四大板块 · 系统复习 🔹</span>
+    </div>
+
+    <!-- ========================================== -->
+    <!-- 第一部分：生物体的结构层次 -->
+    <!-- ========================================== -->
+    <h2>一、生物体的结构层次 <span class="badge">约20个核心点</span></h2>
+    <p style="color:#4a6b5a; font-size:15px; margin-bottom:12px;">从微观到宏观，理解生物体的构成。</p>
+
+    <h3>1. 细胞</h3>
+    <h4>▸ 显微镜</h4>
+    <div class="grid-list">
+        <div class="grid-item"><span class="num">1.</span> 显微镜的结构（目镜、物镜、反光镜、粗/细准焦螺旋）</div>
+        <div class="grid-item"><span class="num">2.</span> 显微镜的使用步骤（取镜→安放→对光→放置玻片→调焦→观察）</div>
+        <div class="grid-item"><span class="num">3.</span> 成像特点：<span class="highlight">倒像</span>（上下左右均相反）</div>
+        <div class="grid-item"><span class="num">4.</span> 放大倍数 = 目镜倍数 × 物镜倍数</div>
+        <div class="grid-item"><span class="num">5.</span> 视野明暗调节（反光镜、光圈）</div>
+    </div>
+
+    <h4>▸ 动植物细胞</h4>
+    <div class="grid-list">
+        <div class="grid-item"><span class="num">6.</span> 植物细胞特有结构：<span class="highlight">细胞壁、液泡、叶绿体</span></div>
+        <div class="grid-item"><span class="num">7.</span> 动物细胞没有的结构：细胞壁、液泡、叶绿体</div>
+        <div class="grid-item"><span class="num">8.</span> 细胞膜：<span class="term">控制物质进出</span></div>
+        <div class="grid-item"><span class="num">9.</span> 细胞核：<span class="term">含遗传物质（DNA）</span>，是生命活动的控制中心</div>
+        <div class="grid-item"><span class="num">10.</span> 细胞质：生命活动的主要场所</div>
+        <div class="grid-item"><span class="num">11.</span> 叶绿体：<span class="term">光合作用的场所</span>（将光能转化为化学能）</div>
+        <div class="grid-item"><span class="num">12.</span> 线粒体：<span class="term">呼吸作用的场所</span>（释放能量）</div>
+    </div>
+
+    <h3>2. 细胞的生活</h3>
+    <div class="grid-list">
+        <div class="grid-item"><span class="num">13.</span> 细胞中的物质：无机物（水、无机盐）和有机物（糖类、蛋白质、脂质、核酸）</div>
+        <div class="grid-item"><span class="num">14.</span> 细胞核是遗传信息库（<span class="inline-code">DNA + 蛋白质 = 染色体</span>）</div>
+        <div class="grid-item"><span class="num">15.</span> 基因是DNA上有遗传效应的片段</div>
+        <div class="grid-item"><span class="num">16.</span> 细胞分裂：细胞核先分裂，细胞质再分裂（染色体复制后均分）</div>
+        <div class="grid-item"><span class="num">17.</span> 细胞分化：形成<span class="highlight">组织</span></div>
+    </div>
+
+    <h3>3. 组织、器官、系统</h3>
+    <div class="grid-list">
+        <div class="grid-item"><span class="num">18.</span> 植物四大组织：分生组织、保护组织、输导组织、营养组织</div>
+        <div class="grid-item"><span class="num">19.</span> 人体四大组织：上皮组织、结缔组织、肌肉组织、神经组织</div>
+        <div class="grid-item"><span class="num">20.</span> 植物六大器官：根、茎、叶（营养器官） · 花、果实、种子（生殖器官）</div>
+        <div class="grid-item"><span class="num">21.</span> 人体八大系统：运动、消化、呼吸、循环、泌尿、神经、内分泌、生殖</div>
+    </div>
+
+    <hr>
+
+    <!-- ========================================== -->
+    <!-- 第二部分：生物圈中的绿色植物 -->
+    <!-- ========================================== -->
+    <h2>二、生物圈中的绿色植物 <span class="badge">约20个核心点</span></h2>
+    <p style="color:#4a6b5a; font-size:15px; margin-bottom:12px;">植物的生活与生理，中考必考板块。</p>
+
+    <h3>1. 植物的类群</h3>
+    <div class="grid-list">
+        <div class="grid-item"><span class="num">22.</span> 藻类植物（无根茎叶，如：海带、水绵）</div>
+        <div class="grid-item"><span class="num">23.</span> 苔藓植物（有茎叶无根，如：葫芦藓，监测空气污染）</div>
+        <div class="grid-item"><span class="num">24.</span> 蕨类植物（有根茎叶，有输导组织，如：肾蕨）</div>
+        <div class="grid-item"><span class="num">25.</span> 裸子植物（种子裸露，无果皮，如：松、柏、杉）</div>
+        <div class="grid-item"><span class="num">26.</span> 被子植物（种子有果皮包被，是植物界最高等、种类最多的类群）</div>
+    </div>
+
+    <h3>2. 种子的结构</h3>
+    <div class="grid-list">
+        <div class="grid-item"><span class="num">27.</span> 菜豆种子结构：种皮 + 胚（胚芽、胚轴、胚根、子叶两片）</div>
+        <div class="grid-item"><span class="num">28.</span> 玉米种子结构：种皮+果皮 + 胚（一片子叶）+ 胚乳</div>
+        <div class="grid-item"><span class="num">29.</span> 双子叶植物（菜豆）和单子叶植物（玉米）的区别</div>
+        <div class="grid-item"><span class="num">30.</span> 种子萌发的条件：<span class="highlight">自身条件（完整有活力）</span> + 环境条件（适宜温度、一定水分、充足空气）</div>
+    </div>
+
+    <h3>3. 三大生理作用</h3>
+    <h4>▸ 蒸腾作用</h4>
+    <div class="grid-list">
+        <div class="grid-item"><span class="num">31.</span> 水分散失的通道：<span class="highlight">气孔</span>（由保卫细胞控制开闭）</div>
+        <div class="grid-item"><span class="num">32.</span> 蒸腾作用的意义：促进水分和无机盐的运输、降低叶片温度</div>
+    </div>
+
+    <h4>▸ 光合作用</h4>
+    <div class="grid-list">
+        <div class="grid-item"><span class="num">33.</span> 场所：<span class="highlight">叶绿体</span></div>
+        <div class="grid-item"><span class="num">34.</span> 原料：<span class="highlight">二氧化碳 + 水</span>　→　产物：<span class="highlight">有机物（淀粉）+ 氧气</span></div>
+        <div class="grid-item"><span class="num">35.</span> 条件：光　·　能量转化：光能 → 化学能</div>
+        <div class="grid-item"><span class="num">36.</span> 验证产物是淀粉（碘液→变蓝）</div>
+    </div>
+    <div class="example-box">
+        📌 反应式：<span class="inline-code">CO₂ + H₂O  →（光，叶绿体）→ 有机物（CH₂O）+ O₂</span>
+    </div>
+
+    <h4>▸ 呼吸作用</h4>
+    <div class="grid-list">
+        <div class="grid-item"><span class="num">37.</span> 场所：<span class="highlight">线粒体</span>（活细胞时刻进行）</div>
+        <div class="grid-item"><span class="num">38.</span> 原料：<span class="highlight">有机物 + 氧气</span>　→　产物：<span class="highlight">二氧化碳 + 水 + 能量</span></div>
+        <div class="grid-item"><span class="num">39.</span> 光合作用与呼吸作用的关系（互为相反过程）</div>
+        <div class="grid-item"><span class="num">40.</span> 应用：增加昼夜温差（提高有机物积累）</div>
+    </div>
+    <div class="example-box">
+        📌 反应式：<span class="inline-code">有机物 + O₂ →（线粒体）→ CO₂ + H₂O + 能量</span>
+    </div>
+
+    <hr>
+
+    <!-- ========================================== -->
+    <!-- 第三部分：生物圈中的人 -->
+    <!-- ========================================== -->
+    <h2>三、生物圈中的人 <span class="badge">约30个核心点</span></h2>
+    <p style="color:#4a6b5a; font-size:15px; margin-bottom:12px;">人体生理是中考的重点和难点。</p>
+
+    <h3>1. 消化系统</h3>
+    <div class="grid-list">
+        <div class="grid-item"><span class="num">41.</span> 消化系统组成：消化道（口→咽→食道→胃→小肠→大肠→肛门）+ 消化腺</div>
+        <div class="grid-item"><span class="num">42.</span> 淀粉消化的起始部位：<span class="highlight">口腔</span>（唾液淀粉酶）</div>
+        <div class="grid-item"><span class="num">43.</span> 蛋白质消化的起始部位：<span class="highlight">胃</span>（胃蛋白酶）</div>
+        <div class="grid-item"><span class="num">44.</span> 脂肪消化的起始部位：<span class="highlight">小肠</span>（胆汁乳化）</div>
+        <div class="grid-item"><span class="num">45.</span> <span class="highlight">小肠是消化和吸收的主要场所</span>（结构特点：长、皱襞、绒毛）</div>
+        <div class="grid-item"><span class="num">46.</span> 三大营养物质的消化产物：<span class="inline-code">淀粉→葡萄糖</span> · <span class="inline-code">蛋白质→氨基酸</span> · <span class="inline-code">脂肪→甘油+脂肪酸</span></div>
+    </div>
+
+    <h3>2. 呼吸系统</h3>
+    <div class="grid-list">
+        <div class="grid-item"><span class="num">47.</span> 呼吸道组成：鼻→咽→喉→气管→支气管</div>
+        <div class="grid-item"><span class="num">48.</span> 肺是呼吸系统的主要器官（气体交换的场所）</div>
+        <div class="grid-item"><span class="num">49.</span> 肺泡结构特点：壁薄、外包毛细血管、适于气体交换</div>
+        <div class="grid-item"><span class="num">50.</span> 气体交换过程：<span class="highlight">肺泡→血液</span>（O₂进入血液，CO₂进入肺泡）</div>
+        <div class="grid-item"><span class="num">51.</span> 氧的运输：血红蛋白（含铁）结合氧</div>
+    </div>
+
+    <h3>3. 循环系统</h3>
+    <h4>▸ 血液</h4>
+    <div class="grid-list">
+        <div class="grid-item"><span class="num">52.</span> 血液组成：血浆（运输养料和废物）+ 血细胞（红细胞、白细胞、血小板）</div>
+        <div class="grid-item"><span class="num">53.</span> 红细胞：含血红蛋白，<span class="term">运输氧</span></div>
+        <div class="grid-item"><span class="num">54.</span> 白细胞：<span class="term">吞噬病菌（防御）</span>，体大、有核、数量少</div>
+        <div class="grid-item"><span class="num">55.</span> 血小板：<span class="term">止血和凝血</span></div>
+        <div class="grid-item"><span class="num">56.</span> 动脉血（含氧丰富、颜色鲜红）vs 静脉血（含氧少、颜色暗红）</div>
+    </div>
+
+    <h4>▸ 血管</h4>
+    <div class="grid-list">
+        <div class="grid-item"><span class="num">57.</span> 动脉：管壁厚、弹性大、血流快、<span class="term">将血液从心脏送往全身</span></div>
+        <div class="grid-item"><span class="num">58.</span> 静脉：管壁薄、弹性小、血流慢、<span class="term">将血液从全身送回心脏</span></div>
+        <div class="grid-item"><span class="num">59.</span> 毛细血管：管壁最薄（一层细胞）、<span class="term">物质交换的场所</span></div>
+    </div>
+
+    <h4>▸ 心脏与循环</h4>
+    <div class="grid-list">
+        <div class="grid-item"><span class="num">60.</span> 心脏四腔：左心房、左心室、右心房、右心室</div>
+        <div class="grid-item"><span class="num">61.</span> <span class="highlight">左心室壁最厚</span>（收缩力最强，泵血到全身）</div>
+        <div class="grid-item"><span class="num">62.</span> 体循环：左心室→主动脉→全身毛细血管→上下腔静脉→右心房</div>
+        <div class="grid-item"><span class="num">63.</span> 肺循环：右心室→肺动脉→肺部毛细血管→肺静脉→左心房</div>
+        <div class="grid-item"><span class="num">64.</span> 瓣膜功能：<span class="term">防止血液倒流</span></div>
+    </div>
+
+    <h3>4. 泌尿系统</h3>
+    <div class="grid-list">
+        <div class="grid-item"><span class="num">65.</span> 泌尿系统组成：肾脏（形成尿液）→输尿管→膀胱（储存）→尿道</div>
+        <div class="grid-item"><span class="num">66.</span> 肾脏结构和功能单位：<span class="highlight">肾单位</span>（肾小球、肾小囊、肾小管）</div>
+        <div class="grid-item"><span class="num">67.</span> 尿的形成：<span class="highlight">肾小球过滤</span>（形成原尿）→ <span class="highlight">肾小管重吸收</span>（形成尿液）</div>
+        <div class="grid-item"><span class="num">68.</span> 血尿、蛋白尿（肾小球病变）、糖尿（肾小管病变或胰岛素不足）</div>
+    </div>
+
+    <h3>5. 神经系统与感觉器官</h3>
+    <div class="grid-list">
+        <div class="grid-item"><span class="num">69.</span> 神经系统组成：中枢神经系统（脑、脊髓）+ 周围神经系统（神经）</div>
+        <div class="grid-item"><span class="num">70.</span> 神经元（神经细胞）是神经系统结构和功能的基本单位</div>
+        <div class="grid-item"><span class="num">71.</span> 反射是神经调节的基本方式，<span class="highlight">反射弧</span>是反射的结构基础</div>
+        <div class="grid-item"><span class="num">72.</span> 反射弧路径：感受器→传入神经→神经中枢→传出神经→效应器</div>
+        <div class="grid-item"><span class="num">73.</span> 简单反射（生来就有，如膝跳反射）vs 复杂反射（后天形成，如望梅止渴）</div>
+        <div class="grid-item"><span class="num">74.</span> 眼球结构：晶状体（调节焦距）、视网膜（成像部位）、视神经（传导信号）</div>
+        <div class="grid-item"><span class="num">75.</span> 近视：晶状体曲度过大（或眼球前后径过长），成像在视网膜前方（配凹透镜）</div>
+    </div>
+
+    <h3>6. 内分泌系统</h3>
+    <div class="grid-list">
+        <div class="grid-item"><span class="num">76.</span> 生长激素（垂体）：幼年不足→侏儒症，过多→巨人症</div>
+        <div class="grid-item"><span class="num">77.</span> 甲状腺激素（甲状腺）：幼年不足→呆小症，成年不足→甲减，过多→甲亢</div>
+        <div class="grid-item"><span class="num">78.</span> 胰岛素（胰岛）：<span class="term">降低血糖</span>，分泌不足→糖尿病</div>
+        <div class="grid-item"><span class="num">79.</span> 激素调节与神经调节的关系</div>
+    </div>
+
+    <hr>
+
+    <!-- ========================================== -->
+    <!-- 第四部分：生物的生殖发育与遗传 -->
+    <!-- ========================================== -->
+    <h2>四、生物的生殖、发育与遗传 <span class="badge">约15个核心点</span></h2>
+    <p style="color:#4a6b5a; font-size:15px; margin-bottom:12px;">生命延续的奥秘。</p>
+
+    <h3>1. 生殖与发育</h3>
+    <div class="grid-list">
+        <div class="grid-item"><span class="num">80.</span> 有性生殖（经过两性生殖细胞结合）vs 无性生殖（不经过结合）</div>
+        <div class="grid-item"><span class="num">81.</span> 无性生殖方式：扦插、嫁接、压条、组织培养</div>
+        <div class="grid-item"><span class="num">82.</span> 昆虫发育：完全变态（卵→幼虫→蛹→成虫，如蚕、蝶）vs 不完全变态（卵→若虫→成虫，如蝗虫）</div>
+        <div class="grid-item"><span class="num">83.</span> 两栖动物发育：<span class="highlight">变态发育</span>（如青蛙：受精卵→蝌蚪→幼蛙→成蛙）</div>
+        <div class="grid-item"><span class="num">84.</span> 鸟卵结构：卵黄（提供营养）、胚盘（发育成雏鸟）、气室（供氧）</div>
+        <div class="grid-item"><span class="num">85.</span> 人类生殖：受精（输卵管）→ 胚胎发育（子宫）</div>
+    </div>
+
+    <h3>2. 遗传与变异</h3>
+    <div class="grid-list">
+        <div class="grid-item"><span class="num">86.</span> 染色体在体细胞中成对存在（2n），在生殖细胞中成单存在（n）</div>
+        <div class="grid-item"><span class="num">87.</span> 基因在染色体上成对存在，等位基因控制相对性状</div>
+        <div class="grid-item"><span class="num">88.</span> 显性基因（<span class="inline-code">A</span>）与隐性基因（<span class="inline-code">a</span>）</div>
+        <div class="grid-item"><span class="num">89.</span> 性状表现：AA或Aa → 显性性状；aa → 隐性性状</div>
+        <div class="grid-item"><span class="num">90.</span> 基因传递：亲代→生殖细胞→子代</div>
+        <div class="grid-item"><span class="num">91.</span> 人的性别决定：<span class="inline-code">XX</span>为女性，<span class="inline-code">XY</span>为男性（性染色体来自父亲）</div>
+        <div class="grid-item"><span class="num">92.</span> 变异：可遗传变异（遗传物质改变）vs 不可遗传变异（环境影响）</div>
+    </div>
+
+    <!-- ========================================== -->
+    <!-- 第五部分：生物多样性 -->
+    <!-- ========================================== -->
+    <h2>五、生物多样性 <span class="badge">约8个核心点</span></h2>
+    <p style="color:#4a6b5a; font-size:15px; margin-bottom:12px;">分类与保护。</p>
+
+    <div class="grid-list">
+        <div class="grid-item"><span class="num">93.</span> 生物分类单位（由大到小）：界、门、纲、目、科、属、种（<span class="highlight">种是最基本的分类单位</span>）</div>
+        <div class="grid-item"><span class="num">94.</span> 生物多样性的内涵：物种多样性、基因多样性、生态系统多样性</div>
+        <div class="grid-item"><span class="num">95.</span> 生物的生存依赖一定的环境，也能影响环境（如蚯蚓松土、大树底下好乘凉）</div>
+        <div class="grid-item"><span class="num">96.</span> 生态系统组成：非生物部分（阳光、空气、水等）+ 生物部分（生产者、消费者、分解者）</div>
+        <div class="grid-item"><span class="num">97.</span> 食物链和食物网（起点：生产者）</div>
+        <div class="grid-item"><span class="num">98.</span> 生态系统的自我调节能力是有限的</div>
+    </div>
+
+    <!-- ========================================== -->
+    <!-- 复习小贴士 -->
+    <!-- ========================================== -->
+    <div class="tip-box">
+        <strong>💡 复习小贴士</strong>
+        <ul>
+            <li><strong>重视图文结合</strong>：生物教材中的结构图、流程图（如血液循环、尿的形成）是高频考点，建议边看边画。</li>
+            <li><strong>归纳对比记忆</strong>：比如动植物细胞对比、光合呼吸对比、动脉静脉对比，列表格记忆更清晰。</li>
+            <li><strong>联系生活实际</strong>：很多考点与生活相关（如近视、糖尿病、嫁接），理解后更容易记住。</li>
+            <li><strong>实验题不丢分</strong>：教材中的经典实验（如验证光合作用产生氧气、种子萌发条件）要掌握实验步骤、现象和结论。</li>
+        </ul>
+        <p style="margin-top:12px; background:#d6ede0; padding:6px 18px; border-radius:30px; display:inline-block; color:#0b2a1e;">
+            ⏳ 时间紧张的话，优先巩固 <strong>三大生理作用</strong>（光合、呼吸、蒸腾）、<strong>人体消化/呼吸/循环系统</strong>、<strong>遗传基础</strong> 三大板块
+        </p>
+    </div>
+
+    <div class="footer-note">
+        整理自近年中考趋势 · 祝复习顺利 🍀
+    </div>
+
+</div>
+
+</body>
+</html>

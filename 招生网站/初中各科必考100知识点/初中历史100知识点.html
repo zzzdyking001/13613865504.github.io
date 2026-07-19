@@ -1,0 +1,481 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>初中历史 · 核心知识点梳理</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, "PingFang SC", "Microsoft YaHei", "Helvetica Neue", Arial, sans-serif;
+            background: #f5f0e8;
+            color: #2a2218;
+            padding: 20px;
+            line-height: 1.8;
+        }
+
+        .container {
+            max-width: 960px;
+            margin: 0 auto;
+            background: #ffffff;
+            border-radius: 24px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.08);
+            padding: 40px 48px;
+        }
+
+        @media (max-width: 640px) {
+            .container {
+                padding: 20px 16px;
+            }
+        }
+
+        h1 {
+            font-size: 28px;
+            font-weight: 700;
+            text-align: center;
+            padding-bottom: 18px;
+            border-bottom: 3px solid #b8860b;
+            margin-bottom: 24px;
+            letter-spacing: 2px;
+            color: #2a1a08;
+        }
+
+        .subtitle {
+            text-align: center;
+            font-size: 15px;
+            color: #6a5a3a;
+            margin-top: -12px;
+            margin-bottom: 32px;
+            background: #f5ede0;
+            padding: 6px 20px;
+            border-radius: 40px;
+            display: inline-block;
+            margin-left: auto;
+            margin-right: auto;
+            width: auto;
+        }
+
+        .subtitle-wrap {
+            text-align: center;
+        }
+
+        h2 {
+            font-size: 22px;
+            font-weight: 700;
+            margin: 32px 0 14px 0;
+            padding-left: 14px;
+            border-left: 6px solid #b8860b;
+            color: #2a1a08;
+        }
+
+        h3 {
+            font-size: 17px;
+            font-weight: 700;
+            margin: 22px 0 10px 0;
+            color: #3d2a10;
+            background: #f5ede0;
+            padding: 5px 16px;
+            border-radius: 30px;
+            display: inline-block;
+        }
+
+        h4 {
+            font-size: 15px;
+            font-weight: 600;
+            margin: 16px 0 6px 0;
+            color: #4d3a1a;
+            padding-left: 4px;
+        }
+
+        .grid-list {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4px 20px;
+            background: #fcf8f0;
+            padding: 14px 20px;
+            border-radius: 18px;
+            margin: 6px 0 14px 0;
+            border: 1px solid #ede0d0;
+        }
+
+        @media (max-width: 640px) {
+            .grid-list {
+                grid-template-columns: 1fr;
+                padding: 10px 14px;
+            }
+        }
+
+        .grid-item {
+            padding: 5px 4px;
+            border-bottom: 1px dashed #e8dcc8;
+            font-size: 14.5px;
+            display: flex;
+            align-items: baseline;
+            gap: 6px;
+        }
+
+        .grid-item:last-child {
+            border-bottom: none;
+        }
+
+        .num {
+            font-weight: 700;
+            color: #b8860b;
+            font-size: 13px;
+            min-width: 30px;
+            display: inline-block;
+        }
+
+        .highlight {
+            background: #f5ede0;
+            padding: 0 6px;
+            border-radius: 4px;
+            font-weight: 500;
+            color: #3d2a10;
+        }
+
+        .tag {
+            display: inline-block;
+            background: #ede0d0;
+            color: #3d2a10;
+            font-size: 12px;
+            padding: 0 12px;
+            border-radius: 30px;
+            font-weight: 500;
+            margin-right: 4px;
+            white-space: nowrap;
+        }
+
+        .tip-box {
+            background: #f5ede0;
+            border-radius: 20px;
+            padding: 20px 28px;
+            margin: 32px 0 12px 0;
+            border-left: 6px solid #b8860b;
+        }
+
+        .tip-box strong {
+            color: #2a1a08;
+        }
+
+        .tip-box ul {
+            margin-top: 8px;
+            padding-left: 20px;
+            list-style-type: none;
+        }
+
+        .tip-box ul li {
+            padding: 2px 0;
+        }
+
+        .tip-box ul li::before {
+            content: "✓ ";
+            color: #b8860b;
+            font-weight: 700;
+        }
+
+        .footer-note {
+            text-align: center;
+            font-size: 14px;
+            color: #8a7a5a;
+            margin-top: 32px;
+            border-top: 1px solid #e8dcc8;
+            padding-top: 24px;
+        }
+
+        .badge {
+            background: #dcccb8;
+            color: #2a1a08;
+            font-size: 13px;
+            border-radius: 30px;
+            padding: 0 14px;
+            font-weight: 600;
+        }
+
+        hr {
+            border: none;
+            border-top: 2px dotted #ddd0c0;
+            margin: 24px 0;
+        }
+
+        .inline-code {
+            background: #f5ede0;
+            padding: 0 8px;
+            border-radius: 6px;
+            font-size: 14px;
+            color: #3d2a10;
+        }
+
+        .example-box {
+            background: #fbf6ec;
+            padding: 8px 16px;
+            border-radius: 12px;
+            margin: 4px 0 8px 0;
+            font-size: 14px;
+            color: #3d2a10;
+            border: 1px solid #ede0d0;
+        }
+
+        .term {
+            font-weight: 600;
+            color: #4d3a1a;
+        }
+
+        .timeline {
+            background: #fcf8f0;
+            padding: 10px 16px;
+            border-radius: 12px;
+            border-left: 4px solid #b8860b;
+            margin: 6px 0 12px 0;
+            font-size: 14px;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+
+    <h1>📜 初中历史 · 核心知识点梳理</h1>
+    <div class="subtitle-wrap">
+        <span class="subtitle">🔹 四大板块 · 系统复习 🔹</span>
+    </div>
+
+    <!-- ========================================== -->
+    <!-- 第一部分：中国古代史 -->
+    <!-- ========================================== -->
+    <h2>一、中国古代史 <span class="badge">约30个核心点</span></h2>
+    <p style="color:#5a4a3a; font-size:15px; margin-bottom:12px;">从远古到明清，中华文明的起源与演进。</p>
+
+    <h3>1. 史前时期</h3>
+    <div class="grid-list">
+        <div class="grid-item"><span class="num">1.</span> 元谋人（云南元谋，距今约170万年，我国最早确认的古人类之一）</div>
+        <div class="grid-item"><span class="num">2.</span> 北京人（北京周口店，距今约70万~20万年，使用打制石器，学会用火）</div>
+        <div class="grid-item"><span class="num">3.</span> 山顶洞人（距今约3万年，掌握磨光和钻孔技术）</div>
+        <div class="grid-item"><span class="num">4.</span> 河姆渡人（距今约7000年，长江流域，种植水稻，干栏式建筑）</div>
+        <div class="grid-item"><span class="num">5.</span> 半坡居民（距今约6000年，黄河流域，种植粟，半地穴式建筑）</div>
+        <div class="grid-item"><span class="num">6.</span> 炎帝黄帝传说（华夏族的形成，人文初祖）</div>
+    </div>
+
+    <h3>2. 夏商周时期（早期国家与社会变革）</h3>
+    <div class="grid-list">
+        <div class="grid-item"><span class="num">7.</span> 夏朝（启继承王位，世袭制代替禅让制）</div>
+        <div class="grid-item"><span class="num">8.</span> 商朝（殷墟、甲骨文——我国已知最早的文字）</div>
+        <div class="grid-item"><span class="num">9.</span> 西周（分封制、宗法制）</div>
+        <div class="grid-item"><span class="num">10.</span> 春秋五霸（齐桓公、晋文公、楚庄王、吴王阖闾、越王勾践）</div>
+        <div class="grid-item"><span class="num">11.</span> 战国七雄（齐、楚、秦、燕、赵、魏、韩）</div>
+        <div class="grid-item"><span class="num">12.</span> 商鞅变法（公元前356年，秦国——确立县制、奖励耕战、废除世袭）</div>
+        <div class="grid-item"><span class="num">13.</span> 百家争鸣：<span class="highlight">孔子（儒家）、老子（道家）、韩非（法家）、墨子（墨家）</span></div>
+    </div>
+
+    <h3>3. 秦汉时期（统一多民族国家的建立与巩固）</h3>
+    <div class="grid-list">
+        <div class="grid-item"><span class="num">14.</span> 秦朝统一（公元前221年，秦始皇——统一文字、货币、度量衡）</div>
+        <div class="grid-item"><span class="num">15.</span> 秦长城（西起临洮，东到辽东）</div>
+        <div class="grid-item"><span class="num">16.</span> 秦的暴政与灭亡（陈胜吴广起义——我国历史上第一次农民大起义）</div>
+        <div class="grid-item"><span class="num">17.</span> 西汉（刘邦建立，文景之治——休养生息）</div>
+        <div class="grid-item"><span class="num">18.</span> 汉武帝大一统（<span class="term">“罢黜百家，尊崇儒术”</span>、盐铁专卖）</div>
+        <div class="grid-item"><span class="num">19.</span> 张骞出使西域（丝绸之路的开通）</div>
+        <div class="grid-item"><span class="num">20.</span> 东汉（刘秀建立，光武中兴）</div>
+        <div class="grid-item"><span class="num">21.</span> 造纸术（蔡伦改进造纸术，推动文化传播）</div>
+    </div>
+
+    <h3>4. 三国两晋南北朝时期（政权分立与民族交融）</h3>
+    <div class="grid-list">
+        <div class="grid-item"><span class="num">22.</span> 官渡之战（曹操统一北方）vs 赤壁之战（奠定三国鼎立基础）</div>
+        <div class="grid-item"><span class="num">23.</span> 三国鼎立：<span class="highlight">魏（曹丕，洛阳）、蜀（刘备，成都）、吴（孙权，建业）</span></div>
+        <div class="grid-item"><span class="num">24.</span> 西晋统一（司马炎，短暂统一）→ 八王之乱 → 五胡内迁</div>
+        <div class="grid-item"><span class="num">25.</span> 北魏孝文帝改革（迁都洛阳、改穿汉服、学习汉语、改用汉姓）——民族交融</div>
+        <div class="grid-item"><span class="num">26.</span> 江南地区的开发（北民南迁，带来劳动力和技术）</div>
+        <div class="grid-item"><span class="num">27.</span> 《齐民要术》（贾思勰——我国现存最早的一部完整的农书）</div>
+    </div>
+
+    <h3>5. 隋唐时期（繁荣与开放的时代）</h3>
+    <div class="grid-list">
+        <div class="grid-item"><span class="num">28.</span> 大运河（隋炀帝——贯通南北，促进经济文化交流）</div>
+        <div class="grid-item"><span class="num">29.</span> 科举制（隋朝创立，唐朝完善——公平选拔人才）</div>
+        <div class="grid-item"><span class="num">30.</span> 唐太宗与贞观之治（<span class="term">“水能载舟，亦能覆舟”</span>）</div>
+        <div class="grid-item"><span class="num">31.</span> 武则天（中国历史上唯一的女皇帝）</div>
+        <div class="grid-item"><span class="num">32.</span> 唐玄宗与开元盛世</div>
+        <div class="grid-item"><span class="num">33.</span> 安史之乱（唐朝由盛转衰的转折点）</div>
+        <div class="grid-item"><span class="num">34.</span> 遣唐使、鉴真东渡（中日文化交流）</div>
+        <div class="grid-item"><span class="num">35.</span> 玄奘西行（《大唐西域记》——中印文化交流）</div>
+    </div>
+
+    <h3>6. 宋元时期（民族关系发展与社会变化）</h3>
+    <div class="grid-list">
+        <div class="grid-item"><span class="num">36.</span> 北宋（赵匡胤“陈桥兵变”，重文轻武）</div>
+        <div class="grid-item"><span class="num">37.</span> 辽（契丹）、西夏（党项）、金（女真）与宋的关系</div>
+        <div class="grid-item"><span class="num">38.</span> 岳飞的抗金事迹（精忠报国）</div>
+        <div class="grid-item"><span class="num">39.</span> 经济重心南移（南宋时完成）</div>
+        <div class="grid-item"><span class="num">40.</span> 宋朝的都市生活（开封、临安——《清明上河图》）</div>
+        <div class="grid-item"><span class="num">41.</span> 元朝（忽必烈——民族交融、回族形成）</div>
+        <div class="grid-item"><span class="num">42.</span> 行省制度（元朝——我国省级行政区的开端）</div>
+        <div class="grid-item"><span class="num">43.</span> 活字印刷术（毕昇）、指南针、火药的应用</div>
+    </div>
+
+    <h3>7. 明清时期（统一多民族国家的巩固与发展）</h3>
+    <div class="grid-list">
+        <div class="grid-item"><span class="num">44.</span> 明朝的建立（朱元璋，废丞相，设厂卫制度）</div>
+        <div class="grid-item"><span class="num">45.</span> 郑和下西洋（1405—1433年，七次，最远到达非洲东海岸和红海沿岸）</div>
+        <div class="grid-item"><span class="num">46.</span> 戚继光抗倭（东南沿海）</div>
+        <div class="grid-item"><span class="num">47.</span> 郑成功收复台湾（1662年，赶走荷兰殖民者）</div>
+        <div class="grid-item"><span class="num">48.</span> 清朝的建立（努尔哈赤、皇太极）</div>
+        <div class="grid-item"><span class="num">49.</span> 康乾盛世（康熙、雍正、乾隆）</div>
+        <div class="grid-item"><span class="num">50.</span> 清朝的疆域（奠定我国今天的版图基础）</div>
+        <div class="grid-item"><span class="num">51.</span> 闭关锁国政策（严格限制对外贸易）</div>
+    </div>
+
+    <hr>
+
+    <!-- ========================================== -->
+    <!-- 第二部分：中国近现代史 -->
+    <!-- ========================================== -->
+    <h2>二、中国近现代史 <span class="badge">约30个核心点</span></h2>
+    <p style="color:#5a4a3a; font-size:15px; margin-bottom:12px;">从屈辱到抗争，从探索到复兴。</p>
+
+    <h3>1. 近代化的早期探索与民族危机的加剧</h3>
+    <div class="grid-list">
+        <div class="grid-item"><span class="num">52.</span> 鸦片战争（1840—1842年）——《南京条约》（中国开始沦为半殖民地半封建社会）</div>
+        <div class="grid-item"><span class="num">53.</span> 第二次鸦片战争（1856—1860年）——英法联军火烧圆明园</div>
+        <div class="grid-item"><span class="num">54.</span> 太平天国运动（1851—1864年）——<span class="term">《天朝田亩制度》</span></div>
+        <div class="grid-item"><span class="num">55.</span> 洋务运动（19世纪60—90年代）——<span class="highlight">“自强”“求富”</span>（开启中国近代化进程）</div>
+        <div class="grid-item"><span class="num">56.</span> 甲午中日战争（1894—1895年）——《马关条约》（大大加深了中国的半殖民地化程度）</div>
+        <div class="grid-item"><span class="num">57.</span> 戊戌变法（1898年，百日维新）——<span class="term">康有为、梁启超</span>（变法图强）</div>
+        <div class="grid-item"><span class="num">58.</span> 八国联军侵华（1900—1901年）——《辛丑条约》（中国完全沦为半殖民地半封建社会）</div>
+    </div>
+
+    <h3>2. 资产阶级民主革命与中华民国的建立</h3>
+    <div class="grid-list">
+        <div class="grid-item"><span class="num">59.</span> 孙中山与同盟会（<span class="term">“驱除鞑虏，恢复中华，创立民国，平均地权”</span>）</div>
+        <div class="grid-item"><span class="num">60.</span> 辛亥革命（1911年10月10日，武昌起义）——<span class="highlight">推翻了清王朝，结束了君主专制制度</span></div>
+        <div class="grid-item"><span class="num">61.</span> 中华民国的建立（1912年1月1日，孙中山就任临时大总统）</div>
+        <div class="grid-item"><span class="num">62.</span> 袁世凯窃取革命果实 → 北洋军阀统治</div>
+    </div>
+
+    <h3>3. 新民主主义革命的兴起</h3>
+    <div class="grid-list">
+        <div class="grid-item"><span class="num">63.</span> 新文化运动（1915年，<span class="term">陈独秀、胡适、鲁迅</span>——“民主”“科学”）</div>
+        <div class="grid-item"><span class="num">64.</span> 五四运动（1919年5月4日）——<span class="highlight">“外争主权，内除国贼”</span>（是新民主主义革命的开端）</div>
+        <div class="grid-item"><span class="num">65.</span> 中国共产党的诞生（1921年7月，中共一大在上海/嘉兴）</div>
+        <div class="grid-item"><span class="num">66.</span> 黄埔军校的建立（1924年）</div>
+        <div class="grid-item"><span class="num">67.</span> 国共第一次合作与北伐战争（1926—1927年）</div>
+        <div class="grid-item"><span class="num">68.</span> 南昌起义（1927年8月1日）——<span class="term">“打响武装反抗国民党反动统治的第一枪”</span></div>
+        <div class="grid-item"><span class="num">69.</span> 秋收起义与井冈山革命根据地（开创了“农村包围城市”的道路）</div>
+        <div class="grid-item"><span class="num">70.</span> 红军长征（1934—1936年）——<span class="term">遵义会议（中共历史上生死攸关的转折点）</span></div>
+    </div>
+
+    <h3>4. 中华民族的抗日战争</h3>
+    <div class="grid-list">
+        <div class="grid-item"><span class="num">71.</span> 九一八事变（1931年9月18日）——<span class="highlight">中国抗日战争的起点</span></div>
+        <div class="grid-item"><span class="num">72.</span> 西安事变（1936年12月12日，张学良、杨虎城）——<span class="term">和平解决，国共第二次合作初步形成</span></div>
+        <div class="grid-item"><span class="num">73.</span> 七七事变（1937年7月7日，卢沟桥事变）——<span class="highlight">中国全民族抗战的开始</span></div>
+        <div class="grid-item"><span class="num">74.</span> 南京大屠杀（1937年12月，30万以上同胞遇难）</div>
+        <div class="grid-item"><span class="num">75.</span> 平型关大捷（八路军首战大捷）</div>
+        <div class="grid-item"><span class="num">76.</span> 台儿庄战役（抗战以来中国正面战场取得的最大的一场胜仗）</div>
+        <div class="grid-item"><span class="num">77.</span> 百团大战（1940年，彭德怀——八路军主动出击的大规模战役）</div>
+        <div class="grid-item"><span class="num">78.</span> 中共七大（1945年，延安——确立毛泽东思想为党的指导思想）</div>
+        <div class="grid-item"><span class="num">79.</span> 日本投降（1945年8月15日）——<span class="highlight">台湾光复（1895—1945）</span></div>
+    </div>
+
+    <h3>5. 解放战争与中华人民共和国的成立</h3>
+    <div class="grid-list">
+        <div class="grid-item"><span class="num">80.</span> 重庆谈判（1945年）——《双十协定》</div>
+        <div class="grid-item"><span class="num">81.</span> 全面内战爆发（1946年6月）</div>
+        <div class="grid-item"><span class="num">82.</span> 三大战役：<span class="highlight">辽沈战役、淮海战役、平津战役</span>（国民党的主力基本被消灭）</div>
+        <div class="grid-item"><span class="num">83.</span> 渡江战役（1949年4月，占领南京，国民党在大陆的统治结束）</div>
+        <div class="grid-item"><span class="num">84.</span> 中华人民共和国成立（1949年10月1日）——<span class="term">“中国人民站起来了”</span></div>
+    </div>
+
+    <h3>6. 社会主义革命与建设探索</h3>
+    <div class="grid-list">
+        <div class="grid-item"><span class="num">85.</span> 土地改革（1950—1952年）——废除地主阶级封建剥削的土地所有制</div>
+        <div class="grid-item"><span class="num">86.</span> 抗美援朝（1950—1953年）——<span class="term">黄继光、邱少云</span></div>
+        <div class="grid-item"><span class="num">87.</span> 第一个五年计划（1953—1957年）——优先发展重工业</div>
+        <div class="grid-item"><span class="num">88.</span> 三大改造（1956年）——农业、手工业、资本主义工商业（社会主义基本制度建立）</div>
+        <div class="grid-item"><span class="num">89.</span> 曲折探索（“大跃进”、人民公社化运动、文化大革命）</div>
+    </div>
+
+    <h3>7. 中国特色社会主义道路</h3>
+    <div class="grid-list">
+        <div class="grid-item"><span class="num">90.</span> 十一届三中全会（1978年）——<span class="highlight">改革开放的伟大转折</span></div>
+        <div class="grid-item"><span class="num">91.</span> 家庭联产承包责任制（安徽凤阳小岗村——包产到户）</div>
+        <div class="grid-item"><span class="num">92.</span> 经济特区的设立（1980年，深圳、珠海、汕头、厦门）</div>
+        <div class="grid-item"><span class="num">93.</span> 社会主义市场经济体制的建立（1992年邓小平南方谈话）</div>
+        <div class="grid-item"><span class="num">94.</span> 香港回归（1997年7月1日）、澳门回归（1999年12月20日）</div>
+        <div class="grid-item"><span class="num">95.</span> 科学发展观、习近平新时代中国特色社会主义思想</div>
+    </div>
+
+    <hr>
+
+    <!-- ========================================== -->
+    <!-- 第三部分：世界古代史 -->
+    <!-- ========================================== -->
+    <h2>三、世界古代史 <span class="badge">约12个核心点</span></h2>
+    <p style="color:#5a4a3a; font-size:15px; margin-bottom:12px;">人类早期文明与世界古代的交往。</p>
+
+    <div class="grid-list">
+        <div class="grid-item"><span class="num">96.</span> 古埃及文明（金字塔、象形文字）</div>
+        <div class="grid-item"><span class="num">97.</span> 古巴比伦文明（《汉谟拉比法典》——世界上第一部较为完备的成文法典）</div>
+        <div class="grid-item"><span class="num">98.</span> 古印度文明（种姓制度、佛教的创立）</div>
+        <div class="grid-item"><span class="num">99.</span> 古希腊文明（雅典民主政治、亚历山大帝国）</div>
+        <div class="grid-item"><span class="num">100.</span> 古罗马文明（罗马共和国→罗马帝国、《十二铜表法》）</div>
+        <div class="grid-item"><span class="num">101.</span> 基督教与伊斯兰教的创立</div>
+        <div class="grid-item"><span class="num">102.</span> 中世纪欧洲（封建制度、庄园经济、城市的复兴）</div>
+        <div class="grid-item"><span class="num">103.</span> 阿拉伯帝国（沟通东西方文化交流的桥梁）</div>
+    </div>
+
+    <hr>
+
+    <!-- ========================================== -->
+    <!-- 第四部分：世界近现代史 -->
+    <!-- ========================================== -->
+    <h2>四、世界近现代史 <span class="badge">约15个核心点</span></h2>
+    <p style="color:#5a4a3a; font-size:15px; margin-bottom:12px;">从资本主义兴起到当今世界的格局。</p>
+
+    <div class="grid-list">
+        <div class="grid-item"><span class="num">104.</span> 文艺复兴（14—16世纪，<span class="term">“人文主义”</span>，但丁、达·芬奇、莎士比亚）</div>
+        <div class="grid-item"><span class="num">105.</span> 新航路的开辟（哥伦布发现美洲、麦哲伦环球航行）——世界开始连为一个整体</div>
+        <div class="grid-item"><span class="num">106.</span> 英国资产阶级革命（1688年“光荣革命”——《权利法案》，君主立宪制）</div>
+        <div class="grid-item"><span class="num">107.</span> 美国独立战争（1775—1783年——《独立宣言》，华盛顿）</div>
+        <div class="grid-item"><span class="num">108.</span> 法国大革命（1789年——《人权宣言》，拿破仑）</div>
+        <div class="grid-item"><span class="num">109.</span> 第一次工业革命（18世纪60年代，<span class="term">瓦特改良蒸汽机</span>——进入“蒸汽时代”）</div>
+        <div class="grid-item"><span class="num">110.</span> 马克思主义的诞生（1848年《共产党宣言》）</div>
+        <div class="grid-item"><span class="num">111.</span> 美国南北战争（1861—1865年，<span class="term">林肯——废除黑人奴隶制度</span>）</div>
+        <div class="grid-item"><span class="num">112.</span> 俄国1861年改革（废除农奴制）与日本明治维新（1868年）</div>
+        <div class="grid-item"><span class="num">113.</span> 第二次工业革命（电气时代——电灯、汽车、电话）</div>
+        <div class="grid-item"><span class="num">114.</span> 第一次世界大战（1914—1918年）</div>
+        <div class="grid-item"><span class="num">115.</span> 十月革命（1917年，俄国——世界上第一个社会主义国家）</div>
+        <div class="grid-item"><span class="num">116.</span> 第二次世界大战（1939—1945年）——世界反法西斯战争</div>
+        <div class="grid-item"><span class="num">117.</span> 冷战（1947—1991年，美苏对峙）</div>
+        <div class="grid-item"><span class="num">118.</span> 世界经济全球化与政治多极化趋势</div>
+    </div>
+
+    <!-- ========================================== -->
+    <!-- 复习小贴士 -->
+    <!-- ========================================== -->
+    <div class="tip-box">
+        <strong>💡 复习小贴士</strong>
+        <ul>
+            <li><strong>按时间线索梳理</strong>：历史复习最重要的是时间线，建议按“古代→近代→现代”的顺序梳理，关注重要时间节点。</li>
+            <li><strong>横向对比记忆</strong>：同一时期中外历史对比（如明朝时欧洲在做什么），有助于加深理解。</li>
+            <li><strong>理解历史事件的因果</strong>：每个重要事件都要掌握“背景—经过—结果—影响/意义”。</li>
+            <li><strong>关注周年大事</strong>：中考喜欢考具有纪念意义的周年事件（如五四运动105周年等），注意结合时政。</li>
+        </ul>
+        <p style="margin-top:12px; background:#e8dcc8; padding:6px 18px; border-radius:30px; display:inline-block; color:#2a1a08;">
+            ⏳ 时间紧张的话，优先巩固 <strong>中国近代史</strong>（1840—1949）、<strong>世界近代史</strong>（文艺复兴到一战）、<strong>重要条约与改革</strong> 三大板块
+        </p>
+    </div>
+
+    <div class="footer-note">
+        整理自近年中考趋势 · 祝复习顺利 🍀
+    </div>
+
+</div>
+
+</body>
+</html>

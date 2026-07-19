@@ -1,0 +1,489 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>初中化学 · 核心知识点梳理</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, "PingFang SC", "Microsoft YaHei", "Helvetica Neue", Arial, sans-serif;
+            background: #f0f5f0;
+            color: #1a2a1a;
+            padding: 20px;
+            line-height: 1.8;
+        }
+
+        .container {
+            max-width: 960px;
+            margin: 0 auto;
+            background: #ffffff;
+            border-radius: 24px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.08);
+            padding: 40px 48px;
+        }
+
+        @media (max-width: 640px) {
+            .container {
+                padding: 20px 16px;
+            }
+        }
+
+        h1 {
+            font-size: 28px;
+            font-weight: 700;
+            text-align: center;
+            padding-bottom: 18px;
+            border-bottom: 3px solid #2d7d4a;
+            margin-bottom: 24px;
+            letter-spacing: 2px;
+            color: #0b2a1a;
+        }
+
+        .subtitle {
+            text-align: center;
+            font-size: 15px;
+            color: #4a6b5a;
+            margin-top: -12px;
+            margin-bottom: 32px;
+            background: #e8f5ee;
+            padding: 6px 20px;
+            border-radius: 40px;
+            display: inline-block;
+            margin-left: auto;
+            margin-right: auto;
+            width: auto;
+        }
+
+        .subtitle-wrap {
+            text-align: center;
+        }
+
+        h2 {
+            font-size: 22px;
+            font-weight: 700;
+            margin: 32px 0 14px 0;
+            padding-left: 14px;
+            border-left: 6px solid #2d7d4a;
+            color: #0b2a1a;
+        }
+
+        h3 {
+            font-size: 17px;
+            font-weight: 700;
+            margin: 22px 0 10px 0;
+            color: #1a4a35;
+            background: #ecf7f0;
+            padding: 5px 16px;
+            border-radius: 30px;
+            display: inline-block;
+        }
+
+        h4 {
+            font-size: 15px;
+            font-weight: 600;
+            margin: 16px 0 6px 0;
+            color: #1e5a3a;
+            padding-left: 4px;
+        }
+
+        .grid-list {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4px 20px;
+            background: #f7fcf9;
+            padding: 14px 20px;
+            border-radius: 18px;
+            margin: 6px 0 14px 0;
+            border: 1px solid #e0ede6;
+        }
+
+        @media (max-width: 640px) {
+            .grid-list {
+                grid-template-columns: 1fr;
+                padding: 10px 14px;
+            }
+        }
+
+        .grid-item {
+            padding: 5px 4px;
+            border-bottom: 1px dashed #dce8e0;
+            font-size: 14.5px;
+            display: flex;
+            align-items: baseline;
+            gap: 6px;
+        }
+
+        .grid-item:last-child {
+            border-bottom: none;
+        }
+
+        .num {
+            font-weight: 700;
+            color: #2d7d4a;
+            font-size: 13px;
+            min-width: 30px;
+            display: inline-block;
+        }
+
+        .highlight {
+            background: #e6f5ec;
+            padding: 0 6px;
+            border-radius: 4px;
+            font-weight: 500;
+            color: #1a4a35;
+        }
+
+        .tag {
+            display: inline-block;
+            background: #e0ede6;
+            color: #1a4a35;
+            font-size: 12px;
+            padding: 0 12px;
+            border-radius: 30px;
+            font-weight: 500;
+            margin-right: 4px;
+            white-space: nowrap;
+        }
+
+        .tip-box {
+            background: #eaf5ef;
+            border-radius: 20px;
+            padding: 20px 28px;
+            margin: 32px 0 12px 0;
+            border-left: 6px solid #2d7d4a;
+        }
+
+        .tip-box strong {
+            color: #0b2a1a;
+        }
+
+        .tip-box ul {
+            margin-top: 8px;
+            padding-left: 20px;
+            list-style-type: none;
+        }
+
+        .tip-box ul li {
+            padding: 2px 0;
+        }
+
+        .tip-box ul li::before {
+            content: "✓ ";
+            color: #2d7d4a;
+            font-weight: 700;
+        }
+
+        .footer-note {
+            text-align: center;
+            font-size: 14px;
+            color: #6a8a7a;
+            margin-top: 32px;
+            border-top: 1px solid #dce8e0;
+            padding-top: 24px;
+        }
+
+        .badge {
+            background: #cde4d8;
+            color: #0b2a1a;
+            font-size: 13px;
+            border-radius: 30px;
+            padding: 0 14px;
+            font-weight: 600;
+        }
+
+        hr {
+            border: none;
+            border-top: 2px dotted #cde0d4;
+            margin: 24px 0;
+        }
+
+        .inline-code {
+            background: #e6f5ec;
+            padding: 0 8px;
+            border-radius: 6px;
+            font-family: "SF Mono", "Menlo", monospace;
+            font-size: 14px;
+            color: #1a4a35;
+        }
+
+        .formula-box {
+            background: #f4fbf7;
+            padding: 8px 16px;
+            border-radius: 12px;
+            margin: 4px 0 8px 0;
+            font-size: 14px;
+            color: #1a4a35;
+            border: 1px solid #dce8e0;
+            font-family: "Times New Roman", "KaTeX_Main", serif;
+        }
+
+        .example-box {
+            background: #f4fbf7;
+            padding: 8px 16px;
+            border-radius: 12px;
+            margin: 4px 0 8px 0;
+            font-size: 14px;
+            color: #1a4a35;
+            border: 1px solid #dce8e0;
+        }
+
+        .term {
+            font-weight: 600;
+            color: #1e5a3a;
+        }
+
+        .chem-symbol {
+            font-family: "Times New Roman", "KaTeX_Main", serif;
+            font-style: italic;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+
+    <h1>🧪 初中化学 · 核心知识点梳理</h1>
+    <div class="subtitle-wrap">
+        <span class="subtitle">🔹 六大板块 · 系统复习 🔹</span>
+    </div>
+
+    <!-- ========================================== -->
+    <!-- 第一部分：基本概念与理论 -->
+    <!-- ========================================== -->
+    <h2>一、基本概念与理论 <span class="badge">约15个核心点</span></h2>
+    <p style="color:#4a6b5a; font-size:15px; margin-bottom:12px;">化学学科的基础语言和核心概念。</p>
+
+    <h3>1. 物质的变化与性质</h3>
+    <div class="grid-list">
+        <div class="grid-item"><span class="num">1.</span> 物理变化（无新物质生成，如：粉碎、蒸发、溶解）</div>
+        <div class="grid-item"><span class="num">2.</span> 化学变化（有新物质生成，如：燃烧、锈蚀、食物腐烂）</div>
+        <div class="grid-item"><span class="num">3.</span> 物理性质（颜色、状态、气味、熔点、沸点、密度、硬度等）</div>
+        <div class="grid-item"><span class="num">4.</span> 化学性质（可燃性、稳定性、酸性、碱性、氧化性等）</div>
+    </div>
+
+    <h3>2. 物质的构成与组成</h3>
+    <div class="grid-list">
+        <div class="grid-item"><span class="num">5.</span> 分子（保持物质化学性质的最小微粒）</div>
+        <div class="grid-item"><span class="num">6.</span> 原子（化学变化中的最小微粒）——<span class="term">原子由原子核（质子+中子）和核外电子构成</span></div>
+        <div class="grid-item"><span class="num">7.</span> 离子（带电的原子或原子团）</div>
+        <div class="grid-item"><span class="num">8.</span> 元素（质子数相同的同一类原子的总称）</div>
+        <div class="grid-item"><span class="num">9.</span> 元素符号与原子序数</div>
+        <div class="grid-item"><span class="num">10.</span> 相对原子质量（<span class="inline-code">Ar = 一个原子的实际质量 / (1/12 × 一个C-12原子的质量)</span>）</div>
+    </div>
+
+    <h3>3. 化学用语</h3>
+    <div class="grid-list">
+        <div class="grid-item"><span class="num">11.</span> 化学式（如：<span class="inline-code">H₂O</span>、<span class="inline-code">NaCl</span>）</div>
+        <div class="grid-item"><span class="num">12.</span> 化合价（常见元素化合价口诀）</div>
+        <div class="grid-item"><span class="num">13.</span> 化学方程式（<span class="term">书写原则：客观事实 + 质量守恒</span>）</div>
+        <div class="grid-item"><span class="num">14.</span> 质量守恒定律：<span class="highlight">参加反应的各物质质量总和等于反应后生成的各物质质量总和</span></div>
+        <div class="grid-item"><span class="num">15.</span> 根据化学方程式的计算（步骤：设、写、列、求、答）</div>
+    </div>
+
+    <hr>
+
+    <!-- ========================================== -->
+    <!-- 第二部分：身边的化学物质 -->
+    <!-- ========================================== -->
+    <h2>二、身边的化学物质 <span class="badge">约25个核心点</span></h2>
+    <p style="color:#4a6b5a; font-size:15px; margin-bottom:12px;">常见物质的性质、用途和实验。</p>
+
+    <h3>1. 空气与氧气</h3>
+    <div class="grid-list">
+        <div class="grid-item"><span class="num">16.</span> 空气组成：<span class="highlight">N₂（78%）、O₂（21%）、稀有气体（0.94%）、CO₂（0.03%）</span></div>
+        <div class="grid-item"><span class="num">17.</span> 氧气的物理性质：无色无味、不易溶于水、密度比空气略大</div>
+        <div class="grid-item"><span class="num">18.</span> 氧气的化学性质：<span class="term">助燃性、氧化性</span>（支持燃烧）</div>
+        <div class="grid-item"><span class="num">19.</span> 氧气的制备（实验室）：<span class="term">加热KMnO₄</span>、<span class="term">H₂O₂ + MnO₂</span>、<span class="term">加热KClO₃ + MnO₂</span></div>
+        <div class="grid-item"><span class="num">20.</span> 氧气的验满方法：<span class="term">带火星的木条放在集气瓶口</span></div>
+        <div class="grid-item"><span class="num">21.</span> 空气中氧气含量测定（红磷燃烧实验）</div>
+    </div>
+
+    <h3>2. 水</h3>
+    <div class="grid-list">
+        <div class="grid-item"><span class="num">22.</span> 水的组成（电解水实验：<span class="highlight">正极O₂、负极H₂，体积比1:2</span>）</div>
+        <div class="grid-item"><span class="num">23.</span> 水的净化方法：沉降、过滤、吸附、蒸馏</div>
+        <div class="grid-item"><span class="num">24.</span> 硬水与软水的区分（肥皂水——浮渣多的是硬水）</div>
+        <div class="grid-item"><span class="num">25.</span> 硬水软化方法：煮沸、蒸馏</div>
+    </div>
+
+    <h3>3. 碳及其化合物</h3>
+    <div class="grid-list">
+        <div class="grid-item"><span class="num">26.</span> 碳的单质：金刚石（正八面体）、石墨（层状）、C₆₀（足球状）</div>
+        <div class="grid-item"><span class="num">27.</span> 碳的化学性质：稳定性、可燃性、还原性（<span class="term">C + 2CuO → 2Cu + CO₂↑</span>）</div>
+        <div class="grid-item"><span class="num">28.</span> CO₂的物理性质：无色无味、密度比空气大、能溶于水</div>
+        <div class="grid-item"><span class="num">29.</span> CO₂的化学性质：<span class="term">不助燃、不可燃、与碱反应</span></div>
+        <div class="grid-item"><span class="num">30.</span> CO₂的制备（实验室）：<span class="highlight">CaCO₃ + 2HCl → CaCl₂ + H₂O + CO₂↑</span></div>
+        <div class="grid-item"><span class="num">31.</span> CO的性质：<span class="term">有毒、可燃性、还原性</span></div>
+        <div class="grid-item"><span class="num">32.</span> CO₂与CO的鉴别方法</div>
+    </div>
+
+    <h3>4. 金属与金属材料</h3>
+    <div class="grid-list">
+        <div class="grid-item"><span class="num">33.</span> 金属的物理共性（导电性、导热性、延展性、金属光泽）</div>
+        <div class="grid-item"><span class="num">34.</span> 金属活动性顺序：<span class="highlight">K Ca Na Mg Al Zn Fe Sn Pb (H) Cu Hg Ag Pt Au</span></div>
+        <div class="grid-item"><span class="num">35.</span> 金属与酸反应：<span class="term">活泼金属 + 酸 → 盐 + H₂↑</span></div>
+        <div class="grid-item"><span class="num">36.</span> 金属与盐溶液反应：<span class="term">前置后，盐可溶</span></div>
+        <div class="grid-item"><span class="num">37.</span> 铁的冶炼原理：<span class="highlight">Fe₂O₃ + 3CO → 2Fe + 3CO₂</span></div>
+        <div class="grid-item"><span class="num">38.</span> 铁的锈蚀条件：<span class="term">与氧气和水同时接触</span></div>
+        <div class="grid-item"><span class="num">39.</span> 防止金属腐蚀的方法（保持干燥、涂油、刷漆、镀金属）</div>
+    </div>
+
+    <h3>5. 酸、碱、盐</h3>
+    <div class="grid-list">
+        <div class="grid-item"><span class="num">40.</span> 酸的化学通性（5条）：<span class="term">使石蕊变红、与活泼金属反应、与金属氧化物反应、与碱反应、与盐反应</span></div>
+        <div class="grid-item"><span class="num">41.</span> 碱的化学通性（4条）：<span class="term">使石蕊变蓝、使酚酞变红、与非金属氧化物反应、与酸反应、与盐反应</span></div>
+        <div class="grid-item"><span class="num">42.</span> 盐的定义：由金属离子（或NH₄⁺）和酸根离子组成的化合物</div>
+        <div class="grid-item"><span class="num">43.</span> 复分解反应的条件：<span class="highlight">有沉淀、气体或水生成</span></div>
+        <div class="grid-item"><span class="num">44.</span> 常见酸碱盐的俗名与化学式（<span class="term">烧碱NaOH、纯碱Na₂CO₃、小苏打NaHCO₃、石灰石CaCO₃</span>）</div>
+        <div class="grid-item"><span class="num">45.</span> pH值与酸碱性的关系：pH=7中性、pH<7酸性、pH>7碱性</div>
+    </div>
+
+    <hr>
+
+    <!-- ========================================== -->
+    <!-- 第三部分：化学实验 -->
+    <!-- ========================================== -->
+    <h2>三、化学实验 <span class="badge">约20个核心点</span></h2>
+    <p style="color:#4a6b5a; font-size:15px; margin-bottom:12px;">实验操作、常见仪器和气体检验。</p>
+
+    <h3>1. 基本操作与仪器</h3>
+    <div class="grid-list">
+        <div class="grid-item"><span class="num">46.</span> 酒精灯的使用：<span class="term">禁止用嘴吹灭，禁止向燃着的酒精灯内添加酒精</span></div>
+        <div class="grid-item"><span class="num">47.</span> 药品取用规则（粉末用纸槽、块状用镊子）</div>
+        <div class="grid-item"><span class="num">48.</span> 量筒读数：<span class="highlight">视线与凹液面最低处保持水平</span></div>
+        <div class="grid-item"><span class="num">49.</span> 天平的使用（左物右码）</div>
+        <div class="grid-item"><span class="num">50.</span> 过滤操作“一贴二低三靠”</div>
+        <div class="grid-item"><span class="num">51.</span> 蒸发操作（蒸发皿、玻璃棒搅拌、停止加热）</div>
+        <div class="grid-item"><span class="num">52.</span> 常见仪器的名称和用途（试管、烧杯、量筒、集气瓶、酒精灯等）</div>
+    </div>
+
+    <h3>2. 气体检验与实验</h3>
+    <div class="grid-list">
+        <div class="grid-item"><span class="num">53.</span> O₂的检验方法：<span class="term">带火星的木条复燃</span></div>
+        <div class="grid-item"><span class="num">54.</span> CO₂的检验方法：<span class="term">通入澄清石灰水变浑浊</span></div>
+        <div class="grid-item"><span class="num">55.</span> H₂的检验方法：<span class="term">点燃，淡蓝色火焰，烧杯内壁有水珠</span></div>
+        <div class="grid-item"><span class="num">56.</span> 实验室制O₂、CO₂、H₂的装置选择（固+固加热/固+液不加热）</div>
+        <div class="grid-item"><span class="num">57.</span> 排水法收集气体的适用条件（不溶于水、不与水反应）</div>
+        <div class="grid-item"><span class="num">58.</span> 向上排空气法的适用条件（密度比空气大）</div>
+        <div class="grid-item"><span class="num">59.</span> 装置气密性检查方法</div>
+    </div>
+
+    <h3>3. 实验探究与推断</h3>
+    <div class="grid-list">
+        <div class="grid-item"><span class="num">60.</span> 酸碱中和反应的实验探究（指示剂选择）</div>
+        <div class="grid-item"><span class="num">61.</span> 常见离子的检验（<span class="term">Cl⁻、SO₄²⁻、CO₃²⁻</span>）</div>
+        <div class="grid-item"><span class="num">62.</span> 物质的鉴别（利用颜色、气味、溶解性、化学性质等）</div>
+        <div class="grid-item"><span class="num">63.</span> 物质的推断（突破口：特殊颜色、特殊现象、特殊反应）</div>
+        <div class="grid-item"><span class="num">64.</span> 实验方案的设计与评价</div>
+    </div>
+
+    <hr>
+
+    <!-- ========================================== -->
+    <!-- 第四部分：化学与社会 -->
+    <!-- ========================================== -->
+    <h2>四、化学与社会 <span class="badge">约10个核心点</span></h2>
+    <p style="color:#4a6b5a; font-size:15px; margin-bottom:12px;">化学与生活、能源、环境。</p>
+
+    <div class="grid-list">
+        <div class="grid-item"><span class="num">65.</span> 燃烧的条件：<span class="highlight">可燃物、助燃物（O₂）、温度达到着火点</span></div>
+        <div class="grid-item"><span class="num">66.</span> 灭火的原理：清除可燃物、隔绝O₂、降温至着火点以下</div>
+        <div class="grid-item"><span class="num">67.</span> 化石燃料（煤、石油、天然气——不可再生能源）</div>
+        <div class="grid-item"><span class="num">68.</span> 新能源：太阳能、风能、氢能、核能等</div>
+        <div class="grid-item"><span class="num">69.</span> 三大化石燃料燃烧对环境的影响（温室效应、酸雨、粉尘）</div>
+        <div class="grid-item"><span class="num">70.</span> 温室气体（CO₂、CH₄等）与全球变暖</div>
+        <div class="grid-item"><span class="num">71.</span> 酸雨的形成（SO₂、NO₂溶于水）</div>
+        <div class="grid-item"><span class="num">72.</span> 常见有机合成材料（塑料、合成橡胶、合成纤维）</div>
+        <div class="grid-item"><span class="num">73.</span> 六大营养素（糖类、油脂、蛋白质、维生素、无机盐、水）</div>
+        <div class="grid-item"><span class="num">74.</span> 化学与人体健康（微量元素、食品安全）</div>
+    </div>
+
+    <!-- ========================================== -->
+    <!-- 第五部分：常考化学方程式 -->
+    <!-- ========================================== -->
+    <h2>五、常考化学方程式 <span class="badge">约16个核心点</span></h2>
+    <p style="color:#4a6b5a; font-size:15px; margin-bottom:12px;">必须熟练掌握的化学方程式。</p>
+
+    <h3>1. 氧气相关</h3>
+    <div class="grid-list">
+        <div class="grid-item"><span class="num">75.</span> <span class="inline-code">2H₂O₂ →（MnO₂）→ 2H₂O + O₂↑</span></div>
+        <div class="grid-item"><span class="num">76.</span> <span class="inline-code">2KMnO₄ →（加热）→ K₂MnO₄ + MnO₂ + O₂↑</span></div>
+        <div class="grid-item"><span class="num">77.</span> <span class="inline-code">2KClO₃ →（MnO₂，加热）→ 2KCl + 3O₂↑</span></div>
+        <div class="grid-item"><span class="num">78.</span> <span class="inline-code">C + O₂ →（点燃）→ CO₂</span></div>
+        <div class="grid-item"><span class="num">79.</span> <span class="inline-code">2Mg + O₂ →（点燃）→ 2MgO</span></div>
+        <div class="grid-item"><span class="num">80.</span> <span class="inline-code">3Fe + 2O₂ →（点燃）→ Fe₃O₄</span></div>
+    </div>
+
+    <h3>2. 碳及化合物相关</h3>
+    <div class="grid-list">
+        <div class="grid-item"><span class="num">81.</span> <span class="inline-code">C + 2CuO →（高温）→ 2Cu + CO₂↑</span></div>
+        <div class="grid-item"><span class="num">82.</span> <span class="inline-code">CaCO₃ + 2HCl → CaCl₂ + H₂O + CO₂↑</span></div>
+        <div class="grid-item"><span class="num">83.</span> <span class="inline-code">CO₂ + Ca(OH)₂ → CaCO₃↓ + H₂O</span></div>
+        <div class="grid-item"><span class="num">84.</span> <span class="inline-code">2CO + O₂ →（点燃）→ 2CO₂</span></div>
+        <div class="grid-item"><span class="num">85.</span> <span class="inline-code">CO + CuO →（加热）→ Cu + CO₂</span></div>
+    </div>
+
+    <h3>3. 金属相关</h3>
+    <div class="grid-list">
+        <div class="grid-item"><span class="num">86.</span> <span class="inline-code">Fe + CuSO₄ → FeSO₄ + Cu</span>（铁表面出现红色固体）</div>
+        <div class="grid-item"><span class="num">87.</span> <span class="inline-code">Cu + 2AgNO₃ → Cu(NO₃)₂ + 2Ag</span>（铜表面出现银白色固体）</div>
+        <div class="grid-item"><span class="num">88.</span> <span class="inline-code">Fe₂O₃ + 3CO →（高温）→ 2Fe + 3CO₂</span></div>
+    </div>
+
+    <h3>4. 酸碱盐相关</h3>
+    <div class="grid-list">
+        <div class="grid-item"><span class="num">89.</span> <span class="inline-code">NaOH + HCl → NaCl + H₂O</span>（中和反应）</div>
+        <div class="grid-item"><span class="num">90.</span> <span class="inline-code">2NaOH + CO₂ → Na₂CO₃ + H₂O</span></div>
+        <div class="grid-item"><span class="num">91.</span> <span class="inline-code">Na₂CO₃ + 2HCl → 2NaCl + H₂O + CO₂↑</span></div>
+    </div>
+
+    <h3>5. 水相关</h3>
+    <div class="grid-list">
+        <div class="grid-item"><span class="num">92.</span> <span class="inline-code">2H₂O →（通电）→ 2H₂↑ + O₂↑</span></div>
+    </div>
+
+    <!-- ========================================== -->
+    <!-- 第六部分：常考实验现象与颜色 -->
+    <!-- ========================================== -->
+    <h2>六、常考实验现象与颜色 <span class="badge">约8个核心点</span></h2>
+    <p style="color:#4a6b5a; font-size:15px; margin-bottom:12px;">推断题和实验题的突破口。</p>
+
+    <div class="grid-list">
+        <div class="grid-item"><span class="num">93.</span> 常见沉淀颜色：<span class="term">Cu(OH)₂（蓝色）、Fe(OH)₃（红褐色）、BaSO₄/AgCl（白色沉淀，不溶于酸）</span></div>
+        <div class="grid-item"><span class="num">94.</span> 常见溶液颜色：<span class="term">CuSO₄（蓝色）、FeCl₃（黄色）、FeSO₄（浅绿色）</span></div>
+        <div class="grid-item"><span class="num">95.</span> 火焰颜色：<span class="term">H₂（淡蓝色）、CO（蓝色）、CH₄（蓝色）、S在O₂中（蓝紫色）</span></div>
+        <div class="grid-item"><span class="num">96.</span> 指示剂变色：<span class="term">石蕊（酸红碱蓝）、酚酞（酸无碱红）</span></div>
+        <div class="grid-item"><span class="num">97.</span> 常见气体颜色：<span class="term">NO₂（红棕色）、Cl₂（黄绿色）、O₂/CO₂/H₂/CO（无色）</span></div>
+        <div class="grid-item"><span class="num">98.</span> 常见固体颜色：<span class="term">CuO（黑色）、MnO₂（黑色）、Fe₃O₄（黑色）、Cu（紫红色）、Fe₂O₃（红棕色）</span></div>
+    </div>
+
+    <!-- ========================================== -->
+    <!-- 复习小贴士 -->
+    <!-- ========================================== -->
+    <div class="tip-box">
+        <strong>💡 复习小贴士</strong>
+        <ul>
+            <li><strong>化学方程式必须过关</strong>：中考化学的核心是化学方程式，建议每天默写5~8个，做到“看到反应物就能写出生成物和配平”。</li>
+            <li><strong>实验题注意“前后呼应”</strong>：实验题的答案往往藏在题干中，注意分析每一步操作的目的和现象描述。</li>
+            <li><strong>推断题要抓“突破口”</strong>：特殊颜色、特殊现象（如冒气泡、生成沉淀）、特殊反应条件是推断题的关键线索。</li>
+            <li><strong>规范化学用语</strong>：化学式大小写要分清（<span class="inline-code">CO</span>是一氧化碳，<span class="inline-code">Co</span>是钴），方程式要配平、标注反应条件和↑↓符号。</li>
+        </ul>
+        <p style="margin-top:12px; background:#d6ede0; padding:6px 18px; border-radius:30px; display:inline-block; color:#0b2a1a;">
+            ⏳ 时间紧张的话，优先巩固 <strong>化学方程式</strong>、<strong>常见物质的性质与用途</strong>、<strong>酸碱盐的通性</strong> 三大板块
+        </p>
+    </div>
+
+    <div class="footer-note">
+        整理自近年中考趋势 · 祝复习顺利 🍀
+    </div>
+
+</div>
+
+</body>
+</html>

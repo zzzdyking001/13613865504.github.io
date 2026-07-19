@@ -1,0 +1,455 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>初中地理 · 核心知识点梳理</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, "PingFang SC", "Microsoft YaHei", "Helvetica Neue", Arial, sans-serif;
+            background: #f0f5f0;
+            color: #1a2e2a;
+            padding: 20px;
+            line-height: 1.8;
+        }
+
+        .container {
+            max-width: 960px;
+            margin: 0 auto;
+            background: #ffffff;
+            border-radius: 24px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.08);
+            padding: 40px 48px;
+        }
+
+        @media (max-width: 640px) {
+            .container {
+                padding: 20px 16px;
+            }
+        }
+
+        h1 {
+            font-size: 28px;
+            font-weight: 700;
+            text-align: center;
+            padding-bottom: 18px;
+            border-bottom: 3px solid #2d7d4a;
+            margin-bottom: 24px;
+            letter-spacing: 2px;
+            color: #0b2a1e;
+        }
+
+        .subtitle {
+            text-align: center;
+            font-size: 15px;
+            color: #4a6b5a;
+            margin-top: -12px;
+            margin-bottom: 32px;
+            background: #e8f5ee;
+            padding: 6px 20px;
+            border-radius: 40px;
+            display: inline-block;
+            margin-left: auto;
+            margin-right: auto;
+            width: auto;
+        }
+
+        .subtitle-wrap {
+            text-align: center;
+        }
+
+        h2 {
+            font-size: 22px;
+            font-weight: 700;
+            margin: 32px 0 14px 0;
+            padding-left: 14px;
+            border-left: 6px solid #2d7d4a;
+            color: #0b2a1e;
+        }
+
+        h3 {
+            font-size: 17px;
+            font-weight: 700;
+            margin: 22px 0 10px 0;
+            color: #1a4a35;
+            background: #ecf7f0;
+            padding: 5px 16px;
+            border-radius: 30px;
+            display: inline-block;
+        }
+
+        h4 {
+            font-size: 15px;
+            font-weight: 600;
+            margin: 16px 0 6px 0;
+            color: #1e5a3a;
+            padding-left: 4px;
+        }
+
+        .grid-list {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4px 20px;
+            background: #f7fcf9;
+            padding: 14px 20px;
+            border-radius: 18px;
+            margin: 6px 0 14px 0;
+            border: 1px solid #e0ede6;
+        }
+
+        @media (max-width: 640px) {
+            .grid-list {
+                grid-template-columns: 1fr;
+                padding: 10px 14px;
+            }
+        }
+
+        .grid-item {
+            padding: 5px 4px;
+            border-bottom: 1px dashed #dce8e0;
+            font-size: 14.5px;
+            display: flex;
+            align-items: baseline;
+            gap: 6px;
+        }
+
+        .grid-item:last-child {
+            border-bottom: none;
+        }
+
+        .num {
+            font-weight: 700;
+            color: #2d7d4a;
+            font-size: 13px;
+            min-width: 30px;
+            display: inline-block;
+        }
+
+        .highlight {
+            background: #e6f5ec;
+            padding: 0 6px;
+            border-radius: 4px;
+            font-weight: 500;
+            color: #1a4a35;
+        }
+
+        .tag {
+            display: inline-block;
+            background: #e0ede6;
+            color: #1a4a35;
+            font-size: 12px;
+            padding: 0 12px;
+            border-radius: 30px;
+            font-weight: 500;
+            margin-right: 4px;
+            white-space: nowrap;
+        }
+
+        .tip-box {
+            background: #eaf5ef;
+            border-radius: 20px;
+            padding: 20px 28px;
+            margin: 32px 0 12px 0;
+            border-left: 6px solid #2d7d4a;
+        }
+
+        .tip-box strong {
+            color: #0b2a1e;
+        }
+
+        .tip-box ul {
+            margin-top: 8px;
+            padding-left: 20px;
+            list-style-type: none;
+        }
+
+        .tip-box ul li {
+            padding: 2px 0;
+        }
+
+        .tip-box ul li::before {
+            content: "✓ ";
+            color: #2d7d4a;
+            font-weight: 700;
+        }
+
+        .footer-note {
+            text-align: center;
+            font-size: 14px;
+            color: #6a8a7a;
+            margin-top: 32px;
+            border-top: 1px solid #dce8e0;
+            padding-top: 24px;
+        }
+
+        .badge {
+            background: #cde4d8;
+            color: #0b2a1e;
+            font-size: 13px;
+            border-radius: 30px;
+            padding: 0 14px;
+            font-weight: 600;
+        }
+
+        hr {
+            border: none;
+            border-top: 2px dotted #cde0d4;
+            margin: 24px 0;
+        }
+
+        .inline-code {
+            background: #e6f5ec;
+            padding: 0 8px;
+            border-radius: 6px;
+            font-size: 14px;
+            color: #1a4a35;
+        }
+
+        .example-box {
+            background: #f4fbf7;
+            padding: 8px 16px;
+            border-radius: 12px;
+            margin: 4px 0 8px 0;
+            font-size: 14px;
+            color: #1a4a35;
+            border: 1px solid #dce8e0;
+        }
+
+        .term {
+            font-weight: 600;
+            color: #1e5a3a;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+
+    <h1>🌍 初中地理 · 核心知识点梳理</h1>
+    <div class="subtitle-wrap">
+        <span class="subtitle">🔹 四大板块 · 系统复习 🔹</span>
+    </div>
+
+    <!-- ========================================== -->
+    <!-- 第一部分：地球与地图 -->
+    <!-- ========================================== -->
+    <h2>一、地球与地图 <span class="badge">约20个核心点</span></h2>
+    <p style="color:#4a6b5a; font-size:15px; margin-bottom:12px;">地理学习的基础工具和空间概念。</p>
+
+    <h3>1. 地球</h3>
+    <h4>▸ 地球的形状与大小</h4>
+    <div class="grid-list">
+        <div class="grid-item"><span class="num">1.</span> 地球形状：<span class="highlight">两极稍扁、赤道略鼓的不规则球体</span></div>
+        <div class="grid-item"><span class="num">2.</span> 赤道半径（6378km）> 极半径（6357km）</div>
+        <div class="grid-item"><span class="num">3.</span> 赤道周长约4万千米</div>
+        <div class="grid-item"><span class="num">4.</span> 地球表面积约5.1亿平方千米</div>
+    </div>
+
+    <h4>▸ 经纬网</h4>
+    <div class="grid-list">
+        <div class="grid-item"><span class="num">5.</span> 纬线：<span class="term">与赤道平行</span>，指示<span class="highlight">东西</span>方向，长度从赤道向两极递减</div>
+        <div class="grid-item"><span class="num">6.</span> 经线：<span class="term">连接南北两极</span>，指示<span class="highlight">南北</span>方向，所有经线等长</div>
+        <div class="grid-item"><span class="num">7.</span> 赤道（0°纬线）：划分南北半球的分界线</div>
+        <div class="grid-item"><span class="num">8.</span> 本初子午线（0°经线）：划分东西经度的起始线</div>
+        <div class="grid-item"><span class="num">9.</span> 20°W 和 160°E 构成的经线圈：划分东西半球的分界线</div>
+        <div class="grid-item"><span class="num">10.</span> 纬度范围：0°~90°（北纬N，南纬S）</div>
+        <div class="grid-item"><span class="num">11.</span> 经度范围：0°~180°（东经E，西经W）</div>
+        <div class="grid-item"><span class="num">12.</span> 高中低纬度的划分：<span class="inline-code">0°~30°</span>低纬度 · <span class="inline-code">30°~60°</span>中纬度 · <span class="inline-code">60°~90°</span>高纬度</div>
+    </div>
+
+    <h3>2. 地球的运动</h3>
+    <h4>▸ 自转</h4>
+    <div class="grid-list">
+        <div class="grid-item"><span class="num">13.</span> 方向：<span class="highlight">自西向东</span></div>
+        <div class="grid-item"><span class="num">14.</span> 周期：约<span class="highlight">24小时</span>（一天）</div>
+        <div class="grid-item"><span class="num">15.</span> 产生现象：<span class="highlight">昼夜交替</span>、时间差异（东早西晚）</div>
+    </div>
+
+    <h4>▸ 公转</h4>
+    <div class="grid-list">
+        <div class="grid-item"><span class="num">16.</span> 方向：自西向东</div>
+        <div class="grid-item"><span class="num">17.</span> 周期：约<span class="highlight">一年</span>（365天）</div>
+        <div class="grid-item"><span class="num">18.</span> 产生现象：<span class="highlight">四季更替</span>、<span class="highlight">昼夜长短变化</span>、五带划分</div>
+        <div class="grid-item"><span class="num">19.</span> 五带：<span class="term">热带</span>（有阳光直射）、<span class="term">南北温带</span>（四季分明）、<span class="term">南北寒带</span>（有极昼极夜）</div>
+    </div>
+
+    <h3>3. 地图</h3>
+    <div class="grid-list">
+        <div class="grid-item"><span class="num">20.</span> 地图三要素：<span class="highlight">方向、比例尺、图例和注记</span></div>
+        <div class="grid-item"><span class="num">21.</span> 比例尺 = 图上距离 / 实地距离（比例尺越大，内容越详细，范围越小）</div>
+        <div class="grid-item"><span class="num">22.</span> 方向判断：一般地图（上北下南左西右东）、指向标地图、经纬网地图</div>
+        <div class="grid-item"><span class="num">23.</span> 等高线地形图：<span class="term">等高线稀疏</span>→坡缓 · <span class="term">等高线密集</span>→坡陡</div>
+        <div class="grid-item"><span class="num">24.</span> 常见地形部位：<span class="highlight">山顶、山脊、山谷、鞍部、陡崖</span></div>
+        <div class="grid-item"><span class="num">25.</span> 分层设色地形图：<span class="term">绿色</span>表示平原、<span class="term">蓝色</span>表示海洋</div>
+    </div>
+
+    <hr>
+
+    <!-- ========================================== -->
+    <!-- 第二部分：世界地理 -->
+    <!-- ========================================== -->
+    <h2>二、世界地理 <span class="badge">约35个核心点</span></h2>
+    <p style="color:#4a6b5a; font-size:15px; margin-bottom:12px;">认识世界的海陆分布、气候、居民和区域特征。</p>
+
+    <h3>1. 海陆分布</h3>
+    <div class="grid-list">
+        <div class="grid-item"><span class="num">26.</span> 地球表面 <span class="highlight">71% 海洋，29% 陆地</span>（“七分海洋，三分陆地”）</div>
+        <div class="grid-item"><span class="num">27.</span> 七大洲（按面积从大到小）：<span class="highlight">亚、非、北美、南美、南极、欧洲、大洋洲</span></div>
+        <div class="grid-item"><span class="num">28.</span> 四大洋（按面积从大到小）：<span class="highlight">太平洋、大西洋、印度洋、北冰洋</span></div>
+        <div class="grid-item"><span class="num">29.</span> 大洲分界线：亚欧（乌拉尔山—乌拉尔河—里海—大高加索山—黑海—土耳其海峡）</div>
+        <div class="grid-item"><span class="num">30.</span> 亚非分界线：<span class="highlight">苏伊士运河</span>　·　南北美分界线：<span class="highlight">巴拿马运河</span></div>
+    </div>
+
+    <h3>2. 世界气候</h3>
+    <div class="grid-list">
+        <div class="grid-item"><span class="num">31.</span> 天气（短时间、多变性）vs 气候（长时间、稳定性）</div>
+        <div class="grid-item"><span class="num">32.</span> 气温分布规律：从低纬度向高纬度<span class="highlight">递减</span></div>
+        <div class="grid-item"><span class="num">33.</span> 降水分布规律：赤道附近降水多，两极地区降水少</div>
+        <div class="grid-item"><span class="num">34.</span> 热带气候类型：热带雨林（终年高温多雨）、热带草原、热带季风、热带沙漠</div>
+        <div class="grid-item"><span class="num">35.</span> 温带气候类型：温带季风、温带大陆性、温带海洋性、地中海气候</div>
+        <div class="grid-item"><span class="num">36.</span> 寒带气候：终年严寒　·　高山高原气候：垂直变化显著</div>
+        <div class="grid-item"><span class="num">37.</span> 影响气候的主要因素：<span class="highlight">纬度位置、海陆位置、地形</span></div>
+    </div>
+
+    <h3>3. 世界居民与聚落</h3>
+    <div class="grid-list">
+        <div class="grid-item"><span class="num">38.</span> 世界人口分布：<span class="term">中低纬度沿海平原</span>人口稠密（亚洲东部和南部、欧洲、北美东部）</div>
+        <div class="grid-item"><span class="num">39.</span> 人口增长：人口自然增长率 = 出生率 - 死亡率</div>
+        <div class="grid-item"><span class="num">40.</span> 三大人种：<span class="highlight">白种人、黄种人、黑种人</span></div>
+        <div class="grid-item"><span class="num">41.</span> 世界主要语言：汉语（使用人数最多）、英语（使用范围最广）</div>
+        <div class="grid-item"><span class="num">42.</span> 三大宗教：<span class="highlight">基督教</span>（分布最广）、<span class="highlight">伊斯兰教</span>、<span class="highlight">佛教</span></div>
+        <div class="grid-item"><span class="num">43.</span> 聚落（城市与乡村）的形成与自然环境的关系</div>
+    </div>
+
+    <h3>4. 世界区域地理</h3>
+    <h4>▸ 亚洲</h4>
+    <div class="grid-list">
+        <div class="grid-item"><span class="num">44.</span> 亚洲面积最大、人口最多、跨纬度最广的大洲</div>
+        <div class="grid-item"><span class="num">45.</span> 亚洲地形特征：<span class="highlight">中部高、四周低</span>（山地高原分布在中部）</div>
+        <div class="grid-item"><span class="num">46.</span> 亚洲气候特征：<span class="highlight">复杂多样、季风气候显著、大陆性气候强</span></div>
+        <div class="grid-item"><span class="num">47.</span> 亚洲的河流：发源于中部（呈放射状流向四周海洋）</div>
+    </div>
+
+    <h4>▸ 主要国家和地区</h4>
+    <div class="grid-list">
+        <div class="grid-item"><span class="num">48.</span> 日本：岛国、多火山地震（位于环太平洋火山地震带）</div>
+        <div class="grid-item"><span class="num">49.</span> 东南亚：<span class="term">马六甲海峡</span>（十字路口的重要通道）</div>
+        <div class="grid-item"><span class="num">50.</span> 印度：热带季风气候（旱季和雨季，西南季风带来降水）</div>
+        <div class="grid-item"><span class="num">51.</span> 俄罗斯：面积最大、纬度高、气候寒冷（冬季漫长）</div>
+        <div class="grid-item"><span class="num">52.</span> 中东：<span class="term">“三洲五海之地”</span>（石油资源丰富、水资源匮乏）</div>
+        <div class="grid-item"><span class="num">53.</span> 欧洲西部：温带海洋性气候（畜牧业发达）、发达国家集中</div>
+        <div class="grid-item"><span class="num">54.</span> 撒哈拉以南非洲：<span class="term">“黑种人的故乡”</span>、热带草原广布（野生动物迁徙）</div>
+        <div class="grid-item"><span class="num">55.</span> 澳大利亚：<span class="term">“世界活化石博物馆”</span>、“骑在羊背上的国家”、“坐在矿车上的国家”</div>
+        <div class="grid-item"><span class="num">56.</span> 美国：农业专业化、工业发达（高新技术产业）</div>
+        <div class="grid-item"><span class="num">57.</span> 巴西：热带面积最大、<span class="term">亚马孙热带雨林</span>（“地球之肺”）</div>
+        <div class="grid-item"><span class="num">58.</span> 极地地区：南极（淡水资源最丰富、平均海拔最高）vs 北极</div>
+    </div>
+
+    <hr>
+
+    <!-- ========================================== -->
+    <!-- 第三部分：中国地理 -->
+    <!-- ========================================== -->
+    <h2>三、中国地理 <span class="badge">约35个核心点</span></h2>
+    <p style="color:#4a6b5a; font-size:15px; margin-bottom:12px;">中考重点，必须熟练掌握。</p>
+
+    <h3>1. 中国的疆域与人口</h3>
+    <div class="grid-list">
+        <div class="grid-item"><span class="num">59.</span> 中国的位置：亚洲东部、太平洋西岸（海陆兼备）</div>
+        <div class="grid-item"><span class="num">60.</span> 领土四至点：最北（漠河）、最南（曾母暗沙）、最东（乌苏里江）、最西（帕米尔高原）</div>
+        <div class="grid-item"><span class="num">61.</span> 陆地面积：约<span class="highlight">960万平方千米</span>（世界第三，仅次于俄罗斯和加拿大）</div>
+        <div class="grid-item"><span class="num">62.</span> 邻国：<span class="term">陆上邻国14个</span>（如俄罗斯、蒙古、印度等）、<span class="term">隔海相望6个</span>（日本、韩国、菲律宾等）</div>
+        <div class="grid-item"><span class="num">63.</span> 行政区划：<span class="highlight">4个直辖市</span>（京、津、沪、渝）、<span class="highlight">5个自治区</span>、<span class="highlight">2个特别行政区</span>、<span class="highlight">23个省</span></div>
+        <div class="grid-item"><span class="num">64.</span> 人口分布：<span class="highlight">胡焕庸线</span>（黑河—腾冲线）以东人口稠密，以西稀疏</div>
+        <div class="grid-item"><span class="num">65.</span> 民族分布：<span class="term">“大散居、小聚居、交错杂居”</span>，少数民族多分布在西南、西北和东北地区</div>
+    </div>
+
+    <h3>2. 中国的自然环境</h3>
+    <h4>▸ 地形地势</h4>
+    <div class="grid-list">
+        <div class="grid-item"><span class="num">66.</span> 地势特征：<span class="highlight">西高东低，呈三级阶梯状分布</span></div>
+        <div class="grid-item"><span class="num">67.</span> 第一级阶梯：青藏高原（平均海拔4000米以上）</div>
+        <div class="grid-item"><span class="num">68.</span> 第二级阶梯：高原和盆地（平均海拔1000~2000米）</div>
+        <div class="grid-item"><span class="num">69.</span> 第三级阶梯：平原和丘陵（平均海拔500米以下）</div>
+        <div class="grid-item"><span class="num">70.</span> 主要山脉：<span class="term">喜马拉雅山脉</span>（世界最高峰——珠穆朗玛峰）</div>
+        <div class="grid-item"><span class="num">71.</span> 四大高原：<span class="highlight">青藏高原</span>（世界屋脊）、<span class="highlight">内蒙古高原</span>、<span class="highlight">黄土高原</span>、<span class="highlight">云贵高原</span></div>
+        <div class="grid-item"><span class="num">72.</span> 四大盆地：<span class="highlight">塔里木盆地</span>（最大）、<span class="highlight">准噶尔盆地</span>、<span class="highlight">柴达木盆地</span>（“聚宝盆”）、<span class="highlight">四川盆地</span>（“天府之国”）</div>
+        <div class="grid-item"><span class="num">73.</span> 三大平原：<span class="highlight">东北平原</span>（最大）、<span class="highlight">华北平原</span>、<span class="highlight">长江中下游平原</span>（“鱼米之乡”）</div>
+    </div>
+
+    <h4>▸ 气候与河流</h4>
+    <div class="grid-list">
+        <div class="grid-item"><span class="num">74.</span> 气候特征：<span class="highlight">复杂多样、季风气候显著</span>（夏季高温多雨，冬季寒冷干燥）</div>
+        <div class="grid-item"><span class="num">75.</span> 温度带：热带、亚热带、暖温带、中温带、寒温带、高原气候区</div>
+        <div class="grid-item"><span class="num">76.</span> 干湿地区：湿润、半湿润、半干旱、干旱地区</div>
+        <div class="grid-item"><span class="num">77.</span> 季风区与非季风区的分界线：<span class="term">大兴安岭—阴山—贺兰山—巴颜喀拉山—冈底斯山</span></div>
+        <div class="grid-item"><span class="num">78.</span> 长江：<span class="highlight">最长的河流</span>（6300km）、水能资源最丰富（三峡工程）</div>
+        <div class="grid-item"><span class="num">79.</span> 黄河：<span class="highlight">“母亲河”</span>、含沙量最大（中游流经黄土高原）、“地上河”在下游</div>
+    </div>
+
+    <h3>3. 中国的区域差异</h3>
+    <div class="grid-list">
+        <div class="grid-item"><span class="num">80.</span> 四大地理区域：<span class="highlight">北方地区、南方地区、西北地区、青藏地区</span></div>
+        <div class="grid-item"><span class="num">81.</span> 北方地区（秦岭—淮河以北）：温带季风气候，旱地为主，小麦、玉米为主</div>
+        <div class="grid-item"><span class="num">82.</span> 南方地区（秦岭—淮河以南）：亚热带季风气候，水田为主，水稻为主</div>
+        <div class="grid-item"><span class="num">83.</span> 秦岭—淮河一线的地理意义：<span class="term">1月0℃等温线、800mm年降水量线、亚热带与暖温带分界线、旱地与水田分界线</span></div>
+        <div class="grid-item"><span class="num">84.</span> 西北地区：干旱为主，畜牧业和灌溉农业（新疆、内蒙古）</div>
+        <div class="grid-item"><span class="num">85.</span> 青藏地区：高寒为主，种植业主要分布在河谷（雅鲁藏布江谷地）</div>
+    </div>
+
+    <h3>4. 中国的自然资源与经济发展</h3>
+    <div class="grid-list">
+        <div class="grid-item"><span class="num">86.</span> 自然资源特征：总量丰富、人均占有量少</div>
+        <div class="grid-item"><span class="num">87.</span> 水资源分布：南丰北缺（南多北少），解决措施：<span class="highlight">南水北调</span></div>
+        <div class="grid-item"><span class="num">88.</span> 土地资源：耕地、林地、草地、建设用地，<span class="term">耕地后备资源不足</span></div>
+        <div class="grid-item"><span class="num">89.</span> 农业分布：东部（种植业）、西部（畜牧业）、南方（水稻）、北方（小麦）</div>
+        <div class="grid-item"><span class="num">90.</span> 工业分布：东部沿海地区（辽中南、京津唐、长江三角洲、珠江三角洲）</div>
+        <div class="grid-item"><span class="num">91.</span> 主要铁路干线：<span class="term">“五纵三横”</span>（京沪、京九、京广、陇海—兰新等）</div>
+        <div class="grid-item"><span class="num">92.</span> 高新技术产业：主要分布在<span class="highlight">高等院校和科研机构密集</span>的地区（中关村、上海高新区等）</div>
+    </div>
+
+    <!-- ========================================== -->
+    <!-- 第四部分：乡土地理与综合 -->
+    <!-- ========================================== -->
+    <h2>四、乡土地理与综合应用 <span class="badge">约8个核心点</span></h2>
+    <p style="color:#4a6b5a; font-size:15px; margin-bottom:12px;">结合实际，考查综合运用能力。</p>
+
+    <div class="grid-list">
+        <div class="grid-item"><span class="num">93.</span> 家乡的地理位置、行政区划、人口、民族</div>
+        <div class="grid-item"><span class="num">94.</span> 家乡的地形、气候、河流等自然特征</div>
+        <div class="grid-item"><span class="num">95.</span> 家乡的主要物产、经济特色与发展</div>
+        <div class="grid-item"><span class="num">96.</span> 环境保护与可持续发展（如垃圾分类、节能减排）</div>
+        <div class="grid-item"><span class="num">97.</span> 地图的判读与实际应用</div>
+        <div class="grid-item"><span class="num">98.</span> 地理与日常生活的关系（旅游、交通、防灾减灾）</div>
+    </div>
+
+    <!-- ========================================== -->
+    <!-- 复习小贴士 -->
+    <!-- ========================================== -->
+    <div class="tip-box">
+        <strong>💡 复习小贴士</strong>
+        <ul>
+            <li><strong>多看地图、会填图</strong>：地理离不开地图，建议把中国地图、世界地图、大洲分界图等反复看、反复填。</li>
+            <li><strong>对比记忆</strong>：比如长江与黄河的对比、北方与南方的对比，列表格记忆事半功倍。</li>
+            <li><strong>抓住“线”</strong>：重要的地理分界线（秦岭—淮河、季风区与非季风区界线等）是高频考点。</li>
+            <li><strong>联系时事</strong>：地理常考热点（如一带一路、南水北调、环境保护），可以结合新闻理解。</li>
+        </ul>
+        <p style="margin-top:12px; background:#d6ede0; padding:6px 18px; border-radius:30px; display:inline-block; color:#0b2a1e;">
+            ⏳ 时间紧张的话，优先巩固 <strong>经纬网与地球运动</strong>、<strong>中国地形与气候</strong>、<strong>四大地理区域特征</strong> 三大板块
+        </p>
+    </div>
+
+    <div class="footer-note">
+        整理自近年中考趋势 · 祝复习顺利 🍀
+    </div>
+
+</div>
+
+</body>
+</html>

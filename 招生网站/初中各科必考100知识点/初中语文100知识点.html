@@ -1,0 +1,495 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>初中语文 · 核心知识点梳理</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, "PingFang SC", "Microsoft YaHei", "Helvetica Neue", Arial, sans-serif;
+            background: #f5f3f0;
+            color: #1e2a3a;
+            padding: 20px;
+            line-height: 1.8;
+        }
+
+        .container {
+            max-width: 960px;
+            margin: 0 auto;
+            background: #ffffff;
+            border-radius: 24px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.08);
+            padding: 40px 48px;
+        }
+
+        @media (max-width: 640px) {
+            .container {
+                padding: 20px 16px;
+            }
+        }
+
+        h1 {
+            font-size: 28px;
+            font-weight: 700;
+            text-align: center;
+            padding-bottom: 18px;
+            border-bottom: 3px solid #b44c3c;
+            margin-bottom: 24px;
+            letter-spacing: 2px;
+            color: #2c1810;
+        }
+
+        .subtitle {
+            text-align: center;
+            font-size: 15px;
+            color: #6b5a4f;
+            margin-top: -12px;
+            margin-bottom: 32px;
+            background: #f6efe9;
+            padding: 6px 20px;
+            border-radius: 40px;
+            display: inline-block;
+            margin-left: auto;
+            margin-right: auto;
+            width: auto;
+        }
+
+        .subtitle-wrap {
+            text-align: center;
+        }
+
+        h2 {
+            font-size: 22px;
+            font-weight: 700;
+            margin: 32px 0 14px 0;
+            padding-left: 14px;
+            border-left: 6px solid #b44c3c;
+            color: #2c1810;
+        }
+
+        h3 {
+            font-size: 17px;
+            font-weight: 700;
+            margin: 22px 0 10px 0;
+            color: #3d2a1e;
+            background: #f7f1ec;
+            padding: 5px 16px;
+            border-radius: 30px;
+            display: inline-block;
+        }
+
+        h4 {
+            font-size: 15px;
+            font-weight: 600;
+            margin: 16px 0 6px 0;
+            color: #4d3427;
+            padding-left: 4px;
+        }
+
+        .section-desc {
+            font-size: 14px;
+            color: #6b5a4f;
+            margin-bottom: 14px;
+            background: #f8f4f0;
+            padding: 6px 18px;
+            border-radius: 30px;
+            display: inline-block;
+        }
+
+        .grid-list {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4px 20px;
+            background: #faf8f6;
+            padding: 14px 20px;
+            border-radius: 18px;
+            margin: 6px 0 14px 0;
+            border: 1px solid #ede8e2;
+        }
+
+        @media (max-width: 640px) {
+            .grid-list {
+                grid-template-columns: 1fr;
+                padding: 10px 14px;
+            }
+        }
+
+        .grid-item {
+            padding: 5px 4px;
+            border-bottom: 1px dashed #e8e0d8;
+            font-size: 14.5px;
+            display: flex;
+            align-items: baseline;
+            gap: 6px;
+        }
+
+        .grid-item:last-child {
+            border-bottom: none;
+        }
+
+        .num {
+            font-weight: 700;
+            color: #b44c3c;
+            font-size: 13px;
+            min-width: 30px;
+            display: inline-block;
+        }
+
+        .highlight {
+            background: #f5ede7;
+            padding: 0 6px;
+            border-radius: 4px;
+            font-weight: 500;
+            color: #3d2a1e;
+        }
+
+        .tag {
+            display: inline-block;
+            background: #ede5dd;
+            color: #3d2a1e;
+            font-size: 12px;
+            padding: 0 12px;
+            border-radius: 30px;
+            font-weight: 500;
+            margin-right: 4px;
+            white-space: nowrap;
+        }
+
+        .block-item {
+            padding: 5px 0 5px 12px;
+            border-bottom: 1px solid #ede8e2;
+            font-size: 14.5px;
+        }
+
+        .block-item:last-child {
+            border-bottom: none;
+        }
+
+        .tip-box {
+            background: #f6efe9;
+            border-radius: 20px;
+            padding: 20px 28px;
+            margin: 32px 0 12px 0;
+            border-left: 6px solid #b44c3c;
+        }
+
+        .tip-box strong {
+            color: #2c1810;
+        }
+
+        .tip-box ul {
+            margin-top: 8px;
+            padding-left: 20px;
+            list-style-type: none;
+        }
+
+        .tip-box ul li {
+            padding: 2px 0;
+        }
+
+        .tip-box ul li::before {
+            content: "✓ ";
+            color: #b44c3c;
+            font-weight: 700;
+        }
+
+        .footer-note {
+            text-align: center;
+            font-size: 14px;
+            color: #8b7a6e;
+            margin-top: 32px;
+            border-top: 1px solid #e8e0d8;
+            padding-top: 24px;
+        }
+
+        .badge {
+            background: #dcd0c6;
+            color: #2c1810;
+            font-size: 13px;
+            border-radius: 30px;
+            padding: 0 14px;
+            font-weight: 600;
+        }
+
+        hr {
+            border: none;
+            border-top: 2px dotted #ddd2c8;
+            margin: 24px 0;
+        }
+
+        .inline-code {
+            background: #ede5dd;
+            padding: 0 8px;
+            border-radius: 6px;
+            font-family: "PingFang SC", "Microsoft YaHei", sans-serif;
+            font-size: 14px;
+            color: #3d2a1e;
+        }
+
+        .example-box {
+            background: #faf6f2;
+            padding: 8px 16px;
+            border-radius: 12px;
+            margin: 4px 0 8px 0;
+            font-size: 14px;
+            color: #4d3427;
+            border: 1px solid #e8dfd7;
+        }
+
+        .two-col {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 6px 20px;
+        }
+
+        @media (max-width: 640px) {
+            .two-col {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+
+    <h1>📖 初中语文 · 核心知识点梳理</h1>
+    <div class="subtitle-wrap">
+        <span class="subtitle">🔹 五大板块 · 系统复习 🔹</span>
+    </div>
+
+    <!-- ========================================== -->
+    <!-- 第一部分：积累与运用 -->
+    <!-- ========================================== -->
+    <h2>一、积累与运用 <span class="badge">约30个核心点</span></h2>
+    <p style="color:#5a4a3e; font-size:15px; margin-bottom:12px;">语文的“地基”，靠记忆和细心拿分。</p>
+
+    <h3>1. 字音 · 字形</h3>
+    <div class="grid-list">
+        <div class="grid-item"><span class="num">1.</span> 课标常用字（课下注释 + 课后“读读写写”）</div>
+        <div class="grid-item"><span class="num">2.</span> 多音字辨析（如：<span class="inline-code">载</span> zǎi/zài）</div>
+        <div class="grid-item"><span class="num">3.</span> 形近字辨析（如：<span class="inline-code">燥</span> / <span class="inline-code">躁</span> / <span class="inline-code">澡</span>）</div>
+        <div class="grid-item"><span class="num">4.</span> 习惯性误读字（如：<span class="inline-code">哺</span> bǔ，非 pǔ）</div>
+        <div class="grid-item"><span class="num">5.</span> 田字格 / 米字格规范书写</div>
+        <div class="grid-item"><span class="num">6.</span> 书法字体鉴赏（楷行隶草篆基本特征）</div>
+    </div>
+
+    <h3>2. 词语的理解与运用</h3>
+    <div class="grid-list">
+        <div class="grid-item"><span class="num">7.</span> 成语误用六大类型：望文生义、用错对象、不合语境、褒贬不当、语义重复、谦敬错位</div>
+        <div class="grid-item"><span class="num">8.</span> 近义词辨析（结合语境）</div>
+        <div class="grid-item"><span class="num">9.</span> 关联词搭配（如：<span class="inline-code">不仅……而且……</span>）</div>
+    </div>
+    <div class="example-box">
+        📌 典型易错：<span class="inline-code">首当其冲</span>（最先受到冲击，非“首先受到奖励”） · <span class="inline-code">不刊之论</span>（不可更改的言论，非“不能刊登”）
+    </div>
+
+    <h3>3. 病句辨析与修改</h3>
+    <div class="grid-list">
+        <div class="grid-item"><span class="num">10.</span> 语序不当</div>
+        <div class="grid-item"><span class="num">11.</span> 搭配不当</div>
+        <div class="grid-item"><span class="num">12.</span> 成分残缺或赘余</div>
+        <div class="grid-item"><span class="num">13.</span> 不合逻辑</div>
+        <div class="grid-item"><span class="num">14.</span> 句式杂糅</div>
+    </div>
+
+    <h3>4. 标点符号</h3>
+    <div class="grid-list">
+        <div class="grid-item"><span class="num">15.</span> 顿号、逗号、分号的层级用法</div>
+        <div class="grid-item"><span class="num">16.</span> 引号与句号的位置关系（<span class="inline-code">。” vs ”。</span>）</div>
+        <div class="grid-item"><span class="num">17.</span> 书名号（<span class="inline-code">《》</span>）与引号（<span class="inline-code">“ ”</span>）的使用范围</div>
+        <div class="grid-item"><span class="num">18.</span> 破折号（解释说明 / 话题转换）与冒号（提示下文 / 总结上文）</div>
+    </div>
+
+    <h3>5. 文学文化常识</h3>
+    <div class="grid-list">
+        <div class="grid-item"><span class="num">19.</span> 重要作家作品（唐宋八大家、李杜、鲁迅、朱自清、老舍等）</div>
+        <div class="grid-item"><span class="num">20.</span> 作品体裁与出处（如《诗经》、“四大名著”）</div>
+        <div class="grid-item"><span class="num">21.</span> 谦辞与敬辞（<span class="inline-code">家父</span> vs <span class="inline-code">令尊</span>）</div>
+        <div class="grid-item"><span class="num">22.</span> 传统节日与二十四节气</div>
+        <div class="grid-item"><span class="num">23.</span> 科举制度层级（童生→秀才→举人→贡士→进士）</div>
+    </div>
+
+    <h3>6. 古诗文默写</h3>
+    <div class="grid-list">
+        <div class="grid-item"><span class="num">24.</span> 直接型默写（给上句填下句）</div>
+        <div class="grid-item"><span class="num">25.</span> 理解型 / 情境型默写（根据语境提示填写）</div>
+    </div>
+
+    <h3>7. 综合性学习</h3>
+    <div class="grid-list">
+        <div class="grid-item"><span class="num">26.</span> 信息提取与概括</div>
+        <div class="grid-item"><span class="num">27.</span> 活动方案设计（主题、目的、流程）</div>
+        <div class="grid-item"><span class="num">28.</span> 口语交际（劝说、转述、开场白）</div>
+        <div class="grid-item"><span class="num">29.</span> 对联与仿写</div>
+        <div class="grid-item"><span class="num">30.</span> 图文转换（图表、漫画解读）</div>
+    </div>
+
+    <hr>
+
+    <!-- ========================================== -->
+    <!-- 第二部分：古诗文阅读 -->
+    <!-- ========================================== -->
+    <h2>二、古诗文阅读 <span class="badge">约30个核心点</span></h2>
+    <p style="color:#5a4a3e; font-size:15px; margin-bottom:12px;">难点与拉分项，重在课内知识向课外的迁移。</p>
+
+    <h3>📜 文言文阅读</h3>
+
+    <h4>▸ 实词</h4>
+    <div class="grid-list">
+        <div class="grid-item"><span class="num">31.</span> 通假字（如：<span class="inline-code">说</span> → <span class="inline-code">悦</span>）</div>
+        <div class="grid-item"><span class="num">32.</span> 词类活用（名词作动词 / 形容词作名词 / 使动意动）</div>
+        <div class="grid-item"><span class="num">33.</span> 古今异义（如：<span class="inline-code">妻子</span> 古义：妻子儿女）</div>
+        <div class="grid-item"><span class="num">34.</span> 一词多义（如：<span class="inline-code">之</span> 的多种用法）</div>
+    </div>
+
+    <h4>▸ 虚词（高频）</h4>
+    <div class="grid-list">
+        <div class="grid-item"><span class="num">35.</span> <span class="inline-code">之</span> （代词 / 助词“的” / 取消独立性 / 宾语前置标志）</div>
+        <div class="grid-item"><span class="num">36.</span> <span class="inline-code">而</span> （表顺承 / 转折 / 并列 / 修饰）</div>
+        <div class="grid-item"><span class="num">37.</span> <span class="inline-code">以</span> （介词“用”“凭借”“因为” / 连词“来”）</div>
+        <div class="grid-item"><span class="num">38.</span> <span class="inline-code">其</span> （代词 / 副词“难道”“大概”）</div>
+        <div class="grid-item"><span class="num">39.</span> <span class="inline-code">于</span> （介词“在”“到”“从”“对”）</div>
+        <div class="grid-item"><span class="num">40.</span> <span class="inline-code">为</span> （介词“被”“替” / 动词“做”“是”）</div>
+        <div class="grid-item"><span class="num">41.</span> <span class="inline-code">乃</span> （副词“于是”“竟然”“才”）</div>
+        <div class="grid-item"><span class="num">42.</span> <span class="inline-code">则</span> （连词“就”“那么”“却”）</div>
+    </div>
+
+    <h4>▸ 句子翻译与理解</h4>
+    <div class="grid-list">
+        <div class="grid-item"><span class="num">43.</span> 翻译原则：直译为主，意译为辅</div>
+        <div class="grid-item"><span class="num">44.</span> 特殊句式：判断句（<span class="inline-code">……者……也</span>）、倒装句、省略句</div>
+        <div class="grid-item"><span class="num">45.</span> 断句（划分朗读节奏）</div>
+        <div class="grid-item"><span class="num">46.</span> 内容概括与主旨把握</div>
+        <div class="grid-item"><span class="num">47.</span> 人物形象分析（如：愚公的坚持不懈）</div>
+        <div class="grid-item"><span class="num">48.</span> 作者观点与态度</div>
+    </div>
+
+    <h3>🎋 古诗词鉴赏</h3>
+    <div class="grid-list">
+        <div class="grid-item"><span class="num">49.</span> 描绘画面（抓意象、显特点）</div>
+        <div class="grid-item"><span class="num">50.</span> 品析炼字（动词 / 形容词的精妙）</div>
+        <div class="grid-item"><span class="num">51.</span> 把握情感（思乡怀人、壮志难酬、忧国忧民、热爱自然等）</div>
+        <div class="grid-item"><span class="num">52.</span> 辨识手法：<span class="inline-code">借景抒情</span> · <span class="inline-code">托物言志</span> · <span class="inline-code">用典</span> · <span class="inline-code">动静结合</span> · <span class="inline-code">虚实结合</span></div>
+        <div class="grid-item"><span class="num">53.</span> 修辞手法：<span class="inline-code">比喻</span> · <span class="inline-code">拟人</span> · <span class="inline-code">夸张</span> · <span class="inline-code">对比</span></div>
+        <div class="grid-item"><span class="num">54.</span> 意象分析（如：<span class="inline-code">月</span> 表思乡，<span class="inline-code">柳</span> 表送别）</div>
+    </div>
+
+    <hr>
+
+    <!-- ========================================== -->
+    <!-- 第三部分：现代文阅读 -->
+    <!-- ========================================== -->
+    <h2>三、现代文阅读 <span class="badge">约25个核心点</span></h2>
+    <p style="color:#5a4a3e; font-size:15px; margin-bottom:12px;">考查理解能力与答题规范，掌握文体知识和答题术语是关键。</p>
+
+    <h3>📝 记叙文 · 散文 · 小说（文学类文本）</h3>
+    <div class="grid-list">
+        <div class="grid-item"><span class="num">55.</span> 六要素（时间、地点、人物、起因、经过、结果）</div>
+        <div class="grid-item"><span class="num">56.</span> 叙事线索（时间线 / 地点线 / 人物线 / 实物线 / 情感变化线）</div>
+        <div class="grid-item"><span class="num">57.</span> 记叙顺序：<span class="inline-code">顺叙</span>（脉络清晰） · <span class="inline-code">倒叙</span>（制造悬念） · <span class="inline-code">插叙</span>（补充衬托）</div>
+        <div class="grid-item"><span class="num">58.</span> 人称作用：第一人称（真实亲切） · 第二人称（拉近距离） · 第三人称（客观灵活）</div>
+        <div class="grid-item"><span class="num">59.</span> 人物描写：外貌、语言、动作、心理、神态（<span class="inline-code">外语动心神</span>）</div>
+        <div class="grid-item"><span class="num">60.</span> 环境描写：自然环境（渲染气氛） · 社会环境（交代背景）</div>
+        <div class="grid-item"><span class="num">61.</span> 修辞手法及作用：<span class="inline-code">比喻</span>（生动形象） · <span class="inline-code">拟人</span>（赋予情感） · <span class="inline-code">排比</span>（增强气势） · <span class="inline-code">夸张</span>（突出特征） · <span class="inline-code">反问/设问</span>（加强语气）</div>
+        <div class="grid-item"><span class="num">62.</span> 标题的含义与作用（线索 / 主旨 / 吸引读者）</div>
+        <div class="grid-item"><span class="num">63.</span> 句段作用：开头（总领/悬念） · 中间（承上启下） · 结尾（总结/升华）</div>
+        <div class="grid-item"><span class="num">64.</span> 表现手法：<span class="inline-code">衬托</span> · <span class="inline-code">象征</span> · <span class="inline-code">欲扬先抑</span> · <span class="inline-code">以小见大</span></div>
+        <div class="grid-item"><span class="num">65.</span> 主旨概括与情感把握</div>
+        <div class="grid-item"><span class="num">66.</span> 开放探究题（观点 + 理由）</div>
+    </div>
+
+    <h3>🔬 说明文（实用类文本）</h3>
+    <div class="grid-list">
+        <div class="grid-item"><span class="num">67.</span> 说明对象及其特征</div>
+        <div class="grid-item"><span class="num">68.</span> 说明方法及作用：<span class="inline-code">举例子</span>（具体） · <span class="inline-code">列数字</span>（准确） · <span class="inline-code">作比较</span>（突出） · <span class="inline-code">打比方</span>（形象） · <span class="inline-code">分类别</span>（条理）</div>
+        <div class="grid-item"><span class="num">69.</span> 说明顺序：<span class="inline-code">时间顺序</span> · <span class="inline-code">空间顺序</span> · <span class="inline-code">逻辑顺序</span></div>
+        <div class="grid-item"><span class="num">70.</span> 说明文语言特点（准确性、严密性、科学性）</div>
+    </div>
+
+    <h3>⚖️ 议论文（实用类文本）</h3>
+    <div class="grid-list">
+        <div class="grid-item"><span class="num">71.</span> 三要素：<span class="inline-code">论点</span>（中心/分论点） · <span class="inline-code">论据</span>（事实/道理） · <span class="inline-code">论证</span>（举例/道理/对比/比喻）</div>
+        <div class="grid-item"><span class="num">72.</span> 论证结构：总分总 · 总分 · 分总</div>
+        <div class="grid-item"><span class="num">73.</span> 论证方法及作用</div>
+        <div class="grid-item"><span class="num">74.</span> 议论文语言特点（严密性、逻辑性）</div>
+    </div>
+
+    <hr>
+
+    <!-- ========================================== -->
+    <!-- 第四部分：名著阅读 -->
+    <!-- ========================================== -->
+    <h2>四、名著阅读 <span class="badge">约10个核心点</span></h2>
+    <p style="color:#5a4a3e; font-size:15px; margin-bottom:12px;">每册教材指定必读篇目，需要整体把握。</p>
+
+    <div class="grid-list">
+        <div class="grid-item"><span class="num">75.</span> <span class="highlight">《朝花夕拾》</span> 鲁迅 · 散文集 · 篇目与人物</div>
+        <div class="grid-item"><span class="num">76.</span> <span class="highlight">《西游记》</span> 吴承恩 · 情节与师徒形象</div>
+        <div class="grid-item"><span class="num">77.</span> <span class="highlight">《红星照耀中国》</span> 埃德加·斯诺 · 纪实文学</div>
+        <div class="grid-item"><span class="num">78.</span> <span class="highlight">《昆虫记》</span> 法布尔 · 科普作品</div>
+        <div class="grid-item"><span class="num">79.</span> <span class="highlight">《水浒传》</span> 施耐庵 · 主要人物与绰号</div>
+        <div class="grid-item"><span class="num">80.</span> <span class="highlight">《艾青诗选》</span> 艾青 · 诗歌意象与情感</div>
+        <div class="grid-item"><span class="num">81.</span> <span class="highlight">《骆驼祥子》</span> 老舍 · 祥子“三起三落”</div>
+        <div class="grid-item"><span class="num">82.</span> <span class="highlight">《钢铁是怎样炼成的》</span> 保尔·柯察金 · 名言</div>
+        <div class="grid-item"><span class="num">83.</span> <span class="highlight">《儒林外史》</span> 吴敬梓 · 讽刺艺术</div>
+        <div class="grid-item"><span class="num">84.</span> <span class="highlight">《简·爱》</span> 夏洛蒂·勃朗特 · 女性独立</div>
+    </div>
+    <div class="example-box">
+        📌 复习建议：每部名著须掌握 <span class="inline-code">作者</span> · <span class="inline-code">主要人物及性格</span> · <span class="inline-code">经典情节</span> · <span class="inline-code">作品主旨</span>
+    </div>
+
+    <hr>
+
+    <!-- ========================================== -->
+    <!-- 第五部分：写作 -->
+    <!-- ========================================== -->
+    <h2>五、写作 <span class="badge">约15个核心点</span></h2>
+    <p style="color:#5a4a3e; font-size:15px; margin-bottom:12px;">占分最大，日常积累与构思技巧并重。</p>
+
+    <div class="grid-list">
+        <div class="grid-item"><span class="num">85.</span> 审题立意（准确把握题目要求）</div>
+        <div class="grid-item"><span class="num">86.</span> 选材与立意（从生活中挖掘真实、独特的素材）</div>
+        <div class="grid-item"><span class="num">87.</span> 开头技巧：开门见山 · 悬念式 · 引用式 · 描写式</div>
+        <div class="grid-item"><span class="num">88.</span> 结尾技巧：总结式 · 升华式 · 呼应式 · 留白式</div>
+        <div class="grid-item"><span class="num">89.</span> 结构安排：总分总 · 并列式 · 递进式 · 对比式</div>
+        <div class="grid-item"><span class="num">90.</span> 详略得当（中心突出）</div>
+        <div class="grid-item"><span class="num">91.</span> 描写生动（善用五感描写）</div>
+        <div class="grid-item"><span class="num">92.</span> 细节描写（以小见大）</div>
+        <div class="grid-item"><span class="num">93.</span> 真情实感（避免假大空）</div>
+        <div class="grid-item"><span class="num">94.</span> 反复扣题（点明中心）</div>
+        <div class="grid-item"><span class="num">95.</span> 过渡与照应（行文流畅）</div>
+        <div class="grid-item"><span class="num">96.</span> 语言表达：善用修辞与四字短语</div>
+        <div class="grid-item"><span class="num">97.</span> 卷面整洁（书写工整）</div>
+        <div class="grid-item"><span class="num">98.</span> 作文“六个一”：一个吸引人的开头、一条清晰的线索、一个波折的情节、一个传神的细节、一个反复扣题的关键句、一个有力的结尾</div>
+    </div>
+
+    <!-- ========================================== -->
+    <!-- 复习小贴士 -->
+    <!-- ========================================== -->
+    <div class="tip-box">
+        <strong>💡 复习小贴士</strong>
+        <ul>
+            <li><strong>回归课本</strong>：字词、古诗文、文学常识都源于课本，基础分必须拿稳。</li>
+            <li><strong>错题整理</strong>：把出错的字音、字形、成语、病句归类，反复巩固。</li>
+            <li><strong>掌握答题模板</strong>：阅读理解（如修辞赏析、环境描写作用）有相对固定的答题思路，可整理成模板强化记忆。</li>
+        </ul>
+        <p style="margin-top:12px; background:#ede5dd; padding:6px 18px; border-radius:30px; display:inline-block; color:#2c1810;">
+            ⏳ 时间紧张的话，优先巩固 <strong>古诗文默写与理解</strong>、<strong>文言文重点实词虚词</strong> 和 <strong>阅读答题模板</strong>
+        </p>
+    </div>
+
+    <div class="footer-note">
+        整理自近年中考趋势 · 祝复习顺利 🍀
+    </div>
+
+</div>
+
+</body>
+</html>

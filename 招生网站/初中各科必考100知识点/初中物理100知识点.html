@@ -1,0 +1,488 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>初中物理 · 核心知识点梳理</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, "PingFang SC", "Microsoft YaHei", "Helvetica Neue", Arial, sans-serif;
+            background: #f0f2f5;
+            color: #1a2a3a;
+            padding: 20px;
+            line-height: 1.8;
+        }
+
+        .container {
+            max-width: 960px;
+            margin: 0 auto;
+            background: #ffffff;
+            border-radius: 24px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.08);
+            padding: 40px 48px;
+        }
+
+        @media (max-width: 640px) {
+            .container {
+                padding: 20px 16px;
+            }
+        }
+
+        h1 {
+            font-size: 28px;
+            font-weight: 700;
+            text-align: center;
+            padding-bottom: 18px;
+            border-bottom: 3px solid #2563eb;
+            margin-bottom: 24px;
+            letter-spacing: 2px;
+            color: #0b1e33;
+        }
+
+        .subtitle {
+            text-align: center;
+            font-size: 15px;
+            color: #5a6b7e;
+            margin-top: -12px;
+            margin-bottom: 32px;
+            background: #eaf1fb;
+            padding: 6px 20px;
+            border-radius: 40px;
+            display: inline-block;
+            margin-left: auto;
+            margin-right: auto;
+            width: auto;
+        }
+
+        .subtitle-wrap {
+            text-align: center;
+        }
+
+        h2 {
+            font-size: 22px;
+            font-weight: 700;
+            margin: 32px 0 14px 0;
+            padding-left: 14px;
+            border-left: 6px solid #2563eb;
+            color: #0b1e33;
+        }
+
+        h3 {
+            font-size: 17px;
+            font-weight: 700;
+            margin: 22px 0 10px 0;
+            color: #1a3a5f;
+            background: #f0f6fe;
+            padding: 5px 16px;
+            border-radius: 30px;
+            display: inline-block;
+        }
+
+        h4 {
+            font-size: 15px;
+            font-weight: 600;
+            margin: 16px 0 6px 0;
+            color: #1e4a7a;
+            padding-left: 4px;
+        }
+
+        .grid-list {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4px 20px;
+            background: #f8faff;
+            padding: 14px 20px;
+            border-radius: 18px;
+            margin: 6px 0 14px 0;
+            border: 1px solid #e6edf6;
+        }
+
+        @media (max-width: 640px) {
+            .grid-list {
+                grid-template-columns: 1fr;
+                padding: 10px 14px;
+            }
+        }
+
+        .grid-item {
+            padding: 5px 4px;
+            border-bottom: 1px dashed #e0e8f0;
+            font-size: 14.5px;
+            display: flex;
+            align-items: baseline;
+            gap: 6px;
+        }
+
+        .grid-item:last-child {
+            border-bottom: none;
+        }
+
+        .num {
+            font-weight: 700;
+            color: #2563eb;
+            font-size: 13px;
+            min-width: 30px;
+            display: inline-block;
+        }
+
+        .highlight {
+            background: #e8f0fe;
+            padding: 0 6px;
+            border-radius: 4px;
+            font-weight: 500;
+            color: #1a3a5f;
+        }
+
+        .tag {
+            display: inline-block;
+            background: #e4edf8;
+            color: #1a3a5f;
+            font-size: 12px;
+            padding: 0 12px;
+            border-radius: 30px;
+            font-weight: 500;
+            margin-right: 4px;
+            white-space: nowrap;
+        }
+
+        .tip-box {
+            background: #eaf1fb;
+            border-radius: 20px;
+            padding: 20px 28px;
+            margin: 32px 0 12px 0;
+            border-left: 6px solid #2563eb;
+        }
+
+        .tip-box strong {
+            color: #0b1e33;
+        }
+
+        .tip-box ul {
+            margin-top: 8px;
+            padding-left: 20px;
+            list-style-type: none;
+        }
+
+        .tip-box ul li {
+            padding: 2px 0;
+        }
+
+        .tip-box ul li::before {
+            content: "✓ ";
+            color: #2563eb;
+            font-weight: 700;
+        }
+
+        .footer-note {
+            text-align: center;
+            font-size: 14px;
+            color: #7a8b9e;
+            margin-top: 32px;
+            border-top: 1px solid #e0e8f0;
+            padding-top: 24px;
+        }
+
+        .badge {
+            background: #d4e2f7;
+            color: #0b1e33;
+            font-size: 13px;
+            border-radius: 30px;
+            padding: 0 14px;
+            font-weight: 600;
+        }
+
+        hr {
+            border: none;
+            border-top: 2px dotted #d0dcec;
+            margin: 24px 0;
+        }
+
+        .inline-code {
+            background: #eaf0f8;
+            padding: 0 8px;
+            border-radius: 6px;
+            font-family: "SF Mono", "Menlo", monospace;
+            font-size: 14px;
+            color: #1a3a5f;
+        }
+
+        .formula-box {
+            background: #f8faff;
+            padding: 8px 16px;
+            border-radius: 12px;
+            margin: 4px 0 8px 0;
+            font-size: 14px;
+            color: #1a3a5f;
+            border: 1px solid #e0e8f0;
+            font-family: "Times New Roman", "KaTeX_Main", serif;
+        }
+
+        .example-box {
+            background: #f4f8fe;
+            padding: 8px 16px;
+            border-radius: 12px;
+            margin: 4px 0 8px 0;
+            font-size: 14px;
+            color: #1a3a5f;
+            border: 1px solid #e0e8f0;
+        }
+
+        .term {
+            font-weight: 600;
+            color: #1e4a7a;
+        }
+
+        .math-symbol {
+            font-family: "Times New Roman", "KaTeX_Main", serif;
+            font-style: italic;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+
+    <h1>⚡ 初中物理 · 核心知识点梳理</h1>
+    <div class="subtitle-wrap">
+        <span class="subtitle">🔹 五大板块 · 系统复习 🔹</span>
+    </div>
+
+    <!-- ========================================== -->
+    <!-- 第一部分：声学 -->
+    <!-- ========================================== -->
+    <h2>一、声学 <span class="badge">约5个核心点</span></h2>
+    <p style="color:#4a5a6e; font-size:15px; margin-bottom:12px;">声音的产生、传播与特性。</p>
+
+    <div class="grid-list">
+        <div class="grid-item"><span class="num">1.</span> 声音的产生：<span class="highlight">一切发声的物体都在振动</span>（振动停止，发声停止）</div>
+        <div class="grid-item"><span class="num">2.</span> 声音的传播：需要介质（固体、液体、气体），<span class="term">真空不能传声</span></div>
+        <div class="grid-item"><span class="num">3.</span> 声速：<span class="term">v<sub>固</sub> > v<sub>液</sub> > v<sub>气</sub></span>，空气中声速约为<span class="highlight">340 m/s</span></div>
+        <div class="grid-item"><span class="num">4.</span> 声音的三个特性：<span class="highlight">音调</span>（频率决定）、<span class="highlight">响度</span>（振幅决定）、<span class="highlight">音色</span>（材料结构决定）</div>
+        <div class="grid-item"><span class="num">5.</span> 超声波与次声波（人耳可听频率范围：20~20000 Hz）</div>
+    </div>
+
+    <hr>
+
+    <!-- ========================================== -->
+    <!-- 第二部分：光学 -->
+    <!-- ========================================== -->
+    <h2>二、光学 <span class="badge">约15个核心点</span></h2>
+    <p style="color:#4a5a6e; font-size:15px; margin-bottom:12px;">光的传播、反射、折射与透镜成像。</p>
+
+    <h3>1. 光的直线传播</h3>
+    <div class="grid-list">
+        <div class="grid-item"><span class="num">6.</span> 光在<span class="highlight">同种均匀介质</span>中沿直线传播</div>
+        <div class="grid-item"><span class="num">7.</span> 光速：<span class="highlight">v<sub>真空</sub> = 3×10⁸ m/s</span>（空气中近似等于真空）</div>
+        <div class="grid-item"><span class="num">8.</span> 应用：小孔成像、影子的形成、日食/月食</div>
+    </div>
+
+    <h3>2. 光的反射</h3>
+    <div class="grid-list">
+        <div class="grid-item"><span class="num">9.</span> 反射定律：<span class="highlight">三线共面、两线分居、两角相等</span>（反射角 = 入射角）</div>
+        <div class="grid-item"><span class="num">10.</span> 镜面反射与漫反射（都遵循反射定律）</div>
+        <div class="grid-item"><span class="num">11.</span> 平面镜成像特点：<span class="term">等大、等距、正立、虚像、左右相反</span></div>
+    </div>
+
+    <h3>3. 光的折射</h3>
+    <div class="grid-list">
+        <div class="grid-item"><span class="num">12.</span> 折射规律：<span class="highlight">光从空气斜射入水/玻璃中，折射角小于入射角</span>（反之则大于）</div>
+        <div class="grid-item"><span class="num">13.</span> 现象：筷子在水面“折断”、池水看起来“变浅”、海市蜃楼</div>
+        <div class="grid-item"><span class="num">14.</span> 光的色散：<span class="term">牛顿——太阳光经三棱镜分解成红橙黄绿蓝靛紫</span></div>
+    </div>
+
+    <h3>4. 透镜</h3>
+    <div class="grid-list">
+        <div class="grid-item"><span class="num">15.</span> 凸透镜（中间厚、边缘薄）——<span class="term">会聚光线</span></div>
+        <div class="grid-item"><span class="num">16.</span> 凹透镜（中间薄、边缘厚）——<span class="term">发散光线</span></div>
+        <div class="grid-item"><span class="num">17.</span> 凸透镜成像规律：<span class="highlight">u > 2f</span>（倒立、缩小、实像）——照相机</div>
+        <div class="grid-item"><span class="num">18.</span> <span class="highlight">f < u < 2f</span>（倒立、放大、实像）——投影仪</div>
+        <div class="grid-item"><span class="num">19.</span> <span class="highlight">u < f</span>（正立、放大、虚像）——放大镜</div>
+        <div class="grid-item"><span class="num">20.</span> 眼睛与眼镜：<span class="term">近视眼（凹透镜矫正）</span>，<span class="term">远视眼（凸透镜矫正）</span></div>
+    </div>
+
+    <hr>
+
+    <!-- ========================================== -->
+    <!-- 第三部分：热学 -->
+    <!-- ========================================== -->
+    <h2>三、热学 <span class="badge">约15个核心点</span></h2>
+    <p style="color:#4a5a6e; font-size:15px; margin-bottom:12px;">温度、物态变化、内能与热机。</p>
+
+    <h3>1. 温度与物态变化</h3>
+    <div class="grid-list">
+        <div class="grid-item"><span class="num">21.</span> 温度计原理：<span class="term">液体热胀冷缩</span></div>
+        <div class="grid-item"><span class="num">22.</span> 摄氏温度：冰水混合物为0℃，标准大气压下沸水为100℃</div>
+        <div class="grid-item"><span class="num">23.</span> 六种物态变化：<span class="highlight">熔化、凝固、汽化、液化、升华、凝华</span></div>
+        <div class="grid-item"><span class="num">24.</span> 晶体熔化规律：<span class="term">达到熔点后继续吸热但温度保持不变</span>（如冰熔化）</div>
+        <div class="grid-item"><span class="num">25.</span> 蒸发与沸腾的异同（蒸发在任何温度下都能进行）</div>
+        <div class="grid-item"><span class="num">26.</span> 液化方式：<span class="term">降低温度、压缩体积</span></div>
+    </div>
+
+    <h3>2. 内能与热机</h3>
+    <div class="grid-list">
+        <div class="grid-item"><span class="num">27.</span> 内能：物体内部所有分子做无规则运动的动能和分子势能的总和</div>
+        <div class="grid-item"><span class="num">28.</span> 改变内能的两种方式：<span class="highlight">做功</span>（搓手取暖）和<span class="highlight">热传递</span>（晒太阳）</div>
+        <div class="grid-item"><span class="num">29.</span> 比热容：<span class="term">c<sub>水</sub> = 4.2×10³ J/(kg·℃)</span>（水的比热容大，用于冷却/取暖）</div>
+        <div class="grid-item"><span class="num">30.</span> 热值：1kg某种燃料完全燃烧放出的热量（<span class="inline-code">Q = mq</span>）</div>
+        <div class="grid-item"><span class="num">31.</span> 热机四冲程：<span class="highlight">吸气、压缩、做功、排气</span>（<span class="term">做功冲程将内能转化为机械能</span>）</div>
+    </div>
+
+    <hr>
+
+    <!-- ========================================== -->
+    <!-- 第四部分：力学 -->
+    <!-- ========================================== -->
+    <h2>四、力学 <span class="badge">约35个核心点</span></h2>
+    <p style="color:#4a5a6e; font-size:15px; margin-bottom:12px;">力与运动、压强、浮力、功与机械，中考重中之重。</p>
+
+    <h3>1. 机械运动</h3>
+    <div class="grid-list">
+        <div class="grid-item"><span class="num">32.</span> 参照物：判断物体运动与静止时选作标准的物体</div>
+        <div class="grid-item"><span class="num">33.</span> 速度：<span class="highlight">v = s / t</span>（单位：m/s、km/h）</div>
+        <div class="grid-item"><span class="num">34.</span> 匀速直线运动：速度保持不变</div>
+        <div class="grid-item"><span class="num">35.</span> 平均速度：<span class="inline-code">v = s<sub>总</sub> / t<sub>总</sub></span></div>
+    </div>
+
+    <h3>2. 力</h3>
+    <div class="grid-list">
+        <div class="grid-item"><span class="num">36.</span> 力的作用效果：<span class="term">改变物体运动状态</span>、<span class="term">使物体发生形变</span></div>
+        <div class="grid-item"><span class="num">37.</span> 力的三要素：<span class="highlight">大小、方向、作用点</span></div>
+        <div class="grid-item"><span class="num">38.</span> 力的相互作用：物体间力的作用是<span class="highlight">相互</span>的</div>
+        <div class="grid-item"><span class="num">39.</span> 重力：<span class="highlight">G = mg</span>（g取9.8 N/kg，方向<span class="term">竖直向下</span>）</div>
+        <div class="grid-item"><span class="num">40.</span> 弹力：<span class="term">弹簧测力计</span>的原理（在弹性限度内，弹簧的伸长量与所受拉力成正比）</div>
+        <div class="grid-item"><span class="num">41.</span> 摩擦力：<span class="term">增大压力、增大接触面粗糙程度</span>→增大摩擦；<span class="term">减小压力、减小粗糙程度、变滑动为滚动</span>→减小摩擦</div>
+    </div>
+
+    <h3>3. 力与运动</h3>
+    <div class="grid-list">
+        <div class="grid-item"><span class="num">42.</span> 牛顿第一定律（惯性定律）：一切物体在没有受到力的作用时，总保持静止状态或匀速直线运动状态</div>
+        <div class="grid-item"><span class="num">43.</span> 惯性：<span class="highlight">一切物体都具有惯性</span>（只与质量有关）</div>
+        <div class="grid-item"><span class="num">44.</span> 二力平衡条件：<span class="term">同体、等大、反向、共线</span></div>
+        <div class="grid-item"><span class="num">45.</span> 合力与分力：同向相加，反向相减</div>
+    </div>
+
+    <h3>4. 压强</h3>
+    <div class="grid-list">
+        <div class="grid-item"><span class="num">46.</span> 压强：<span class="highlight">p = F / S</span>（单位：Pa）</div>
+        <div class="grid-item"><span class="num">47.</span> 增大/减小压强的方法（增大压力/减小受力面积→增大压强）</div>
+        <div class="grid-item"><span class="num">48.</span> 液体压强：<span class="highlight">p = ρgh</span>（与深度和液体密度有关）</div>
+        <div class="grid-item"><span class="num">49.</span> 连通器原理：<span class="term">同种液体静止时液面相平</span></div>
+        <div class="grid-item"><span class="num">50.</span> 大气压强（马德堡半球实验证明其存在，托里拆利实验测出数值）</div>
+        <div class="grid-item"><span class="num">51.</span> 流体压强与流速的关系：<span class="highlight">流速大的位置压强小</span>（飞机的升力）</div>
+    </div>
+
+    <h3>5. 浮力</h3>
+    <div class="grid-list">
+        <div class="grid-item"><span class="num">52.</span> 浮力产生原因：<span class="term">液体对物体上下表面的压力差</span></div>
+        <div class="grid-item"><span class="num">53.</span> 阿基米德原理：<span class="highlight">F<sub>浮</sub> = G<sub>排</sub> = ρ<sub>液</sub>gV<sub>排</sub></span></div>
+        <div class="grid-item"><span class="num">54.</span> 物体的浮沉条件：<span class="term">F<sub>浮</sub> > G</span>（上浮）、<span class="term">F<sub>浮</sub> = G</span>（悬浮/漂浮）、<span class="term">F<sub>浮</sub> < G</span>（下沉）</div>
+        <div class="grid-item"><span class="num">55.</span> 应用：轮船（空心增大浮力）、潜水艇（改变自身重力）、密度计</div>
+    </div>
+
+    <h3>6. 功与机械能</h3>
+    <div class="grid-list">
+        <div class="grid-item"><span class="num">56.</span> 功：<span class="highlight">W = Fs</span>（单位：J，有力且有沿力方向的距离才做功）</div>
+        <div class="grid-item"><span class="num">57.</span> 功率：<span class="highlight">P = W / t = Fv</span>（单位：W）</div>
+        <div class="grid-item"><span class="num">58.</span> 动能：<span class="term">物体由于运动而具有的能</span>（质量越大、速度越大，动能越大）</div>
+        <div class="grid-item"><span class="num">59.</span> 重力势能：<span class="term">物体由于被举高而具有的能</span>（质量越大、高度越高，重力势能越大）</div>
+        <div class="grid-item"><span class="num">60.</span> 弹性势能：与弹性形变程度有关</div>
+        <div class="grid-item"><span class="num">61.</span> 机械能守恒：<span class="highlight">动能和势能可以相互转化</span>（忽略摩擦阻力时守恒）</div>
+    </div>
+
+    <h3>7. 简单机械</h3>
+    <div class="grid-list">
+        <div class="grid-item"><span class="num">62.</span> 杠杆平衡条件：<span class="highlight">F<sub>1</sub>l<sub>1</sub> = F<sub>2</sub>l<sub>2</sub></span></div>
+        <div class="grid-item"><span class="num">63.</span> 杠杆分类：省力杠杆（l<sub>1</sub>>l<sub>2</sub>）、费力杠杆（l<sub>1</sub><l<sub>2</sub>）、等臂杠杆</div>
+        <div class="grid-item"><span class="num">64.</span> 滑轮组：<span class="term">F = G/n</span>（n为承重绳段数）</div>
+        <div class="grid-item"><span class="num">65.</span> 机械效率：<span class="highlight">η = W<sub>有用</sub> / W<sub>总</sub> × 100%</span></div>
+    </div>
+
+    <hr>
+
+    <!-- ========================================== -->
+    <!-- 第五部分：电磁学 -->
+    <!-- ========================================== -->
+    <h2>五、电磁学 <span class="badge">约30个核心点</span></h2>
+    <p style="color:#4a5a6e; font-size:15px; margin-bottom:12px;">电学、电路、欧姆定律、电功率、磁学，中考压轴题的高频区域。</p>
+
+    <h3>1. 电路基础</h3>
+    <div class="grid-list">
+        <div class="grid-item"><span class="num">66.</span> 电荷：正电荷（质子）、负电荷（电子）——<span class="term">同种电荷相互排斥，异种电荷相互吸引</span></div>
+        <div class="grid-item"><span class="num">67.</span> 电流：<span class="highlight">正电荷定向移动的方向为电流方向</span>（与电子移动方向相反）</div>
+        <div class="grid-item"><span class="num">68.</span> 电路组成：电源、导线、开关、用电器</div>
+        <div class="grid-item"><span class="num">69.</span> 电路状态：<span class="term">通路、断路、短路</span></div>
+        <div class="grid-item"><span class="num">70.</span> 串联电路与并联电路（<span class="term">串流并压</span>——串联电流相等，并联电压相等）</div>
+    </div>
+
+    <h3>2. 电学基本物理量</h3>
+    <div class="grid-list">
+        <div class="grid-item"><span class="num">71.</span> 电流（I）：单位A（安培）——<span class="term">电流表串联接入</span></div>
+        <div class="grid-item"><span class="num">72.</span> 电压（U）：单位V（伏特）——<span class="term">电压表并联接入</span></div>
+        <div class="grid-item"><span class="num">73.</span> 电阻（R）：单位Ω（欧姆）——导体对电流的阻碍作用</div>
+        <div class="grid-item"><span class="num">74.</span> 影响电阻的因素：<span class="term">材料、长度（越长电阻越大）、横截面积（越粗电阻越小）、温度</span></div>
+        <div class="grid-item"><span class="num">75.</span> 变阻器（滑动变阻器——通过改变接入电路中的电阻丝长度来改变电阻）</div>
+    </div>
+
+    <h3>3. 欧姆定律</h3>
+    <div class="grid-list">
+        <div class="grid-item"><span class="num">76.</span> 欧姆定律：<span class="highlight">I = U / R</span>（适用于纯电阻电路）</div>
+        <div class="grid-item"><span class="num">77.</span> 串联电路规律：<span class="term">I<sub>总</sub> = I<sub>1</sub> = I<sub>2</sub>，U<sub>总</sub> = U<sub>1</sub> + U<sub>2</sub>，R<sub>总</sub> = R<sub>1</sub> + R<sub>2</sub></span></div>
+        <div class="grid-item"><span class="num">78.</span> 并联电路规律：<span class="term">I<sub>总</sub> = I<sub>1</sub> + I<sub>2</sub>，U<sub>总</sub> = U<sub>1</sub> = U<sub>2</sub>，1/R<sub>总</sub> = 1/R<sub>1</sub> + 1/R<sub>2</sub></span></div>
+    </div>
+
+    <h3>4. 电功与电功率</h3>
+    <div class="grid-list">
+        <div class="grid-item"><span class="num">79.</span> 电功（W）：<span class="highlight">W = UIt</span>（单位：J，生活中常用kW·h）</div>
+        <div class="grid-item"><span class="num">80.</span> 电功率（P）：<span class="highlight">P = UI = I²R = U²/R</span>（单位：W）</div>
+        <div class="grid-item"><span class="num">81.</span> 额定功率与实际功率（<span class="term">灯泡的亮度由实际功率决定</span>）</div>
+        <div class="grid-item"><span class="num">82.</span> 焦耳定律：<span class="highlight">Q = I²Rt</span>（电流的热效应）</div>
+    </div>
+
+    <h3>5. 家庭电路与安全用电</h3>
+    <div class="grid-list">
+        <div class="grid-item"><span class="num">83.</span> 家庭电路组成：火线、零线、地线</div>
+        <div class="grid-item"><span class="num">84.</span> 保险丝：<span class="term">电阻大、熔点低</span>（串联在火线上）</div>
+        <div class="grid-item"><span class="num">85.</span> 安全用电原则：<span class="highlight">不接触低压带电体，不靠近高压带电体</span></div>
+        <div class="grid-item"><span class="num">86.</span> 触电急救：切断电源或用绝缘体将电线挑开</div>
+    </div>
+
+    <h3>6. 磁学</h3>
+    <div class="grid-list">
+        <div class="grid-item"><span class="num">87.</span> 磁体：<span class="term">指南针指向南北（地磁场）</span></div>
+        <div class="grid-item"><span class="num">88.</span> 磁感线：从N极出发，回到S极（疏密表示磁场强弱）</div>
+        <div class="grid-item"><span class="num">89.</span> 电流的磁效应：<span class="highlight">奥斯特实验</span>（通电导线周围存在磁场）</div>
+        <div class="grid-item"><span class="num">90.</span> 电磁铁：<span class="term">通电螺线管+铁芯</span>（磁性强弱与电流大小、线圈匝数有关）</div>
+        <div class="grid-item"><span class="num">91.</span> 电动机：<span class="term">通电导体在磁场中受力的作用</span>（电能→机械能）</div>
+        <div class="grid-item"><span class="num">92.</span> 发电机：<span class="term">电磁感应现象</span>（机械能→电能，法拉第）</div>
+    </div>
+
+    <!-- ========================================== -->
+    <!-- 复习小贴士 -->
+    <!-- ========================================== -->
+    <div class="tip-box">
+        <strong>💡 复习小贴士</strong>
+        <ul>
+            <li><strong>公式务必熟练掌握</strong>：物理公式多且易混淆，建议按板块整理公式卡，理解每个物理量的含义和单位。</li>
+            <li><strong>重视实验题</strong>：教材中的重点实验（如测密度、测电阻、测功率、凸透镜成像规律）要掌握实验原理、步骤、器材、注意事项和数据处理。</li>
+            <li><strong>作图题要规范</strong>：光学作图（反射/折射/透镜成像）、力学作图（受力分析）、电学作图（电路图/实物图）要用铅笔和尺子规范画图。</li>
+            <li><strong>建立错题本</strong>：物理是理科学科，光看笔记不够，必须通过做题来巩固，把易错的题型和知识点记录下来反复练习。</li>
+        </ul>
+        <p style="margin-top:12px; background:#dce6f5; padding:6px 18px; border-radius:30px; display:inline-block; color:#0b1e33;">
+            ⏳ 时间紧张的话，优先巩固 <strong>力学</strong>（压强/浮力/功与机械）、<strong>电磁学</strong>（欧姆定律/电功率）、<strong>凸透镜成像规律</strong> 三大板块
+        </p>
+    </div>
+
+    <div class="footer-note">
+        整理自近年中考趋势 · 祝复习顺利 🍀
+    </div>
+
+</div>
+
+</body>
+</html>

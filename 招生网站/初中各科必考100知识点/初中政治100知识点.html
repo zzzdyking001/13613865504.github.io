@@ -1,0 +1,422 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>初中政治（道德与法治）· 核心知识点梳理</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, "PingFang SC", "Microsoft YaHei", "Helvetica Neue", Arial, sans-serif;
+            background: #f5f0f0;
+            color: #2a1e1e;
+            padding: 20px;
+            line-height: 1.8;
+        }
+
+        .container {
+            max-width: 960px;
+            margin: 0 auto;
+            background: #ffffff;
+            border-radius: 24px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.08);
+            padding: 40px 48px;
+        }
+
+        @media (max-width: 640px) {
+            .container {
+                padding: 20px 16px;
+            }
+        }
+
+        h1 {
+            font-size: 28px;
+            font-weight: 700;
+            text-align: center;
+            padding-bottom: 18px;
+            border-bottom: 3px solid #b33c3c;
+            margin-bottom: 24px;
+            letter-spacing: 2px;
+            color: #2a1010;
+        }
+
+        .subtitle {
+            text-align: center;
+            font-size: 15px;
+            color: #6a4a4a;
+            margin-top: -12px;
+            margin-bottom: 32px;
+            background: #f5ecec;
+            padding: 6px 20px;
+            border-radius: 40px;
+            display: inline-block;
+            margin-left: auto;
+            margin-right: auto;
+            width: auto;
+        }
+
+        .subtitle-wrap {
+            text-align: center;
+        }
+
+        h2 {
+            font-size: 22px;
+            font-weight: 700;
+            margin: 32px 0 14px 0;
+            padding-left: 14px;
+            border-left: 6px solid #b33c3c;
+            color: #2a1010;
+        }
+
+        h3 {
+            font-size: 17px;
+            font-weight: 700;
+            margin: 22px 0 10px 0;
+            color: #3d1a1a;
+            background: #f7ecec;
+            padding: 5px 16px;
+            border-radius: 30px;
+            display: inline-block;
+        }
+
+        h4 {
+            font-size: 15px;
+            font-weight: 600;
+            margin: 16px 0 6px 0;
+            color: #4d2a2a;
+            padding-left: 4px;
+        }
+
+        .grid-list {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4px 20px;
+            background: #fcf8f8;
+            padding: 14px 20px;
+            border-radius: 18px;
+            margin: 6px 0 14px 0;
+            border: 1px solid #ede0e0;
+        }
+
+        @media (max-width: 640px) {
+            .grid-list {
+                grid-template-columns: 1fr;
+                padding: 10px 14px;
+            }
+        }
+
+        .grid-item {
+            padding: 5px 4px;
+            border-bottom: 1px dashed #e8dcdc;
+            font-size: 14.5px;
+            display: flex;
+            align-items: baseline;
+            gap: 6px;
+        }
+
+        .grid-item:last-child {
+            border-bottom: none;
+        }
+
+        .num {
+            font-weight: 700;
+            color: #b33c3c;
+            font-size: 13px;
+            min-width: 30px;
+            display: inline-block;
+        }
+
+        .highlight {
+            background: #f5ecec;
+            padding: 0 6px;
+            border-radius: 4px;
+            font-weight: 500;
+            color: #3d1a1a;
+        }
+
+        .tag {
+            display: inline-block;
+            background: #ede0e0;
+            color: #3d1a1a;
+            font-size: 12px;
+            padding: 0 12px;
+            border-radius: 30px;
+            font-weight: 500;
+            margin-right: 4px;
+            white-space: nowrap;
+        }
+
+        .tip-box {
+            background: #f5ecec;
+            border-radius: 20px;
+            padding: 20px 28px;
+            margin: 32px 0 12px 0;
+            border-left: 6px solid #b33c3c;
+        }
+
+        .tip-box strong {
+            color: #2a1010;
+        }
+
+        .tip-box ul {
+            margin-top: 8px;
+            padding-left: 20px;
+            list-style-type: none;
+        }
+
+        .tip-box ul li {
+            padding: 2px 0;
+        }
+
+        .tip-box ul li::before {
+            content: "✓ ";
+            color: #b33c3c;
+            font-weight: 700;
+        }
+
+        .footer-note {
+            text-align: center;
+            font-size: 14px;
+            color: #8a6a6a;
+            margin-top: 32px;
+            border-top: 1px solid #e8dcdc;
+            padding-top: 24px;
+        }
+
+        .badge {
+            background: #dccccc;
+            color: #2a1010;
+            font-size: 13px;
+            border-radius: 30px;
+            padding: 0 14px;
+            font-weight: 600;
+        }
+
+        hr {
+            border: none;
+            border-top: 2px dotted #ddd0d0;
+            margin: 24px 0;
+        }
+
+        .inline-code {
+            background: #f5ecec;
+            padding: 0 8px;
+            border-radius: 6px;
+            font-size: 14px;
+            color: #3d1a1a;
+        }
+
+        .example-box {
+            background: #fbf6f6;
+            padding: 8px 16px;
+            border-radius: 12px;
+            margin: 4px 0 8px 0;
+            font-size: 14px;
+            color: #3d1a1a;
+            border: 1px solid #ede0e0;
+        }
+
+        .term {
+            font-weight: 600;
+            color: #4d2a2a;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+
+    <h1>⚖️ 初中政治（道德与法治）· 核心知识点梳理</h1>
+    <div class="subtitle-wrap">
+        <span class="subtitle">🔹 四大板块 · 系统复习 🔹</span>
+    </div>
+
+    <!-- ========================================== -->
+    <!-- 第一部分：心理与道德 -->
+    <!-- ========================================== -->
+    <h2>一、心理与道德 <span class="badge">约25个核心点</span></h2>
+    <p style="color:#5a4a4a; font-size:15px; margin-bottom:12px;">认识自我、处理人际关系、涵养道德品质。</p>
+
+    <h3>1. 认识自我</h3>
+    <div class="grid-list">
+        <div class="grid-item"><span class="num">1.</span> 正确认识自己的重要性（自我评价 + 他人评价）</div>
+        <div class="grid-item"><span class="num">2.</span> 接纳与欣赏自己（接纳全部，扬长避短）</div>
+        <div class="grid-item"><span class="num">3.</span> 做更好的自己（激发潜能，主动改正缺点）</div>
+        <div class="grid-item"><span class="num">4.</span> 情绪的类型与作用（喜、怒、哀、惧）</div>
+        <div class="grid-item"><span class="num">5.</span> 调节情绪的方法：<span class="highlight">改变认知评价、转移注意、合理宣泄、放松训练</span></div>
+        <div class="grid-item"><span class="num">6.</span> 青春期心理矛盾（渴望独立与依赖、闭锁与开放）</div>
+        <div class="grid-item"><span class="num">7.</span> 正确处理心理矛盾（参加集体活动、求助他人、培养兴趣爱好）</div>
+    </div>
+
+    <h3>2. 人际交往</h3>
+    <div class="grid-list">
+        <div class="grid-item"><span class="num">8.</span> 友谊的特质：<span class="highlight">亲密、平等、双向</span></div>
+        <div class="grid-item"><span class="num">9.</span> 友谊的澄清：友谊不是一成不变的，竞争并不伤害友谊</div>
+        <div class="grid-item"><span class="num">10.</span> 建立友谊的方法（主动表达、持续行动）</div>
+        <div class="grid-item"><span class="num">11.</span> 与父母沟通的技巧（关注事实、把握时机、体谅父母）</div>
+        <div class="grid-item"><span class="num">12.</span> 孝敬父母：<span class="term">孝亲敬长是中华民族的传统美德，也是每个中国公民的法定义务</span></div>
+        <div class="grid-item"><span class="num">13.</span> 师生交往：<span class="highlight">相互尊重、教学相长、亦师亦友</span></div>
+        <div class="grid-item"><span class="num">14.</span> 网络交往的特点（虚拟、平等、自主），学会理性辨别、慎重选择</div>
+    </div>
+
+    <h3>3. 道德品质</h3>
+    <div class="grid-list">
+        <div class="grid-item"><span class="num">15.</span> <span class="highlight">诚信</span>：社会主义核心价值观在个人层面的价值准则</div>
+        <div class="grid-item"><span class="num">16.</span> <span class="highlight">尊重他人</span>：尊重是交往的起点（尊重他人人格、权利）</div>
+        <div class="grid-item"><span class="num">17.</span> <span class="highlight">文明有礼</span>：语言文明、仪表端庄、举止文明</div>
+        <div class="grid-item"><span class="num">18.</span> 责任的含义：<span class="term">一个人分内应该做的事</span>（对自己、对他人、对社会、对国家）</div>
+        <div class="grid-item"><span class="num">19.</span> 做负责任的人：不言代价与回报，敢于担当</div>
+        <div class="grid-item"><span class="num">20.</span> 关爱他人：心怀善意、尽己所能、讲究策略</div>
+        <div class="grid-item"><span class="num">21.</span> 服务社会：奉献社会（参加公益活动、热爱劳动）</div>
+    </div>
+
+    <hr>
+
+    <!-- ========================================== -->
+    <!-- 第二部分：宪法与法律 -->
+    <!-- ========================================== -->
+    <h2>二、宪法与法律 <span class="badge">约25个核心点</span></h2>
+    <p style="color:#5a4a4a; font-size:15px; margin-bottom:12px;">法治观念、法律常识、权利义务。</p>
+
+    <h3>1. 宪法</h3>
+    <div class="grid-list">
+        <div class="grid-item"><span class="num">22.</span> 宪法是国家的<span class="highlight">根本法</span>（法律地位最高）</div>
+        <div class="grid-item"><span class="num">23.</span> 宪法是治国安邦的<span class="highlight">总章程</span></div>
+        <div class="grid-item"><span class="num">24.</span> 宪法是公民权利的保障书</div>
+        <div class="grid-item"><span class="num">25.</span> 宪法规定国家生活中的根本问题（国体、政体、基本制度等）</div>
+        <div class="grid-item"><span class="num">26.</span> 宪法具有最高的法律效力（一切法律法规不得与宪法相抵触）</div>
+        <div class="grid-item"><span class="num">27.</span> 宪法的制定和修改程序比普通法律更严格</div>
+        <div class="grid-item"><span class="num">28.</span> 国家宪法日：<span class="highlight">12月4日</span></div>
+        <div class="grid-item"><span class="num">29.</span> 增强宪法意识：学习宪法、认同宪法、践行宪法</div>
+    </div>
+
+    <h3>2. 法律的特征与作用</h3>
+    <div class="grid-list">
+        <div class="grid-item"><span class="num">30.</span> 法律的三大特征：<span class="highlight">由国家制定或认可、由国家强制力保证实施、对全体社会成员具有普遍约束力</span></div>
+        <div class="grid-item"><span class="num">31.</span> 法律的作用：<span class="term">规范作用</span>（指引行为方向）和 <span class="term">保护作用</span>（维护合法权益）</div>
+        <div class="grid-item"><span class="num">32.</span> 违法行为的分类：<span class="highlight">一般违法行为</span>（民事/行政违法）和 <span class="highlight">犯罪</span>（刑事违法）</div>
+        <div class="grid-item"><span class="num">33.</span> 犯罪的三个基本特征：<span class="term">严重社会危害性、刑事违法性、应受刑罚处罚性</span></div>
+        <div class="grid-item"><span class="num">34.</span> 刑罚的种类：主刑（管制、拘役、有期徒刑、无期徒刑、死刑）和附加刑（罚金、剥夺政治权利、没收财产、驱逐出境）</div>
+    </div>
+
+    <h3>3. 公民的权利与义务</h3>
+    <h4>▸ 基本权利</h4>
+    <div class="grid-list">
+        <div class="grid-item"><span class="num">35.</span> 政治权利和自由（选举权和被选举权、政治自由、监督权）</div>
+        <div class="grid-item"><span class="num">36.</span> 人身自由（人身自由不受侵犯、人格尊严不受侵犯、住宅不受侵犯）</div>
+        <div class="grid-item"><span class="num">37.</span> 社会经济权利（财产权、劳动权、物质帮助权）</div>
+        <div class="grid-item"><span class="num">38.</span> 文化教育权利（受教育权、文化权利）</div>
+    </div>
+
+    <h4>▸ 基本义务</h4>
+    <div class="grid-list">
+        <div class="grid-item"><span class="num">39.</span> 遵守宪法法律</div>
+        <div class="grid-item"><span class="num">40.</span> 维护国家利益（维护国家统一和全国各民族团结）</div>
+        <div class="grid-item"><span class="num">41.</span> 依法纳税（税法是国家的“血脉”）</div>
+        <div class="grid-item"><span class="num">42.</span> 依法服兵役（光荣义务）</div>
+        <div class="grid-item"><span class="num">43.</span> 受教育的义务</div>
+        <div class="grid-item"><span class="num">44.</span> 权利与义务的关系：<span class="highlight">权利与义务相统一，权利与义务相互依存、相互促进</span></div>
+    </div>
+
+    <hr>
+
+    <!-- ========================================== -->
+    <!-- 第三部分：国情与社会 -->
+    <!-- ========================================== -->
+    <h2>三、国情与社会 <span class="badge">约30个核心点</span></h2>
+    <p style="color:#5a4a4a; font-size:15px; margin-bottom:12px;">国家制度、发展理念、社会热点。</p>
+
+    <h3>1. 基本国情</h3>
+    <div class="grid-list">
+        <div class="grid-item"><span class="num">45.</span> 我国正处于并将长期处于<span class="highlight">社会主义初级阶段</span>（最大国情）</div>
+        <div class="grid-item"><span class="num">46.</span> 主要矛盾：人民日益增长的<span class="highlight">美好生活需要</span>与<span class="highlight">不平衡不充分的发展</span>之间的矛盾</div>
+        <div class="grid-item"><span class="num">47.</span> 总任务：实现社会主义现代化和中华民族伟大复兴</div>
+    </div>
+
+    <h3>2. 基本制度</h3>
+    <h4>▸ 经济制度</h4>
+    <div class="grid-list">
+        <div class="grid-item"><span class="num">48.</span> 基本经济制度：<span class="highlight">公有制为主体、多种所有制经济共同发展</span></div>
+        <div class="grid-item"><span class="num">49.</span> 公有制经济：国有经济（主导力量）、集体经济</div>
+        <div class="grid-item"><span class="num">50.</span> 非公有制经济：个体经济、私营经济（重要组成部分）</div>
+        <div class="grid-item"><span class="num">51.</span> 分配制度：按劳分配为主体、多种分配方式并存</div>
+    </div>
+
+    <h4>▸ 政治制度</h4>
+    <div class="grid-list">
+        <div class="grid-item"><span class="num">52.</span> 根本政治制度：<span class="highlight">人民代表大会制度</span></div>
+        <div class="grid-item"><span class="num">53.</span> 基本政治制度：<span class="term">中国共产党领导的多党合作和政治协商制度</span>、<span class="term">民族区域自治制度</span>、<span class="term">基层群众自治制度</span></div>
+        <div class="grid-item"><span class="num">54.</span> 国家权力机关：<span class="highlight">全国人民代表大会</span>（最高国家权力机关）</div>
+        <div class="grid-item"><span class="num">55.</span> 国家行政机关：人民政府（国家权力机关的执行机关）</div>
+        <div class="grid-item"><span class="num">56.</span> 国家司法机关：人民法院（审判机关）、人民检察院（法律监督机关）</div>
+    </div>
+
+    <h3>3. 发展理念与战略</h3>
+    <div class="grid-list">
+        <div class="grid-item"><span class="num">57.</span> <span class="highlight">以人民为中心</span>的发展思想</div>
+        <div class="grid-item"><span class="num">58.</span> 五大发展理念：<span class="highlight">创新、协调、绿色、开放、共享</span></div>
+        <div class="grid-item"><span class="num">59.</span> “四个全面”战略布局：<span class="term">全面建成小康社会（已实现，现为全面建设社会主义现代化国家）、全面深化改革、全面依法治国、全面从严治党</span></div>
+        <div class="grid-item"><span class="num">60.</span> “五位一体”总体布局：经济建设、政治建设、文化建设、社会建设、生态文明建设</div>
+        <div class="grid-item"><span class="num">61.</span> 改革开放是决定当代中国命运的<span class="highlight">关键一招</span></div>
+        <div class="grid-item"><span class="num">62.</span> 乡村振兴战略、区域协调发展战略</div>
+    </div>
+
+    <h3>4. 文化、科技与生态</h3>
+    <div class="grid-list">
+        <div class="grid-item"><span class="num">63.</span> 中华文化的特点：<span class="highlight">源远流长、博大精深</span></div>
+        <div class="grid-item"><span class="num">64.</span> 中华传统美德（爱国、敬业、诚信、友善等）</div>
+        <div class="grid-item"><span class="num">65.</span> 民族精神的内涵：<span class="highlight">以爱国主义为核心的团结统一、爱好和平、勤劳勇敢、自强不息</span></div>
+        <div class="grid-item"><span class="num">66.</span> 社会主义核心价值观：<span class="term">富强、民主、文明、和谐</span>（国家层面），<span class="term">自由、平等、公正、法治</span>（社会层面），<span class="term">爱国、敬业、诚信、友善</span>（个人层面）</div>
+        <div class="grid-item"><span class="num">67.</span> 科教兴国战略、人才强国战略、创新驱动发展战略</div>
+        <div class="grid-item"><span class="num">68.</span> 生态文明建设：<span class="highlight">“绿水青山就是金山银山”</span></div>
+        <div class="grid-item"><span class="num">69.</span> 走绿色发展道路（人与自然和谐共生）</div>
+    </div>
+
+    <hr>
+
+    <!-- ========================================== -->
+    <!-- 第四部分：世界舞台与中国担当 -->
+    <!-- ========================================== -->
+    <h2>四、世界舞台与中国担当 <span class="badge">约10个核心点</span></h2>
+    <p style="color:#5a4a4a; font-size:15px; margin-bottom:12px;">国际视野、人类命运共同体。</p>
+
+    <div class="grid-list">
+        <div class="grid-item"><span class="num">70.</span> 当今世界发展趋势：<span class="highlight">经济全球化、世界多极化</span></div>
+        <div class="grid-item"><span class="num">71.</span> 和平与发展的时代主题</div>
+        <div class="grid-item"><span class="num">72.</span> 中国在国际舞台上的地位和作用：<span class="term">世界和平的建设者、全球发展的贡献者、国际秩序的维护者</span></div>
+        <div class="grid-item"><span class="num">73.</span> 构建<span class="highlight">人类命运共同体</span>理念</div>
+        <div class="grid-item"><span class="num">74.</span> “一带一路”倡议（共商共建共享原则）</div>
+        <div class="grid-item"><span class="num">75.</span> 中国积极参与全球治理，贡献中国智慧和中国方案</div>
+        <div class="grid-item"><span class="num">76.</span> 文化多样性（尊重不同文化，相互包容）</div>
+        <div class="grid-item"><span class="num">77.</span> 青少年要树立全球意识，承担维护世界和平的责任</div>
+    </div>
+
+    <!-- ========================================== -->
+    <!-- 复习小贴士 -->
+    <!-- ========================================== -->
+    <div class="tip-box">
+        <strong>💡 复习小贴士</strong>
+        <ul>
+            <li><strong>把握大框架</strong>：政治（道德与法治）的知识结构清晰，建议按“心理道德—法律宪法—国情社会—国际视野”四大板块梳理。</li>
+            <li><strong>关键词记忆法</strong>：很多知识点可以提炼成关键词（如“五大发展理念”“四个全面”），记住关键词再展开。</li>
+            <li><strong>结合时事热点</strong>：政治考试常结合时政（如两会、科技成就、环保政策），平时注意积累相关案例。</li>
+            <li><strong>答题规范</strong>：主观题注意“观点+材料分析”的答题模式，语言要规范，尽量使用教材术语。</li>
+        </ul>
+        <p style="margin-top:12px; background:#e0d0d0; padding:6px 18px; border-radius:30px; display:inline-block; color:#2a1010;">
+            ⏳ 时间紧张的话，优先巩固 <strong>宪法与法律</strong>、<strong>基本国情与制度</strong>、<strong>社会主义核心价值观</strong> 三大板块
+        </p>
+    </div>
+
+    <div class="footer-note">
+        整理自近年中考趋势 · 祝复习顺利 🍀
+    </div>
+
+</div>
+
+</body>
+</html>

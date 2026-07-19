@@ -1,0 +1,527 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>初中数学 · 核心知识点梳理</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, "PingFang SC", "Microsoft YaHei", "Helvetica Neue", Arial, sans-serif;
+            background: #f0f5fa;
+            color: #1a2a3a;
+            padding: 20px;
+            line-height: 1.8;
+        }
+
+        .container {
+            max-width: 960px;
+            margin: 0 auto;
+            background: #ffffff;
+            border-radius: 24px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.08);
+            padding: 40px 48px;
+        }
+
+        @media (max-width: 640px) {
+            .container {
+                padding: 20px 16px;
+            }
+        }
+
+        h1 {
+            font-size: 28px;
+            font-weight: 700;
+            text-align: center;
+            padding-bottom: 18px;
+            border-bottom: 3px solid #2563eb;
+            margin-bottom: 24px;
+            letter-spacing: 2px;
+            color: #0b1e33;
+        }
+
+        .subtitle {
+            text-align: center;
+            font-size: 15px;
+            color: #5a6b7e;
+            margin-top: -12px;
+            margin-bottom: 32px;
+            background: #eaf1fb;
+            padding: 6px 20px;
+            border-radius: 40px;
+            display: inline-block;
+            margin-left: auto;
+            margin-right: auto;
+            width: auto;
+        }
+
+        .subtitle-wrap {
+            text-align: center;
+        }
+
+        h2 {
+            font-size: 22px;
+            font-weight: 700;
+            margin: 32px 0 14px 0;
+            padding-left: 14px;
+            border-left: 6px solid #2563eb;
+            color: #0b1e33;
+        }
+
+        h3 {
+            font-size: 17px;
+            font-weight: 700;
+            margin: 22px 0 10px 0;
+            color: #1a3a5f;
+            background: #f0f6fe;
+            padding: 5px 16px;
+            border-radius: 30px;
+            display: inline-block;
+        }
+
+        h4 {
+            font-size: 15px;
+            font-weight: 600;
+            margin: 16px 0 6px 0;
+            color: #1e4a7a;
+            padding-left: 4px;
+        }
+
+        .section-desc {
+            font-size: 14px;
+            color: #5a6b7e;
+            margin-bottom: 14px;
+            background: #f4f8fe;
+            padding: 6px 18px;
+            border-radius: 30px;
+            display: inline-block;
+        }
+
+        .grid-list {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4px 20px;
+            background: #f8faff;
+            padding: 14px 20px;
+            border-radius: 18px;
+            margin: 6px 0 14px 0;
+            border: 1px solid #e6edf6;
+        }
+
+        @media (max-width: 640px) {
+            .grid-list {
+                grid-template-columns: 1fr;
+                padding: 10px 14px;
+            }
+        }
+
+        .grid-item {
+            padding: 5px 4px;
+            border-bottom: 1px dashed #e0e8f0;
+            font-size: 14.5px;
+            display: flex;
+            align-items: baseline;
+            gap: 6px;
+        }
+
+        .grid-item:last-child {
+            border-bottom: none;
+        }
+
+        .num {
+            font-weight: 700;
+            color: #2563eb;
+            font-size: 13px;
+            min-width: 30px;
+            display: inline-block;
+        }
+
+        .highlight {
+            background: #e8f0fe;
+            padding: 0 6px;
+            border-radius: 4px;
+            font-weight: 500;
+            color: #1a3a5f;
+        }
+
+        .tag {
+            display: inline-block;
+            background: #e4edf8;
+            color: #1a3a5f;
+            font-size: 12px;
+            padding: 0 12px;
+            border-radius: 30px;
+            font-weight: 500;
+            margin-right: 4px;
+            white-space: nowrap;
+        }
+
+        .block-item {
+            padding: 5px 0 5px 12px;
+            border-bottom: 1px solid #e0e8f0;
+            font-size: 14.5px;
+        }
+
+        .block-item:last-child {
+            border-bottom: none;
+        }
+
+        .tip-box {
+            background: #eaf1fb;
+            border-radius: 20px;
+            padding: 20px 28px;
+            margin: 32px 0 12px 0;
+            border-left: 6px solid #2563eb;
+        }
+
+        .tip-box strong {
+            color: #0b1e33;
+        }
+
+        .tip-box ul {
+            margin-top: 8px;
+            padding-left: 20px;
+            list-style-type: none;
+        }
+
+        .tip-box ul li {
+            padding: 2px 0;
+        }
+
+        .tip-box ul li::before {
+            content: "✓ ";
+            color: #2563eb;
+            font-weight: 700;
+        }
+
+        .footer-note {
+            text-align: center;
+            font-size: 14px;
+            color: #7a8b9e;
+            margin-top: 32px;
+            border-top: 1px solid #e0e8f0;
+            padding-top: 24px;
+        }
+
+        .badge {
+            background: #d4e2f7;
+            color: #0b1e33;
+            font-size: 13px;
+            border-radius: 30px;
+            padding: 0 14px;
+            font-weight: 600;
+        }
+
+        hr {
+            border: none;
+            border-top: 2px dotted #d0dcec;
+            margin: 24px 0;
+        }
+
+        .inline-code {
+            background: #eaf0f8;
+            padding: 0 8px;
+            border-radius: 6px;
+            font-family: "SF Mono", "Menlo", monospace;
+            font-size: 14px;
+            color: #1a3a5f;
+        }
+
+        .formula-box {
+            background: #f8faff;
+            padding: 8px 16px;
+            border-radius: 12px;
+            margin: 4px 0 8px 0;
+            font-size: 14px;
+            color: #1a3a5f;
+            border: 1px solid #e0e8f0;
+            font-family: "Times New Roman", "KaTeX_Main", serif;
+        }
+
+        .example-box {
+            background: #f4f8fe;
+            padding: 8px 16px;
+            border-radius: 12px;
+            margin: 4px 0 8px 0;
+            font-size: 14px;
+            color: #1a3a5f;
+            border: 1px solid #e0e8f0;
+        }
+
+        .two-col {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 6px 20px;
+        }
+
+        @media (max-width: 640px) {
+            .two-col {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .math-symbol {
+            font-family: "Times New Roman", "KaTeX_Main", serif;
+            font-style: italic;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+
+    <h1>📐 初中数学 · 核心知识点梳理</h1>
+    <div class="subtitle-wrap">
+        <span class="subtitle">🔹 四大板块 · 系统复习 🔹</span>
+    </div>
+
+    <!-- ========================================== -->
+    <!-- 第一部分：数与代数 -->
+    <!-- ========================================== -->
+    <h2>一、数与代数 <span class="badge">约35个核心点</span></h2>
+    <p style="color:#4a5a6e; font-size:15px; margin-bottom:12px;">贯穿初中数学始终，是后续学习的基础。</p>
+
+    <h3>1. 数与式</h3>
+    <h4>▸ 实数</h4>
+    <div class="grid-list">
+        <div class="grid-item"><span class="num">1.</span> 有理数（整数、分数）与无理数（<span class="math-symbol">π</span>、<span class="inline-code">√2</span>）</div>
+        <div class="grid-item"><span class="num">2.</span> 数轴（三要素：原点、正方向、单位长度）</div>
+        <div class="grid-item"><span class="num">3.</span> 相反数、倒数、绝对值</div>
+        <div class="grid-item"><span class="num">4.</span> 科学记数法（<span class="inline-code">a × 10ⁿ</span>，1 ≤ |a| &lt; 10）</div>
+        <div class="grid-item"><span class="num">5.</span> 平方根（<span class="inline-code">±√a</span>）、算术平方根（<span class="inline-code">√a</span>）、立方根（<span class="inline-code">∛a</span>）</div>
+        <div class="grid-item"><span class="num">6.</span> 实数的大小比较</div>
+    </div>
+
+    <h4>▸ 整式</h4>
+    <div class="grid-list">
+        <div class="grid-item"><span class="num">7.</span> 整式加减（合并同类项）</div>
+        <div class="grid-item"><span class="num">8.</span> 幂的运算：<span class="inline-code">aᵐ·aⁿ = aᵐ⁺ⁿ</span>，<span class="inline-code">(aᵐ)ⁿ = aᵐⁿ</span>，<span class="inline-code">(ab)ⁿ = aⁿbⁿ</span></div>
+        <div class="grid-item"><span class="num">9.</span> 整式乘法：单项式×多项式、多项式×多项式</div>
+        <div class="grid-item"><span class="num">10.</span> 乘法公式：<span class="inline-code">(a+b)² = a²+2ab+b²</span> · <span class="inline-code">(a-b)² = a²-2ab+b²</span> · <span class="inline-code">(a+b)(a-b) = a²-b²</span></div>
+        <div class="grid-item"><span class="num">11.</span> 因式分解：提公因式法、公式法、十字相乘法</div>
+    </div>
+    <div class="formula-box">
+        📌 核心公式：<span class="inline-code">(a+b)² = a² + 2ab + b²</span>　·　<span class="inline-code">(a-b)² = a² - 2ab + b²</span>　·　<span class="inline-code">a² - b² = (a+b)(a-b)</span>
+    </div>
+
+    <h4>▸ 分式</h4>
+    <div class="grid-list">
+        <div class="grid-item"><span class="num">12.</span> 分式有意义（分母 ≠ 0）</div>
+        <div class="grid-item"><span class="num">13.</span> 分式的基本性质（约分、通分）</div>
+        <div class="grid-item"><span class="num">14.</span> 分式运算（加减乘除）</div>
+        <div class="grid-item"><span class="num">15.</span> 分式方程（增根检验）</div>
+    </div>
+
+    <h4>▸ 二次根式</h4>
+    <div class="grid-list">
+        <div class="grid-item"><span class="num">16.</span> 二次根式有意义（被开方数 ≥ 0）</div>
+        <div class="grid-item"><span class="num">17.</span> <span class="inline-code">√a · √b = √(ab)</span>（a≥0, b≥0）</div>
+        <div class="grid-item"><span class="num">18.</span> <span class="inline-code">√a / √b = √(a/b)</span>（a≥0, b>0）</div>
+        <div class="grid-item"><span class="num">19.</span> 最简二次根式（化简）</div>
+    </div>
+
+    <h3>2. 方程与不等式</h3>
+    <h4>▸ 方程</h4>
+    <div class="grid-list">
+        <div class="grid-item"><span class="num">20.</span> 一元一次方程（<span class="inline-code">ax + b = 0</span>）</div>
+        <div class="grid-item"><span class="num">21.</span> 二元一次方程组（代入消元 / 加减消元）</div>
+        <div class="grid-item"><span class="num">22.</span> 一元二次方程：<span class="inline-code">ax² + bx + c = 0</span>（a ≠ 0）</div>
+        <div class="grid-item"><span class="num">23.</span> 一元二次方程求根公式：<span class="inline-code">x = [-b ± √(b²-4ac)] / 2a</span></div>
+        <div class="grid-item"><span class="num">24.</span> 判别式 <span class="inline-code">Δ = b² - 4ac</span>（Δ>0 两不等实根；Δ=0 两相等实根；Δ&lt;0 无实根）</div>
+        <div class="grid-item"><span class="num">25.</span> 韦达定理：<span class="inline-code">x₁+x₂ = -b/a</span>，<span class="inline-code">x₁·x₂ = c/a</span></div>
+        <div class="grid-item"><span class="num">26.</span> 分式方程（增根检验）</div>
+        <div class="grid-item"><span class="num">27.</span> 列方程解应用题（行程、工程、利润、增长率等）</div>
+    </div>
+
+    <h4>▸ 不等式</h4>
+    <div class="grid-list">
+        <div class="grid-item"><span class="num">28.</span> 不等式性质（乘除负数改变方向）</div>
+        <div class="grid-item"><span class="num">29.</span> 一元一次不等式（组）</div>
+        <div class="grid-item"><span class="num">30.</span> 不等式组解集的数轴表示</div>
+    </div>
+
+    <h3>3. 函数</h3>
+    <h4>▸ 平面直角坐标系</h4>
+    <div class="grid-list">
+        <div class="grid-item"><span class="num">31.</span> 各象限内点的坐标特征（+，+ / -，+ / -，- / +，-）</div>
+        <div class="grid-item"><span class="num">32.</span> 对称点坐标规律（关于x轴、y轴、原点对称）</div>
+    </div>
+
+    <h4>▸ 一次函数</h4>
+    <div class="grid-list">
+        <div class="grid-item"><span class="num">33.</span> 一般式：<span class="inline-code">y = kx + b</span>（k≠0）</div>
+        <div class="grid-item"><span class="num">34.</span> <span class="inline-code">k</span> 决定增减性（k>0 增，k&lt;0 减）</div>
+        <div class="grid-item"><span class="num">35.</span> <span class="inline-code">b</span> 决定与y轴交点（0, b）</div>
+        <div class="grid-item"><span class="num">36.</span> 待定系数法求解析式</div>
+        <div class="grid-item"><span class="num">37.</span> 正比例函数 <span class="inline-code">y = kx</span>（过原点）</div>
+    </div>
+
+    <h4>▸ 反比例函数</h4>
+    <div class="grid-list">
+        <div class="grid-item"><span class="num">38.</span> 一般式：<span class="inline-code">y = k/x</span>（k≠0）</div>
+        <div class="grid-item"><span class="num">39.</span> 图像性质：k>0 一三象限，k&lt;0 二四象限</div>
+        <div class="grid-item"><span class="num">40.</span> 每个象限内 <span class="inline-code">y</span> 随 <span class="inline-code">x</span> 的增大而减小/增大</div>
+    </div>
+
+    <h4>▸ 二次函数</h4>
+    <div class="grid-list">
+        <div class="grid-item"><span class="num">41.</span> 一般式：<span class="inline-code">y = ax² + bx + c</span>（a≠0）</div>
+        <div class="grid-item"><span class="num">42.</span> 顶点式：<span class="inline-code">y = a(x-h)² + k</span>（顶点 (h,k)）</div>
+        <div class="grid-item"><span class="num">43.</span> 对称轴：<span class="inline-code">x = -b/(2a)</span></div>
+        <div class="grid-item"><span class="num">44.</span> <span class="inline-code">a</span> 决定开口方向（a>0 向上，a&lt;0 向下）和大小</div>
+        <div class="grid-item"><span class="num">45.</span> 顶点坐标：<span class="inline-code">(-b/(2a), (4ac-b²)/(4a))</span></div>
+        <div class="grid-item"><span class="num">46.</span> 与x轴交点个数（判别式 <span class="inline-code">Δ</span> 决定）</div>
+        <div class="grid-item"><span class="num">47.</span> 二次函数图像平移规律（上加下减，左加右减）</div>
+    </div>
+
+    <hr>
+
+    <!-- ========================================== -->
+    <!-- 第二部分：图形与几何 -->
+    <!-- ========================================== -->
+    <h2>二、图形与几何 <span class="badge">约30个核心点</span></h2>
+    <p style="color:#4a5a6e; font-size:15px; margin-bottom:12px;">培养空间观念和逻辑推理能力。</p>
+
+    <h3>1. 基本图形</h3>
+    <h4>▸ 线与角</h4>
+    <div class="grid-list">
+        <div class="grid-item"><span class="num">48.</span> 线段、射线、直线（公理：两点确定一条直线）</div>
+        <div class="grid-item"><span class="num">49.</span> 线段中点、角平分线</div>
+        <div class="grid-item"><span class="num">50.</span> 余角、补角、对顶角（对顶角相等）</div>
+        <div class="grid-item"><span class="num">51.</span> 平行线的判定与性质（同位角/内错角/同旁内角）</div>
+        <div class="grid-item"><span class="num">52.</span> 垂线（垂线段最短）</div>
+    </div>
+
+    <h4>▸ 三角形</h4>
+    <div class="grid-list">
+        <div class="grid-item"><span class="num">53.</span> 三角形内角和定理（180°）</div>
+        <div class="grid-item"><span class="num">54.</span> 三角形外角定理（等于不相邻两内角和）</div>
+        <div class="grid-item"><span class="num">55.</span> 三边关系（两边之和大于第三边）</div>
+        <div class="grid-item"><span class="num">56.</span> 全等三角形判定：SSS · SAS · ASA · AAS · HL（Rt△）</div>
+        <div class="grid-item"><span class="num">57.</span> 等腰三角形性质（等边对等角、三线合一）</div>
+        <div class="grid-item"><span class="num">58.</span> 等边三角形性质（三边相等、三角=60°）</div>
+        <div class="grid-item"><span class="num">59.</span> 直角三角形性质（勾股定理：<span class="inline-code">a²+b²=c²</span>）</div>
+        <div class="grid-item"><span class="num">60.</span> 直角三角形判定（勾股定理逆定理）</div>
+        <div class="grid-item"><span class="num">61.</span> 三角形中位线定理（平行于第三边且等于第三边的一半）</div>
+    </div>
+
+    <h4>▸ 四边形</h4>
+    <div class="grid-list">
+        <div class="grid-item"><span class="num">62.</span> 平行四边形性质与判定（对边平行且相等、对角相等、对角线互相平分）</div>
+        <div class="grid-item"><span class="num">63.</span> 矩形（对角线相等，四个直角）</div>
+        <div class="grid-item"><span class="num">64.</span> 菱形（四边相等，对角线互相垂直平分）</div>
+        <div class="grid-item"><span class="num">65.</span> 正方形（四边相等、四角为直角、对角线相等且垂直平分）</div>
+        <div class="grid-item"><span class="num">66.</span> 梯形（一组对边平行）</div>
+    </div>
+
+    <h4>▸ 圆</h4>
+    <div class="grid-list">
+        <div class="grid-item"><span class="num">67.</span> 圆心角、圆周角、弧、弦、弦心距</div>
+        <div class="grid-item"><span class="num">68.</span> 垂径定理（垂直于弦的直径平分弦及弧）</div>
+        <div class="grid-item"><span class="num">69.</span> 圆周角定理（同弧所对圆周角等于圆心角一半）</div>
+        <div class="grid-item"><span class="num">70.</span> 切线的判定与性质（过圆心垂直于切线）</div>
+        <div class="grid-item"><span class="num">71.</span> 圆的内接四边形（对角互补）</div>
+    </div>
+
+    <h3>2. 图形变换</h3>
+    <div class="grid-list">
+        <div class="grid-item"><span class="num">72.</span> 轴对称（垂直平分线）</div>
+        <div class="grid-item"><span class="num">73.</span> 中心对称（旋转180°）</div>
+        <div class="grid-item"><span class="num">74.</span> 平移（方向和距离）</div>
+        <div class="grid-item"><span class="num">75.</span> 旋转（旋转中心、旋转角）</div>
+        <div class="grid-item"><span class="num">76.</span> 相似三角形判定：AA · SAS · SSS</div>
+        <div class="grid-item"><span class="num">77.</span> 相似三角形性质（对应边成比例、面积比=相似比²）</div>
+    </div>
+
+    <h3>3. 解直角三角形</h3>
+    <div class="grid-list">
+        <div class="grid-item"><span class="num">78.</span> 锐角三角函数：<span class="inline-code">sin A = 对边/斜边</span>，<span class="inline-code">cos A = 邻边/斜边</span>，<span class="inline-code">tan A = 对边/邻边</span></div>
+        <div class="grid-item"><span class="num">79.</span> 特殊角三角函数值（30°、45°、60°）</div>
+        <div class="grid-item"><span class="num">80.</span> 解直角三角形应用（仰角、俯角、坡度、方位角）</div>
+    </div>
+
+    <hr>
+
+    <!-- ========================================== -->
+    <!-- 第三部分：统计与概率 -->
+    <!-- ========================================== -->
+    <h2>三、统计与概率 <span class="badge">约10个核心点</span></h2>
+    <p style="color:#4a5a6e; font-size:15px; margin-bottom:12px;">数据分析和决策能力的考查。</p>
+
+    <h3>1. 统计</h3>
+    <div class="grid-list">
+        <div class="grid-item"><span class="num">81.</span> 平均数（算术/加权）、中位数、众数</div>
+        <div class="grid-item"><span class="num">82.</span> 极差、方差、标准差（衡量波动大小）</div>
+        <div class="grid-item"><span class="num">83.</span> 数据的收集与整理（全面调查 / 抽样调查）</div>
+        <div class="grid-item"><span class="num">84.</span> 统计图表（条形图、扇形图、折线图、频数分布直方图）</div>
+    </div>
+
+    <h3>2. 概率</h3>
+    <div class="grid-list">
+        <div class="grid-item"><span class="num">85.</span> 必然事件、不可能事件、随机事件</div>
+        <div class="grid-item"><span class="num">86.</span> 概率公式：<span class="inline-code">P(A) = 事件A发生的结果数 / 所有可能结果数</span></div>
+        <div class="grid-item"><span class="num">87.</span> 用列举法（列表 / 树状图）求概率</div>
+        <div class="grid-item"><span class="num">88.</span> 频率估计概率</div>
+    </div>
+
+    <hr>
+
+    <!-- ========================================== -->
+    <!-- 第四部分：综合与实践 -->
+    <!-- ========================================== -->
+    <h2>四、综合与实践 <span class="badge">约12个核心点</span></h2>
+    <p style="color:#4a5a6e; font-size:15px; margin-bottom:12px;">考查综合运用能力，往往出现在压轴题中。</p>
+
+    <h3>1. 几何常用辅助线</h3>
+    <div class="grid-list">
+        <div class="grid-item"><span class="num">89.</span> 遇中点，倍长中线</div>
+        <div class="grid-item"><span class="num">90.</span> 遇角平分线，作垂线 / 翻折</div>
+        <div class="grid-item"><span class="num">91.</span> 遇等腰，作高 / 中线 / 角平分线（三线合一）</div>
+        <div class="grid-item"><span class="num">92.</span> 遇平行，找同位角 / 内错角 / 同旁内角</div>
+        <div class="grid-item"><span class="num">93.</span> 构造直角三角形（勾股定理）</div>
+        <div class="grid-item"><span class="num">94.</span> 构造全等 / 相似三角形</div>
+    </div>
+
+    <h3>2. 常见模型</h3>
+    <div class="grid-list">
+        <div class="grid-item"><span class="num">95.</span> 手拉手模型（全等/相似）</div>
+        <div class="grid-item"><span class="num">96.</span> 一线三等角模型</div>
+        <div class="grid-item"><span class="num">97.</span> 母子相似模型（射影定理）</div>
+        <div class="grid-item"><span class="num">98.</span> 将军饮马模型（最短路径）</div>
+    </div>
+
+    <h3>3. 函数与几何综合</h3>
+    <div class="grid-list">
+        <div class="grid-item"><span class="num">99.</span> 二次函数与三角形面积最值</div>
+        <div class="grid-item"><span class="num">100.</span> 函数与特殊四边形存在性问题（平行四边形、菱形、矩形等）</div>
+    </div>
+
+    <!-- ========================================== -->
+    <!-- 复习小贴士 -->
+    <!-- ========================================== -->
+    <div class="tip-box">
+        <strong>💡 复习小贴士</strong>
+        <ul>
+            <li><strong>回归基础概念与公式</strong>：公式不要死记硬背，要理解其推导过程和适用条件。</li>
+            <li><strong>刷真题与错题本</strong>：近3~5年本地中考真题最有参考价值，错题本要记下错误原因和正确思路。</li>
+            <li><strong>几何题多总结模型</strong>：常见的辅助线添法和几何模型（如“手拉手”“一线三等角”）值得专门整理。</li>
+            <li><strong>函数题注意数形结合</strong>：画图可以帮助理解函数性质，也是解决复杂题的重要方法。</li>
+        </ul>
+        <p style="margin-top:12px; background:#dce6f5; padding:6px 18px; border-radius:30px; display:inline-block; color:#0b1e33;">
+            ⏳ 时间紧张的话，优先巩固 <strong>方程与不等式</strong>、<strong>全等/相似三角形</strong>、<strong>二次函数</strong> 三大板块
+        </p>
+    </div>
+
+    <div class="footer-note">
+        整理自近年中考趋势 · 祝复习顺利 🍀
+    </div>
+
+</div>
+
+</body>
+</html>
