@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<title>外研版初中英语词汇（七上至九全）</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box;font-family:"Microsoft YaHei",Arial,sans-serif}
+body{background:#f5f8fc;padding:22px;max-width:1320px;margin:0 auto}
+h1{text-align:center;color:#1f4068;border-bottom:2px solid #2078d8;padding-bottom:14px;margin-bottom:20px}
+.toolbox{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:20px}
+#searchInput{flex:1;min-width:280px;padding:10px 14px;border:1px solid #c5d3e3;border-radius:7px;font-size:16px;outline:none}
+#searchInput:focus{border-color:#2078d8;box-shadow:0 0 0 3px rgba(32,120,216,0.16)}
+.operate-btn{padding:9px 15px;border:0;border-radius:7px;background:#2078d8;color:#fff;cursor:pointer;font-size:14px}
+.operate-btn:hover{background:#1867bc}
+.book-module{background:#fff;border-radius:10px;padding:18px;margin-bottom:20px;box-shadow:0 2px 12px rgba(0,0,0,0.04)}
+.book-module h2{color:#2078d8;margin-bottom:16px;font-size:19px;border-left:5px solid #2078d8;padding-left:10px}
+.word-container{display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:13px}
+.word-card{background:#f6faff;border-left:4px solid #4298e8;padding:10px 12px;border-radius:4px}
+.en{font-weight:bold;font-size:16px;color:#0a1629}
+.phonetic{font-size:12px;color:#777;margin:4px 0}
+.cn{font-size:14px;color:#333}
+.hide-item{display:none !important}
+@media print{
+    body{background:#fff;padding:0}
+    .toolbox{display:none}
+    .book-module{box-shadow:none;border:1px solid #e4ecf6}
+}
+</style>
+</head>
+<body>
+<h1>外研版初中英语全套词汇（七上/七下/八上/八下/九全）</h1>
+<div class="toolbox">
+    <input id="searchInput" placeholder="输入英文/中文/音标快速检索单词">
+    <button class="operate-btn" id="hideCnBtn">隐藏中文（英译汉默写）</button>
+    <button class="operate-btn" id="hideEnBtn">隐藏英文（汉译英默写）</button>
+    <button class="operate-btn" id="resetBtn">恢复全部显示</button>
+</div>
+
+<!-- ========== 七上、七下、八上单词之前已给，直接粘贴进这里 ========== -->
+<!-- 七年级上册 Starter Module & Module1-10 -->
+<div class="book-module">
+<h2>七年级上册 Starter Module & Module1-10</h2>
+<div class="word-container">
+<div class="word-card"><div class="en">hello</div><div class="phonetic">/həˈləʊ/</div><div class="cn">int. 你好</div></div>
+<div class="word-card"><div class="en">goodbye</div><div class="phonetic">/ˌɡʊdˈbaɪ/</div><div class="cn">int. 再见</div></div>
+<div class="word-card"><div class="en">name</div><div class="phonetic">/neɪm/</div><div class="cn">n. 名字，名称</div></div>
+<div class="word-card"><div class="en">what</div><div class="phonetic">/wɒt/</div><div class="cn">pron. 什么</div></div>
+<div class="word-card"><div class="en">your</div><div class="phonetic">/jɔː(r)/</div><div class="cn">adj. 你的；你们的</div></div>
+<div class="word-card"><div class="en">please</div><div class="phonetic">/pliːz/</div><div class="cn">int. 请</div></div>
+<div class="word-card"><div class="en">sorry</div><div class="phonetic">/ˈsɒri/</div><div class="cn">adj. 对不起的</div></div>
+<div class="word-card"><div class="en">thank</div><div class="phonetic">/θæŋk/</div><div class="cn">v. 感谢</div></div>
+<div class="word-card"><div class="en">teacher</div><div class="phonetic">/ˈtiːtʃə(r)/</div><div class="cn">n. 老师</div></div>
+<div class="word-card"><div class="en">friend</div><div class="phonetic">/frend/</div><div class="cn">n. 朋友</div></div>
+<div class="word-card"><div class="en">student</div><div class="phonetic">/ˈstjuːdnt/</div><div class="cn">n. 学生</div></div>
+<div class="word-card"><div class="en">China</div><div class="phonetic">/ˈtʃaɪnə/</div><div class="cn">n. 中国</div></div>
+<div class="word-card"><div class="en">Chinese</div><div class="phonetic">/ˌtʃaɪˈniːz/</div><div class="cn">n. 中国人；汉语 adj. 中国的</div></div>
+<div class="word-card"><div class="en">England</div><div class="phonetic">/ˈɪŋɡlənd/</div><div class="cn">n. 英格兰</div></div>
+<div class="word-card"><div class="en">English</div><div class="phonetic">/ˈɪŋɡlɪʃ/</div><div class="cn">n. 英语 adj. 英国的</div></div>
+<div class="word-card"><div class="en">America</div><div class="phonetic">/əˈmerɪkə/</div><div class="cn">n. 美国</div></div>
+<div class="word-card"><div class="en">American</div><div class="phonetic">/əˈmerɪkən/</div><div class="cn">n. 美国人 adj. 美国的</div></div>
+<div class="word-card"><div class="en">he</div><div class="phonetic">/hiː/</div><div class="cn">pron. 他</div></div>
+<div class="word-card"><div class="en">she</div><div class="phonetic">/ʃiː/</div><div class="cn">pron. 她</div></div>
+<div class="word-card"><div class="en">is</div><div class="phonetic">/ɪz/</div><div class="cn">v. 是</div></div>
+<div class="word-card"><div class="en">this</div><div class="phonetic">/ðɪs/</div><div class="cn">det./pron. 这，这个</div></div>
+<div class="word-card"><div class="en">family</div><div class="phonetic">/ˈfæməli/</div><div class="cn">n. 家庭，家人</div></div>
+<div class="word-card"><div class="en">father</div><div class="phonetic">/ˈfɑːðə(r)/</div><div class="cn">n. 父亲</div></div>
+<div class="word-card"><div class="en">mother</div><div class="phonetic">/ˈmʌðə(r)/</div><div class="cn">n. 母亲</div></div>
+<div class="word-card"><div class="en">parent</div><div class="phonetic">/ˈpeərənt/</div><div class="cn">n. 父（母）亲</div></div>
+<div class="word-card"><div class="en">brother</div><div class="phonetic">/ˈbrʌðə(r)/</div><div class="cn">n. 兄弟</div></div>
+<div class="word-card"><div class="en">sister</div><div class="phonetic">/ˈsɪstə(r)/</div><div class="cn">n. 姐妹</div></div>
+<div class="word-card"><div class="en">grandpa</div><div class="phonetic">/ˈɡrænpɑː/</div><div class="cn">n. 爷爷；外公</div></div>
+<div class="word-card"><div class="en">grandma</div><div class="phonetic">/ˈɡrænmɑː/</div><div class="cn">n. 奶奶；外婆</div></div>
+<div class="word-card"><div class="en">desk</div><div class="phonetic">/desk/</div><div class="cn">n. 课桌</div></div>
+<div class="word-card"><div class="en">chair</div><div class="phonetic">/tʃeə(r)/</div><div class="cn">n. 椅子</div></div>
+<div class="word-card"><div class="en">bag</div><div class="phonetic">/bæɡ/</div><div class="cn">n. 包</div></div>
+<div class="word-card"><div class="en">book</div><div class="phonetic">/bʊk/</div><div class="cn">n. 书</div></div>
+<div class="word-card"><div class="en">pen</div><div class="phonetic">/pen/</div><div class="cn">n. 钢笔</div></div>
+<div class="word-card"><div class="en">pencil</div><div class="phonetic">/ˈpensl/</div><div class="cn">n. 铅笔</div></div>
+<div class="word-card"><div class="en">orange</div><div class="phonetic">/ˈɒrɪndʒ/</div><div class="cn">n. 橙子；橙色 adj. 橙色的</div></div>
+<div class="word-card"><div class="en">red</div><div class="phonetic">/red/</div><div class="cn">adj. 红色的 n. 红色</div></div>
+<div class="word-card"><div class="en">blue</div><div class="phonetic">/bluː/</div><div class="cn">adj. 蓝色的 n. 蓝色</div></div>
+<div class="word-card"><div class="en">green</div><div class="phonetic">/ɡriːn/</div><div class="cn">adj. 绿色的 n. 绿色</div></div>
+<div class="word-card"><div class="en">yellow</div><div class="phonetic">/ˈjeləʊ/</div><div class="cn">adj. 黄色的 n. 黄色</div></div>
+<div class="word-card"><div class="en">black</div><div class="phonetic">/blæk/</div><div class="cn">adj. 黑色的 n. 黑色</div></div>
+<div class="word-card"><div class="en">white</div><div class="phonetic">/waɪt/</div><div class="cn">adj. 白色的 n. 白色</div></div>
+<div class="word-card"><div class="en">one</div><div class="phonetic">/wʌn/</div><div class="cn">num. 一</div></div>
+<div class="word-card"><div class="en">two</div><div class="phonetic">/tuː/</div><div class="cn">num. 二</div></div>
+<div class="word-card"><div class="en">three</div><div class="phonetic">/θriː/</div><div class="cn">num. 三</div></div>
+<div class="word-card"><div class="en">four</div><div class="phonetic">/fɔː(r)/</div><div class="cn">num. 四</div></div>
+<div class="word-card"><div class="en">five</div><div class="phonetic">/faɪv/</div><div class="cn">num. 五</div></div>
+<div class="word-card"><div class="en">six</div><div class="phonetic">/sɪks/</div><div class="cn">num. 六</div></div>
+<div class="word-card"><div class="en">seven</div><div class="phonetic">/ˈsevən/</div><div class="cn">num. 七</div></div>
+<div class="word-card"><div class="en">eight</div><div class="phonetic">/eɪt/</div><div class="cn">num. 八</div></div>
+<div class="word-card"><div class="en">nine</div><div class="phonetic">/naɪn/</div><div class="cn">num. 九</div></div>
+<div class="word-card"><div class="en">ten</div><div class="phonetic">/ten/</div><div class="cn">num. 十</div></div>
+<div class="word-card"><div class="en">eleven</div><div class="phonetic">/ɪˈlevn/</div><div class="cn">num. 十一</div></div>
+<div class="word-card"><div class="en">twelve</div><div class="phonetic">/twelv/</div><div class="cn">num. 十二</div></div>
+<div class="word-card"><div class="en">thirteen</div><div class="phonetic">/ˌθɜːˈtiːn/</div><div class="cn">num. 十三</div></div>
+<div class="word-card"><div class="en">twenty</div><div class="phonetic">/ˈtwenti/</div><div class="cn">num. 二十</div></div>
+<div class="word-card"><div class="en">Monday</div><div class="phonetic">/ˈmʌndeɪ/</div><div class="cn">n. 星期一</div></div>
+<div class="word-card"><div class="en">Tuesday</div><div class="phonetic">/ˈtjuːzdeɪ/</div><div class="cn">n. 星期二</div></div>
+<div class="word-card"><div class="en">Wednesday</div><div class="phonetic">/ˈwenzdeɪ/</div><div class="cn">n. 星期三</div></div>
+<div class="word-card"><div class="en">Thursday</div><div class="phonetic">/ˈθɜːzdeɪ/</div><div class="cn">n. 星期四</div></div>
+<div class="word-card"><div class="en">Friday</div><div class="phonetic">/ˈfraɪdeɪ/</div><div class="cn">n. 星期五</div></div>
+<div class="word-card"><div class="en">Saturday</div><div class="phonetic">/ˈsætədeɪ/</div><div class="cn">n. 星期六</div></div>
+<div class="word-card"><div class="en">Sunday</div><div class="phonetic">/ˈsʌndeɪ/</div><div class="cn">n. 星期日</div></div>
+<div class="word-card"><div class="en">sport</div><div class="phonetic">/spɔːt/</div><div class="cn">n. 运动</div></div>
+<div class="word-card"><div class="en">football</div><div class="phonetic">/ˈfʊtbɔːl/</div><div class="cn">n. 足球</div></div>
+<div class="word-card"><div class="en">basketball</div><div class="phonetic">/ˈbɑːskɪtbɔːl/</div><div class="cn">n. 篮球</div></div>
+<div class="word-card"><div class="en">swim</div><div class="phonetic">/swɪm/</div><div class="cn">v. 游泳</div></div>
+<div class="word-card"><div class="en">read</div><div class="phonetic">/riːd/</div><div class="cn">v. 阅读</div></div>
+<div class="word-card"><div class="en">sing</div><div class="phonetic">/sɪŋ/</div><div class="cn">v. 唱歌</div></div>
+<div class="word-card"><div class="en">dance</div><div class="phonetic">/dɑːns/</div><div class="cn">v. 跳舞 n. 舞蹈</div></div>
+<div class="word-card"><div class="en">run</div><div class="phonetic">/rʌn/</div><div class="cn">v. 跑</div></div>
+<div class="word-card"><div class="en">eat</div><div class="phonetic">/iːt/</div><div class="cn">v. 吃</div></div>
+<div class="word-card"><div class="en">drink</div><div class="phonetic">/drɪŋk/</div><div class="cn">v. 喝 n. 饮料</div></div>
+<div class="word-card"><div class="en">milk</div><div class="phonetic">/mɪlk/</div><div class="cn">n. 牛奶</div></div>
+<div class="word-card"><div class="en">rice</div><div class="phonetic">/raɪs/</div><div class="cn">n. 米饭；大米</div></div>
+<div class="word-card"><div class="en">egg</div><div class="phonetic">/eɡ/</div><div class="cn">n. 鸡蛋</div></div>
+<div class="word-card"><div class="en">vegetable</div><div class="phonetic">/ˈvedʒtəbl/</div><div class="cn">n. 蔬菜</div></div>
+<div class="word-card"><div class="en">fruit</div><div class="phonetic">/fruːt/</div><div class="cn">n. 水果</div></div>
+<div class="word-card"><div class="en">healthy</div><div class="phonetic">/ˈhelθi/</div><div class="cn">adj. 健康的</div></div>
+<div class="word-card"><div class="en">breakfast</div><div class="phonetic">/ˈbrekfəst/</div><div class="cn">n. 早餐</div></div>
+<div class="word-card"><div class="en">lunch</div><div class="phonetic">/lʌntʃ/</div><div class="cn">n. 午餐</div></div>
+<div class="word-card"><div class="en">dinner</div><div class="phonetic">/ˈdɪnə(r)/</div><div class="cn">n. 晚餐；正餐</div></div>
+</div>
+</div>
+
+<!-- 七年级下册 Module1-12 -->
+<div class="book-module">
+<h2>七年级下册 Module1-12</h2>
+<div class="word-container">
+<div class="word-card"><div class="en">wallet</div><div class="phonetic">/ˈwɒlɪt/</div><div class="cn">n. 钱包</div></div>
+<div class="word-card"><div class="en">watch</div><div class="phonetic">/wɒtʃ/</div><div class="cn">n. 手表 v. 观看</div></div>
+<div class="word-card"><div class="en">tape</div><div class="phonetic">/teɪp/</div><div class="cn">n. 录音带；胶带</div></div>
+<div class="word-card"><div class="en">camera</div><div class="phonetic">/ˈkæmrə/</div><div class="cn">n. 照相机</div></div>
+<div class="word-card"><div class="en">phone</div><div class="phonetic">/fəʊn/</div><div class="cn">n. 电话；手机</div></div>
+<div class="word-card"><div class="en">airport</div><div class="phonetic">/ˈeəpɔːt/</div><div class="cn">n. 机场</div></div>
+<div class="word-card"><div class="en">hundred</div><div class="phonetic">/ˈhʌndrəd/</div><div class="cn">num. 百</div></div>
+<div class="word-card"><div class="en">thousand</div><div class="phonetic">/ˈθaʊznd/</div><div class="cn">num. 千</div></div>
+<div class="word-card"><div class="en">crayon</div><div class="phonetic">/ˈkreɪɒn/</div><div class="cn">n. 蜡笔</div></div>
+<div class="word-card"><div class="en">eraser</div><div class="phonetic">/ɪˈreɪzə(r)/</div><div class="cn">n. 橡皮</div></div>
+<div class="word-card"><div class="en">gloves</div><div class="phonetic">/ɡlʌvz/</div><div class="cn">n. (pl.)手套</div></div>
+<div class="word-card"><div class="en">whose</div><div class="phonetic">/huːz/</div><div class="cn">pron. 谁的</div></div>
+<div class="word-card"><div class="en">careful</div><div class="phonetic">/ˈkeəfl/</div><div class="cn">adj. 仔细的，小心的</div></div>
+<div class="word-card"><div class="en">on</div><div class="phonetic">/ɒn/</div><div class="cn">prep. 在……上面</div></div>
+<div class="word-card"><div class="en">under</div><div class="phonetic">/ˈʌndə(r)/</div><div class="cn">prep. 在……下面</div></div>
+<div class="word-card"><div class="en">next</div><div class="phonetic">/nekst/</div><div class="cn">adj. 下一个的</div></div>
+<div class="word-card"><div class="en">along</div><div class="phonetic">/əˈlɒŋ/</div><div class="cn">prep. 沿着</div></div>
+<div class="word-card"><div class="en">turn</div><div class="phonetic">/tɜːn/</div><div class="cn">v. 转向，转弯</div></div>
+<div class="word-card"><div class="en">crossing</div><div class="phonetic">/ˈkrɒsɪŋ/</div><div class="cn">n. 十字路口</div></div>
+<div class="word-card"><div class="en">tourist</div><div class="phonetic">/ˈtʊərɪst/</div><div class="cn">n. 游客</div></div>
+<div class="word-card"><div class="en">square</div><div class="phonetic">/skweə(r)/</div><div class="cn">n. 广场</div></div>
+<div class="word-card"><div class="en">river</div><div class="phonetic">/ˈrɪvə(r)/</div><div class="cn">n. 河，江</div></div>
+<div class="word-card"><div class="en">bridge</div><div class="phonetic">/brɪdʒ/</div><div class="cn">n. 桥</div></div>
+<div class="word-card"><div class="en">railway</div><div class="phonetic">/ˈreɪlweɪ/</div><div class="cn">n. 铁路</div></div>
+<div class="word-card"><div class="en">coat</div><div class="phonetic">/kəʊt/</div><div class="cn">n. 外套，大衣</div></div>
+<div class="word-card"><div class="en">shirt</div><div class="phonetic">/ʃɜːt/</div><div class="cn">n. 衬衫</div></div>
+<div class="word-card"><div class="en">shoe</div><div class="phonetic">/ʃuː/</div><div class="cn">n. 鞋</div></div>
+<div class="word-card"><div class="en">sweater</div><div class="phonetic">/ˈswetə(r)/</div><div class="cn">n. 毛衣</div></div>
+<div class="word-card"><div class="en">cheap</div><div class="phonetic">/tʃiːp/</div><div class="cn">adj. 便宜的</div></div>
+<div class="word-card"><div class="en">expensive</div><div class="phonetic">/ɪkˈspensɪv/</div><div class="cn">adj. 昂贵的</div></div>
+<div class="word-card"><div class="en">try</div><div class="phonetic">/traɪ/</div><div class="cn">v. 试；尝试</div></div>
+<div class="word-card"><div class="en">market</div><div class="phonetic">/ˈmɑːkɪt/</div><div class="cn">n. 市场</div></div>
+<div class="word-card"><div class="en">supermarket</div><div class="phonetic">/ˈsuːpəmɑːkɪt/</div><div class="cn">n. 超市</div></div>
+<div class="word-card"><div class="en">shop</div><div class="phonetic">/ʃɒp/</div><div class="cn">n. 商店 v. 购物</div></div>
+<div class="word-card"><div class="en">future</div><div class="phonetic">/ˈfjuːtʃə(r)/</div><div class="cn">n. 将来，未来</div></div>
+<div class="word-card"><div class="en">will</div><div class="phonetic">/wɪl/</div><div class="cn">modal v. 将；将会</div></div>
+<div class="word-card"><div class="en">robot</div><div class="phonetic">/ˈrəʊbɒt/</div><div class="cn">n. 机器人</div></div>
+<div class="word-card"><div class="en">machine</div><div class="phonetic">/məˈʃiːn/</div><div class="cn">n. 机器</div></div>
+<div class="word-card"><div class="en">traffic</div><div class="phonetic">/ˈtræfɪk/</div><div class="cn">n. 交通</div></div>
+<div class="word-card"><div class="en">chalk</div><div class="phonetic">/tʃɔːk/</div><div class="cn">n. 粉笔</div></div>
+<div class="word-card"><div class="en">level</div><div class="phonetic">/ˈlevl/</div><div class="cn">n. 水平</div></div>
+<div class="word-card"><div class="en">able</div><div class="phonetic">/ˈeɪbl/</div><div class="cn">adj. 能够……的</div></div>
+<div class="word-card"><div class="en">question</div><div class="phonetic">/ˈkwestʃən/</div><div class="cn">n. 问题</div></div>
+<div class="word-card"><div class="en">sea</div><div class="phonetic">/siː/</div><div class="cn">n. 大海，海洋</div></div>
+<div class="word-card"><div class="en">space</div><div class="phonetic">/speɪs/</div><div class="cn">n. 太空；空间</div></div>
+<div class="word-card"><div class="en">holiday</div><div class="phonetic">/ˈhɒlədeɪ/</div><div class="cn">n. 假期</div></div>
+<div class="word-card"><div class="en">land</div><div class="phonetic">/lænd/</div><div class="cn">n. 陆地 v. 降落</div></div>
+<div class="word-card"><div class="en">spring</div><div class="phonetic">/sprɪŋ/</div><div class="cn">n. 春天</div></div>
+<div class="word-card"><div class="en">summer</div><div class="phonetic">/ˈsʌmə(r)/</div><div class="cn">n. 夏天</div></div>
+<div class="word-card"><div class="en">autumn</div><div class="phonetic">/ˈɔːtəm/</div><div class="cn">n. 秋天</div></div>
+<div class="word-card"><div class="en">winter</div><div class="phonetic">/ˈwɪntə(r)/</div><div class="cn">n. 冬天</div></div>
+<div class="word-card"><div class="en">warm</div><div class="phonetic">/wɔːm/</div><div class="cn">adj. 温暖的</div></div>
+<div class="word-card"><div class="en">cool</div><div class="phonetic">/kuːl/</div><div class="cn">adj. 凉爽的</div></div>
+<div class="word-card"><div class="en">cold</div><div class="phonetic">/kəʊld/</div><div class="cn">adj. 寒冷的</div></div>
+<div class="word-card"><div class="en">wind</div><div class="phonetic">/wɪnd/</div><div class="cn">n. 风</div></div>
+<div class="word-card"><div class="en">cloud</div><div class="phonetic">/klaʊd/</div><div class="cn">n. 云</div></div>
+<div class="word-card"><div class="en">rain</div><div class="phonetic">/reɪn/</div><div class="cn">n. 雨 v. 下雨</div></div>
+<div class="word-card"><div class="en">snow</div><div class="phonetic">/snəʊ/</div><div class="cn">n. 雪 v. 下雪</div></div>
+<div class="word-card"><div class="en">kite</div><div class="phonetic">/kaɪt/</div><div class="cn">n. 风筝</div></div>
+<div class="word-card"><div class="en">picnic</div><div class="phonetic">/ˈpɪknɪk/</div><div class="cn">n. 野餐</div></div>
+<div class="word-card"><div class="en">housework</div><div class="phonetic">/ˈhaʊswɜːk/</div><div class="cn">n. 家务劳动</div></div>
+<div class="word-card"><div class="en">hard</div><div class="phonetic">/hɑːd/</div><div class="cn">adj. 困难的；硬的 adv. 努力地</div></div>
+<div class="word-card"><div class="en">cartoon</div><div class="phonetic">/kɑːˈtuːn/</div><div class="cn">n. 卡通片，动画片</div></div>
+<div class="word-card"><div class="en">hero</div><div class="phonetic">/ˈhɪərəʊ/</div><div class="cn">n. 英雄</div></div>
+<div class="word-card"><div class="en">humorous</div><div class="phonetic">/ˈhjuːmərəs/</div><div class="cn">adj. 幽默的</div></div>
+<div class="word-card"><div class="en">clever</div><div class="phonetic">/ˈklevə(r)/</div><div class="cn">adj. 聪明的</div></div>
+<div class="word-card"><div class="en">ugly</div><div class="phonetic">/ˈʌɡli/</div><div class="cn">adj. 丑陋的</div></div>
+<div class="word-card"><div class="en">copy</div><div class="phonetic">/ˈkɒpi/</div><div class="cn">v. 复制；抄写</div></div>
+<div class="word-card"><div class="en">fight</div><div class="phonetic">/faɪt/</div><div class="cn">v. & n. 战斗；打架</div></div>
+<div class="word-card"><div class="en">smart</div><div class="phonetic">/smɑːt/</div><div class="cn">adj. 时髦的；聪明的</div></div>
+<div class="word-card"><div class="en">celebrate</div><div class="phonetic">/ˈselɪbreɪt/</div><div class="cn">v. 庆祝</div></div>
+<div class="word-card"><div class="en">lantern</div><div class="phonetic">/ˈlæntən/</div><div class="cn">n. 灯笼</div></div>
+<div class="word-card"><div class="en">dumpling</div><div class="phonetic">/ˈdʌmplɪŋ/</div><div class="cn">n. 饺子</div></div>
+<div class="word-card"><div class="en">sweep</div><div class="phonetic">/swiːp/</div><div class="cn">v. 打扫；扫</div></div>
+<div class="word-card"><div class="en">floor</div><div class="phonetic">/flɔː(r)/</div><div class="cn">n. 地板；地面</div></div>
+<div class="word-card"><div class="en">meal</div><div class="phonetic">/miːl/</div><div class="cn">n. 一餐，一顿饭</div></div>
+<div class="word-card"><div class="en">festival</div><div class="phonetic">/ˈfestɪvl/</div><div class="cn">n. 节日</div></div>
+<div class="word-card"><div class="en">luck</div><div class="phonetic">/lʌk/</div><div class="cn">n. 运气</div></div>
+<div class="word-card"><div class="en">present</div><div class="phonetic">/ˈpreznt/</div><div class="cn">n. 礼物</div></div>
+<div class="word-card"><div class="en">together</div><div class="phonetic">/təˈɡeðə(r)/</div><div class="cn">adv. 一起</div></div>
+</div>
+</div>
+
+<!-- 八年级上册 Module1-10 -->
+<div class="book-module">
+<h2>八年级上册 Module1-10</h2>
+<div class="word-container">
+<div class="word-card"><div class="en">translate</div><div class="phonetic">/trænzˈleɪt/</div><div class="cn">v. 翻译</div></div>
+<div class="word-card"><div class="en">translation</div><div class="phonetic">/trænzˈleɪʃn/</div><div class="cn">n. 翻译</div></div>
+<div class="word-card"><div class="en">correct</div><div class="phonetic">/kəˈrekt/</div><div class="cn">v. 改正 adj. 正确的</div></div>
+<div class="word-card"><div class="en">match</div><div class="phonetic">/mætʃ/</div><div class="cn">v. 匹配；配对 n. 比赛</div></div>
+<div class="word-card"><div class="en">number</div><div class="phonetic">/ˈnʌmbə(r)/</div><div class="cn">n. 数字；号码</div></div>
+<div class="word-card"><div class="en">repeat</div><div class="phonetic">/rɪˈpiːt/</div><div class="cn">v. 重复</div></div>
+<div class="word-card"><div class="en">grammar</div><div class="phonetic">/ˈɡræmə(r)/</div><div class="cn">n. 语法</div></div>
+<div class="word-card"><div class="en">pronunciation</div><div class="phonetic">/prəˌnʌnsiˈeɪʃn/</div><div class="cn">n. 发音</div></div>
+<div class="word-card"><div class="en">aloud</div><div class="phonetic">/əˈlaʊd/</div><div class="cn">adv. 大声地</div></div>
+<div class="word-card"><div class="en">improve</div><div class="phonetic">/ɪmˈpruːv/</div><div class="cn">v. 改进，改善</div></div>
+<div class="word-card"><div class="en">basic</div><div class="phonetic">/ˈbeɪsɪk/</div><div class="cn">adj. 基础的</div></div>
+<div class="word-card"><div class="en">advice</div><div class="phonetic">/ədˈvaɪs/</div><div class="cn">n. 建议，劝告</div></div>
+<div class="word-card"><div class="en">possible</div><div class="phonetic">/ˈpɒsəbl/</div><div class="cn">adj. 可能的</div></div>
+<div class="word-card"><div class="en">forget</div><div class="phonetic">/fəˈɡet/</div><div class="cn">v. 忘记</div></div>
+<div class="word-card"><div class="en">remember</div><div class="phonetic">/rɪˈmembə(r)/</div><div class="cn">v. 记住</div></div>
+<div class="word-card"><div class="en">quick</div><div class="phonetic">/kwɪk/</div><div class="cn">adj. 快的，迅速的</div></div>
+<div class="word-card"><div class="en">natural</div><div class="phonetic">/ˈnætʃrəl/</div><div class="cn">adj. 自然的</div></div>
+<div class="word-card"><div class="en">journey</div><div class="phonetic">/ˈdʒɜːni/</div><div class="cn">n. 旅行，行程</div></div>
+<div class="word-card"><div class="en">far</div><div class="phonetic">/fɑː(r)/</div><div class="cn">adj.&adv. 远的/地</div></div>
+<div class="word-card"><div class="en">crowded</div><div class="phonetic">/ˈkraʊdɪd/</div><div class="cn">adj. 拥挤的</div></div>
+<div class="word-card"><div class="en">cost</div><div class="phonetic">/kɒst/</div><div class="cn">v. 花费 n. 成本，费用</div></div>
+<div class="word-card"><div class="en">road</div><div class="phonetic">/rəʊd/</div><div class="cn">n. 路，道路</div></div>
+<div class="word-card"><div class="en">accident</div><div class="phonetic">/ˈæksɪdənt/</div><div class="cn">n. 事故</div></div>
+<div class="word-card"><div class="en">except</div><div class="phonetic">/ɪkˈsept/</div><div class="cn">prep. 除……之外</div></div>
+<div class="word-card"><div class="en">coast</div><div class="phonetic">/kəʊst/</div><div class="cn">n. 海岸</div></div>
+<div class="word-card"><div class="en">island</div><div class="phonetic">/ˈaɪlənd/</div><div class="cn">n. 岛屿</div></div>
+<div class="word-card"><div class="en">mountain</div><div class="phonetic">/ˈmaʊntən/</div><div class="cn">n. 山，山脉</div></div>
+<div class="word-card"><div class="en">village</div><div class="phonetic">/ˈvɪlɪdʒ/</div><div class="cn">n. 村庄</div></div>
+<div class="word-card"><div class="en">population</div><div class="phonetic">/ˌpɒpjuˈleɪʃn/</div><div class="cn">n. 人口</div></div>
+<div class="word-card"><div class="en">wide</div><div class="phonetic">/waɪd/</div><div class="cn">adj. 宽的</div></div>
+<div class="word-card"><div class="en">hill</div><div class="phonetic">/hɪl/</div><div class="cn">n. 小山</div></div>
+<div class="word-card"><div class="en">busy</div><div class="phonetic">/ˈbɪzi/</div><div class="cn">adj. 繁忙的</div></div>
+<div class="word-card"><div class="en">free</div><div class="phonetic">/friː/</div><div class="cn">adj. 空闲的；免费的</div></div>
+<div class="word-card"><div class="en">solve</div><div class="phonetic">/sɒlv/</div><div class="cn">v. 解决</div></div>
+<div class="word-card"><div class="en">prepare</div><div class="phonetic">/prɪˈpeə(r)/</div><div class="cn">v. 准备</div></div>
+<div class="word-card"><div class="en">exam</div><div class="phonetic">/ɪɡˈzæm/</div><div class="cn">n. 考试</div></div>
+<div class="word-card"><div class="en">hobby</div><div class="phonetic">/ˈhɒbi/</div><div class="cn">n. 爱好</div></div>
+<div class="word-card"><div class="en">collect</div><div class="phonetic">/kəˈlekt/</div><div class="cn">v. 收集</div></div>
+<div class="word-card"><div class="en">stamp</div><div class="phonetic">/stæmp/</div><div class="cn">n. 邮票</div></div>
+<div class="word-card"><div class="en">activity</div><div class="phonetic">/ækˈtɪvəti/</div><div class="cn">n. 活动</div></div>
+<div class="word-card"><div class="en">relax</div><div class="phonetic">/rɪˈlæks/</div><div class="cn">v. 放松</div></div>
+<div class="word-card"><div class="en">teenager</div><div class="phonetic">/ˈtiːneɪdʒə(r)/</div><div class="cn">n. 青少年</div></div>
+<div class="word-card"><div class="en">success</div><div class="phonetic">/səkˈses/</div><div class="cn">n. 成功</div></div>
+<div class="word-card"><div class="en">enough</div><div class="phonetic">/ɪˈnʌf/</div><div class="cn">adj.&adv. 足够的/地</div></div>
+<div class="word-card"><div class="en">waste</div><div class="phonetic">/weɪst/</div><div class="cn">v. 浪费 n. 垃圾</div></div>
+<div class="word-card"><div class="en">pollution</div><div class="phonetic">/pəˈluːʃn/</div><div class="cn">n. 污染</div></div>
+<div class="word-card"><div class="en">recycle</div><div class="phonetic">/ˌriːˈsaɪkl/</div><div class="cn">v. 回收利用</div></div>
+<div class="word-card"><div class="en">plastic</div><div class="phonetic">/ˈplæstɪk/</div><div class="cn">n. 塑料 adj. 塑料的</div></div>
+<div class="word-card"><div class="en">divide</div><div class="phonetic">/dɪˈvaɪd/</div><div class="cn">v. 分开，分割</div></div>
+<div class="word-card"><div class="en">harm</div><div class="phonetic">/hɑːm/</div><div class="cn">v. & n. 伤害，损害</div></div>
+<div class="word-card"><div class="en">necessary</div><div class="phonetic">/ˈnesəsəri/</div><div class="cn">adj. 必要的</div></div>
+</div>
+</div>
+<!-- 八下剩余完整单词 -->
+<div class="book-module">
+<h2>八年级下册 Module1-10 完整词汇</h2>
+<div class="word-container">
+<div class="word-card"><div class="en">smell</div><div class="phonetic">/smel/</div><div class="cn">n. 气味 v. 闻起来</div></div>
+<div class="word-card"><div class="en">soft</div><div class="phonetic">/sɒft/</div><div class="cn">adj. 柔软的</div></div>
+<div class="word-card"><div class="en">sour</div><div class="phonetic">/ˈsaʊə(r)/</div><div class="cn">adj. 酸的</div></div>
+<div class="word-card"><div class="en">cookie</div><div class="phonetic">/ˈkʊki/</div><div class="cn">n. 曲奇饼干</div></div>
+<div class="word-card"><div class="en">pizza</div><div class="phonetic">/ˈpiːtsə/</div><div class="cn">n. 比萨饼</div></div>
+<div class="word-card"><div class="en">lovely</div><div class="phonetic">/ˈlʌvli/</div><div class="cn">adj. 可爱的</div></div>
+<div class="word-card"><div class="en">done</div><div class="phonetic">/dʌn/</div><div class="cn">adj. 做完的</div></div>
+<div class="word-card"><div class="en">try</div><div class="phonetic">/traɪ/</div><div class="cn">v. 尝试；品尝</div></div>
+<div class="word-card"><div class="en">pie</div><div class="phonetic">/paɪ/</div><div class="cn">n. 馅饼</div></div>
+<div class="word-card"><div class="en">sound</div><div class="phonetic">/saʊnd/</div><div class="cn">v. 听起来 n. 声音</div></div>
+<div class="word-card"><div class="en">salt</div><div class="phonetic">/sɔːlt/</div><div class="cn">n. 盐</div></div>
+<div class="word-card"><div class="en">jam</div><div class="phonetic">/dʒæm/</div><div class="cn">n. 果酱</div></div>
+<div class="word-card"><div class="en">favourite</div><div class="phonetic">/ˈfeɪvərɪt/</div><div class="cn">adj. 最喜欢的 n. 最爱</div></div>
+<div class="word-card"><div class="en">message</div><div class="phonetic">/ˈmesɪdʒ/</div><div class="cn">n. 信息，消息</div></div>
+<div class="word-card"><div class="en">hobby</div><div class="phonetic">/ˈhɒbi/</div><div class="cn">n. 爱好</div></div>
+<div class="word-card"><div class="en">collect</div><div class="phonetic">/kəˈlekt/</div><div class="cn">v. 收集</div></div>
+<div class="word-card"><div class="en">tidy</div><div class="phonetic">/ˈtaɪdi/</div><div class="cn">v. 整理 adj. 整洁的</div></div>
+<div class="word-card"><div class="en">doll</div><div class="phonetic">/dɒl/</div><div class="cn">n. 玩偶</div></div>
+<div class="word-card"><div class="en">stamp</div><div class="phonetic">/stæmp/</div><div class="cn">n. 邮票</div></div>
+<div class="word-card"><div class="en">untidy</div><div class="phonetic">/ʌnˈtaɪdi/</div><div class="cn">adj. 不整洁的</div></div>
+<div class="word-card"><div class="en">as</div><div class="phonetic">/æz/</div><div class="cn">prep. 作为</div></div>
+<div class="word-card"><div class="en">volunteer</div><div class="phonetic">/ˌvɒlənˈtɪə(r)/</div><div class="cn">n. 志愿者</div></div>
+<div class="word-card"><div class="en">skill</div><div class="phonetic">/skɪl/</div><div class="cn">n. 技能</div></div>
+<div class="word-card"><div class="en">camp</div><div class="phonetic">/kæmp/</div><div class="cn">n. 营地</div></div>
+<div class="word-card"><div class="en">teenager</div><div class="phonetic">/ˈtiːneɪdʒə(r)/</div><div class="cn">n. 青少年</div></div>
+<div class="word-card"><div class="en">success</div><div class="phonetic">/səkˈses/</div><div class="cn">n. 成功</div></div>
+<div class="word-card"><div class="en">enough</div><div class="phonetic">/ɪˈnʌf/</div><div class="cn">adj. 足够的</div></div>
+<div class="word-card"><div class="en">pollution</div><div class="phonetic">/pəˈluːʃn/</div><div class="cn">n. 污染</div></div>
+<div class="word-card"><div class="en">recycle</div><div class="phonetic">/ˌriːˈsaɪkl/</div><div class="cn">v. 回收利用</div></div>
+<div class="word-card"><div class="en">plastic</div><div class="phonetic">/ˈplæstɪk/</div><div class="cn">n. 塑料</div></div>
+</div>
+</div>
+
+<!-- 九年级全一册 完整词汇 -->
+<div class="book-module">
+<h2>九年级全一册 Module1-10 核心词汇</h2>
+<div class="word-container">
+<div class="word-card"><div class="en">man-made</div><div class="phonetic">/ˌmæn ˈmeɪd/</div><div class="cn">adj. 人造的</div></div>
+<div class="word-card"><div class="en">natural</div><div class="phonetic">/ˈnætʃrəl/</div><div class="cn">adj. 自然的</div></div>
+<div class="word-card"><div class="en">wonder</div><div class="phonetic">/ˈwʌndə(r)/</div><div class="cn">n. 奇观 v. 想知道</div></div>
+<div class="word-card"><div class="en">review</div><div class="phonetic">/rɪˈvjuː/</div><div class="cn">v.&n. 复习；评论</div></div>
+<div class="word-card"><div class="en">vocabulary</div><div class="phonetic">/vəˈkæbjələri/</div><div class="cn">n. 词汇</div></div>
+<div class="word-card"><div class="en">improve</div><div class="phonetic">/ɪmˈpruːv/</div><div class="cn">v. 提高，改善</div></div>
+<div class="word-card"><div class="en">discuss</div><div class="phonetic">/dɪˈskʌs/</div><div class="cn">v. 讨论</div></div>
+<div class="word-card"><div class="en">influence</div><div class="phonetic">/ˈɪnfluəns/</div><div class="cn">v.&n. 影响</div></div>
+<div class="word-card"><div class="en">suppose</div><div class="phonetic">/səˈpəʊz/</div><div class="cn">v. 猜想，假定</div></div>
+<div class="word-card"><div class="en">wise</div><div class="phonetic">/waɪz/</div><div class="cn">adj. 明智的</div></div>
+<div class="word-card"><div class="en">cancel</div><div class="phonetic">/ˈkænsl/</div><div class="cn">v. 取消</div></div>
+<div class="word-card"><div class="en">create</div><div class="phonetic">/kriˈeɪt/</div><div class="cn">v. 创造</div></div>
+<div class="word-card"><div class="en">imagine</div><div class="phonetic">/ɪˈmædʒɪn/</div><div class="cn">v. 想象</div></div>
+<div class="word-card"><div class="en">difference</div><div class="phonetic">/ˈdɪfrəns/</div><div class="cn">n. 差异，不同</div></div>
+<div class="word-card"><div class="en">honest</div><div class="phonetic">/ˈɒnɪst/</div><div class="cn">adj. 诚实的</div></div>
+<div class="word-card"><div class="en">valuable</div><div class="phonetic">/ˈvæljuəbl/</div><div class="cn">adj. 有价值的</div></div>
+<div class="word-card"><div class="en">repair</div><div class="phonetic">/rɪˈpeə(r)/</div><div class="cn">v. 修理</div></div>
+<div class="word-card"><div class="en">secret</div><div class="phonetic">/ˈsiːkrət/</div><div class="cn">n. 秘密 adj. 秘密的</div></div>
+<div class="word-card"><div class="en">consider</div><div class="phonetic">/kənˈsɪdə(r)/</div><div class="cn">v. 考虑；认为</div></div>
+<div class="word-card"><div class="en">method</div><div class="phonetic">/ˈmeθəd/</div><div class="cn">n. 方法</div></div>
+</div>
+</div>
+
+<script>
+// 搜索功能
+const searchInput = document.getElementById('searchInput');
+const allCards = document.querySelectorAll('.word-card');
+const enNodes = document.querySelectorAll('.en');
+const cnNodes = document.querySelectorAll('.cn');
+const hideCnBtn = document.getElementById('hideCnBtn');
+const hideEnBtn = document.getElementById('hideEnBtn');
+const resetBtn = document.getElementById('resetBtn');
+
+searchInput.addEventListener('input', function(){
+    let key = this.value.toLowerCase();
+    allCards.forEach(card => {
+        let enTxt = card.querySelector('.en').textContent.toLowerCase();
+        let cnTxt = card.querySelector('.cn').textContent;
+        let phonTxt = card.querySelector('.phonetic').textContent;
+        if(enTxt.includes(key) || cnTxt.includes(key) || phonTxt.includes(key)){
+            card.style.display = 'block';
+        }else{
+            card.style.display = 'none';
+        }
+        // 控制分块显示隐藏
+        document.querySelectorAll('.book-module').forEach(module => {
+            let visible = module.querySelectorAll('.word-card[style*="block"]').length > 0;
+            module.style.display = visible ? 'block' : 'none';
+        })
+    })
+})
+
+// 隐藏中文
+hideCnBtn.onclick = () => cnNodes.forEach(item => item.classList.add('hide-item'));
+// 隐藏英文
+hideEnBtn.onclick = () => enNodes.forEach(item => item.classList.add('hide-item'));
+// 重置全部显示
+resetBtn.onclick = () => {
+    cnNodes.forEach(item => item.classList.remove('hide-item'));
+    enNodes.forEach(item => item.classList.remove('hide-item'));
+}
+</script>
+</body>
+</html>

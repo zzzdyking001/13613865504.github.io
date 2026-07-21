@@ -1,0 +1,735 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.5, user-scalable=yes">
+    <title>初中英语词汇表 · 带音标</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: #f4f8fe;
+            font-family: 'Segoe UI', Roboto, system-ui, -apple-system, 'Helvetica Neue', sans-serif;
+            padding: 1.5rem 1rem 3rem;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .container {
+            max-width: 1200px;
+            width: 100%;
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 2.5rem;
+            padding-bottom: 1rem;
+            border-bottom: 3px solid #3b8fc2;
+        }
+
+        .header h1 {
+            font-size: 2.6rem;
+            font-weight: 600;
+            color: #0b2b44;
+            letter-spacing: 1px;
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .header h1 span {
+            background: #3b8fc2;
+            color: white;
+            font-size: 1.2rem;
+            font-weight: 500;
+            padding: 0.2rem 1.2rem;
+            border-radius: 40px;
+            letter-spacing: 0.5px;
+        }
+
+        .subhead {
+            color: #2a5778;
+            font-size: 1.05rem;
+            margin-top: 0.4rem;
+            background: #e3edf7;
+            display: inline-block;
+            padding: 0.2rem 1.8rem;
+            border-radius: 30px;
+            backdrop-filter: blur(2px);
+        }
+
+        .alpha-nav {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 0.4rem 0.25rem;
+            margin: 1.8rem 0 2.5rem;
+            padding: 0.4rem 0.6rem;
+            background: white;
+            border-radius: 60px;
+            box-shadow: 0 4px 14px rgba(0, 30, 50, 0.07);
+            border: 1px solid #cfe0ed;
+        }
+
+        .alpha-nav a {
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1rem;
+            color: #0b2b44;
+            background: transparent;
+            padding: 0.3rem 0.7rem;
+            border-radius: 40px;
+            transition: all 0.15s;
+            min-width: 2rem;
+            text-align: center;
+            letter-spacing: 0.3px;
+        }
+
+        .alpha-nav a:hover {
+            background: #3b8fc2;
+            color: white;
+            transform: scale(1.05);
+            box-shadow: 0 2px 10px rgba(59, 143, 194, 0.3);
+        }
+
+        .alpha-nav a:active {
+            transform: scale(0.92);
+        }
+
+        .vocab-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(210px, 1fr));
+            gap: 1.2rem;
+            margin-top: 0.5rem;
+        }
+
+        .word-card {
+            background: white;
+            border-radius: 28px;
+            padding: 1.2rem 0.8rem 0.9rem;
+            box-shadow: 0 6px 18px rgba(0, 20, 40, 0.04), 0 2px 4px rgba(0, 0, 0, 0.02);
+            transition: transform 0.2s ease, box-shadow 0.25s;
+            border: 1px solid rgba(200, 220, 240, 0.5);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            min-height: 130px;
+            justify-content: center;
+        }
+
+        .word-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 14px 30px rgba(20, 60, 100, 0.08);
+            border-color: #3b8fc270;
+            background: #fffffffe;
+        }
+
+        .word-en {
+            font-size: 1.4rem;
+            font-weight: 600;
+            color: #0b2b44;
+            line-height: 1.3;
+            letter-spacing: -0.2px;
+            word-break: break-word;
+        }
+
+        .word-phonetic {
+            font-size: 1rem;
+            color: #2a5778;
+            background: #eaf1f9;
+            padding: 0.1rem 0.8rem;
+            border-radius: 30px;
+            margin-top: 0.15rem;
+            font-family: 'Lucida Sans Unicode', 'Segoe UI', 'Arial Unicode MS', sans-serif;
+            letter-spacing: 0.3px;
+            border: 1px solid #c5dae9;
+            display: inline-block;
+            font-weight: 400;
+        }
+
+        .word-zh {
+            font-size: 1rem;
+            color: #1f5577;
+            background: #e3edf7;
+            padding: 0.2rem 1rem;
+            border-radius: 40px;
+            margin-top: 0.5rem;
+            display: inline-block;
+            font-weight: 500;
+            border: 1px solid #c5dae9;
+        }
+
+        .section-letter {
+            grid-column: 1 / -1;
+            margin: 1.8rem 0 0.8rem 0;
+            font-size: 2.2rem;
+            font-weight: 700;
+            color: #0b2b44;
+            background: linear-gradient(135deg, #e8f2fa 0%, #ffffff 100%);
+            padding: 0.3rem 1.8rem;
+            border-radius: 60px;
+            display: inline-block;
+            width: fit-content;
+            border-left: 6px solid #3b8fc2;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.02);
+            letter-spacing: 2px;
+        }
+
+        .letter-wrapper {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: flex-start;
+            width: 100%;
+        }
+
+        .no-words {
+            color: #3a6a8a;
+            background: #e3edf7;
+            padding: 0.8rem 2rem;
+            border-radius: 60px;
+            font-size: 1rem;
+            font-weight: 500;
+            grid-column: 1 / -1;
+            text-align: center;
+        }
+
+        .footer {
+            margin-top: 3.5rem;
+            color: #3a6a8a;
+            font-size: 0.9rem;
+            border-top: 1px solid #cfe0ed;
+            padding-top: 1.8rem;
+            text-align: center;
+            width: 100%;
+            letter-spacing: 0.4px;
+        }
+
+        .footer small {
+            background: #e8f2fa;
+            padding: 0.2rem 1.2rem;
+            border-radius: 40px;
+        }
+
+        @media (max-width: 600px) {
+            .header h1 {
+                font-size: 2rem;
+            }
+            .header h1 span {
+                font-size: 1rem;
+                padding: 0.1rem 0.8rem;
+            }
+            .vocab-grid {
+                grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+                gap: 0.9rem;
+            }
+            .word-en {
+                font-size: 1.2rem;
+            }
+            .word-phonetic {
+                font-size: 0.9rem;
+            }
+            .alpha-nav a {
+                font-size: 0.8rem;
+                min-width: 1.8rem;
+                padding: 0.2rem 0.4rem;
+            }
+            .section-letter {
+                font-size: 1.8rem;
+                padding: 0.2rem 1.2rem;
+            }
+        }
+
+        @media (max-width: 400px) {
+            .vocab-grid {
+                grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+            }
+        }
+
+        @media print {
+            body { background: white; padding: 0.5rem; }
+            .word-card { box-shadow: none; border: 1px solid #aaa; break-inside: avoid; }
+            .alpha-nav { display: none; }
+            .header h1 { color: #000; }
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+
+    <div class="header">
+        <h1>
+            📘 初中英语词汇表
+            <span>音标 · 中考</span>
+        </h1>
+        <div class="subhead">🔊 国际音标标注 · 点击字母快速跳转</div>
+    </div>
+
+    <nav class="alpha-nav" aria-label="字母导航">
+        <a href="#letter-A">A</a>
+        <a href="#letter-B">B</a>
+        <a href="#letter-C">C</a>
+        <a href="#letter-D">D</a>
+        <a href="#letter-E">E</a>
+        <a href="#letter-F">F</a>
+        <a href="#letter-G">G</a>
+        <a href="#letter-H">H</a>
+        <a href="#letter-I">I</a>
+        <a href="#letter-J">J</a>
+        <a href="#letter-K">K</a>
+        <a href="#letter-L">L</a>
+        <a href="#letter-M">M</a>
+        <a href="#letter-N">N</a>
+        <a href="#letter-O">O</a>
+        <a href="#letter-P">P</a>
+        <a href="#letter-Q">Q</a>
+        <a href="#letter-R">R</a>
+        <a href="#letter-S">S</a>
+        <a href="#letter-T">T</a>
+        <a href="#letter-U">U</a>
+        <a href="#letter-V">V</a>
+        <a href="#letter-W">W</a>
+        <a href="#letter-X">X</a>
+        <a href="#letter-Y">Y</a>
+        <a href="#letter-Z">Z</a>
+    </nav>
+
+    <div class="vocab-grid" id="vocabGrid"></div>
+
+    <div class="footer">
+        <small>📌 共 <span id="wordCount">0</span> 个核心词汇 · 音标辅助发音</small>
+    </div>
+</div>
+
+<script>
+    (function() {
+        // ---------- 初中词汇 + 音标 (基于常见发音) ----------
+        // 注意：音标为近似标注，主要参考美式/英式通用形式，方便学习
+        const wordList = [
+            // A
+            { en: "ability", zh: "能力", phonetic: "/əˈbɪləti/" },
+            { en: "able", zh: "能够", phonetic: "/ˈeɪbl/" },
+            { en: "about", zh: "关于", phonetic: "/əˈbaʊt/" },
+            { en: "above", zh: "在…上方", phonetic: "/əˈbʌv/" },
+            { en: "accept", zh: "接受", phonetic: "/əkˈsept/" },
+            { en: "achieve", zh: "实现", phonetic: "/əˈtʃiːv/" },
+            { en: "across", zh: "穿过", phonetic: "/əˈkrɒs/" },
+            { en: "act", zh: "行动", phonetic: "/ækt/" },
+            { en: "active", zh: "积极的", phonetic: "/ˈæktɪv/" },
+            { en: "activity", zh: "活动", phonetic: "/ækˈtɪvəti/" },
+            { en: "address", zh: "地址", phonetic: "/əˈdres/" },
+            { en: "advantage", zh: "优势", phonetic: "/ədˈvɑːntɪdʒ/" },
+            { en: "advice", zh: "建议", phonetic: "/ədˈvaɪs/" },
+            { en: "afford", zh: "负担得起", phonetic: "/əˈfɔːd/" },
+            { en: "afraid", zh: "害怕的", phonetic: "/əˈfreɪd/" },
+            { en: "agree", zh: "同意", phonetic: "/əˈɡriː/" },
+            { en: "allow", zh: "允许", phonetic: "/əˈlaʊ/" },
+            { en: "among", zh: "在…中间", phonetic: "/əˈmʌŋ/" },
+            { en: "amount", zh: "数量", phonetic: "/əˈmaʊnt/" },
+            { en: "ancient", zh: "古代的", phonetic: "/ˈeɪnʃənt/" },
+            { en: "apart", zh: "分离", phonetic: "/əˈpɑːt/" },
+            { en: "appear", zh: "出现", phonetic: "/əˈpɪə/" },
+            { en: "area", zh: "地区", phonetic: "/ˈeəriə/" },
+            { en: "argue", zh: "争论", phonetic: "/ˈɑːɡjuː/" },
+            { en: "around", zh: "在…周围", phonetic: "/əˈraʊnd/" },
+            { en: "art", zh: "艺术", phonetic: "/ɑːt/" },
+            { en: "attend", zh: "出席", phonetic: "/əˈtend/" },
+            // B
+            { en: "balance", zh: "平衡", phonetic: "/ˈbæləns/" },
+            { en: "basic", zh: "基本的", phonetic: "/ˈbeɪsɪk/" },
+            { en: "battle", zh: "战斗", phonetic: "/ˈbætl/" },
+            { en: "behave", zh: "表现", phonetic: "/bɪˈheɪv/" },
+            { en: "believe", zh: "相信", phonetic: "/bɪˈliːv/" },
+            { en: "belong", zh: "属于", phonetic: "/bɪˈlɒŋ/" },
+            { en: "benefit", zh: "益处", phonetic: "/ˈbenɪfɪt/" },
+            { en: "beyond", zh: "超越", phonetic: "/bɪˈjɒnd/" },
+            { en: "blame", zh: "责备", phonetic: "/bleɪm/" },
+            { en: "board", zh: "板", phonetic: "/bɔːd/" },
+            { en: "bother", zh: "打扰", phonetic: "/ˈbɒðə/" },
+            { en: "brief", zh: "简短的", phonetic: "/briːf/" },
+            { en: "bright", zh: "明亮的", phonetic: "/braɪt/" },
+            { en: "broad", zh: "宽阔的", phonetic: "/brɔːd/" },
+            // C
+            { en: "care", zh: "关心", phonetic: "/keə/" },
+            { en: "certain", zh: "确定的", phonetic: "/ˈsɜːtn/" },
+            { en: "chance", zh: "机会", phonetic: "/tʃɑːns/" },
+            { en: "change", zh: "改变", phonetic: "/tʃeɪndʒ/" },
+            { en: "choice", zh: "选择", phonetic: "/tʃɔɪs/" },
+            { en: "choose", zh: "选择", phonetic: "/tʃuːz/" },
+            { en: "clear", zh: "清楚的", phonetic: "/klɪə/" },
+            { en: "common", zh: "普通的", phonetic: "/ˈkɒmən/" },
+            { en: "compare", zh: "比较", phonetic: "/kəmˈpeə/" },
+            { en: "compete", zh: "竞争", phonetic: "/kəmˈpiːt/" },
+            { en: "complete", zh: "完成", phonetic: "/kəmˈpliːt/" },
+            { en: "connect", zh: "连接", phonetic: "/kəˈnekt/" },
+            { en: "consider", zh: "考虑", phonetic: "/kənˈsɪdə/" },
+            { en: "continue", zh: "继续", phonetic: "/kənˈtɪnjuː/" },
+            { en: "control", zh: "控制", phonetic: "/kənˈtrəʊl/" },
+            { en: "cost", zh: "花费", phonetic: "/kɒst/" },
+            { en: "count", zh: "数", phonetic: "/kaʊnt/" },
+            { en: "course", zh: "课程", phonetic: "/kɔːs/" },
+            { en: "create", zh: "创造", phonetic: "/kriˈeɪt/" },
+            // D
+            { en: "danger", zh: "危险", phonetic: "/ˈdeɪndʒə/" },
+            { en: "decide", zh: "决定", phonetic: "/dɪˈsaɪd/" },
+            { en: "deep", zh: "深的", phonetic: "/diːp/" },
+            { en: "defend", zh: "保卫", phonetic: "/dɪˈfend/" },
+            { en: "delay", zh: "推迟", phonetic: "/dɪˈleɪ/" },
+            { en: "deliver", zh: "递送", phonetic: "/dɪˈlɪvə/" },
+            { en: "demand", zh: "需求", phonetic: "/dɪˈmɑːnd/" },
+            { en: "deny", zh: "否认", phonetic: "/dɪˈnaɪ/" },
+            { en: "depend", zh: "依靠", phonetic: "/dɪˈpend/" },
+            { en: "describe", zh: "描述", phonetic: "/dɪˈskraɪb/" },
+            { en: "design", zh: "设计", phonetic: "/dɪˈzaɪn/" },
+            { en: "develop", zh: "发展", phonetic: "/dɪˈveləp/" },
+            { en: "direct", zh: "直接的", phonetic: "/dəˈrekt/" },
+            { en: "discuss", zh: "讨论", phonetic: "/dɪˈskʌs/" },
+            { en: "doubt", zh: "怀疑", phonetic: "/daʊt/" },
+            { en: "duty", zh: "责任", phonetic: "/ˈdjuːti/" },
+            // E
+            { en: "eager", zh: "渴望的", phonetic: "/ˈiːɡə/" },
+            { en: "effect", zh: "效果", phonetic: "/ɪˈfekt/" },
+            { en: "effort", zh: "努力", phonetic: "/ˈefət/" },
+            { en: "enable", zh: "使能够", phonetic: "/ɪˈneɪbl/" },
+            { en: "encourage", zh: "鼓励", phonetic: "/ɪnˈkʌrɪdʒ/" },
+            { en: "enjoy", zh: "享受", phonetic: "/ɪnˈdʒɔɪ/" },
+            { en: "enough", zh: "足够的", phonetic: "/ɪˈnʌf/" },
+            { en: "enter", zh: "进入", phonetic: "/ˈentə/" },
+            { en: "environment", zh: "环境", phonetic: "/ɪnˈvaɪrənmənt/" },
+            { en: "equal", zh: "平等的", phonetic: "/ˈiːkwəl/" },
+            { en: "escape", zh: "逃跑", phonetic: "/ɪˈskeɪp/" },
+            { en: "essential", zh: "必要的", phonetic: "/ɪˈsenʃl/" },
+            { en: "establish", zh: "建立", phonetic: "/ɪˈstæblɪʃ/" },
+            { en: "event", zh: "事件", phonetic: "/ɪˈvent/" },
+            { en: "examine", zh: "检查", phonetic: "/ɪɡˈzæmɪn/" },
+            { en: "example", zh: "例子", phonetic: "/ɪɡˈzɑːmpl/" },
+            { en: "except", zh: "除了", phonetic: "/ɪkˈsept/" },
+            { en: "exchange", zh: "交换", phonetic: "/ɪksˈtʃeɪndʒ/" },
+            { en: "exercise", zh: "练习", phonetic: "/ˈeksəsaɪz/" },
+            { en: "expect", zh: "期望", phonetic: "/ɪkˈspekt/" },
+            { en: "experience", zh: "经历", phonetic: "/ɪkˈspɪəriəns/" },
+            { en: "explain", zh: "解释", phonetic: "/ɪkˈspleɪn/" },
+            { en: "express", zh: "表达", phonetic: "/ɪkˈspres/" },
+            // F
+            { en: "fact", zh: "事实", phonetic: "/fækt/" },
+            { en: "fail", zh: "失败", phonetic: "/feɪl/" },
+            { en: "fair", zh: "公平的", phonetic: "/feə/" },
+            { en: "faith", zh: "信念", phonetic: "/feɪθ/" },
+            { en: "familiar", zh: "熟悉的", phonetic: "/fəˈmɪliə/" },
+            { en: "feature", zh: "特征", phonetic: "/ˈfiːtʃə/" },
+            { en: "final", zh: "最后的", phonetic: "/ˈfaɪnl/" },
+            { en: "finance", zh: "财政", phonetic: "/ˈfaɪnæns/" },
+            { en: "focus", zh: "焦点", phonetic: "/ˈfəʊkəs/" },
+            { en: "force", zh: "力量", phonetic: "/fɔːs/" },
+            { en: "foreign", zh: "外国的", phonetic: "/ˈfɒrən/" },
+            { en: "form", zh: "形式", phonetic: "/fɔːm/" },
+            { en: "forward", zh: "向前", phonetic: "/ˈfɔːwəd/" },
+            { en: "freedom", zh: "自由", phonetic: "/ˈfriːdəm/" },
+            { en: "frequent", zh: "频繁的", phonetic: "/ˈfriːkwənt/" },
+            { en: "frighten", zh: "使害怕", phonetic: "/ˈfraɪtn/" },
+            { en: "future", zh: "未来", phonetic: "/ˈfjuːtʃə/" },
+            // G
+            { en: "general", zh: "一般的", phonetic: "/ˈdʒenərəl/" },
+            { en: "generate", zh: "产生", phonetic: "/ˈdʒenəreɪt/" },
+            { en: "generous", zh: "慷慨的", phonetic: "/ˈdʒenərəs/" },
+            { en: "gentle", zh: "温和的", phonetic: "/ˈdʒentl/" },
+            { en: "genuine", zh: "真正的", phonetic: "/ˈdʒenjuɪn/" },
+            { en: "global", zh: "全球的", phonetic: "/ˈɡləʊbl/" },
+            { en: "goal", zh: "目标", phonetic: "/ɡəʊl/" },
+            { en: "government", zh: "政府", phonetic: "/ˈɡʌvənmənt/" },
+            { en: "gradual", zh: "逐渐的", phonetic: "/ˈɡrædʒuəl/" },
+            { en: "grateful", zh: "感激的", phonetic: "/ˈɡreɪtfl/" },
+            { en: "grow", zh: "成长", phonetic: "/ɡrəʊ/" },
+            { en: "guarantee", zh: "保证", phonetic: "/ˌɡærənˈtiː/" },
+            // H
+            { en: "habit", zh: "习惯", phonetic: "/ˈhæbɪt/" },
+            { en: "handle", zh: "处理", phonetic: "/ˈhændl/" },
+            { en: "happen", zh: "发生", phonetic: "/ˈhæpən/" },
+            { en: "harm", zh: "伤害", phonetic: "/hɑːm/" },
+            { en: "healthy", zh: "健康的", phonetic: "/ˈhelθi/" },
+            { en: "heavy", zh: "重的", phonetic: "/ˈhevi/" },
+            { en: "helpful", zh: "有帮助的", phonetic: "/ˈhelpfl/" },
+            { en: "honest", zh: "诚实的", phonetic: "/ˈɒnɪst/" },
+            { en: "human", zh: "人类", phonetic: "/ˈhjuːmən/" },
+            { en: "humble", zh: "谦虚的", phonetic: "/ˈhʌmbl/" },
+            // I
+            { en: "ignore", zh: "忽视", phonetic: "/ɪɡˈnɔː/" },
+            { en: "imagine", zh: "想象", phonetic: "/ɪˈmædʒɪn/" },
+            { en: "impact", zh: "影响", phonetic: "/ˈɪmpækt/" },
+            { en: "improve", zh: "提高", phonetic: "/ɪmˈpruːv/" },
+            { en: "include", zh: "包括", phonetic: "/ɪnˈkluːd/" },
+            { en: "increase", zh: "增加", phonetic: "/ɪnˈkriːs/" },
+            { en: "indicate", zh: "表明", phonetic: "/ˈɪndɪkeɪt/" },
+            { en: "individual", zh: "个人的", phonetic: "/ˌɪndɪˈvɪdʒuəl/" },
+            { en: "influence", zh: "影响", phonetic: "/ˈɪnfluəns/" },
+            { en: "injure", zh: "伤害", phonetic: "/ˈɪndʒə/" },
+            { en: "instead", zh: "代替", phonetic: "/ɪnˈsted/" },
+            { en: "involve", zh: "涉及", phonetic: "/ɪnˈvɒlv/" },
+            // J
+            { en: "journey", zh: "旅程", phonetic: "/ˈdʒɜːni/" },
+            { en: "judge", zh: "判断", phonetic: "/dʒʌdʒ/" },
+            { en: "junior", zh: "初级的", phonetic: "/ˈdʒuːniə/" },
+            { en: "justify", zh: "证明…正当", phonetic: "/ˈdʒʌstɪfaɪ/" },
+            // K
+            { en: "keep", zh: "保持", phonetic: "/kiːp/" },
+            { en: "knowledge", zh: "知识", phonetic: "/ˈnɒlɪdʒ/" },
+            // L
+            { en: "lack", zh: "缺乏", phonetic: "/læk/" },
+            { en: "likely", zh: "可能的", phonetic: "/ˈlaɪkli/" },
+            { en: "limit", zh: "限制", phonetic: "/ˈlɪmɪt/" },
+            { en: "local", zh: "当地的", phonetic: "/ˈləʊkl/" },
+            { en: "logic", zh: "逻辑", phonetic: "/ˈlɒdʒɪk/" },
+            { en: "loyal", zh: "忠诚的", phonetic: "/ˈlɔɪəl/" },
+            // M
+            { en: "manage", zh: "管理", phonetic: "/ˈmænɪdʒ/" },
+            { en: "manner", zh: "方式", phonetic: "/ˈmænə/" },
+            { en: "mental", zh: "心理的", phonetic: "/ˈmentl/" },
+            { en: "merely", zh: "仅仅", phonetic: "/ˈmɪəli/" },
+            { en: "method", zh: "方法", phonetic: "/ˈmeθəd/" },
+            { en: "minor", zh: "次要的", phonetic: "/ˈmaɪnə/" },
+            { en: "moment", zh: "时刻", phonetic: "/ˈməʊmənt/" },
+            { en: "moral", zh: "道德的", phonetic: "/ˈmɒrəl/" },
+            { en: "motivate", zh: "激励", phonetic: "/ˈməʊtɪveɪt/" },
+            // N
+            { en: "native", zh: "本地的", phonetic: "/ˈneɪtɪv/" },
+            { en: "natural", zh: "自然的", phonetic: "/ˈnætʃrəl/" },
+            { en: "negative", zh: "消极的", phonetic: "/ˈneɡətɪv/" },
+            { en: "neither", zh: "两者都不", phonetic: "/ˈnaɪðə/" },
+            { en: "normal", zh: "正常的", phonetic: "/ˈnɔːml/" },
+            { en: "notion", zh: "概念", phonetic: "/ˈnəʊʃn/" },
+            { en: "novel", zh: "小说", phonetic: "/ˈnɒvl/" },
+            // O
+            { en: "obey", zh: "服从", phonetic: "/əˈbeɪ/" },
+            { en: "object", zh: "物体", phonetic: "/ˈɒbdʒɪkt/" },
+            { en: "obtain", zh: "获得", phonetic: "/əbˈteɪn/" },
+            { en: "obvious", zh: "明显的", phonetic: "/ˈɒbviəs/" },
+            { en: "occupy", zh: "占据", phonetic: "/ˈɒkjupaɪ/" },
+            { en: "offer", zh: "提供", phonetic: "/ˈɒfə/" },
+            { en: "operate", zh: "操作", phonetic: "/ˈɒpəreɪt/" },
+            { en: "opinion", zh: "意见", phonetic: "/əˈpɪnjən/" },
+            { en: "opportunity", zh: "机会", phonetic: "/ˌɒpəˈtjuːnəti/" },
+            { en: "ordinary", zh: "普通的", phonetic: "/ˈɔːdnri/" },
+            { en: "original", zh: "原始的", phonetic: "/əˈrɪdʒənl/" },
+            { en: "otherwise", zh: "否则", phonetic: "/ˈʌðəwaɪz/" },
+            // P
+            { en: "patient", zh: "耐心的", phonetic: "/ˈpeɪʃnt/" },
+            { en: "perfect", zh: "完美的", phonetic: "/ˈpɜːfɪkt/" },
+            { en: "perform", zh: "表演", phonetic: "/pəˈfɔːm/" },
+            { en: "period", zh: "时期", phonetic: "/ˈpɪəriəd/" },
+            { en: "permit", zh: "允许", phonetic: "/pəˈmɪt/" },
+            { en: "phenomenon", zh: "现象", phonetic: "/fɪˈnɒmɪnən/" },
+            { en: "physical", zh: "身体的", phonetic: "/ˈfɪzɪkl/" },
+            { en: "positive", zh: "积极的", phonetic: "/ˈpɒzətɪv/" },
+            { en: "possess", zh: "拥有", phonetic: "/pəˈzes/" },
+            { en: "potential", zh: "潜力", phonetic: "/pəˈtenʃl/" },
+            { en: "practical", zh: "实际的", phonetic: "/ˈpræktɪkl/" },
+            { en: "prefer", zh: "更喜欢", phonetic: "/prɪˈfɜː/" },
+            { en: "present", zh: "目前的", phonetic: "/ˈpreznt/" },
+            { en: "prevent", zh: "预防", phonetic: "/prɪˈvent/" },
+            { en: "principle", zh: "原则", phonetic: "/ˈprɪnsəpl/" },
+            { en: "process", zh: "过程", phonetic: "/ˈprəʊses/" },
+            { en: "produce", zh: "生产", phonetic: "/prəˈdjuːs/" },
+            { en: "profit", zh: "利润", phonetic: "/ˈprɒfɪt/" },
+            { en: "promise", zh: "承诺", phonetic: "/ˈprɒmɪs/" },
+            { en: "protect", zh: "保护", phonetic: "/prəˈtekt/" },
+            { en: "prove", zh: "证明", phonetic: "/pruːv/" },
+            { en: "provide", zh: "提供", phonetic: "/prəˈvaɪd/" },
+            { en: "purpose", zh: "目的", phonetic: "/ˈpɜːpəs/" },
+            // Q
+            { en: "quality", zh: "质量", phonetic: "/ˈkwɒləti/" },
+            { en: "quantity", zh: "数量", phonetic: "/ˈkwɒntəti/" },
+            { en: "quick", zh: "快的", phonetic: "/kwɪk/" },
+            { en: "quiet", zh: "安静的", phonetic: "/ˈkwaɪət/" },
+            // R
+            { en: "range", zh: "范围", phonetic: "/reɪndʒ/" },
+            { en: "rapid", zh: "迅速的", phonetic: "/ˈræpɪd/" },
+            { en: "reach", zh: "到达", phonetic: "/riːtʃ/" },
+            { en: "realize", zh: "意识到", phonetic: "/ˈriːəlaɪz/" },
+            { en: "reason", zh: "理由", phonetic: "/ˈriːzn/" },
+            { en: "reduce", zh: "减少", phonetic: "/rɪˈdjuːs/" },
+            { en: "reform", zh: "改革", phonetic: "/rɪˈfɔːm/" },
+            { en: "regard", zh: "认为", phonetic: "/rɪˈɡɑːd/" },
+            { en: "regret", zh: "后悔", phonetic: "/rɪˈɡret/" },
+            { en: "relate", zh: "关联", phonetic: "/rɪˈleɪt/" },
+            { en: "release", zh: "释放", phonetic: "/rɪˈliːs/" },
+            { en: "remain", zh: "保持", phonetic: "/rɪˈmeɪn/" },
+            { en: "remove", zh: "移除", phonetic: "/rɪˈmuːv/" },
+            { en: "require", zh: "要求", phonetic: "/rɪˈkwaɪə/" },
+            { en: "research", zh: "研究", phonetic: "/rɪˈsɜːtʃ/" },
+            { en: "resolve", zh: "解决", phonetic: "/rɪˈzɒlv/" },
+            { en: "respect", zh: "尊重", phonetic: "/rɪˈspekt/" },
+            { en: "respond", zh: "回应", phonetic: "/rɪˈspɒnd/" },
+            { en: "restore", zh: "恢复", phonetic: "/rɪˈstɔː/" },
+            { en: "result", zh: "结果", phonetic: "/rɪˈzʌlt/" },
+            { en: "reveal", zh: "揭示", phonetic: "/rɪˈviːl/" },
+            { en: "revolution", zh: "革命", phonetic: "/ˌrevəˈluːʃn/" },
+            // S
+            { en: "sacrifice", zh: "牺牲", phonetic: "/ˈsækrɪfaɪs/" },
+            { en: "satisfy", zh: "使满意", phonetic: "/ˈsætɪsfaɪ/" },
+            { en: "scene", zh: "场景", phonetic: "/siːn/" },
+            { en: "schedule", zh: "日程", phonetic: "/ˈʃedjuːl/" },
+            { en: "secure", zh: "安全的", phonetic: "/sɪˈkjʊə/" },
+            { en: "select", zh: "选择", phonetic: "/sɪˈlekt/" },
+            { en: "separate", zh: "分离", phonetic: "/ˈsepəreɪt/" },
+            { en: "serious", zh: "严肃的", phonetic: "/ˈsɪəriəs/" },
+            { en: "settle", zh: "解决", phonetic: "/ˈsetl/" },
+            { en: "signal", zh: "信号", phonetic: "/ˈsɪɡnəl/" },
+            { en: "similar", zh: "相似的", phonetic: "/ˈsɪmələ/" },
+            { en: "sincere", zh: "真诚的", phonetic: "/sɪnˈsɪə/" },
+            { en: "skill", zh: "技能", phonetic: "/skɪl/" },
+            { en: "smooth", zh: "平滑的", phonetic: "/smuːð/" },
+            { en: "solve", zh: "解决", phonetic: "/sɒlv/" },
+            { en: "source", zh: "来源", phonetic: "/sɔːs/" },
+            { en: "spirit", zh: "精神", phonetic: "/ˈspɪrɪt/" },
+            { en: "spread", zh: "传播", phonetic: "/spred/" },
+            { en: "standard", zh: "标准", phonetic: "/ˈstændəd/" },
+            { en: "strength", zh: "力量", phonetic: "/streŋθ/" },
+            { en: "struggle", zh: "奋斗", phonetic: "/ˈstrʌɡl/" },
+            { en: "succeed", zh: "成功", phonetic: "/səkˈsiːd/" },
+            { en: "suffer", zh: "遭受", phonetic: "/ˈsʌfə/" },
+            { en: "supply", zh: "供应", phonetic: "/səˈplaɪ/" },
+            { en: "support", zh: "支持", phonetic: "/səˈpɔːt/" },
+            { en: "survive", zh: "幸存", phonetic: "/səˈvaɪv/" },
+            // T
+            { en: "tend", zh: "倾向于", phonetic: "/tend/" },
+            { en: "theory", zh: "理论", phonetic: "/ˈθɪəri/" },
+            { en: "therefore", zh: "因此", phonetic: "/ˈðeəfɔː/" },
+            { en: "though", zh: "尽管", phonetic: "/ðəʊ/" },
+            { en: "threat", zh: "威胁", phonetic: "/θret/" },
+            { en: "through", zh: "通过", phonetic: "/θruː/" },
+            { en: "throughout", zh: "遍及", phonetic: "/θruːˈaʊt/" },
+            { en: "thus", zh: "因此", phonetic: "/ðʌs/" },
+            { en: "tough", zh: "艰苦的", phonetic: "/tʌf/" },
+            { en: "transform", zh: "转变", phonetic: "/trænsˈfɔːm/" },
+            { en: "treat", zh: "对待", phonetic: "/triːt/" },
+            // U
+            { en: "unable", zh: "不能的", phonetic: "/ʌnˈeɪbl/" },
+            { en: "unique", zh: "独特的", phonetic: "/juˈniːk/" },
+            { en: "unit", zh: "单元", phonetic: "/ˈjuːnɪt/" },
+            { en: "unless", zh: "除非", phonetic: "/ənˈles/" },
+            { en: "unlike", zh: "不像", phonetic: "/ʌnˈlaɪk/" },
+            { en: "update", zh: "更新", phonetic: "/ʌpˈdeɪt/" },
+            { en: "urge", zh: "催促", phonetic: "/ɜːdʒ/" },
+            { en: "usual", zh: "通常的", phonetic: "/ˈjuːʒuəl/" },
+            // V
+            { en: "vain", zh: "徒劳的", phonetic: "/veɪn/" },
+            { en: "value", zh: "价值", phonetic: "/ˈvæljuː/" },
+            { en: "variety", zh: "多样性", phonetic: "/vəˈraɪəti/" },
+            { en: "various", zh: "各种各样的", phonetic: "/ˈveəriəs/" },
+            { en: "venture", zh: "冒险", phonetic: "/ˈventʃə/" },
+            { en: "victory", zh: "胜利", phonetic: "/ˈvɪktəri/" },
+            { en: "virtue", zh: "美德", phonetic: "/ˈvɜːtʃuː/" },
+            { en: "visible", zh: "可见的", phonetic: "/ˈvɪzəbl/" },
+            { en: "vital", zh: "至关重要的", phonetic: "/ˈvaɪtl/" },
+            // W
+            { en: "warn", zh: "警告", phonetic: "/wɔːn/" },
+            { en: "wealth", zh: "财富", phonetic: "/welθ/" },
+            { en: "weapon", zh: "武器", phonetic: "/ˈwepən/" },
+            { en: "welfare", zh: "福利", phonetic: "/ˈwelfeə/" },
+            { en: "widespread", zh: "广泛的", phonetic: "/ˈwaɪdspred/" },
+            { en: "wisdom", zh: "智慧", phonetic: "/ˈwɪzdəm/" },
+            { en: "within", zh: "在…之内", phonetic: "/wɪˈðɪn/" },
+            { en: "wonder", zh: "想知道", phonetic: "/ˈwʌndə/" },
+            { en: "worthy", zh: "值得的", phonetic: "/ˈwɜːði/" },
+            // X
+            { en: "xenial", zh: "友好的", phonetic: "/ˈziːniəl/" },
+            // Y
+            { en: "yield", zh: "产量", phonetic: "/jiːld/" },
+            // Z
+            { en: "zeal", zh: "热情", phonetic: "/ziːl/" },
+            { en: "zone", zh: "区域", phonetic: "/zəʊn/" }
+        ];
+
+        // 分组 (首字母)
+        function groupWordsByLetter(words) {
+            const groups = {};
+            for (let i = 65; i <= 90; i++) {
+                const letter = String.fromCharCode(i);
+                groups[letter] = [];
+            }
+            words.forEach(word => {
+                const firstChar = word.en.charAt(0).toUpperCase();
+                if (groups[firstChar]) {
+                    groups[firstChar].push(word);
+                } else {
+                    if (!groups['#']) groups['#'] = [];
+                    groups['#'].push(word);
+                }
+            });
+            return groups;
+        }
+
+        function renderVocabulary() {
+            const grid = document.getElementById('vocabGrid');
+            if (!grid) return;
+
+            const groups = groupWordsByLetter(wordList);
+            const letters = Object.keys(groups).sort();
+
+            let html = '';
+            let totalWords = 0;
+
+            letters.forEach(letter => {
+                const words = groups[letter];
+                if (!words || words.length === 0) return;
+
+                const displayLetter = (letter === '#') ? '#' : letter;
+                html += `<div class="letter-wrapper" id="letter-${displayLetter}">`;
+                html += `<div class="section-letter">${displayLetter}</div>`;
+                html += `</div>`;
+
+                words.forEach(w => {
+                    const phonetic = w.phonetic || '';
+                    html += `
+                        <div class="word-card">
+                            <div class="word-en">${w.en}</div>
+                            ${phonetic ? `<div class="word-phonetic">${phonetic}</div>` : ''}
+                            <div class="word-zh">${w.zh}</div>
+                        </div>
+                    `;
+                    totalWords++;
+                });
+            });
+
+            if (totalWords === 0) {
+                html = `<div class="no-words">📖 词汇表加载中，请稍后...</div>`;
+            }
+
+            grid.innerHTML = html;
+
+            const countSpan = document.getElementById('wordCount');
+            if (countSpan) {
+                countSpan.textContent = totalWords;
+            }
+        }
+
+        renderVocabulary();
+
+        // 平滑滚动导航
+        document.querySelectorAll('.alpha-nav a').forEach(link => {
+            link.addEventListener('click', function(e) {
+                const targetId = this.getAttribute('href');
+                if (targetId && targetId.startsWith('#')) {
+                    const targetEl = document.querySelector(targetId);
+                    if (targetEl) {
+                        e.preventDefault();
+                        targetEl.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                    }
+                }
+            });
+        });
+
+        console.log('📘 初中英语词汇表 (带音标) 已加载，加油！');
+    })();
+</script>
+
+</body>
+</html>
