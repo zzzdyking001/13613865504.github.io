@@ -1,0 +1,480 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes, viewport-fit=cover">
+    <title>外研版初中英语词汇 · 手机版</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+        }
+        body {
+            background: #f2f6fc;
+            padding: 12px 10px 30px;
+            min-height: 100vh;
+        }
+        .app-header {
+            text-align: center;
+            padding: 12px 0 10px;
+            background: #ffffffcc;
+            backdrop-filter: blur(4px);
+            border-radius: 20px;
+            margin-bottom: 16px;
+            box-shadow: 0 2px 8px rgba(0,20,40,0.04);
+        }
+        .app-header h1 {
+            font-size: 1.3rem;
+            font-weight: 600;
+            color: #0b2b4a;
+            letter-spacing: 0.5px;
+            padding: 0 8px;
+        }
+        .app-header .sub {
+            font-size: 0.7rem;
+            color: #5e7a9a;
+            margin-top: 2px;
+        }
+        .toolbox {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-bottom: 16px;
+            background: #ffffffd9;
+            padding: 12px 10px;
+            border-radius: 28px;
+            backdrop-filter: blur(4px);
+            box-shadow: 0 2px 10px rgba(0,0,0,0.02);
+            align-items: center;
+        }
+        #searchInput {
+            flex: 1 1 160px;
+            min-width: 140px;
+            padding: 10px 14px;
+            border: 1px solid #d7e2ef;
+            border-radius: 30px;
+            font-size: 0.95rem;
+            background: #f8faff;
+            outline: none;
+            transition: 0.2s;
+        }
+        #searchInput:focus {
+            border-color: #2d7fd3;
+            background: #ffffff;
+            box-shadow: 0 0 0 3px rgba(45, 127, 211, 0.15);
+        }
+        .btn-group {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px;
+            flex: 1 1 auto;
+            justify-content: flex-end;
+        }
+        .operate-btn {
+            padding: 8px 14px;
+            border: none;
+            border-radius: 30px;
+            background: #e9eff6;
+            color: #1f3b5c;
+            font-size: 0.8rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: 0.15s;
+            box-shadow: 0 1px 2px rgba(0,0,0,0.02);
+            white-space: nowrap;
+        }
+        .operate-btn:active {
+            transform: scale(0.96);
+        }
+        .operate-btn.primary {
+            background: #2d7fd3;
+            color: white;
+        }
+        .operate-btn.primary:active {
+            background: #1f65b0;
+        }
+        .operate-btn.outline {
+            background: transparent;
+            border: 1px solid #cbd8e9;
+        }
+        .book-module {
+            background: #ffffff;
+            border-radius: 24px;
+            padding: 16px 14px 20px;
+            margin-bottom: 20px;
+            box-shadow: 0 4px 14px rgba(0, 20, 40, 0.04);
+            border: 1px solid #eef4fc;
+        }
+        .book-module h2 {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: #1f4068;
+            padding-left: 12px;
+            border-left: 5px solid #2d7fd3;
+            margin-bottom: 16px;
+            letter-spacing: -0.2px;
+        }
+        .word-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 10px;
+        }
+        @media (max-width: 420px) {
+            .word-container {
+                grid-template-columns: 1fr;
+                gap: 8px;
+            }
+        }
+        .word-card {
+            background: #f6faff;
+            padding: 12px 12px 10px;
+            border-radius: 16px;
+            border-left: 4px solid #4a8edb;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.01);
+            display: flex;
+            flex-direction: column;
+            transition: 0.1s;
+            position: relative;
+        }
+        .word-card .en {
+            font-weight: 600;
+            font-size: 1rem;
+            color: #0a1d33;
+            display: flex;
+            align-items: center;
+            gap: 4px;
+            flex-wrap: wrap;
+        }
+        .word-card .phonetic {
+            font-size: 0.7rem;
+            color: #6f8aa8;
+            margin: 3px 0 4px;
+            letter-spacing: 0.2px;
+        }
+        .word-card .cn {
+            font-size: 0.9rem;
+            color: #1f3b5c;
+            line-height: 1.3;
+            word-break: break-word;
+        }
+        .word-card .speaker {
+            margin-left: auto;
+            background: #e1ecf9;
+            border: none;
+            border-radius: 40px;
+            width: 32px;
+            height: 32px;
+            font-size: 1rem;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            color: #1f4a7a;
+            cursor: pointer;
+            transition: 0.1s;
+            flex-shrink: 0;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.02);
+        }
+        .word-card .speaker:active {
+            background: #c4d8ef;
+            transform: scale(0.92);
+        }
+        .hide-item {
+            display: none !important;
+        }
+        .book-module.hide-module {
+            display: none !important;
+        }
+        /* 朗读按钮组 */
+        .speech-tool {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px;
+            margin: 6px 0 2px;
+        }
+        .speech-tool button {
+            background: #ecf3fb;
+            border: none;
+            border-radius: 30px;
+            padding: 4px 14px 4px 12px;
+            font-size: 0.75rem;
+            color: #1f4068;
+            display: inline-flex;
+            align-items: center;
+            gap: 4px;
+            cursor: pointer;
+            transition: 0.1s;
+            box-shadow: 0 1px 2px rgba(0,0,0,0.01);
+        }
+        .speech-tool button:active {
+            background: #d3e2f5;
+            transform: scale(0.96);
+        }
+        .footer-note {
+            text-align: center;
+            color: #7a93b0;
+            font-size: 0.7rem;
+            padding: 16px 0 6px;
+            letter-spacing: 0.3px;
+        }
+        /* 小屏适配 */
+        .btn-group .operate-btn {
+            font-size: 0.7rem;
+            padding: 6px 12px;
+        }
+        #searchInput {
+            font-size: 0.9rem;
+        }
+        .word-card .en {
+            font-size: 0.95rem;
+        }
+        .word-card .cn {
+            font-size: 0.85rem;
+        }
+    </style>
+</head>
+<body>
+<div class="app-header">
+    <h1>📘 外研版初中词汇</h1>
+    <div class="sub">七上 · 七下 · 八上 · 八下 · 九全</div>
+</div>
+
+<div class="toolbox">
+    <input id="searchInput" placeholder="🔍 搜索单词 / 中文 / 音标">
+    <div class="btn-group">
+        <button class="operate-btn outline" id="hideCnBtn">📝 隐藏中文</button>
+        <button class="operate-btn outline" id="hideEnBtn">🔤 隐藏英文</button>
+        <button class="operate-btn primary" id="resetBtn">↺ 重置</button>
+    </div>
+</div>
+
+<!-- ========= 七年级上册 ========= -->
+<div class="book-module" data-book="七上">
+    <h2>七年级上册 Starter ~ M10</h2>
+    <div class="word-container" id="container-7a"></div>
+</div>
+
+<!-- ========= 七年级下册 ========= -->
+<div class="book-module" data-book="七下">
+    <h2>七年级下册 M1~M12</h2>
+    <div class="word-container" id="container-7b"></div>
+</div>
+
+<!-- ========= 八年级上册 ========= -->
+<div class="book-module" data-book="八上">
+    <h2>八年级上册 M1~M10</h2>
+    <div class="word-container" id="container-8a"></div>
+</div>
+
+<!-- ========= 八年级下册 ========= -->
+<div class="book-module" data-book="八下">
+    <h2>八年级下册 M1~M10</h2>
+    <div class="word-container" id="container-8b"></div>
+</div>
+
+<!-- ========= 九年级全一册 ========= -->
+<div class="book-module" data-book="九全">
+    <h2>九年级全一册 M1~M10</h2>
+    <div class="word-container" id="container-9"></div>
+</div>
+
+<div class="footer-note">点击单词旁的 🔊 可朗读 · 支持中英隐藏默写</div>
+
+<script>
+    (function() {
+        // ---- 词汇库（完整版） ----
+        const wordData = {
+            '七上': [
+                ["hello","/həˈləʊ/","int. 你好"],["goodbye","/ˌɡʊdˈbaɪ/","int. 再见"],["name","/neɪm/","n. 名字，名称"],["what","/wɒt/","pron. 什么"],["your","/jɔː(r)/","adj. 你的；你们的"],["please","/pliːz/","int. 请"],["sorry","/ˈsɒri/","adj. 对不起的"],["thank","/θæŋk/","v. 感谢"],["teacher","/ˈtiːtʃə(r)/","n. 老师"],["friend","/frend/","n. 朋友"],["student","/ˈstjuːdnt/","n. 学生"],["China","/ˈtʃaɪnə/","n. 中国"],["Chinese","/ˌtʃaɪˈniːz/","n. 中国人；汉语 adj. 中国的"],["England","/ˈɪŋɡlənd/","n. 英格兰"],["English","/ˈɪŋɡlɪʃ/","n. 英语 adj. 英国的"],["America","/əˈmerɪkə/","n. 美国"],["American","/əˈmerɪkən/","n. 美国人 adj. 美国的"],["he","/hiː/","pron. 他"],["she","/ʃiː/","pron. 她"],["is","/ɪz/","v. 是"],["this","/ðɪs/","det./pron. 这，这个"],["family","/ˈfæməli/","n. 家庭，家人"],["father","/ˈfɑːðə(r)/","n. 父亲"],["mother","/ˈmʌðə(r)/","n. 母亲"],["parent","/ˈpeərənt/","n. 父（母）亲"],["brother","/ˈbrʌðə(r)/","n. 兄弟"],["sister","/ˈsɪstə(r)/","n. 姐妹"],["grandpa","/ˈɡrænpɑː/","n. 爷爷；外公"],["grandma","/ˈɡrænmɑː/","n. 奶奶；外婆"],["desk","/desk/","n. 课桌"],["chair","/tʃeə(r)/","n. 椅子"],["bag","/bæɡ/","n. 包"],["book","/bʊk/","n. 书"],["pen","/pen/","n. 钢笔"],["pencil","/ˈpensl/","n. 铅笔"],["orange","/ˈɒrɪndʒ/","n. 橙子；橙色 adj. 橙色的"],["red","/red/","adj. 红色的 n. 红色"],["blue","/bluː/","adj. 蓝色的 n. 蓝色"],["green","/ɡriːn/","adj. 绿色的 n. 绿色"],["yellow","/ˈjeləʊ/","adj. 黄色的 n. 黄色"],["black","/blæk/","adj. 黑色的 n. 黑色"],["white","/waɪt/","adj. 白色的 n. 白色"],["one","/wʌn/","num. 一"],["two","/tuː/","num. 二"],["three","/θriː/","num. 三"],["four","/fɔː(r)/","num. 四"],["five","/faɪv/","num. 五"],["six","/sɪks/","num. 六"],["seven","/ˈsevən/","num. 七"],["eight","/eɪt/","num. 八"],["nine","/naɪn/","num. 九"],["ten","/ten/","num. 十"],["eleven","/ɪˈlevn/","num. 十一"],["twelve","/twelv/","num. 十二"],["thirteen","/ˌθɜːˈtiːn/","num. 十三"],["twenty","/ˈtwenti/","num. 二十"],["Monday","/ˈmʌndeɪ/","n. 星期一"],["Tuesday","/ˈtjuːzdeɪ/","n. 星期二"],["Wednesday","/ˈwenzdeɪ/","n. 星期三"],["Thursday","/ˈθɜːzdeɪ/","n. 星期四"],["Friday","/ˈfraɪdeɪ/","n. 星期五"],["Saturday","/ˈsætədeɪ/","n. 星期六"],["Sunday","/ˈsʌndeɪ/","n. 星期日"],["sport","/spɔːt/","n. 运动"],["football","/ˈfʊtbɔːl/","n. 足球"],["basketball","/ˈbɑːskɪtbɔːl/","n. 篮球"],["swim","/swɪm/","v. 游泳"],["read","/riːd/","v. 阅读"],["sing","/sɪŋ/","v. 唱歌"],["dance","/dɑːns/","v. 跳舞 n. 舞蹈"],["run","/rʌn/","v. 跑"],["eat","/iːt/","v. 吃"],["drink","/drɪŋk/","v. 喝 n. 饮料"],["milk","/mɪlk/","n. 牛奶"],["rice","/raɪs/","n. 米饭；大米"],["egg","/eɡ/","n. 鸡蛋"],["vegetable","/ˈvedʒtəbl/","n. 蔬菜"],["fruit","/fruːt/","n. 水果"],["healthy","/ˈhelθi/","adj. 健康的"],["breakfast","/ˈbrekfəst/","n. 早餐"],["lunch","/lʌntʃ/","n. 午餐"],["dinner","/ˈdɪnə(r)/","n. 晚餐；正餐"]
+            ],
+            '七下': [
+                ["wallet","/ˈwɒlɪt/","n. 钱包"],["watch","/wɒtʃ/","n. 手表 v. 观看"],["tape","/teɪp/","n. 录音带；胶带"],["camera","/ˈkæmrə/","n. 照相机"],["phone","/fəʊn/","n. 电话；手机"],["airport","/ˈeəpɔːt/","n. 机场"],["hundred","/ˈhʌndrəd/","num. 百"],["thousand","/ˈθaʊznd/","num. 千"],["crayon","/ˈkreɪɒn/","n. 蜡笔"],["eraser","/ɪˈreɪzə(r)/","n. 橡皮"],["gloves","/ɡlʌvz/","n. (pl.)手套"],["whose","/huːz/","pron. 谁的"],["careful","/ˈkeəfl/","adj. 仔细的，小心的"],["on","/ɒn/","prep. 在……上面"],["under","/ˈʌndə(r)/","prep. 在……下面"],["next","/nekst/","adj. 下一个的"],["along","/əˈlɒŋ/","prep. 沿着"],["turn","/tɜːn/","v. 转向，转弯"],["crossing","/ˈkrɒsɪŋ/","n. 十字路口"],["tourist","/ˈtʊərɪst/","n. 游客"],["square","/skweə(r)/","n. 广场"],["river","/ˈrɪvə(r)/","n. 河，江"],["bridge","/brɪdʒ/","n. 桥"],["railway","/ˈreɪlweɪ/","n. 铁路"],["coat","/kəʊt/","n. 外套，大衣"],["shirt","/ʃɜːt/","n. 衬衫"],["shoe","/ʃuː/","n. 鞋"],["sweater","/ˈswetə(r)/","n. 毛衣"],["cheap","/tʃiːp/","adj. 便宜的"],["expensive","/ɪkˈspensɪv/","adj. 昂贵的"],["try","/traɪ/","v. 试；尝试"],["market","/ˈmɑːkɪt/","n. 市场"],["supermarket","/ˈsuːpəmɑːkɪt/","n. 超市"],["shop","/ʃɒp/","n. 商店 v. 购物"],["future","/ˈfjuːtʃə(r)/","n. 将来，未来"],["will","/wɪl/","modal v. 将；将会"],["robot","/ˈrəʊbɒt/","n. 机器人"],["machine","/məˈʃiːn/","n. 机器"],["traffic","/ˈtræfɪk/","n. 交通"],["chalk","/tʃɔːk/","n. 粉笔"],["level","/ˈlevl/","n. 水平"],["able","/ˈeɪbl/","adj. 能够……的"],["question","/ˈkwestʃən/","n. 问题"],["sea","/siː/","n. 大海，海洋"],["space","/speɪs/","n. 太空；空间"],["holiday","/ˈhɒlədeɪ/","n. 假期"],["land","/lænd/","n. 陆地 v. 降落"],["spring","/sprɪŋ/","n. 春天"],["summer","/ˈsʌmə(r)/","n. 夏天"],["autumn","/ˈɔːtəm/","n. 秋天"],["winter","/ˈwɪntə(r)/","n. 冬天"],["warm","/wɔːm/","adj. 温暖的"],["cool","/kuːl/","adj. 凉爽的"],["cold","/kəʊld/","adj. 寒冷的"],["wind","/wɪnd/","n. 风"],["cloud","/klaʊd/","n. 云"],["rain","/reɪn/","n. 雨 v. 下雨"],["snow","/snəʊ/","n. 雪 v. 下雪"],["kite","/kaɪt/","n. 风筝"],["picnic","/ˈpɪknɪk/","n. 野餐"],["housework","/ˈhaʊswɜːk/","n. 家务劳动"],["hard","/hɑːd/","adj. 困难的；硬的 adv. 努力地"],["cartoon","/kɑːˈtuːn/","n. 卡通片，动画片"],["hero","/ˈhɪərəʊ/","n. 英雄"],["humorous","/ˈhjuːmərəs/","adj. 幽默的"],["clever","/ˈklevə(r)/","adj. 聪明的"],["ugly","/ˈʌɡli/","adj. 丑陋的"],["copy","/ˈkɒpi/","v. 复制；抄写"],["fight","/faɪt/","v. & n. 战斗；打架"],["smart","/smɑːt/","adj. 时髦的；聪明的"],["celebrate","/ˈselɪbreɪt/","v. 庆祝"],["lantern","/ˈlæntən/","n. 灯笼"],["dumpling","/ˈdʌmplɪŋ/","n. 饺子"],["sweep","/swiːp/","v. 打扫；扫"],["floor","/flɔː(r)/","n. 地板；地面"],["meal","/miːl/","n. 一餐，一顿饭"],["festival","/ˈfestɪvl/","n. 节日"],["luck","/lʌk/","n. 运气"],["present","/ˈpreznt/","n. 礼物"],["together","/təˈɡeðə(r)/","adv. 一起"]
+            ],
+            '八上': [
+                ["translate","/trænzˈleɪt/","v. 翻译"],["translation","/trænzˈleɪʃn/","n. 翻译"],["correct","/kəˈrekt/","v. 改正 adj. 正确的"],["match","/mætʃ/","v. 匹配；配对 n. 比赛"],["number","/ˈnʌmbə(r)/","n. 数字；号码"],["repeat","/rɪˈpiːt/","v. 重复"],["grammar","/ˈɡræmə(r)/","n. 语法"],["pronunciation","/prəˌnʌnsiˈeɪʃn/","n. 发音"],["aloud","/əˈlaʊd/","adv. 大声地"],["improve","/ɪmˈpruːv/","v. 改进，改善"],["basic","/ˈbeɪsɪk/","adj. 基础的"],["advice","/ədˈvaɪs/","n. 建议，劝告"],["possible","/ˈpɒsəbl/","adj. 可能的"],["forget","/fəˈɡet/","v. 忘记"],["remember","/rɪˈmembə(r)/","v. 记住"],["quick","/kwɪk/","adj. 快的，迅速的"],["natural","/ˈnætʃrəl/","adj. 自然的"],["journey","/ˈdʒɜːni/","n. 旅行，行程"],["far","/fɑː(r)/","adj.&adv. 远的/地"],["crowded","/ˈkraʊdɪd/","adj. 拥挤的"],["cost","/kɒst/","v. 花费 n. 成本，费用"],["road","/rəʊd/","n. 路，道路"],["accident","/ˈæksɪdənt/","n. 事故"],["except","/ɪkˈsept/","prep. 除……之外"],["coast","/kəʊst/","n. 海岸"],["island","/ˈaɪlənd/","n. 岛屿"],["mountain","/ˈmaʊntən/","n. 山，山脉"],["village","/ˈvɪlɪdʒ/","n. 村庄"],["population","/ˌpɒpjuˈleɪʃn/","n. 人口"],["wide","/waɪd/","adj. 宽的"],["hill","/hɪl/","n. 小山"],["busy","/ˈbɪzi/","adj. 繁忙的"],["free","/friː/","adj. 空闲的；免费的"],["solve","/sɒlv/","v. 解决"],["prepare","/prɪˈpeə(r)/","v. 准备"],["exam","/ɪɡˈzæm/","n. 考试"],["hobby","/ˈhɒbi/","n. 爱好"],["collect","/kəˈlekt/","v. 收集"],["stamp","/stæmp/","n. 邮票"],["activity","/ækˈtɪvəti/","n. 活动"],["relax","/rɪˈlæks/","v. 放松"],["teenager","/ˈtiːneɪdʒə(r)/","n. 青少年"],["success","/səkˈses/","n. 成功"],["enough","/ɪˈnʌf/","adj.&adv. 足够的/地"],["waste","/weɪst/","v. 浪费 n. 垃圾"],["pollution","/pəˈluːʃn/","n. 污染"],["recycle","/ˌriːˈsaɪkl/","v. 回收利用"],["plastic","/ˈplæstɪk/","n. 塑料 adj. 塑料的"],["divide","/dɪˈvaɪd/","v. 分开，分割"],["harm","/hɑːm/","v. & n. 伤害，损害"],["necessary","/ˈnesəsəri/","adj. 必要的"]
+            ],
+            '八下': [
+                ["smell","/smel/","n. 气味 v. 闻起来"],["soft","/sɒft/","adj. 柔软的"],["sour","/ˈsaʊə(r)/","adj. 酸的"],["cookie","/ˈkʊki/","n. 曲奇饼干"],["pizza","/ˈpiːtsə/","n. 比萨饼"],["lovely","/ˈlʌvli/","adj. 可爱的"],["done","/dʌn/","adj. 做完的"],["try","/traɪ/","v. 尝试；品尝"],["pie","/paɪ/","n. 馅饼"],["sound","/saʊnd/","v. 听起来 n. 声音"],["salt","/sɔːlt/","n. 盐"],["jam","/dʒæm/","n. 果酱"],["favourite","/ˈfeɪvərɪt/","adj. 最喜欢的 n. 最爱"],["message","/ˈmesɪdʒ/","n. 信息，消息"],["hobby","/ˈhɒbi/","n. 爱好"],["collect","/kəˈlekt/","v. 收集"],["tidy","/ˈtaɪdi/","v. 整理 adj. 整洁的"],["doll","/dɒl/","n. 玩偶"],["stamp","/stæmp/","n. 邮票"],["untidy","/ʌnˈtaɪdi/","adj. 不整洁的"],["as","/æz/","prep. 作为"],["volunteer","/ˌvɒlənˈtɪə(r)/","n. 志愿者"],["skill","/skɪl/","n. 技能"],["camp","/kæmp/","n. 营地"],["teenager","/ˈtiːneɪdʒə(r)/","n. 青少年"],["success","/səkˈses/","n. 成功"],["enough","/ɪˈnʌf/","adj. 足够的"],["pollution","/pəˈluːʃn/","n. 污染"],["recycle","/ˌriːˈsaɪkl/","v. 回收利用"],["plastic","/ˈplæstɪk/","n. 塑料"]
+            ],
+            '九全': [
+                ["man-made","/ˌmæn ˈmeɪd/","adj. 人造的"],["natural","/ˈnætʃrəl/","adj. 自然的"],["wonder","/ˈwʌndə(r)/","n. 奇观 v. 想知道"],["review","/rɪˈvjuː/","v.&n. 复习；评论"],["vocabulary","/vəˈkæbjələri/","n. 词汇"],["improve","/ɪmˈpruːv/","v. 提高，改善"],["discuss","/dɪˈskʌs/","v. 讨论"],["influence","/ˈɪnfluəns/","v.&n. 影响"],["suppose","/səˈpəʊz/","v. 猜想，假定"],["wise","/waɪz/","adj. 明智的"],["cancel","/ˈkænsl/","v. 取消"],["create","/kriˈeɪt/","v. 创造"],["imagine","/ɪˈmædʒɪn/","v. 想象"],["difference","/ˈdɪfrəns/","n. 差异，不同"],["honest","/ˈɒnɪst/","adj. 诚实的"],["valuable","/ˈvæljuəbl/","adj. 有价值的"],["repair","/rɪˈpeə(r)/","v. 修理"],["secret","/ˈsiːkrət/","n. 秘密 adj. 秘密的"],["consider","/kənˈsɪdə(r)/","v. 考虑；认为"],["method","/ˈmeθəd/","n. 方法"]
+            ]
+        };
+
+        // 渲染所有词汇
+        function renderAll() {
+            const containerMap = {
+                '七上': 'container-7a',
+                '七下': 'container-7b',
+                '八上': 'container-8a',
+                '八下': 'container-8b',
+                '九全': 'container-9'
+            };
+            for (const [book, words] of Object.entries(wordData)) {
+                const containerId = containerMap[book];
+                if (!containerId) continue;
+                const container = document.getElementById(containerId);
+                if (!container) continue;
+                container.innerHTML = '';
+                words.forEach(([en, ph, cn]) => {
+                    const card = document.createElement('div');
+                    card.className = 'word-card';
+                    card.setAttribute('data-en', en);
+                    card.setAttribute('data-cn', cn);
+                    card.setAttribute('data-ph', ph);
+
+                    const enDiv = document.createElement('div');
+                    enDiv.className = 'en';
+                    enDiv.textContent = en;
+                    const speakerBtn = document.createElement('button');
+                    speakerBtn.className = 'speaker';
+                    speakerBtn.textContent = '🔊';
+                    speakerBtn.setAttribute('aria-label', '朗读');
+                    speakerBtn.addEventListener('click', function(e) {
+                        e.stopPropagation();
+                        speakWord(en, cn);
+                    });
+                    enDiv.appendChild(speakerBtn);
+
+                    const phDiv = document.createElement('div');
+                    phDiv.className = 'phonetic';
+                    phDiv.textContent = ph;
+
+                    const cnDiv = document.createElement('div');
+                    cnDiv.className = 'cn';
+                    cnDiv.textContent = cn;
+
+                    card.appendChild(enDiv);
+                    card.appendChild(phDiv);
+                    card.appendChild(cnDiv);
+                    container.appendChild(card);
+                });
+            }
+        }
+
+        // 朗读功能 (使用Web Speech API)
+        function speakWord(en, cn) {
+            if (!window.speechSynthesis) {
+                alert('您的浏览器不支持语音朗读，请使用最新版Chrome/Edge/Safari。');
+                return;
+            }
+            // 停止当前播放
+            window.speechSynthesis.cancel();
+            const text = en + ', ' + cn;
+            const utterance = new SpeechSynthesisUtterance(text);
+            utterance.lang = 'en-GB';
+            utterance.rate = 0.9;
+            utterance.pitch = 1.0;
+            utterance.volume = 1;
+            // 尝试选择英文语音
+            const voices = window.speechSynthesis.getVoices();
+            const enVoice = voices.find(v => v.lang.startsWith('en'));
+            if (enVoice) utterance.voice = enVoice;
+            window.speechSynthesis.speak(utterance);
+        }
+
+        // 预加载语音 (部分浏览器需要)
+        if (window.speechSynthesis) {
+            window.speechSynthesis.getVoices();
+            window.speechSynthesis.onvoiceschanged = () => {
+                window.speechSynthesis.getVoices();
+            };
+        }
+
+        // ---- 交互控制 ----
+        document.addEventListener('DOMContentLoaded', function() {
+            renderAll();
+
+            const searchInput = document.getElementById('searchInput');
+            const hideCnBtn = document.getElementById('hideCnBtn');
+            const hideEnBtn = document.getElementById('hideEnBtn');
+            const resetBtn = document.getElementById('resetBtn');
+
+            // 搜索
+            searchInput.addEventListener('input', function() {
+                const key = this.value.toLowerCase().trim();
+                const modules = document.querySelectorAll('.book-module');
+                modules.forEach(mod => {
+                    const cards = mod.querySelectorAll('.word-card');
+                    let hasVisible = false;
+                    cards.forEach(card => {
+                        const en = card.getAttribute('data-en').toLowerCase();
+                        const cn = card.getAttribute('data-cn').toLowerCase();
+                        const ph = card.getAttribute('data-ph').toLowerCase();
+                        const match = en.includes(key) || cn.includes(key) || ph.includes(key);
+                        card.style.display = match ? '' : 'none';
+                        if (match) hasVisible = true;
+                    });
+                    mod.style.display = hasVisible ? '' : 'none';
+                });
+            });
+
+            // 隐藏中文
+            hideCnBtn.addEventListener('click', function() {
+                document.querySelectorAll('.word-card .cn').forEach(el => el.classList.add('hide-item'));
+            });
+
+            // 隐藏英文（保留音标和中文）
+            hideEnBtn.addEventListener('click', function() {
+                document.querySelectorAll('.word-card .en').forEach(el => {
+                    // 保留 speaker 按钮
+                    const speaker = el.querySelector('.speaker');
+                    const textNodes = [];
+                    el.childNodes.forEach(node => {
+                        if (node.nodeType === 3) textNodes.push(node);
+                    });
+                    textNodes.forEach(node => node.textContent = '');
+                    // 仅保留 speaker 按钮，但保留文本节点清除
+                    // 不过为了不丢失, 我们利用data属性: 显示隐藏用hide-item
+                    el.classList.add('hide-item');
+                    // 但speaker按钮应该仍然可见? 更好的做法: 隐藏文字, 但保留按钮
+                    // 重新处理: 将en内容包裹一个span用于隐藏
+                    // 动态重构太复杂，使用更简单方式：在en内加一个span
+                    // 但为了兼容已存在的结构，我们采用另一种方法：隐藏en文本，但保留按钮
+                });
+                // 上面直接加hide-item会隐藏整个en，包括按钮。所以我们改进：只隐藏文本节点
+                document.querySelectorAll('.word-card .en').forEach(el => {
+                    // 隐藏除了 .speaker 以外的子节点
+                    const children = Array.from(el.childNodes);
+                    children.forEach(child => {
+                        if (child.nodeType === 3) {
+                            // 文本节点
+                            const span = document.createElement('span');
+                            span.className = 'en-text hide-item';
+                            span.textContent = child.textContent;
+                            child.replaceWith(span);
+                        } else if (child.nodeType === 1 && !child.classList.contains('speaker')) {
+                            child.classList.add('hide-item');
+                        }
+                    });
+                });
+            });
+
+            // 重置
+            resetBtn.addEventListener('click', function() {
+                // 恢复所有显示
+                document.querySelectorAll('.book-module').forEach(mod => mod.style.display = '');
+                document.querySelectorAll('.word-card').forEach(card => card.style.display = '');
+                // 移除隐藏类
+                document.querySelectorAll('.hide-item').forEach(el => el.classList.remove('hide-item'));
+                // 恢复en中的文本（如果被替换）
+                document.querySelectorAll('.word-card .en').forEach(el => {
+                    // 移除 .en-text 并恢复文本
+                    const enTextSpan = el.querySelector('.en-text');
+                    if (enTextSpan) {
+                        const text = enTextSpan.textContent;
+                        enTextSpan.replaceWith(document.createTextNode(text));
+                    }
+                    // 移除其他隐藏类
+                    el.querySelectorAll('.hide-item').forEach(sub => sub.classList.remove('hide-item'));
+                });
+                searchInput.value = '';
+            });
+        });
+
+        // 额外：点击朗读卡片上的按钮时已绑定
+    })();
+</script>
+</body>
+</html>
