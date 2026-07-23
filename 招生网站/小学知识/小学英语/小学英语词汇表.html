@@ -1,0 +1,557 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.5, user-scalable=yes">
+    <title>小学英语词汇表 · 卡片记忆</title>
+    <!-- 清爽风格，兼顾移动端与桌面 -->
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: #f6f9fc;
+            font-family: 'Segoe UI', Roboto, system-ui, -apple-system, 'Helvetica Neue', sans-serif;
+            padding: 1.5rem 1rem 3rem;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .container {
+            max-width: 1200px;
+            width: 100%;
+        }
+
+        /* 头部 */
+        .header {
+            text-align: center;
+            margin-bottom: 2.5rem;
+            padding-bottom: 1rem;
+            border-bottom: 3px solid #ffb34720;
+        }
+
+        .header h1 {
+            font-size: 2.6rem;
+            font-weight: 600;
+            color: #1e3c5c;
+            letter-spacing: 1px;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .header h1 span {
+            background: #ffb347;
+            color: white;
+            font-size: 1.2rem;
+            font-weight: 500;
+            padding: 0.2rem 1rem;
+            border-radius: 40px;
+            letter-spacing: 0.5px;
+        }
+
+        .subhead {
+            color: #4a6a85;
+            font-size: 1.05rem;
+            margin-top: 0.4rem;
+            background: #eef4fa;
+            display: inline-block;
+            padding: 0.2rem 1.8rem;
+            border-radius: 30px;
+            backdrop-filter: blur(2px);
+        }
+
+        /* 字母导航 (快速跳转) */
+        .alpha-nav {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 0.4rem 0.25rem;
+            margin: 1.8rem 0 2.5rem;
+            padding: 0.4rem 0.6rem;
+            background: white;
+            border-radius: 60px;
+            box-shadow: 0 4px 12px rgba(0, 20, 30, 0.06);
+            border: 1px solid #dce7f2;
+        }
+
+        .alpha-nav a {
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1rem;
+            color: #1e3c5c;
+            background: transparent;
+            padding: 0.3rem 0.7rem;
+            border-radius: 40px;
+            transition: all 0.15s;
+            min-width: 2rem;
+            text-align: center;
+            letter-spacing: 0.3px;
+        }
+
+        .alpha-nav a:hover {
+            background: #ffb347;
+            color: white;
+            transform: scale(1.05);
+            box-shadow: 0 2px 8px rgba(255, 180, 60, 0.3);
+        }
+
+        .alpha-nav a:active {
+            transform: scale(0.92);
+        }
+
+        /* 词汇卡片网格 */
+        .vocab-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+            gap: 1.2rem;
+            margin-top: 0.5rem;
+        }
+
+        /* 每个卡片 */
+        .word-card {
+            background: white;
+            border-radius: 28px;
+            padding: 1.2rem 0.8rem 0.9rem;
+            box-shadow: 0 6px 16px rgba(0, 20, 30, 0.04), 0 2px 4px rgba(0, 0, 0, 0.02);
+            transition: transform 0.2s ease, box-shadow 0.25s;
+            border: 1px solid rgba(220, 235, 245, 0.5);
+            backdrop-filter: blur(2px);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            min-height: 120px;
+            justify-content: center;
+        }
+
+        .word-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 14px 28px rgba(30, 60, 92, 0.08);
+            border-color: #ffb34770;
+            background: #fffffffe;
+        }
+
+        .word-en {
+            font-size: 1.4rem;
+            font-weight: 600;
+            color: #1a2f44;
+            line-height: 1.3;
+            letter-spacing: -0.2px;
+            word-break: break-word;
+        }
+
+        .word-zh {
+            font-size: 1rem;
+            color: #3a5a78;
+            background: #e9f0f7;
+            padding: 0.2rem 1rem;
+            border-radius: 40px;
+            margin-top: 0.5rem;
+            display: inline-block;
+            font-weight: 500;
+            backdrop-filter: blur(2px);
+            border: 1px solid #d2e2f0;
+        }
+
+        /* 分组字母标题 (视觉分隔) */
+        .section-letter {
+            grid-column: 1 / -1;
+            margin: 1.8rem 0 0.8rem 0;
+            font-size: 2.2rem;
+            font-weight: 700;
+            color: #1e3c5c;
+            background: linear-gradient(135deg, #f0f7fe 0%, #ffffff 100%);
+            padding: 0.3rem 1.8rem;
+            border-radius: 60px;
+            display: inline-block;
+            width: fit-content;
+            border-left: 6px solid #ffb347;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.02);
+            letter-spacing: 2px;
+        }
+
+        .letter-wrapper {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: flex-start;
+            width: 100%;
+        }
+
+        /* 空状态 / 友好提示 */
+        .no-words {
+            color: #5d7f9a;
+            background: #eef4fa;
+            padding: 0.8rem 2rem;
+            border-radius: 60px;
+            font-size: 1rem;
+            font-weight: 500;
+            grid-column: 1 / -1;
+            text-align: center;
+        }
+
+        /* 页脚 */
+        .footer {
+            margin-top: 3.5rem;
+            color: #6b8aa8;
+            font-size: 0.9rem;
+            border-top: 1px solid #dce7f2;
+            padding-top: 1.8rem;
+            text-align: center;
+            width: 100%;
+            letter-spacing: 0.4px;
+        }
+
+        .footer small {
+            background: #f0f6fc;
+            padding: 0.2rem 1.2rem;
+            border-radius: 40px;
+        }
+
+        /* 移动端优化 */
+        @media (max-width: 600px) {
+            .header h1 {
+                font-size: 2rem;
+            }
+            .header h1 span {
+                font-size: 1rem;
+                padding: 0.1rem 0.8rem;
+            }
+            .vocab-grid {
+                grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+                gap: 0.9rem;
+            }
+            .word-en {
+                font-size: 1.2rem;
+            }
+            .alpha-nav a {
+                font-size: 0.8rem;
+                min-width: 1.8rem;
+                padding: 0.2rem 0.4rem;
+            }
+            .section-letter {
+                font-size: 1.8rem;
+                padding: 0.2rem 1.2rem;
+            }
+        }
+
+        @media (max-width: 400px) {
+            .vocab-grid {
+                grid-template-columns: repeat(auto-fill, minmax(130px, 1fr));
+            }
+        }
+
+        /* 打印样式 (保持干净) */
+        @media print {
+            body { background: white; padding: 0.5rem; }
+            .word-card { box-shadow: none; border: 1px solid #ccc; break-inside: avoid; }
+            .alpha-nav { display: none; }
+            .header h1 { color: #000; }
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+
+    <!-- 头部 -->
+    <div class="header">
+        <h1>
+            📚 小学英语词汇表
+            <span>PEP · 常用</span>
+        </h1>
+        <div class="subhead">🌟 按字母排序 · 点击字母快速跳转</div>
+    </div>
+
+    <!-- 字母导航 (锚点) -->
+    <nav class="alpha-nav" aria-label="字母导航">
+        <a href="#letter-A">A</a>
+        <a href="#letter-B">B</a>
+        <a href="#letter-C">C</a>
+        <a href="#letter-D">D</a>
+        <a href="#letter-E">E</a>
+        <a href="#letter-F">F</a>
+        <a href="#letter-G">G</a>
+        <a href="#letter-H">H</a>
+        <a href="#letter-I">I</a>
+        <a href="#letter-J">J</a>
+        <a href="#letter-K">K</a>
+        <a href="#letter-L">L</a>
+        <a href="#letter-M">M</a>
+        <a href="#letter-N">N</a>
+        <a href="#letter-O">O</a>
+        <a href="#letter-P">P</a>
+        <a href="#letter-Q">Q</a>
+        <a href="#letter-R">R</a>
+        <a href="#letter-S">S</a>
+        <a href="#letter-T">T</a>
+        <a href="#letter-U">U</a>
+        <a href="#letter-V">V</a>
+        <a href="#letter-W">W</a>
+        <a href="#letter-X">X</a>
+        <a href="#letter-Y">Y</a>
+        <a href="#letter-Z">Z</a>
+    </nav>
+
+    <!-- 词汇网格 -->
+    <div class="vocab-grid" id="vocabGrid">
+        <!-- 所有卡片由 JavaScript 动态插入，保证有序且按字母分组 -->
+    </div>
+
+    <div class="footer">
+        <small>✨ 共 <span id="wordCount">0</span> 个基础词汇 · 适合小学生日常积累</small>
+    </div>
+</div>
+
+<script>
+    (function() {
+        // ---------- 小学英语词汇表 (基础) ----------
+        // 包含常见名词、动词、形容词、数词、代词、介词等
+        const wordList = [
+            // A
+            { en: "apple", zh: "苹果" },
+            { en: "ant", zh: "蚂蚁" },
+            { en: "air", zh: "空气" },
+            { en: "animal", zh: "动物" },
+            { en: "arm", zh: "手臂" },
+            // B
+            { en: "book", zh: "书" },
+            { en: "bag", zh: "书包" },
+            { en: "ball", zh: "球" },
+            { en: "bird", zh: "鸟" },
+            { en: "blue", zh: "蓝色" },
+            { en: "bed", zh: "床" },
+            { en: "big", zh: "大的" },
+            // C
+            { en: "cat", zh: "猫" },
+            { en: "car", zh: "汽车" },
+            { en: "cake", zh: "蛋糕" },
+            { en: "cold", zh: "冷的" },
+            { en: "cow", zh: "奶牛" },
+            { en: "crayon", zh: "蜡笔" },
+            // D
+            { en: "dog", zh: "狗" },
+            { en: "duck", zh: "鸭子" },
+            { en: "door", zh: "门" },
+            { en: "desk", zh: "书桌" },
+            { en: "doll", zh: "洋娃娃" },
+            // E
+            { en: "egg", zh: "鸡蛋" },
+            { en: "ear", zh: "耳朵" },
+            { en: "eye", zh: "眼睛" },
+            { en: "elephant", zh: "大象" },
+            // F
+            { en: "fish", zh: "鱼" },
+            { en: "foot", zh: "脚" },
+            { en: "face", zh: "脸" },
+            { en: "father", zh: "父亲" },
+            { en: "flower", zh: "花" },
+            // G
+            { en: "green", zh: "绿色" },
+            { en: "girl", zh: "女孩" },
+            { en: "goat", zh: "山羊" },
+            { en: "good", zh: "好的" },
+            // H
+            { en: "hat", zh: "帽子" },
+            { en: "hand", zh: "手" },
+            { en: "head", zh: "头" },
+            { en: "house", zh: "房子" },
+            { en: "happy", zh: "快乐的" },
+            // I
+            { en: "ice", zh: "冰" },
+            { en: "insect", zh: "昆虫" },
+            { en: "island", zh: "岛屿" },
+            // J
+            { en: "jacket", zh: "夹克" },
+            { en: "juice", zh: "果汁" },
+            { en: "jump", zh: "跳" },
+            // K
+            { en: "kite", zh: "风筝" },
+            { en: "key", zh: "钥匙" },
+            { en: "kid", zh: "小孩" },
+            // L
+            { en: "lion", zh: "狮子" },
+            { en: "leg", zh: "腿" },
+            { en: "lamp", zh: "台灯" },
+            { en: "love", zh: "爱" },
+            // M
+            { en: "mother", zh: "母亲" },
+            { en: "milk", zh: "牛奶" },
+            { en: "monkey", zh: "猴子" },
+            { en: "mouth", zh: "嘴" },
+            { en: "music", zh: "音乐" },
+            // N
+            { en: "nose", zh: "鼻子" },
+            { en: "nurse", zh: "护士" },
+            { en: "number", zh: "数字" },
+            // O
+            { en: "orange", zh: "橙子" },
+            { en: "owl", zh: "猫头鹰" },
+            { en: "open", zh: "打开" },
+            // P
+            { en: "pencil", zh: "铅笔" },
+            { en: "pig", zh: "猪" },
+            { en: "panda", zh: "熊猫" },
+            { en: "purple", zh: "紫色" },
+            { en: "pear", zh: "梨" },
+            // Q
+            { en: "queen", zh: "女王" },
+            { en: "quiet", zh: "安静的" },
+            // R
+            { en: "rabbit", zh: "兔子" },
+            { en: "red", zh: "红色" },
+            { en: "ruler", zh: "尺子" },
+            { en: "rain", zh: "雨" },
+            // S
+            { en: "sun", zh: "太阳" },
+            { en: "school", zh: "学校" },
+            { en: "star", zh: "星星" },
+            { en: "sheep", zh: "绵羊" },
+            { en: "small", zh: "小的" },
+            { en: "swim", zh: "游泳" },
+            // T
+            { en: "table", zh: "桌子" },
+            { en: "teacher", zh: "老师" },
+            { en: "tiger", zh: "老虎" },
+            { en: "tree", zh: "树" },
+            { en: "toy", zh: "玩具" },
+            // U
+            { en: "umbrella", zh: "雨伞" },
+            { en: "uncle", zh: "叔叔" },
+            { en: "under", zh: "在…下面" },
+            // V
+            { en: "vest", zh: "背心" },
+            { en: "violin", zh: "小提琴" },
+            // W
+            { en: "water", zh: "水" },
+            { en: "white", zh: "白色" },
+            { en: "window", zh: "窗户" },
+            { en: "wolf", zh: "狼" },
+            { en: "warm", zh: "温暖的" },
+            // X
+            { en: "x-ray", zh: "X光" },
+            { en: "xylophone", zh: "木琴" },
+            // Y
+            { en: "yellow", zh: "黄色" },
+            { en: "yo-yo", zh: "悠悠球" },
+            { en: "yes", zh: "是的" },
+            // Z
+            { en: "zoo", zh: "动物园" },
+            { en: "zero", zh: "零" },
+            { en: "zebra", zh: "斑马" }
+        ];
+
+        // 按英文首字母分组 (A-Z)
+        function groupWordsByLetter(words) {
+            const groups = {};
+            // 初始化 A-Z 空数组
+            for (let i = 65; i <= 90; i++) {
+                const letter = String.fromCharCode(i);
+                groups[letter] = [];
+            }
+            // 填充
+            words.forEach(word => {
+                const firstChar = word.en.charAt(0).toUpperCase();
+                // 只处理 A-Z，其他字符归入 '#' (但词汇表均为字母)
+                if (groups[firstChar]) {
+                    groups[firstChar].push(word);
+                } else {
+                    // 如果首字母非字母 (极少情况) 归入 '#' 
+                    if (!groups['#']) groups['#'] = [];
+                    groups['#'].push(word);
+                }
+            });
+            return groups;
+        }
+
+        // 渲染词汇卡片到网格
+        function renderVocabulary() {
+            const grid = document.getElementById('vocabGrid');
+            if (!grid) return;
+
+            const groups = groupWordsByLetter(wordList);
+            const letters = Object.keys(groups).sort(); // A-Z, 以及可能的 '#'
+
+            let html = '';
+            let totalWords = 0;
+
+            letters.forEach(letter => {
+                const words = groups[letter];
+                if (!words || words.length === 0) return; // 跳过空组
+
+                // 分组标题 (字母)
+                // 如果是 '#' 特殊处理
+                const displayLetter = (letter === '#') ? '#' : letter;
+                html += `<div class="letter-wrapper" id="letter-${displayLetter}">`;
+                html += `<div class="section-letter">${displayLetter}</div>`;
+                html += `</div>`;
+
+                // 单词卡片
+                words.forEach(w => {
+                    html += `
+                        <div class="word-card">
+                            <div class="word-en">${w.en}</div>
+                            <div class="word-zh">${w.zh}</div>
+                        </div>
+                    `;
+                    totalWords++;
+                });
+            });
+
+            // 如果没有任何词汇 (极少)
+            if (totalWords === 0) {
+                html = `<div class="no-words">✨ 词汇表正在准备中 ... 稍后再来</div>`;
+            }
+
+            grid.innerHTML = html;
+
+            // 更新词汇总数
+            const countSpan = document.getElementById('wordCount');
+            if (countSpan) {
+                countSpan.textContent = totalWords;
+            }
+
+            // 修正锚点: 因为 section-letter 在 letter-wrapper 内， 但导航链接指向 #letter-A 等
+            // 我们需要确保每个 letter-wrapper 有对应的 id，已经添加 id="letter-${displayLetter}"
+            // 但导航链接是 #letter-A, 因此给 wrapper 添加 id 即可。
+            // 上面已经添加了 id="letter-${displayLetter}" ，但导航点击时浏览器会滚动到该元素
+            // 但由于 wrapper 内部只有标题，可能滚动位置不够明显，但可用。
+            // 同时为了更精准，给 section-letter 也添加 id 也可，但 wrapper 已包含。
+            // 调整: 导航链接使用 #letter-A，所以wrapper id正确。
+            // 再确保 section-letter 不遮挡。
+        }
+
+        // 执行渲染
+        renderVocabulary();
+
+        // 可选：当点击导航字母时，平滑滚动 (增加用户体验)
+        document.querySelectorAll('.alpha-nav a').forEach(link => {
+            link.addEventListener('click', function(e) {
+                const targetId = this.getAttribute('href'); // 例如 "#letter-A"
+                if (targetId && targetId.startsWith('#')) {
+                    const targetEl = document.querySelector(targetId);
+                    if (targetEl) {
+                        e.preventDefault();
+                        targetEl.scrollIntoView({
+                            behavior: 'smooth',
+                            block: 'start',
+                        });
+                        // 高亮效果 (可忽略)
+                    }
+                }
+            });
+        });
+
+        // 添加小功能：键盘快捷键 或 其他 (不用)
+        console.log('📖 小学英语词汇表已加载，祝学习愉快！');
+    })();
+</script>
+
+</body>
+</html>
