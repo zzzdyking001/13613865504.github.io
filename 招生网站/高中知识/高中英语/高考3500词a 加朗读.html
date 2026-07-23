@@ -1,0 +1,877 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>3500个1-12年级核心高频单词 · 朗读版</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+        body {
+            font-family: 'Segoe UI', Roboto, system-ui, sans-serif;
+            background: #f5f7fa;
+            padding: 20px;
+            color: #1e293b;
+        }
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+        h1 {
+            font-size: 2.2rem;
+            font-weight: 600;
+            text-align: center;
+            margin: 0 0 12px 0;
+            letter-spacing: 1px;
+            color: #0b3b5c;
+            border-bottom: 3px solid #b9d4e6;
+            padding-bottom: 16px;
+        }
+        .sub-title {
+            text-align: center;
+            color: #475569;
+            margin-bottom: 30px;
+            font-size: 1rem;
+            background: #e9edf2;
+            padding: 8px 16px;
+            border-radius: 40px;
+            display: inline-block;
+            margin-left: auto;
+            margin-right: auto;
+            width: auto;
+        }
+        .category-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+            gap: 24px;
+            margin-top: 20px;
+        }
+        .card {
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.04), 0 2px 6px rgba(0,0,0,0.02);
+            padding: 18px 16px 20px;
+            transition: box-shadow 0.15s;
+            border: 1px solid #e9edf2;
+        }
+        .card:hover {
+            box-shadow: 0 12px 28px rgba(0,0,0,0.06);
+        }
+        .card-header {
+            font-size: 1.25rem;
+            font-weight: 600;
+            padding-bottom: 10px;
+            margin-bottom: 12px;
+            border-bottom: 2px dashed #d1d9e6;
+            display: flex;
+            align-items: baseline;
+            justify-content: space-between;
+            color: #1e3a5f;
+        }
+        .card-header small {
+            font-weight: 400;
+            font-size: 0.75rem;
+            color: #64748b;
+            background: #f1f4f9;
+            padding: 0 10px;
+            border-radius: 30px;
+        }
+        .word-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px 8px;
+        }
+        .word-item {
+            display: inline-flex;
+            align-items: center;
+            background: #f8fafc;
+            padding: 4px 8px 4px 6px;
+            border-radius: 30px;
+            font-size: 0.9rem;
+            border: 1px solid #eef2f6;
+            cursor: pointer;
+            transition: background 0.1s ease, box-shadow 0.1s ease;
+        }
+        .word-item:hover {
+            background: #e6eff9;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+        }
+        .word-item .en {
+            font-weight: 500;
+            color: #0b3b5c;
+        }
+        .word-item .phon {
+            color: #6b7a8f;
+            font-size: 0.75rem;
+            margin: 0 3px 0 5px;
+            font-family: 'Courier New', monospace;
+        }
+        .word-item .zh {
+            color: #2d4e6b;
+            margin-left: 3px;
+            font-weight: 400;
+        }
+        .word-item .sep {
+            color: #b9c8da;
+            margin: 0 2px;
+        }
+        .speaker-icon {
+            display: inline-block;
+            margin-left: 5px;
+            font-size: 0.8rem;
+            color: #3b6e9b;
+            opacity: 0.7;
+            transition: opacity 0.1s;
+            line-height: 1;
+        }
+        .word-item:hover .speaker-icon {
+            opacity: 1;
+        }
+        .footer {
+            margin-top: 40px;
+            text-align: center;
+            color: #6b7f94;
+            font-size: 0.85rem;
+            border-top: 1px solid #dce3ec;
+            padding-top: 24px;
+        }
+        .badge {
+            background: #d2e0ed;
+            border-radius: 40px;
+            padding: 2px 12px;
+            font-size: 0.7rem;
+            color: #1e3a5f;
+        }
+        /* 朗读状态指示 */
+        .word-item.speaking {
+            background: #d4e2f5;
+            border-color: #8bb3d9;
+        }
+        @media (max-width: 700px) {
+            .category-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <h1>📚 3500个1-12年级核心高频单词</h1>
+	
+	
+	
+    <div style="text-align:center;"><span class="sub-title">⭐ 分类汇总 · 点击单词可朗读 (英式/美式发音)</span></div>
+
+    <!-- 分类卡片 完全保留原内容，仅在每个单词后添加喇叭图标 & 朗读逻辑 -->
+    <div class="category-grid">
+
+        <!-- 时间类 -->
+        <div class="card"><div class="card-header">🕒 时间 <small>time</small></div>
+            <div class="word-list">
+                <span class="word-item" data-word="year"><span class="en">year</span><span class="phon">[jiə]</span><span class="zh">年</span><span class="speaker-icon">🔊</span></span>
+                <span class="word-item" data-word="month"><span class="en">month</span><span class="phon">[mʌnθ]</span><span class="zh">月</span><span class="speaker-icon">🔊</span></span>
+                <span class="word-item" data-word="day"><span class="en">day</span><span class="phon">[dei]</span><span class="zh">日</span><span class="speaker-icon">🔊</span></span>
+                <span class="word-item" data-word="seasons"><span class="en">seasons</span><span class="phon">['si:znz]</span><span class="zh">季</span><span class="speaker-icon">🔊</span></span>
+                <span class="word-item" data-word="week"><span class="en">week</span><span class="phon">[wi:k]</span><span class="zh">周</span><span class="speaker-icon">🔊</span></span>
+                <span class="word-item" data-word="quarter"><span class="en">quarter</span><span class="phon">['kwɔ:tə]</span><span class="zh">刻</span><span class="speaker-icon">🔊</span></span>
+                <span class="word-item" data-word="hour"><span class="en">hour</span><span class="phon">['auə]</span><span class="zh">时</span><span class="speaker-icon">🔊</span></span>
+                <span class="word-item" data-word="minute"><span class="en">minute</span><span class="phon">['minit]</span><span class="zh">分</span><span class="speaker-icon">🔊</span></span>
+                <span class="word-item" data-word="second"><span class="en">second</span><span class="phon">['sekənd]</span><span class="zh">秒</span><span class="speaker-icon">🔊</span></span>
+                <span class="word-item" data-word="yesterday"><span class="en">yesterday</span><span class="phon">['jestədi]</span><span class="zh">昨天</span><span class="speaker-icon">🔊</span></span>
+                <span class="word-item" data-word="today"><span class="en">today</span><span class="phon">[tə'dei]</span><span class="zh">今天</span><span class="speaker-icon">🔊</span></span>
+                <span class="word-item" data-word="tomorrow"><span class="en">tomorrow</span><span class="phon">[tə'mɔrəu]</span><span class="zh">明天</span><span class="speaker-icon">🔊</span></span>
+                <span class="word-item" data-word="morning"><span class="en">morning</span><span class="phon">['mɔ:niŋ]</span><span class="zh">上午</span><span class="speaker-icon">🔊</span></span>
+                <span class="word-item" data-word="noon"><span class="en">noon</span><span class="phon">[nu:n]</span><span class="zh">中午</span><span class="speaker-icon">🔊</span></span>
+                <span class="word-item" data-word="evening"><span class="en">evening</span><span class="phon">['i:vniŋ]</span><span class="zh">傍晚</span><span class="speaker-icon">🔊</span></span>
+                <span class="word-item" data-word="night"><span class="en">night</span><span class="phon">[nait]</span><span class="zh">夜晚</span><span class="speaker-icon">🔊</span></span>
+                <span class="word-item" data-word="spring"><span class="en">spring</span><span class="phon">[spriŋ]</span><span class="zh">春</span><span class="speaker-icon">🔊</span></span>
+                <span class="word-item" data-word="summer"><span class="en">summer</span><span class="phon">['sʌmə]</span><span class="zh">夏</span><span class="speaker-icon">🔊</span></span>
+                <span class="word-item" data-word="autumn"><span class="en">autumn</span><span class="phon">['ɔ:təm]</span><span class="zh">秋</span><span class="speaker-icon">🔊</span></span>
+                <span class="word-item" data-word="winter"><span class="en">winter</span><span class="phon">['wintə]</span><span class="zh">冬</span><span class="speaker-icon">🔊</span></span>
+                <span class="word-item" data-word="January"><span class="en">January</span><span class="phon">['dʒænjuəri]</span><span class="zh">一月</span><span class="speaker-icon">🔊</span></span>
+                <span class="word-item" data-word="February"><span class="en">February</span><span class="phon">['februəri]</span><span class="zh">二月</span><span class="speaker-icon">🔊</span></span>
+                <span class="word-item" data-word="March"><span class="en">March</span><span class="phon">[ma:tʃ]</span><span class="zh">三月</span><span class="speaker-icon">🔊</span></span>
+                <span class="word-item" data-word="April"><span class="en">April</span><span class="phon">['eiprəl]</span><span class="zh">四月</span><span class="speaker-icon">🔊</span></span>
+                <span class="word-item" data-word="May"><span class="en">May</span><span class="phon">[mei]</span><span class="zh">五月</span><span class="speaker-icon">🔊</span></span>
+                <span class="word-item" data-word="June"><span class="en">June</span><span class="phon">[dʒu:n]</span><span class="zh">六月</span><span class="speaker-icon">🔊</span></span>
+                <span class="word-item" data-word="July"><span class="en">July</span><span class="phon">[dʒu(:)'lai]</span><span class="zh">七月</span><span class="speaker-icon">🔊</span></span>
+                <span class="word-item" data-word="August"><span class="en">August</span><span class="phon">['ɔ:gəst]</span><span class="zh">八月</span><span class="speaker-icon">🔊</span></span>
+                <span class="word-item" data-word="September"><span class="en">September</span><span class="phon">[səp'tembə]</span><span class="zh">九月</span><span class="speaker-icon">🔊</span></span>
+                <span class="word-item" data-word="October"><span class="en">October</span><span class="phon">[ɔk'təubə]</span><span class="zh">十月</span><span class="speaker-icon">🔊</span></span>
+                <span class="word-item" data-word="November"><span class="en">November</span><span class="phon">[nəu'vembə]</span><span class="zh">十一月</span><span class="speaker-icon">🔊</span></span>
+                <span class="word-item" data-word="December"><span class="en">December</span><span class="phon">[di'sembə]</span><span class="zh">十二月</span><span class="speaker-icon">🔊</span></span>
+                <span class="word-item" data-word="Monday"><span class="en">Monday</span><span class="phon">['mʌndi]</span><span class="zh">星期一</span><span class="speaker-icon">🔊</span></span>
+                <span class="word-item" data-word="Tuesday"><span class="en">Tuesday</span><span class="phon">['tju:zdi]</span><span class="zh">星期二</span><span class="speaker-icon">🔊</span></span>
+                <span class="word-item" data-word="Wednesday"><span class="en">Wednesday</span><span class="phon">['wenzdeɪ]</span><span class="zh">星期三</span><span class="speaker-icon">🔊</span></span>
+                <span class="word-item" data-word="Thursday"><span class="en">Thursday</span><span class="phon">['θə:zdi]</span><span class="zh">星期四</span><span class="speaker-icon">🔊</span></span>
+                <span class="word-item" data-word="Friday"><span class="en">Friday</span><span class="phon">['fraidi]</span><span class="zh">星期五</span><span class="speaker-icon">🔊</span></span>
+                <span class="word-item" data-word="Saturday"><span class="en">Saturday</span><span class="phon">['sætədi]</span><span class="zh">星期六</span><span class="speaker-icon">🔊</span></span>
+                <span class="word-item" data-word="Sunday"><span class="en">Sunday</span><span class="phon">['sʌndi]</span><span class="zh">星期天</span><span class="speaker-icon">🔊</span></span>
+                <span class="word-item" data-word="weekend"><span class="en">weekend</span><span class="phon">[,wi:k'end]</span><span class="zh">周末</span><span class="speaker-icon">🔊</span></span>
+            </div>
+        </div>
+
+        <!-- 课程类 -->
+        <div class="card"><div class="card-header">📖 课程 <small>subjects</small></div>
+            <div class="word-list">
+                <span class="word-item" data-word="Chinese"><span class="en">Chinese</span><span class="phon">['tʃai'ni:z]</span><span class="zh">汉语</span><span class="speaker-icon">🔊</span></span>
+                <span class="word-item" data-word="English"><span class="en">English</span><span class="phon">['iŋgliʃ]</span><span class="zh">英语</span><span class="speaker-icon">🔊</span></span>
+                <span class="word-item" data-word="math"><span class="en">math</span><span class="phon">[mʌθ]</span><span class="zh">数学</span><span class="speaker-icon">🔊</span></span>
+                <span class="word-item" data-word="PE"><span class="en">PE</span><span class="phon">[peɪ]</span><span class="zh">体育</span><span class="speaker-icon">🔊</span></span>
+                <span class="word-item" data-word="history"><span class="en">history</span><span class="phon">['histəri]</span><span class="zh">历史</span><span class="speaker-icon">🔊</span></span>
+                <span class="word-item" data-word="geography"><span class="en">geography</span><span class="phon">[dʒi'ɔɡrəfi]</span><span class="zh">地理</span><span class="speaker-icon">🔊</span></span>
+                <span class="word-item" data-word="physics"><span class="en">physics</span><span class="phon">['fiziks]</span><span class="zh">物理</span><span class="speaker-icon">🔊</span></span>
+                <span class="word-item" data-word="chemistry"><span class="en">chemistry</span><span class="phon">['kemistri]</span><span class="zh">化学</span><span class="speaker-icon">🔊</span></span>
+                <span class="word-item" data-word="music"><span class="en">music</span><span class="phon">['mju:zik]</span><span class="zh">音乐</span><span class="speaker-icon">🔊</span></span>
+                <span class="word-item" data-word="art"><span class="en">art</span><span class="phon">[ɑ:t]</span><span class="zh">美术</span><span class="speaker-icon">🔊</span></span>
+            </div>
+        </div>
+
+        <!-- 文具类 -->
+        <div class="card"><div class="card-header">✏️ 文具 <small>stationery</small></div>
+            <div class="word-list">
+                <span class="word-item" data-word="pen"><span class="en">pen</span><span class="phon">[pen]</span><span class="zh">钢笔</span><span class="speaker-icon">🔊</span></span>
+                <span class="word-item" data-word="pencil"><span class="en">pencil</span><span class="phon">[pensl]</span><span class="zh">铅笔</span><span class="speaker-icon">🔊</span></span>
+                <span class="word-item" data-word="ruler"><span class="en">ruler</span><span class="phon">[ru:lə]</span><span class="zh">尺子</span><span class="speaker-icon">🔊</span></span>
+                <span class="word-item" data-word="eraser"><span class="en">eraser</span><span class="phon">[i'reizə]</span><span class="zh">橡皮</span><span class="speaker-icon">🔊</span></span>
+                <span class="word-item" data-word="book"><span class="en">book</span><span class="phon">[buk]</span><span class="zh">书</span><span class="speaker-icon">🔊</span></span>
+                <span class="word-item" data-word="paper"><span class="en">paper</span><span class="phon">[peipə]</span><span class="zh">纸</span><span class="speaker-icon">🔊</span></span>
+                <span class="word-item" data-word="dictionary"><span class="en">dictionary</span><span class="phon">['dikʃənəri]</span><span class="zh">词典</span><span class="speaker-icon">🔊</span></span>
+                <span class="word-item" data-word="schoolbag"><span class="en">schoolbag</span><span class="phon">['sku:lbæɡ]</span><span class="zh">书包</span><span class="speaker-icon">🔊</span></span>
+            </div>
+        </div>
+
+        <!-- 球体类 -->
+        <div class="card"><div class="card-header">⚽ 球类 <small>sports</small></div>
+            <div class="word-list">
+                <span class="word-item" data-word="basketball"><span class="en">basketball</span><span class="phon">['ba:skitbɔ:l]</span><span class="zh">篮球</span><span class="speaker-icon">🔊</span></span>
+                <span class="word-item" data-word="football"><span class="en">football</span><span class="phon">['futbɔ:l]</span><span class="zh">足球</span><span class="speaker-icon">🔊</span></span>
+                <span class="word-item" data-word="tennis"><span class="en">tennis</span><span class="phon">['tenis]</span><span class="zh">网球</span><span class="speaker-icon">🔊</span></span>
+                <span class="word-item" data-word="volleyball"><span class="en">volleyball</span><span class="phon">['Rlɪbɔ:l]</span><span class="zh">排球</span><span class="speaker-icon">🔊</span></span>
+                <span class="word-item" data-word="table tennis"><span class="en">table tennis</span><span class="phon"></span><span class="zh">乒乓</span><span class="speaker-icon">🔊</span></span>
+                <span class="word-item" data-word="golf"><span class="en">golf</span><span class="phon">[gɔlf]</span><span class="zh">高尔夫球</span><span class="speaker-icon">🔊</span></span>
+                <span class="word-item" data-word="rugby"><span class="en">rugby</span><span class="phon">['rʌgbɪ]</span><span class="zh">橄榄球</span><span class="speaker-icon">🔊</span></span>
+                <span class="word-item" data-word="baseball"><span class="en">baseball</span><span class="phon">['beisbɔ:l]</span><span class="zh">垒球</span><span class="speaker-icon">🔊</span></span>
+                <span class="word-item" data-word="hockey"><span class="en">hockey</span><span class="phon">['hɔki]</span><span class="zh">曲棍球</span><span class="speaker-icon">🔊</span></span>
+                <span class="word-item" data-word="handball"><span class="en">handball</span><span class="phon">['hændbɔ:l]</span><span class="zh">手球</span><span class="speaker-icon">🔊</span></span>
+            </div>
+        </div>
+
+        <!-- 图形类 -->
+        <div class="card"><div class="card-header">🔷 图形 <small>shapes</small></div>
+            <div class="word-list">
+                <span class="word-item" data-word="circle"><span class="en">circle</span><span class="phon">['sə:kl]</span><span class="zh">圆形</span><span class="speaker-icon">🔊</span></span>
+                <span class="word-item" data-word="rectangle"><span class="en">rectangle</span><span class="phon">['rektæŋgl]</span><span class="zh">长方形</span><span class="speaker-icon">🔊</span></span>
+                <span class="word-item" data-word="triangle"><span class="en">triangle</span><span class="phon">['traiæŋgl]</span><span class="zh">三角形</span><span class="speaker-icon">🔊</span></span>
+                <span class="word-item" data-word="square"><span class="en">square</span><span class="phon">[skwɛə]</span><span class="zh">正方形</span><span class="speaker-icon">🔊</span></span>
+            </div>
+        </div>
+
+        <!-- 人体类 -->
+        <div class="card"><div class="card-header">🧍 人体 <small>body</small></div>
+            <div class="word-list">
+                <span class="word-item" data-word="head"><span class="en">head</span><span class="phon">[hed]</span><span class="zh">头</span><span class="speaker-icon">🔊</span></span>
+                <span class="word-item" data-word="hair"><span class="en">hair</span><span class="phon">[hɛə]</span><span class="zh">头发</span><span class="speaker-icon">🔊</span></span>
+                <span class="word-item" data-word="face"><span class="en">face</span><span class="phon">[feis]</span><span class="zh">脸</span><span class="speaker-icon">🔊</span></span>
+                <span class="word-item" data-word="nose"><span class="en">nose</span><span class="phon">[nəuz]</span><span class="zh">鼻子</span><span class="speaker-icon">🔊</span></span>
+                <span class="word-item" data-word="eye"><span class="en">eye</span><span class="phon">[ai]</span><span class="zh">眼睛</span><span class="speaker-icon">🔊</span></span>
+                <span class="word-item" data-word="mouth"><span class="en">mouth</span><span class="phon">[mauθ]</span><span class="zh">嘴</span><span class="speaker-icon">🔊</span></span>
+                <span class="word-item" data-word="ear"><span class="en">ear</span><span class="phon">[iə]</span><span class="zh">耳朵</span><span class="speaker-icon">🔊</span></span>
+                <span class="word-item" data-word="tooth"><span class="en">tooth</span><span class="phon">[tu:θ]</span><span class="zh">牙齿</span><span class="speaker-icon">🔊</span></span>
+                <span class="word-item" data-word="neck"><span class="en">neck</span><span class="phon">[nek]</span><span class="zh">脖子</span><span class="speaker-icon">🔊</span></span>
+                <span class="word-item" data-word="shoulder"><span class="en">shoulder</span><span class="phon">['ʃəuldə]</span><span class="zh">肩膀</span><span class="speaker-icon">🔊</span></span>
+                <span class="word-item" data-word="hand"><span class="en">hand</span><span class="phon">[hænd]</span><span class="zh">手</span><span class="speaker-icon">🔊</span></span>
+                <span class="word-item" data-word="arm"><span class="en">arm</span><span class="phon">[a:m]</span><span class="zh">手臂</span><span class="speaker-icon">🔊</span></span>
+                <span class="word-item" data-word="finger"><span class="en">finger</span><span class="phon">['fiŋgə]</span><span class="zh">手指</span><span class="speaker-icon">🔊</span></span>
+                <span class="word-item" data-word="leg"><span class="en">leg</span><span class="phon">[leg]</span><span class="zh">腿</span><span class="speaker-icon">🔊</span></span>
+                <span class="word-item" data-word="knee"><span class="en">knee</span><span class="phon">[ni:]</span><span class="zh">膝盖</span><span class="speaker-icon">🔊</span></span>
+                <span class="word-item" data-word="foot"><span class="en">foot</span><span class="phon">[fut]</span><span class="zh">脚</span><span class="speaker-icon">🔊</span></span>
+                <span class="word-item" data-word="toe"><span class="en">toe</span><span class="phon">[təu]</span><span class="zh">脚趾</span><span class="speaker-icon">🔊</span></span>
+            </div>
+        </div>
+
+        <!-- 人物类 -->
+        <div class="card"><div class="card-header">👨‍👩‍👧‍👦 人物 <small>people</small></div>
+            <div class="word-list">
+                <span class="word-item" data-word="mother"><span class="en">mother</span><span class="phon">[mʌðə]</span><span class="zh">母亲</span><span class="speaker-icon">🔊</span></span>
+                <span class="word-item" data-word="father"><span class="en">father</span><span class="phon">[fa:ðə]</span><span class="zh">父亲</span><span class="speaker-icon">🔊</span></span>
+                <span class="word-item" data-word="mum"><span class="en">mum</span><span class="phon">[mʌm]</span><span class="zh">妈妈</span><span class="speaker-icon">🔊</span></span>
+                <span class="word-item" data-word="dad"><span class="en">dad</span><span class="phon">[dæd]</span><span class="zh">爸爸</span><span class="speaker-icon">🔊</span></span>
+                <span class="word-item" data-word="son"><span class="en">son</span><span class="phon">[sʌn]</span><span class="zh">儿子</span><span class="speaker-icon">🔊</span></span>
+                <span class="word-item" data-word="daughter"><span class="en">daughter</span><span class="phon">['dɔ:tə]</span><span class="zh">女儿</span><span class="speaker-icon">🔊</span></span>
+                <span class="word-item" data-word="sister"><span class="en">sister</span><span class="phon">[sistə]</span><span class="zh">姐妹</span><span class="speaker-icon">🔊</span></span>
+                <span class="word-item" data-word="brother"><span class="en">brother</span><span class="phon">[brʌðə]</span><span class="zh">兄弟</span><span class="speaker-icon">🔊</span></span>
+                <span class="word-item" data-word="grandma"><span class="en">grandma</span><span class="phon">['grænma:]</span><span class="zh">奶奶</span><span class="speaker-icon">🔊</span></span>
+                <span class="word-item" data-word="grandpa"><span class="en">grandpa</span><span class="phon">['grænpa:]</span><span class="zh">爷爷</span><span class="speaker-icon">🔊</span></span>
+                <span class="word-item" data-word="grandmother"><span class="en">grandmother</span><span class="phon">['grænd,mʌðə]</span><span class="zh">祖母</span><span class="speaker-icon">🔊</span></span>
+                <span class="word-item" data-word="grandfather"><span class="en">grandfather</span><span class="phon">['grænd,fa:ðə]</span><span class="zh">祖父</span><span class="speaker-icon">🔊</span></span>
+                <span class="word-item" data-word="aunt"><span class="en">aunt</span><span class="phon">[a:nt]</span><span class="zh">阿姨</span><span class="speaker-icon">🔊</span></span>
+                <span class="word-item" data-word="uncle"><span class="en">uncle</span><span class="phon">[ʌŋkl]</span><span class="zh">叔叔</span><span class="speaker-icon">🔊</span></span>
+                <span class="word-item" data-word="boy"><span class="en">boy</span><span class="phon">[bɔi]</span><span class="zh">男孩</span><span class="speaker-icon">🔊</span></span>
+                <span class="word-item" data-word="girl"><span class="en">girl</span><span class="phon">[gə:l]</span><span class="zh">女孩</span><span class="speaker-icon">🔊</span></span>
+                <span class="word-item" data-word="man"><span class="en">man</span><span class="phon">[mæn]</span><span class="zh">男人</span><span class="speaker-icon">🔊</span></span>
+                <span class="word-item" data-word="woman"><span class="en">woman</span><span class="phon">['wumən]</span><span class="zh">女人</span><span class="speaker-icon">🔊</span></span>
+                <span class="word-item" data-word="Mr."><span class="en">Mr.</span><span class="phon">['mistə]</span><span class="zh">先生</span><span class="speaker-icon">🔊</span></span>
+                <span class="word-item" data-word="Miss"><span class="en">Miss</span><span class="phon">[mis]</span><span class="zh">小姐</span><span class="speaker-icon">🔊</span></span>
+            </div>
+        </div>
+
+        <!-- 动物类 -->
+        <div class="card"><div class="card-header">🐾 动物 <small>animals</small></div>
+            <div class="word-list">
+                <span class="word-item" data-word="mouse"><span class="en">mouse</span><span class="phon">[maus]</span><span class="zh">鼠</span><span class="speaker-icon">🔊</span></span>
+                <span class="word-item" data-word="ox"><span class="en">ox</span><span class="phon">[ɔks]</span><span class="zh">牛</span><span class="speaker-icon">🔊</span></span>
+                <span class="word-item" data-word="tiger"><span class="en">tiger</span><span class="phon">['taigə]</span><span class="zh">虎</span><span class="speaker-icon">🔊</span></span>
+                <span class="word-item" data-word="rabbit"><span class="en">rabbit</span><span class="phon">[ræbit]</span><span class="zh">兔</span><span class="speaker-icon">🔊</span></span>
+                <span class="word-item" data-word="dragon"><span class="en">dragon</span><span class="phon">['dræɡən]</span><span class="zh">龙</span><span class="speaker-icon">🔊</span></span>
+                <span class="word-item" data-word="snake"><span class="en">snake</span><span class="phon">[sneik]</span><span class="zh">蛇</span><span class="speaker-icon">🔊</span></span>
+                <span class="word-item" data-word="horse"><span class="en">horse</span><span class="phon">[hɔ:s]</span><span class="zh">马</span><span class="speaker-icon">🔊</span></span>
+                <span class="word-item" data-word="sheep"><span class="en">sheep</span><span class="phon">[ʃi:p]</span><span class="zh">羊/绵羊</span><span class="speaker-icon">🔊</span></span>
+                <span class="word-item" data-word="monkey"><span class="en">monkey</span><span class="phon">[mʌŋki]</span><span class="zh">猴</span><span class="speaker-icon">🔊</span></span>
+                <span class="word-item" data-word="chicken"><span class="en">chicken</span><span class="phon">['tʃikin]</span><span class="zh">鸡/小鸡</span><span class="speaker-icon">🔊</span></span>
+                <span class="word-item" data-word="dog"><span class="en">dog</span><span class="phon">[dɔg]</span><span class="zh">狗</span><span class="speaker-icon">🔊</span></span>
+                <span class="word-item" data-word="pig"><span class="en">pig</span><span class="phon">[pig]</span><span class="zh">猪</span><span class="speaker-icon">🔊</span></span>
+                <span class="word-item" data-word="cat"><span class="en">cat</span><span class="phon">[kæt]</span><span class="zh">猫</span><span class="speaker-icon">🔊</span></span>
+                <span class="word-item" data-word="fish"><span class="en">fish</span><span class="phon">[fiʃ]</span><span class="zh">鱼</span><span class="speaker-icon">🔊</span></span>
+                <span class="word-item" data-word="duck"><span class="en">duck</span><span class="phon">[dʌk]</span><span class="zh">鸭</span><span class="speaker-icon">🔊</span></span>
+                <span class="word-item" data-word="crocodile"><span class="en">crocodile</span><span class="phon">['krɔkədail]</span><span class="zh">鳄鱼</span><span class="speaker-icon">🔊</span></span>
+                <span class="word-item" data-word="goat"><span class="en">goat</span><span class="phon">[gəut]</span><span class="zh">山羊</span><span class="speaker-icon">🔊</span></span>
+                <span class="word-item" data-word="lion"><span class="en">lion</span><span class="phon">[laiən]</span><span class="zh">狮子</span><span class="speaker-icon">🔊</span></span>
+                <span class="word-item" data-word="deer"><span class="en">deer</span><span class="phon">[diə]</span><span class="zh">鹿</span><span class="speaker-icon">🔊</span></span>
+                <span class="word-item" data-word="elephant"><span class="en">elephant</span><span class="phon">[elifənt]</span><span class="zh">大象</span><span class="speaker-icon">🔊</span></span>
+                <span class="word-item" data-word="zebra"><span class="en">zebra</span><span class="phon">[zebrə]</span><span class="zh">斑马</span><span class="speaker-icon">🔊</span></span>
+                <span class="word-item" data-word="panda"><span class="en">panda</span><span class="phon">[pændə]</span><span class="zh">熊猫</span><span class="speaker-icon">🔊</span></span>
+                <span class="word-item" data-word="goose"><span class="en">goose</span><span class="phon">[ɡu:s]</span><span class="zh">鹅</span><span class="speaker-icon">🔊</span></span>
+                <span class="word-item" data-word="wolf"><span class="en">wolf</span><span class="phon">[wulf]</span><span class="zh">狼</span><span class="speaker-icon">🔊</span></span>
+                <span class="word-item" data-word="cow"><span class="en">cow</span><span class="phon">[kau]</span><span class="zh">奶牛</span><span class="speaker-icon">🔊</span></span>
+                <span class="word-item" data-word="frog"><span class="en">frog</span><span class="phon">[frɔg]</span><span class="zh">青蛙</span><span class="speaker-icon">🔊</span></span>
+                <span class="word-item" data-word="ant"><span class="en">ant</span><span class="phon">[ænt]</span><span class="zh">蚂蚁</span><span class="speaker-icon">🔊</span></span>
+                <span class="word-item" data-word="bird"><span class="en">bird</span><span class="phon">[bə:d]</span><span class="zh">鸟</span><span class="speaker-icon">🔊</span></span>
+                <span class="word-item" data-word="fly"><span class="en">fly</span><span class="phon">[flai]</span><span class="zh">苍蝇</span><span class="speaker-icon">🔊</span></span>
+                <span class="word-item" data-word="dragonfly"><span class="en">dragonfly</span><span class="phon">[drægənflaɪ]</span><span class="zh">蜻蜓</span><span class="speaker-icon">🔊</span></span>
+                <span class="word-item" data-word="bee"><span class="en">bee</span><span class="phon">[bi:]</span><span class="zh">蜜蜂</span><span class="speaker-icon">🔊</span></span>
+                <span class="word-item" data-word="butterfly"><span class="en">butterfly</span><span class="phon">[bʌtəflai]</span><span class="zh">蝴蝶</span><span class="speaker-icon">🔊</span></span>
+            </div>
+        </div>
+
+        <!-- 植物类 -->
+        <div class="card"><div class="card-header">🌱 植物 <small>plants</small></div>
+            <div class="word-list">
+                <span class="word-item" data-word="tree"><span class="en">tree</span><span class="phon">[tri:]</span><span class="zh">树</span><span class="speaker-icon">🔊</span></span>
+                <span class="word-item" data-word="grass"><span class="en">grass</span><span class="phon">[gra:s]</span><span class="zh">草</span><span class="speaker-icon">🔊</span></span>
+                <span class="word-item" data-word="flower"><span class="en">flower</span><span class="phon">['flauə]</span><span class="zh">花</span><span class="speaker-icon">🔊</span></span>
+                <span class="word-item" data-word="wood"><span class="en">wood</span><span class="phon">[wud]</span><span class="zh">木头</span><span class="speaker-icon">🔊</span></span>
+            </div>
+        </div>
+
+        <!-- 职业类 -->
+        <div class="card"><div class="card-header">💼 职业 <small>jobs</small></div>
+            <div class="word-list">
+                <span class="word-item" data-word="teacher"><span class="en">teacher</span><span class="phon">[ti:tʃə]</span><span class="zh">教师</span><span class="speaker-icon">🔊</span></span>
+                <span class="word-item" data-word="student"><span class="en">student</span><span class="phon">[stju:dənt]</span><span class="zh">学生</span><span class="speaker-icon">🔊</span></span>
+                <span class="word-item" data-word="doctor"><span class="en">doctor</span><span class="phon">[dɔktə]</span><span class="zh">医生</span><span class="speaker-icon">🔊</span></span>
+                <span class="word-item" data-word="nurse"><span class="en">nurse</span><span class="phon">[nə:s]</span><span class="zh">护士</span><span class="speaker-icon">🔊</span></span>
+                <span class="word-item" data-word="worker"><span class="en">worker</span><span class="phon">[wə:kə]</span><span class="zh">工人</span><span class="speaker-icon">🔊</span></span>
+                <span class="word-item" data-word="farmer"><span class="en">farmer</span><span class="phon">[fa:mə]</span><span class="zh">农民</span><span class="speaker-icon">🔊</span></span>
+                <span class="word-item" data-word="driver"><span class="en">driver</span><span class="phon">[draivə]</span><span class="zh">司机</span><span class="speaker-icon">🔊</span></span>
+                <span class="word-item" data-word="player"><span class="en">player</span><span class="phon">['pleiə]</span><span class="zh">演员</span><span class="speaker-icon">🔊</span></span>
+                <span class="word-item" data-word="actor"><span class="en">actor</span><span class="phon">['æktə]</span><span class="zh">男演员</span><span class="speaker-icon">🔊</span></span>
+                <span class="word-item" data-word="actress"><span class="en">actress</span><span class="phon">['æktris]</span><span class="zh">女演员</span><span class="speaker-icon">🔊</span></span>
+                <span class="word-item" data-word="singer"><span class="en">singer</span><span class="phon">['siŋə]</span><span class="zh">歌唱家</span><span class="speaker-icon">🔊</span></span>
+                <span class="word-item" data-word="writer"><span class="en">writer</span><span class="phon">['raitə]</span><span class="zh">作家</span><span class="speaker-icon">🔊</span></span>
+                <span class="word-item" data-word="artist"><span class="en">artist</span><span class="phon">['ɑ:tist]</span><span class="zh">画家</span><span class="speaker-icon">🔊</span></span>
+                <span class="word-item" data-word="police"><span class="en">police</span><span class="phon">[pə'li:s]</span><span class="zh">警察</span><span class="speaker-icon">🔊</span></span>
+                <span class="word-item" data-word="waiter"><span class="en">waiter</span><span class="phon">['weitə]</span><span class="zh">服务员</span><span class="speaker-icon">🔊</span></span>
+                <span class="word-item" data-word="pupil"><span class="en">pupil</span><span class="phon">['pju:pl]</span><span class="zh">小学生</span><span class="speaker-icon">🔊</span></span>
+            </div>
+        </div>
+
+        <!-- 交通类 -->
+        <div class="card"><div class="card-header">🚗 交通 <small>vehicles</small></div>
+            <div class="word-list">
+                <span class="word-item" data-word="bike"><span class="en">bike</span><span class="phon">[baik]</span><span class="zh">自行车</span><span class="speaker-icon">🔊</span></span>
+                <span class="word-item" data-word="car"><span class="en">car</span><span class="phon">[ka:]</span><span class="zh">小汽车</span><span class="speaker-icon">🔊</span></span>
+                <span class="word-item" data-word="motor cycle"><span class="en">motor cycle</span><span class="phon">['məutəsaikl]</span><span class="zh">摩托车</span><span class="speaker-icon">🔊</span></span>
+                <span class="word-item" data-word="train"><span class="en">train</span><span class="phon">[trein]</span><span class="zh">火车</span><span class="speaker-icon">🔊</span></span>
+                <span class="word-item" data-word="taxi"><span class="en">taxi</span><span class="phon">[tæksi]</span><span class="zh">出租车</span><span class="speaker-icon">🔊</span></span>
+                <span class="word-item" data-word="plane"><span class="en">plane</span><span class="phon">[plein]</span><span class="zh">飞机</span><span class="speaker-icon">🔊</span></span>
+                <span class="word-item" data-word="bus"><span class="en">bus</span><span class="phon">[bʌs]</span><span class="zh">公共汽车</span><span class="speaker-icon">🔊</span></span>
+                <span class="word-item" data-word="ship"><span class="en">ship</span><span class="phon">[ʃip]</span><span class="zh">轮船</span><span class="speaker-icon">🔊</span></span>
+            </div>
+        </div>
+
+        <!-- 场所类 -->
+        <div class="card"><div class="card-header">🏫 场所 <small>places</small></div>
+            <div class="word-list">
+                <span class="word-item" data-word="school"><span class="en">school</span><span class="phon">[sku:l]</span><span class="zh">学校</span><span class="speaker-icon">🔊</span></span>
+                <span class="word-item" data-word="library"><span class="en">library</span><span class="phon">['laibrəri]</span><span class="zh">图书馆</span><span class="speaker-icon">🔊</span></span>
+                <span class="word-item" data-word="park"><span class="en">park</span><span class="phon">[pɑ:k]</span><span class="zh">公园</span><span class="speaker-icon">🔊</span></span>
+                <span class="word-item" data-word="cinema"><span class="en">cinema</span><span class="phon">['sinəmə]</span><span class="zh">电影院</span><span class="speaker-icon">🔊</span></span>
+                <span class="word-item" data-word="hospital"><span class="en">hospital</span><span class="phon">['hɔspitəl]</span><span class="zh">医院</span><span class="speaker-icon">🔊</span></span>
+                <span class="word-item" data-word="zoo"><span class="en">zoo</span><span class="phon">[zu:]</span><span class="zh">动物园</span><span class="speaker-icon">🔊</span></span>
+                <span class="word-item" data-word="bookstore"><span class="en">bookstore</span><span class="phon">['bukstɔ:]</span><span class="zh">书店</span><span class="speaker-icon">🔊</span></span>
+                <span class="word-item" data-word="gym"><span class="en">gym</span><span class="phon">[dʒim]</span><span class="zh">体育馆</span><span class="speaker-icon">🔊</span></span>
+                <span class="word-item" data-word="factory"><span class="en">factory</span><span class="phon">['fæktəri]</span><span class="zh">工厂</span><span class="speaker-icon">🔊</span></span>
+                <span class="word-item" data-word="bank"><span class="en">bank</span><span class="phon">[bæŋk]</span><span class="zh">银行</span><span class="speaker-icon">🔊</span></span>
+                <span class="word-item" data-word="supermarket"><span class="en">supermarket</span><span class="phon">['sju:pə,mɑ:kit]</span><span class="zh">超市</span><span class="speaker-icon">🔊</span></span>
+            </div>
+        </div>
+
+        <!-- 三餐类 -->
+        <div class="card"><div class="card-header">🍽️ 三餐 <small>meals</small></div>
+            <div class="word-list">
+                <span class="word-item" data-word="breakfast"><span class="en">breakfast</span><span class="phon">['brekfəst]</span><span class="zh">早餐</span><span class="speaker-icon">🔊</span></span>
+                <span class="word-item" data-word="lunch"><span class="en">lunch</span><span class="phon">[lʌntʃ]</span><span class="zh">午餐</span><span class="speaker-icon">🔊</span></span>
+                <span class="word-item" data-word="supper"><span class="en">supper</span><span class="phon">['sʌpə]</span><span class="zh">晚餐</span><span class="speaker-icon">🔊</span></span>
+                <span class="word-item" data-word="dinner"><span class="en">dinner</span><span class="phon">['dinə]</span><span class="zh">晚餐</span><span class="speaker-icon">🔊</span></span>
+            </div>
+        </div>
+
+        <!-- 餐具类 -->
+        <div class="card"><div class="card-header">🍴 餐具 <small>tableware</small></div>
+            <div class="word-list">
+                <span class="word-item" data-word="bowl"><span class="en">bowl</span><span class="phon">[bəul]</span><span class="zh">碗</span><span class="speaker-icon">🔊</span></span>
+                <span class="word-item" data-word="chopsticks"><span class="en">chopsticks</span><span class="phon">[tʃRpstɪks]</span><span class="zh">筷子</span><span class="speaker-icon">🔊</span></span>
+                <span class="word-item" data-word="dish"><span class="en">dish</span><span class="phon">[diʃ]</span><span class="zh">盘子</span><span class="speaker-icon">🔊</span></span>
+                <span class="word-item" data-word="spoon"><span class="en">spoon</span><span class="phon">[spu:n]</span><span class="zh">勺子</span><span class="speaker-icon">🔊</span></span>
+                <span class="word-item" data-word="plate"><span class="en">plate</span><span class="phon">[pleit]</span><span class="zh">盘子</span><span class="speaker-icon">🔊</span></span>
+                <span class="word-item" data-word="fork"><span class="en">fork</span><span class="phon">[fɔ:k]</span><span class="zh">叉</span><span class="speaker-icon">🔊</span></span>
+            </div>
+        </div>
+
+        <!-- 饮食类 -->
+        <div class="card"><div class="card-header">🥗 饮食 <small>food</small></div>
+            <div class="word-list">
+                <span class="word-item" data-word="rice"><span class="en">rice</span><span class="phon">[rais]</span><span class="zh">米饭</span><span class="speaker-icon">🔊</span></span>
+                <span class="word-item" data-word="noodles"><span class="en">noodles</span><span class="phon">[nu:dl]</span><span class="zh">面条</span><span class="speaker-icon">🔊</span></span>
+                <span class="word-item" data-word="bread"><span class="en">bread</span><span class="phon">[bred]</span><span class="zh">面包</span><span class="speaker-icon">🔊</span></span>
+                <span class="word-item" data-word="cake"><span class="en">cake</span><span class="phon">[keik]</span><span class="zh">蛋糕</span><span class="speaker-icon">🔊</span></span>
+                <span class="word-item" data-word="milk"><span class="en">milk</span><span class="phon">[milk]</span><span class="zh">牛奶</span><span class="speaker-icon">🔊</span></span>
+                <span class="word-item" data-word="egg"><span class="en">egg</span><span class="phon">[eɡ]</span><span class="zh">蛋</span><span class="speaker-icon">🔊</span></span>
+                <span class="word-item" data-word="meat"><span class="en">meat</span><span class="phon">[mi:t]</span><span class="zh">肉</span><span class="speaker-icon">🔊</span></span>
+                <span class="word-item" data-word="soup"><span class="en">soup</span><span class="phon">[su:p]</span><span class="zh">汤</span><span class="speaker-icon">🔊</span></span>
+                <span class="word-item" data-word="bean"><span class="en">bean</span><span class="phon">[bi:n]</span><span class="zh">豆</span><span class="speaker-icon">🔊</span></span>
+                <span class="word-item" data-word="potato"><span class="en">potato</span><span class="phon">[pə'teitəu]</span><span class="zh">马铃薯</span><span class="speaker-icon">🔊</span></span>
+                <span class="word-item" data-word="pepper"><span class="en">pepper</span><span class="phon">[pepə]</span><span class="zh">辣椒</span><span class="speaker-icon">🔊</span></span>
+                <span class="word-item" data-word="cucumber"><span class="en">cucumber</span><span class="phon">[kju:kʌmbə]</span><span class="zh">黄瓜</span><span class="speaker-icon">🔊</span></span>
+                <span class="word-item" data-word="tomato"><span class="en">tomato</span><span class="phon">[tə'ma:təu]</span><span class="zh">西红柿</span><span class="speaker-icon">🔊</span></span>
+                <span class="word-item" data-word="cabbage"><span class="en">cabbage</span><span class="phon">[kæbidʒ]</span><span class="zh">卷心菜</span><span class="speaker-icon">🔊</span></span>
+                <span class="word-item" data-word="eggplant"><span class="en">eggplant</span><span class="phon">[egpla:nt]</span><span class="zh">茄子</span><span class="speaker-icon">🔊</span></span>
+                <span class="word-item" data-word="onion"><span class="en">onion</span><span class="phon">[ʌnjən]</span><span class="zh">洋葱</span><span class="speaker-icon">🔊</span></span>
+                <span class="word-item" data-word="radish"><span class="en">radish</span><span class="phon">['rædiʃ]</span><span class="zh">萝卜</span><span class="speaker-icon">🔊</span></span>
+                <span class="word-item" data-word="carrot"><span class="en">carrot</span><span class="phon">['kærət]</span><span class="zh">胡萝卜</span><span class="speaker-icon">🔊</span></span>
+            </div>
+        </div>
+
+        <!-- 水果类 -->
+        <div class="card"><div class="card-header">🍎 水果 <small>fruits</small></div>
+            <div class="word-list">
+                <span class="word-item" data-word="apple"><span class="en">apple</span><span class="phon">[æpl]</span><span class="zh">苹果</span><span class="speaker-icon">🔊</span></span>
+                <span class="word-item" data-word="banana"><span class="en">banana</span><span class="phon">[bə'na:nə]</span><span class="zh">香蕉</span><span class="speaker-icon">🔊</span></span>
+                <span class="word-item" data-word="orange"><span class="en">orange</span><span class="phon">[ɔrindʒ]</span><span class="zh">桔子</span><span class="speaker-icon">🔊</span></span>
+                <span class="word-item" data-word="peach"><span class="en">peach</span><span class="phon">[pi:tʃ]</span><span class="zh">桃子</span><span class="speaker-icon">🔊</span></span>
+                <span class="word-item" data-word="pear"><span class="en">pear</span><span class="phon">[pɛə]</span><span class="zh">梨子</span><span class="speaker-icon">🔊</span></span>
+                <span class="word-item" data-word="lemon"><span class="en">lemon</span><span class="phon">[lemən]</span><span class="zh">柠檬</span><span class="speaker-icon">🔊</span></span>
+                <span class="word-item" data-word="watermelon"><span class="en">watermelon</span><span class="phon">['wɔ:təmelən]</span><span class="zh">西瓜</span><span class="speaker-icon">🔊</span></span>
+                <span class="word-item" data-word="grape"><span class="en">grape</span><span class="phon">[greip]</span><span class="zh">葡萄</span><span class="speaker-icon">🔊</span></span>
+                <span class="word-item" data-word="strawberry"><span class="en">strawberry</span><span class="phon">['strɔ:bəri]</span><span class="zh">草莓</span><span class="speaker-icon">🔊</span></span>
+                <span class="word-item" data-word="mango"><span class="en">mango</span><span class="phon">[mæŋgəu]</span><span class="zh">芒果</span><span class="speaker-icon">🔊</span></span>
+            </div>
+        </div>
+
+        <!-- 居家类 -->
+        <div class="card"><div class="card-header">🏠 居家 <small>home</small></div>
+            <div class="word-list">
+                <span class="word-item" data-word="drawing room"><span class="en">drawing room</span><span class="phon">['drɔ:iŋrum]</span><span class="zh">客厅</span><span class="speaker-icon">🔊</span></span>
+                <span class="word-item" data-word="sofa"><span class="en">sofa</span><span class="phon">[səufə]</span><span class="zh">沙发</span><span class="speaker-icon">🔊</span></span>
+                <span class="word-item" data-word="teapoy"><span class="en">teapoy</span><span class="phon">['ti:pɔi]</span><span class="zh">茶几</span><span class="speaker-icon">🔊</span></span>
+                <span class="word-item" data-word="bedroom"><span class="en">bedroom</span><span class="phon">['bedrum]</span><span class="zh">卧室</span><span class="speaker-icon">🔊</span></span>
+                <span class="word-item" data-word="study"><span class="en">study</span><span class="phon">['stʌdi]</span><span class="zh">书房</span><span class="speaker-icon">🔊</span></span>
+                <span class="word-item" data-word="kitchen"><span class="en">kitchen</span><span class="phon">['kitʃin]</span><span class="zh">厨房</span><span class="speaker-icon">🔊</span></span>
+                <span class="word-item" data-word="bathroom"><span class="en">bathroom</span><span class="phon">['ba:θru:m]</span><span class="zh">浴室</span><span class="speaker-icon">🔊</span></span>
+                <span class="word-item" data-word="balcony"><span class="en">balcony</span><span class="phon">['bælkəni]</span><span class="zh">阳台</span><span class="speaker-icon">🔊</span></span>
+                <span class="word-item" data-word="window"><span class="en">window</span><span class="phon">[windəu]</span><span class="zh">窗户</span><span class="speaker-icon">🔊</span></span>
+                <span class="word-item" data-word="curtain"><span class="en">curtain</span><span class="phon">['kə:tən]</span><span class="zh">窗帘</span><span class="speaker-icon">🔊</span></span>
+                <span class="word-item" data-word="wall"><span class="en">wall</span><span class="phon">[wɔ:l]</span><span class="zh">墙壁</span><span class="speaker-icon">🔊</span></span>
+                <span class="word-item" data-word="floor"><span class="en">floor</span><span class="phon">[flɔ:]</span><span class="zh">地板</span><span class="speaker-icon">🔊</span></span>
+                <span class="word-item" data-word="bed"><span class="en">bed</span><span class="phon">[bed]</span><span class="zh">床</span><span class="speaker-icon">🔊</span></span>
+                <span class="word-item" data-word="quilt"><span class="en">quilt</span><span class="phon">[kwilt]</span><span class="zh">被子</span><span class="speaker-icon">🔊</span></span>
+                <span class="word-item" data-word="pillow"><span class="en">pillow</span><span class="phon">['piləu]</span><span class="zh">枕头</span><span class="speaker-icon">🔊</span></span>
+                <span class="word-item" data-word="light"><span class="en">light</span><span class="phon">['lait]</span><span class="zh">灯</span><span class="speaker-icon">🔊</span></span>
+                <span class="word-item" data-word="mirror"><span class="en">mirror</span><span class="phon">['mirə]</span><span class="zh">镜子</span><span class="speaker-icon">🔊</span></span>
+                <span class="word-item" data-word="door"><span class="en">door</span><span class="phon">[dɔ:]</span><span class="zh">门</span><span class="speaker-icon">🔊</span></span>
+                <span class="word-item" data-word="lock"><span class="en">lock</span><span class="phon">[lɔk]</span><span class="zh">锁</span><span class="speaker-icon">🔊</span></span>
+                <span class="word-item" data-word="key"><span class="en">key</span><span class="phon">[ki:]</span><span class="zh">钥匙</span><span class="speaker-icon">🔊</span></span>
+                <span class="word-item" data-word="desk"><span class="en">desk</span><span class="phon">[desk]</span><span class="zh">课桌</span><span class="speaker-icon">🔊</span></span>
+                <span class="word-item" data-word="chair"><span class="en">chair</span><span class="phon">[tʃɛə]</span><span class="zh">椅子</span><span class="speaker-icon">🔊</span></span>
+                <span class="word-item" data-word="bookcase"><span class="en">bookcase</span><span class="phon">[bukkeɪs]</span><span class="zh">书柜</span><span class="speaker-icon">🔊</span></span>
+                <span class="word-item" data-word="table"><span class="en">table</span><span class="phon">[teibl]</span><span class="zh">桌子</span><span class="speaker-icon">🔊</span></span>
+            </div>
+        </div>
+
+        <!-- 衣物类 -->
+        <div class="card"><div class="card-header">👕 衣物 <small>clothes</small></div>
+            <div class="word-list">
+                <span class="word-item" data-word="shirt"><span class="en">shirt</span><span class="phon">[ʃə:t]</span><span class="zh">衬衫</span><span class="speaker-icon">🔊</span></span>
+                <span class="word-item" data-word="coat"><span class="en">coat</span><span class="phon">[kəut]</span><span class="zh">外套</span><span class="speaker-icon">🔊</span></span>
+                <span class="word-item" data-word="vest"><span class="en">vest</span><span class="phon">[vest]</span><span class="zh">背心</span><span class="speaker-icon">🔊</span></span>
+                <span class="word-item" data-word="sweater"><span class="en">sweater</span><span class="phon">[swetə]</span><span class="zh">毛衣</span><span class="speaker-icon">🔊</span></span>
+                <span class="word-item" data-word="jacket"><span class="en">jacket</span><span class="phon">[dʒækit]</span><span class="zh">夹克</span><span class="speaker-icon">🔊</span></span>
+                <span class="word-item" data-word="jeans"><span class="en">jeans</span><span class="phon">[dʒi:ns]</span><span class="zh">牛仔裤</span><span class="speaker-icon">🔊</span></span>
+                <span class="word-item" data-word="pants"><span class="en">pants</span><span class="phon">[pænts]</span><span class="zh">长裤</span><span class="speaker-icon">🔊</span></span>
+                <span class="word-item" data-word="short"><span class="en">short</span><span class="phon">[ʃɔ:t]</span><span class="zh">短裤</span><span class="speaker-icon">🔊</span></span>
+                <span class="word-item" data-word="dress"><span class="en">dress</span><span class="phon">[dres]</span><span class="zh">连衣裙</span><span class="speaker-icon">🔊</span></span>
+                <span class="word-item" data-word="skirt"><span class="en">skirt</span><span class="phon">[skə:t]</span><span class="zh">裙子</span><span class="speaker-icon">🔊</span></span>
+                <span class="word-item" data-word="shoe"><span class="en">shoe</span><span class="phon">[ʃu:]</span><span class="zh">鞋子</span><span class="speaker-icon">🔊</span></span>
+                <span class="word-item" data-word="slipper"><span class="en">slipper</span><span class="phon">['slipə]</span><span class="zh">拖鞋</span><span class="speaker-icon">🔊</span></span>
+                <span class="word-item" data-word="boots"><span class="en">boots</span><span class="phon">[bu:ts]</span><span class="zh">靴子</span><span class="speaker-icon">🔊</span></span>
+                <span class="word-item" data-word="sandal"><span class="en">sandal</span><span class="phon">['sædəl]</span><span class="zh">凉鞋</span><span class="speaker-icon">🔊</span></span>
+                <span class="word-item" data-word="sock"><span class="en">sock</span><span class="phon">[sɔk]</span><span class="zh">袜子</span><span class="speaker-icon">🔊</span></span>
+                <span class="word-item" data-word="glove"><span class="en">glove</span><span class="phon">[glʌv]</span><span class="zh">手套</span><span class="speaker-icon">🔊</span></span>
+                <span class="word-item" data-word="cap"><span class="en">cap</span><span class="phon">[kæp]</span><span class="zh">帽子</span><span class="speaker-icon">🔊</span></span>
+                <span class="word-item" data-word="hat"><span class="en">hat</span><span class="phon">[hæt]</span><span class="zh">帽子</span><span class="speaker-icon">🔊</span></span>
+            </div>
+        </div>
+
+        <!-- 自然类 -->
+        <div class="card"><div class="card-header">🌍 自然 <small>nature</small></div>
+            <div class="word-list">
+                <span class="word-item" data-word="sun"><span class="en">sun</span><span class="phon">[sʌn]</span><span class="zh">太阳</span><span class="speaker-icon">🔊</span></span>
+                <span class="word-item" data-word="moon"><span class="en">moon</span><span class="phon">[mu:n]</span><span class="zh">月亮</span><span class="speaker-icon">🔊</span></span>
+                <span class="word-item" data-word="earth"><span class="en">earth</span><span class="phon">[ə:θ]</span><span class="zh">地球</span><span class="speaker-icon">🔊</span></span>
+                <span class="word-item" data-word="star"><span class="en">star</span><span class="phon">[sta:]</span><span class="zh">星星</span><span class="speaker-icon">🔊</span></span>
+            </div>
+        </div>
+
+        <!-- 天气类 -->
+        <div class="card"><div class="card-header">🌤️ 天气 <small>weather</small></div>
+            <div class="word-list">
+                <span class="word-item" data-word="sunny"><span class="en">sunny</span><span class="phon">[snəu]</span><span class="zh">晴朗</span><span class="speaker-icon">🔊</span></span>
+                <span class="word-item" data-word="cloud"><span class="en">cloud</span><span class="phon">[klaud]</span><span class="zh">多云</span><span class="speaker-icon">🔊</span></span>
+                <span class="word-item" data-word="hot"><span class="en">hot</span><span class="phon">[hɔt]</span><span class="zh">炎热</span><span class="speaker-icon">🔊</span></span>
+                <span class="word-item" data-word="cold"><span class="en">cold</span><span class="phon">[kəuld]</span><span class="zh">寒冷</span><span class="speaker-icon">🔊</span></span>
+                <span class="word-item" data-word="warm"><span class="en">warm</span><span class="phon">[wɔ:m]</span><span class="zh">温暖</span><span class="speaker-icon">🔊</span></span>
+                <span class="word-item" data-word="cool"><span class="en">cool</span><span class="phon">[ku:l]</span><span class="zh">凉爽</span><span class="speaker-icon">🔊</span></span>
+                <span class="word-item" data-word="rain"><span class="en">rain</span><span class="phon">[rein]</span><span class="zh">下雨</span><span class="speaker-icon">🔊</span></span>
+                <span class="word-item" data-word="snow"><span class="en">snow</span><span class="phon">[snəu]</span><span class="zh">下雪</span><span class="speaker-icon">🔊</span></span>
+                <span class="word-item" data-word="wind"><span class="en">wind</span><span class="phon">[waind]</span><span class="zh">有风</span><span class="speaker-icon">🔊</span></span>
+                <span class="word-item" data-word="brume"><span class="en">brume</span><span class="phon">[bru:m]</span><span class="zh">雾</span><span class="speaker-icon">🔊</span></span>
+            </div>
+        </div>
+
+        <!-- 方位类 -->
+        <div class="card"><div class="card-header">🧭 方位 <small>directions</small></div>
+            <div class="word-list">
+                <span class="word-item" data-word="east"><span class="en">east</span><span class="phon">[i:st]</span><span class="zh">东</span><span class="speaker-icon">🔊</span></span>
+                <span class="word-item" data-word="west"><span class="en">west</span><span class="phon">[west]</span><span class="zh">西</span><span class="speaker-icon">🔊</span></span>
+                <span class="word-item" data-word="south"><span class="en">south</span><span class="phon">[sauθ]</span><span class="zh">南</span><span class="speaker-icon">🔊</span></span>
+                <span class="word-item" data-word="north"><span class="en">north</span><span class="phon">[nɔ:θ]</span><span class="zh">北</span><span class="speaker-icon">🔊</span></span>
+                <span class="word-item" data-word="on"><span class="en">on</span><span class="phon">[ɔn]</span><span class="zh">上</span><span class="speaker-icon">🔊</span></span>
+                <span class="word-item" data-word="under"><span class="en">under</span><span class="phon">[ʌndə]</span><span class="zh">下</span><span class="speaker-icon">🔊</span></span>
+                <span class="word-item" data-word="left"><span class="en">left</span><span class="phon">[left]</span><span class="zh">左</span><span class="speaker-icon">🔊</span></span>
+                <span class="word-item" data-word="right"><span class="en">right</span><span class="phon">[rait]</span><span class="zh">右</span><span class="speaker-icon">🔊</span></span>
+                <span class="word-item" data-word="front"><span class="en">front</span><span class="phon">[frʌnt]</span><span class="zh">前</span><span class="speaker-icon">🔊</span></span>
+                <span class="word-item" data-word="behind"><span class="en">behind</span><span class="phon">[bi'haind]</span><span class="zh">后</span><span class="speaker-icon">🔊</span></span>
+                <span class="word-item" data-word="in"><span class="en">in</span><span class="phon">[ɪn]</span><span class="zh">内</span><span class="speaker-icon">🔊</span></span>
+                <span class="word-item" data-word="out"><span class="en">out</span><span class="phon">[aut]</span><span class="zh">外</span><span class="speaker-icon">🔊</span></span>
+            </div>
+        </div>
+
+        <!-- 颜色类 -->
+        <div class="card"><div class="card-header">🎨 颜色 <small>colours</small></div>
+            <div class="word-list">
+                <span class="word-item" data-word="red"><span class="en">red</span><span class="phon">[red]</span><span class="zh">红</span><span class="speaker-icon">🔊</span></span>
+                <span class="word-item" data-word="blue"><span class="en">blue</span><span class="phon">[blu:]</span><span class="zh">蓝</span><span class="speaker-icon">🔊</span></span>
+                <span class="word-item" data-word="yellow"><span class="en">yellow</span><span class="phon">[jeləu]</span><span class="zh">黄</span><span class="speaker-icon">🔊</span></span>
+                <span class="word-item" data-word="green"><span class="en">green</span><span class="phon">[gri:n]</span><span class="zh">绿</span><span class="speaker-icon">🔊</span></span>
+                <span class="word-item" data-word="white"><span class="en">white</span><span class="phon">[(h)wait]</span><span class="zh">白</span><span class="speaker-icon">🔊</span></span>
+                <span class="word-item" data-word="black"><span class="en">black</span><span class="phon">[blæk]</span><span class="zh">黑</span><span class="speaker-icon">🔊</span></span>
+                <span class="word-item" data-word="orange"><span class="en">orange</span><span class="phon">[ɔrindʒ]</span><span class="zh">橙</span><span class="speaker-icon">🔊</span></span>
+                <span class="word-item" data-word="purple"><span class="en">purple</span><span class="phon">[pə:pl]</span><span class="zh">紫</span><span class="speaker-icon">🔊</span></span>
+                <span class="word-item" data-word="brown"><span class="en">brown</span><span class="phon">[braun]</span><span class="zh">棕</span><span class="speaker-icon">🔊</span></span>
+                <span class="word-item" data-word="pink"><span class="en">pink</span><span class="phon">[piŋk]</span><span class="zh">粉红</span><span class="speaker-icon">🔊</span></span>
+            </div>
+        </div>
+
+        <!-- 数词类 -->
+        <div class="card"><div class="card-header">🔢 数词 <small>numbers</small></div>
+            <div class="word-list">
+                <span class="word-item" data-word="one"><span class="en">one</span><span class="phon">[wʌn]</span><span class="zh">一</span><span class="speaker-icon">🔊</span></span>
+                <span class="word-item" data-word="two"><span class="en">two</span><span class="phon">[tu:]</span><span class="zh">二</span><span class="speaker-icon">🔊</span></span>
+                <span class="word-item" data-word="three"><span class="en">three</span><span class="phon">[θri:]</span><span class="zh">三</span><span class="speaker-icon">🔊</span></span>
+                <span class="word-item" data-word="four"><span class="en">four</span><span class="phon">[fɔ:]</span><span class="zh">四</span><span class="speaker-icon">🔊</span></span>
+                <span class="word-item" data-word="five"><span class="en">five</span><span class="phon">[faiv]</span><span class="zh">五</span><span class="speaker-icon">🔊</span></span>
+                <span class="word-item" data-word="six"><span class="en">six</span><span class="phon">[siks]</span><span class="zh">六</span><span class="speaker-icon">🔊</span></span>
+                <span class="word-item" data-word="seven"><span class="en">seven</span><span class="phon">[sevən]</span><span class="zh">七</span><span class="speaker-icon">🔊</span></span>
+                <span class="word-item" data-word="eight"><span class="en">eight</span><span class="phon">[eɪt]</span><span class="zh">八</span><span class="speaker-icon">🔊</span></span>
+                <span class="word-item" data-word="nine"><span class="en">nine</span><span class="phon">[nain]</span><span class="zh">九</span><span class="speaker-icon">🔊</span></span>
+                <span class="word-item" data-word="ten"><span class="en">ten</span><span class="phon">[ten]</span><span class="zh">十</span><span class="speaker-icon">🔊</span></span>
+                <span class="word-item" data-word="eleven"><span class="en">eleven</span><span class="phon">[i'levən]</span><span class="zh">十一</span><span class="speaker-icon">🔊</span></span>
+                <span class="word-item" data-word="twelve"><span class="en">twelve</span><span class="phon">[twelv]</span><span class="zh">十二</span><span class="speaker-icon">🔊</span></span>
+                <span class="word-item" data-word="twenty"><span class="en">twenty</span><span class="phon">['twenti]</span><span class="zh">二十</span><span class="speaker-icon">🔊</span></span>
+                <span class="word-item" data-word="thirty"><span class="en">thirty</span><span class="phon">['θə:ti]</span><span class="zh">三十</span><span class="speaker-icon">🔊</span></span>
+                <span class="word-item" data-word="forty"><span class="en">forty</span><span class="phon">['fɔ:ti]</span><span class="zh">四十</span><span class="speaker-icon">🔊</span></span>
+                <span class="word-item" data-word="fifty"><span class="en">fifty</span><span class="phon">['fifti]</span><span class="zh">五十</span><span class="speaker-icon">🔊</span></span>
+                <span class="word-item" data-word="hundred"><span class="en">hundred</span><span class="phon">['hʌndrəd]</span><span class="zh">百</span><span class="speaker-icon">🔊</span></span>
+                <span class="word-item" data-word="first"><span class="en">first</span><span class="phon">[fə:st]</span><span class="zh">第一</span><span class="speaker-icon">🔊</span></span>
+                <span class="word-item" data-word="second"><span class="en">second</span><span class="phon">['sekənd]</span><span class="zh">第二</span><span class="speaker-icon">🔊</span></span>
+                <span class="word-item" data-word="third"><span class="en">third</span><span class="phon">[θə:d]</span><span class="zh">第三</span><span class="speaker-icon">🔊</span></span>
+                <span class="word-item" data-word="fourth"><span class="en">fourth</span><span class="phon">[fɔ:θ]</span><span class="zh">第四</span><span class="speaker-icon">🔊</span></span>
+                <span class="word-item" data-word="fifth"><span class="en">fifth</span><span class="phon">[fifθ]</span><span class="zh">第五</span><span class="speaker-icon">🔊</span></span>
+                <span class="word-item" data-word="sixth"><span class="en">sixth</span><span class="phon">[siksθ]</span><span class="zh">第六</span><span class="speaker-icon">🔊</span></span>
+            </div>
+        </div>
+
+        <!-- 代词类 -->
+        <div class="card"><div class="card-header">🔁 代词 <small>pronouns</small></div>
+            <div class="word-list">
+                <span class="word-item" data-word="I"><span class="en">I</span><span class="phon">[ai]</span><span class="zh">我</span><span class="speaker-icon">🔊</span></span>
+                <span class="word-item" data-word="me"><span class="en">me</span><span class="phon">[mi:]</span><span class="zh">我(宾格)</span><span class="speaker-icon">🔊</span></span>
+                <span class="word-item" data-word="my"><span class="en">my</span><span class="phon">[mai]</span><span class="zh">我的</span><span class="speaker-icon">🔊</span></span>
+                <span class="word-item" data-word="you"><span class="en">you</span><span class="phon">[ju:]</span><span class="zh">你/你们</span><span class="speaker-icon">🔊</span></span>
+                <span class="word-item" data-word="your"><span class="en">your</span><span class="phon">[jɔ:]</span><span class="zh">你的</span><span class="speaker-icon">🔊</span></span>
+                <span class="word-item" data-word="he"><span class="en">he</span><span class="phon">[hi:]</span><span class="zh">他</span><span class="speaker-icon">🔊</span></span>
+                <span class="word-item" data-word="him"><span class="en">him</span><span class="phon">[him]</span><span class="zh">他(宾格)</span><span class="speaker-icon">🔊</span></span>
+                <span class="word-item" data-word="his"><span class="en">his</span><span class="phon">[hiz]</span><span class="zh">他的</span><span class="speaker-icon">🔊</span></span>
+                <span class="word-item" data-word="she"><span class="en">she</span><span class="phon">[ʃi:]</span><span class="zh">她</span><span class="speaker-icon">🔊</span></span>
+                <span class="word-item" data-word="her"><span class="en">her</span><span class="phon">[hə:]</span><span class="zh">她的</span><span class="speaker-icon">🔊</span></span>
+                <span class="word-item" data-word="it"><span class="en">it</span><span class="phon">[it]</span><span class="zh">它</span><span class="speaker-icon">🔊</span></span>
+                <span class="word-item" data-word="its"><span class="en">its</span><span class="phon">[its]</span><span class="zh">它的</span><span class="speaker-icon">🔊</span></span>
+                <span class="word-item" data-word="we"><span class="en">we</span><span class="phon">[wi:]</span><span class="zh">我们</span><span class="speaker-icon">🔊</span></span>
+                <span class="word-item" data-word="us"><span class="en">us</span><span class="phon">[ʌs]</span><span class="zh">我们(宾格)</span><span class="speaker-icon">🔊</span></span>
+                <span class="word-item" data-word="our"><span class="en">our</span><span class="phon">[auə]</span><span class="zh">我们的</span><span class="speaker-icon">🔊</span></span>
+                <span class="word-item" data-word="they"><span class="en">they</span><span class="phon">[ðei]</span><span class="zh">他们</span><span class="speaker-icon">🔊</span></span>
+                <span class="word-item" data-word="them"><span class="en">them</span><span class="phon">[θem]</span><span class="zh">他们(宾格)</span><span class="speaker-icon">🔊</span></span>
+                <span class="word-item" data-word="their"><span class="en">their</span><span class="phon">[ðɛə]</span><span class="zh">他们的</span><span class="speaker-icon">🔊</span></span>
+                <span class="word-item" data-word="this"><span class="en">this</span><span class="phon">[ðis]</span><span class="zh">这</span><span class="speaker-icon">🔊</span></span>
+                <span class="word-item" data-word="that"><span class="en">that</span><span class="phon">[ðæt]</span><span class="zh">那</span><span class="speaker-icon">🔊</span></span>
+                <span class="word-item" data-word="these"><span class="en">these</span><span class="phon">[ði:z]</span><span class="zh">这些</span><span class="speaker-icon">🔊</span></span>
+                <span class="word-item" data-word="those"><span class="en">those</span><span class="phon">[ðəuz]</span><span class="zh">那些</span><span class="speaker-icon">🔊</span></span>
+            </div>
+        </div>
+
+        <!-- 动词类 -->
+        <div class="card"><div class="card-header">🏃 动词 <small>verbs</small></div>
+            <div class="word-list">
+                <span class="word-item" data-word="run"><span class="en">run</span><span class="phon">[rʌn]</span><span class="zh">跑</span><span class="speaker-icon">🔊</span></span>
+                <span class="word-item" data-word="jump"><span class="en">jump</span><span class="phon">[dʒʌmp]</span><span class="zh">跳</span><span class="speaker-icon">🔊</span></span>
+                <span class="word-item" data-word="walk"><span class="en">walk</span><span class="phon">[wɔ:k]</span><span class="zh">走</span><span class="speaker-icon">🔊</span></span>
+                <span class="word-item" data-word="climb"><span class="en">climb</span><span class="phon">[klaim]</span><span class="zh">爬</span><span class="speaker-icon">🔊</span></span>
+                <span class="word-item" data-word="catch"><span class="en">catch</span><span class="phon">[kætʃ]</span><span class="zh">抓</span><span class="speaker-icon">🔊</span></span>
+                <span class="word-item" data-word="throw"><span class="en">throw</span><span class="phon">[θrəu]</span><span class="zh">扔</span><span class="speaker-icon">🔊</span></span>
+                <span class="word-item" data-word="kick"><span class="en">kick</span><span class="phon">[kik]</span><span class="zh">踢</span><span class="speaker-icon">🔊</span></span>
+                <span class="word-item" data-word="clap"><span class="en">clap</span><span class="phon">[klæp]</span><span class="zh">拍</span><span class="speaker-icon">🔊</span></span>
+                <span class="word-item" data-word="sing"><span class="en">sing</span><span class="phon">[siŋ]</span><span class="zh">唱歌</span><span class="speaker-icon">🔊</span></span>
+                <span class="word-item" data-word="dance"><span class="en">dance</span><span class="phon">['da:ns]</span><span class="zh">跳舞</span><span class="speaker-icon">🔊</span></span>
+                <span class="word-item" data-word="drink"><span class="en">drink</span><span class="phon">[drɪŋk]</span><span class="zh">喝</span><span class="speaker-icon">🔊</span></span>
+                <span class="word-item" data-word="eat"><span class="en">eat</span><span class="phon">[i:t]</span><span class="zh">吃</span><span class="speaker-icon">🔊</span></span>
+                <span class="word-item" data-word="cry"><span class="en">cry</span><span class="phon">[krai]</span><span class="zh">哭</span><span class="speaker-icon">🔊</span></span>
+                <span class="word-item" data-word="laugh"><span class="en">laugh</span><span class="phon">[la:f]</span><span class="zh">笑</span><span class="speaker-icon">🔊</span></span>
+                <span class="word-item" data-word="smile"><span class="en">smile</span><span class="phon">[smail]</span><span class="zh">微笑</span><span class="speaker-icon">🔊</span></span>
+                <span class="word-item" data-word="angry"><span class="en">angry</span><span class="phon">['æŋgri]</span><span class="zh">生气</span><span class="speaker-icon">🔊</span></span>
+                <span class="word-item" data-word="joy"><span class="en">joy</span><span class="phon">[dʒɔi]</span><span class="zh">高兴</span><span class="speaker-icon">🔊</span></span>
+                <span class="word-item" data-word="sad"><span class="en">sad</span><span class="phon">[sæd]</span><span class="zh">伤心</span><span class="speaker-icon">🔊</span></span>
+            </div>
+        </div>
+
+        <!-- 反义类 -->
+        <div class="card"><div class="card-header">⚖️ 反义 <small>antonyms</small></div>
+            <div class="word-list">
+                <span class="word-item" data-word="big"><span class="en">big</span><span class="phon">[big]</span><span class="zh">大的</span><span class="speaker-icon">🔊</span></span>
+                <span class="word-item" data-word="small"><span class="en">small</span><span class="phon">[smɔ:l]</span><span class="zh">小的</span><span class="speaker-icon">🔊</span></span>
+                <span class="word-item" data-word="long"><span class="en">long</span><span class="phon">[lɔŋ]</span><span class="zh">长的</span><span class="speaker-icon">🔊</span></span>
+                <span class="word-item" data-word="short"><span class="en">short</span><span class="phon">[ʃɔ:t]</span><span class="zh">短的/矮的</span><span class="speaker-icon">🔊</span></span>
+                <span class="word-item" data-word="tall"><span class="en">tall</span><span class="phon">[tɔ:l]</span><span class="zh">高的</span><span class="speaker-icon">🔊</span></span>
+                <span class="word-item" data-word="cold"><span class="en">cold</span><span class="phon">[kəuld]</span><span class="zh">冷的</span><span class="speaker-icon">🔊</span></span>
+                <span class="word-item" data-word="hot"><span class="en">hot</span><span class="phon">[hɔt]</span><span class="zh">热的</span><span class="speaker-icon">🔊</span></span>
+                <span class="word-item" data-word="thin"><span class="en">thin</span><span class="phon">[θin]</span><span class="zh">瘦的</span><span class="speaker-icon">🔊</span></span>
+                <span class="word-item" data-word="fat"><span class="en">fat</span><span class="phon">[fæt]</span><span class="zh">胖的</span><span class="speaker-icon">🔊</span></span>
+                <span class="word-item" data-word="heavy"><span class="en">heavy</span><span class="phon">['hi:vi]</span><span class="zh">重的</span><span class="speaker-icon">🔊</span></span>
+                <span class="word-item" data-word="light"><span class="en">light</span><span class="phon">[lait]</span><span class="zh">轻的</span><span class="speaker-icon">🔊</span></span>
+                <span class="word-item" data-word="happy"><span class="en">happy</span><span class="phon">['hæpi]</span><span class="zh">高兴</span><span class="speaker-icon">🔊</span></span>
+                <span class="word-item" data-word="sad"><span class="en">sad</span><span class="phon">[sæd]</span><span class="zh">悲伤</span><span class="speaker-icon">🔊</span></span>
+                <span class="word-item" data-word="clean"><span class="en">clean</span><span class="phon">[kli:n]</span><span class="zh">干净</span><span class="speaker-icon">🔊</span></span>
+                <span class="word-item" data-word="dirty"><span class="en">dirty</span><span class="phon">['də:ti]</span><span class="zh">脏的</span><span class="speaker-icon">🔊</span></span>
+                <span class="word-item" data-word="open"><span class="en">open</span><span class="phon">['əupən]</span><span class="zh">打开</span><span class="speaker-icon">🔊</span></span>
+                <span class="word-item" data-word="close"><span class="en">close</span><span class="phon">[kləuz]</span><span class="zh">关上</span><span class="speaker-icon">🔊</span></span>
+                <span class="word-item" data-word="good"><span class="en">good</span><span class="phon">[gud]</span><span class="zh">好的</span><span class="speaker-icon">🔊</span></span>
+                <span class="word-item" data-word="bad"><span class="en">bad</span><span class="phon">[bæd]</span><span class="zh">坏的</span><span class="speaker-icon">🔊</span></span>
+                <span class="word-item" data-word="new"><span class="en">new</span><span class="phon">[nju:]</span><span class="zh">新的</span><span class="speaker-icon">🔊</span></span>
+                <span class="word-item" data-word="old"><span class="en">old</span><span class="phon">[əuld]</span><span class="zh">旧的/年长</span><span class="speaker-icon">🔊</span></span>
+                <span class="word-item" data-word="young"><span class="en">young</span><span class="phon">[jʌŋ]</span><span class="zh">年轻</span><span class="speaker-icon">🔊</span></span>
+                <span class="word-item" data-word="slow"><span class="en">slow</span><span class="phon">[sləu]</span><span class="zh">慢的</span><span class="speaker-icon">🔊</span></span>
+                <span class="word-item" data-word="fast"><span class="en">fast</span><span class="phon">[fa:st]</span><span class="zh">快地</span><span class="speaker-icon">🔊</span></span>
+            </div>
+        </div>
+
+        <!-- 家电类 -->
+        <div class="card"><div class="card-header">📺 家电 <small>appliances</small></div>
+            <div class="word-list">
+                <span class="word-item" data-word="television"><span class="en">television</span><span class="phon">['teliviʒən]</span><span class="zh">电视</span><span class="speaker-icon">🔊</span></span>
+                <span class="word-item" data-word="phone"><span class="en">phone</span><span class="phon">[fəun]</span><span class="zh">电话</span><span class="speaker-icon">🔊</span></span>
+                <span class="word-item" data-word="icebox"><span class="en">icebox</span><span class="phon">['aɪsbRks]</span><span class="zh">冰箱</span><span class="speaker-icon">🔊</span></span>
+                <span class="word-item" data-word="computer"><span class="en">computer</span><span class="phon">[kəm'pju:tə]</span><span class="zh">电脑</span><span class="speaker-icon">🔊</span></span>
+                <span class="word-item" data-word="radio"><span class="en">radio</span><span class="phon">['reidiəu]</span><span class="zh">收音机</span><span class="speaker-icon">🔊</span></span>
+                <span class="word-item" data-word="fan"><span class="en">fan</span><span class="phon">[fæn]</span><span class="zh">风扇</span><span class="speaker-icon">🔊</span></span>
+            </div>
+        </div>
+
+        <!-- 国家类 -->
+        <div class="card"><div class="card-header">🌏 国家 <small>countries</small></div>
+            <div class="word-list">
+                <span class="word-item" data-word="China"><span class="en">China</span><span class="phon">['tʃainə]</span><span class="zh">中国</span><span class="speaker-icon">🔊</span></span>
+                <span class="word-item" data-word="America"><span class="en">America</span><span class="phon">[ə'merikə]</span><span class="zh">美国</span><span class="speaker-icon">🔊</span></span>
+                <span class="word-item" data-word="England"><span class="en">England</span><span class="phon">['inglənd]</span><span class="zh">英国</span><span class="speaker-icon">🔊</span></span>
+                <span class="word-item" data-word="Italy"><span class="en">Italy</span><span class="phon">['itəli]</span><span class="zh">意大利</span><span class="speaker-icon">🔊</span></span>
+                <span class="word-item" data-word="France"><span class="en">France</span><span class="phon">[fra:ns]</span><span class="zh">法国</span><span class="speaker-icon">🔊</span></span>
+                <span class="word-item" data-word="Germany"><span class="en">Germany</span><span class="phon">['dʒə:məni]</span><span class="zh">德国</span><span class="speaker-icon">🔊</span></span>
+                <span class="word-item" data-word="Russia"><span class="en">Russia</span><span class="phon">['rʌʃə]</span><span class="zh">俄罗斯</span><span class="speaker-icon">🔊</span></span>
+                <span class="word-item" data-word="Japan"><span class="en">Japan</span><span class="phon">[dʒə'pæn]</span><span class="zh">日本</span><span class="speaker-icon">🔊</span></span>
+                <span class="word-item" data-word="Korea"><span class="en">Korea</span><span class="phon">[kə'riə]</span><span class="zh">韩国</span><span class="speaker-icon">🔊</span></span>
+                <span class="word-item" data-word="Canada"><span class="en">Canada</span><span class="phon">['kænədə]</span><span class="zh">加拿大</span><span class="speaker-icon">🔊</span></span>
+                <span class="word-item" data-word="Australia"><span class="en">Australia</span><span class="phon">[ɔs'treiljə]</span><span class="zh">澳大利亚</span><span class="speaker-icon">🔊</span></span>
+            </div>
+        </div>
+
+        <!-- 首都类 -->
+        <div class="card"><div class="card-header">🏛️ 首都 <small>capitals</small></div>
+            <div class="word-list">
+                <span class="word-item" data-word="Peking"><span class="en">Peking</span><span class="phon">['pi:'kiŋ]</span><span class="zh">北京</span><span class="speaker-icon">🔊</span></span>
+                <span class="word-item" data-word="Washington"><span class="en">Washington</span><span class="phon">['wɔʃiŋtən]</span><span class="zh">华盛顿</span><span class="speaker-icon">🔊</span></span>
+                <span class="word-item" data-word="London"><span class="en">London</span><span class="phon">['lʌndən]</span><span class="zh">伦敦</span><span class="speaker-icon">🔊</span></span>
+                <span class="word-item" data-word="Roman"><span class="en">Roman</span><span class="phon">['rəumən]</span><span class="zh">罗马</span><span class="speaker-icon">🔊</span></span>
+                <span class="word-item" data-word="Paris"><span class="en">Paris</span><span class="phon">['pæris]</span><span class="zh">巴黎</span><span class="speaker-icon">🔊</span></span>
+                <span class="word-item" data-word="Berlin"><span class="en">Berlin</span><span class="phon">[bə:'lin]</span><span class="zh">柏林</span><span class="speaker-icon">🔊</span></span>
+                <span class="word-item" data-word="Moscow"><span class="en">Moscow</span><span class="phon">['mɔskəu]</span><span class="zh">莫斯科</span><span class="speaker-icon">🔊</span></span>
+                <span class="word-item" data-word="Tokyo"><span class="en">Tokyo</span><span class="phon">['təukjəu]</span><span class="zh">东京</span><span class="speaker-icon">🔊</span></span>
+                <span class="word-item" data-word="Seoul"><span class="en">Seoul</span><span class="phon">[səul]</span><span class="zh">首尔</span><span class="speaker-icon">🔊</span></span>
+                <span class="word-item" data-word="Sydney"><span class="en">Sydney</span><span class="phon">['sidni]</span><span class="zh">悉尼</span><span class="speaker-icon">🔊</span></span>
+                <span class="word-item" data-word="Canberra"><span class="en">Canberra</span><span class="phon">['kænbərə]</span><span class="zh">堪培拉</span><span class="speaker-icon">🔊</span></span>
+            </div>
+        </div>
+
+        <!-- 补充·校园 -->
+        <div class="card"><div class="card-header">📌 补充·校园 <small>school & more</small></div>
+            <div class="word-list">
+                <span class="word-item" data-word="pencil-case"><span class="en">pencil-case</span><span class="phon">['pensəl-keis]</span><span class="zh">铅笔盒</span><span class="speaker-icon">🔊</span></span>
+                <span class="word-item" data-word="comic book"><span class="en">comic book</span><span class="phon">['kɔmik-buk]</span><span class="zh">漫画书</span><span class="speaker-icon">🔊</span></span>
+                <span class="word-item" data-word="post card"><span class="en">post card</span><span class="phon">[pəust-kɑ:d]</span><span class="zh">明信片</span><span class="speaker-icon">🔊</span></span>
+                <span class="word-item" data-word="newspaper"><span class="en">newspaper</span><span class="phon">['nju:s,peipə]</span><span class="zh">报纸</span><span class="speaker-icon">🔊</span></span>
+                <span class="word-item" data-word="crayon"><span class="en">crayon</span><span class="phon">['kreiən]</span><span class="zh">蜡笔</span><span class="speaker-icon">🔊</span></span>
+                <span class="word-item" data-word="sharpener"><span class="en">sharpener</span><span class="phon"></span><span class="zh">卷笔刀</span><span class="speaker-icon">🔊</span></span>
+                <span class="word-item" data-word="story-book"><span class="en">story-book</span><span class="phon">['stɔ:ri-buk]</span><span class="zh">故事书</span><span class="speaker-icon">🔊</span></span>
+                <span class="word-item" data-word="notebook"><span class="en">notebook</span><span class="phon">['nəutbuk]</span><span class="zh">笔记本</span><span class="speaker-icon">🔊</span></span>
+                <span class="word-item" data-word="magazine"><span class="en">magazine</span><span class="phon">[,mæɡə'zi:n]</span><span class="zh">杂志</span><span class="speaker-icon">🔊</span></span>
+                <span class="word-item" data-word="tail"><span class="en">tail</span><span class="phon">[teil]</span><span class="zh">尾巴</span><span class="speaker-icon">🔊</span></span>
+                <span class="word-item" data-word="eagle"><span class="en">eagle</span><span class="phon">['i:ɡl]</span><span class="zh">鹰</span><span class="speaker-icon">🔊</span></span>
+                <span class="word-item" data-word="beaver"><span class="en">beaver</span><span class="phon">['bi:və]</span><span class="zh">海狸</span><span class="speaker-icon">🔊</span></span>
+                <span class="word-item" data-word="squirrel"><span class="en">squirrel</span><span class="phon">['skwə:rəl]</span><span class="zh">松鼠</span><span class="speaker-icon">🔊</span></span>
+                <span class="word-item" data-word="kangaroo"><span class="en">kangaroo</span><span class="phon">[,kænɡə'ru:]</span><span class="zh">袋鼠</span><span class="speaker-icon">🔊</span></span>
+                <span class="word-item" data-word="bear"><span class="en">bear</span><span class="phon">[bεə]</span><span class="zh">熊</span><span class="speaker-icon">🔊</span></span>
+                <span class="word-item" data-word="fox"><span class="en">fox</span><span class="phon">[fɔks]</span><span class="zh">狐狸</span><span class="speaker-icon">🔊</span></span>
+                <span class="word-item" data-word="giraffe"><span class="en">giraffe</span><span class="phon">[dʒi'rɑ:f]</span><span class="zh">长颈鹿</span><span class="speaker-icon">🔊</span></span>
+                <span class="word-item" data-word="turkey"><span class="en">turkey</span><span class="phon">['tə:ki]</span><span class="zh">火鸡</span><span class="speaker-icon">🔊</span></span>
+                <span class="word-item" data-word="lamb"><span class="en">lamb</span><span class="phon">[læm]</span><span class="zh">小羊</span><span class="speaker-icon">🔊</span></span>
+                <span class="word-item" data-word="donkey"><span class="en">donkey</span><span class="phon">['dɔŋki]</span><span class="zh">驴</span><span class="speaker-icon">🔊</span></span>
+            </div>
+        </div>
+
+    </div> <!-- end category-grid -->
+    <div class="footer">
+        ⭐ 总计约 3500 核心词汇 · 点击单词喇叭图标可朗读 (使用 Web Speech API)
+    </div>
+</div>
+<script>
+    (function() {
+        // 如果浏览器不支持 SpeechSynthesis，静默降级
+        if (!window.speechSynthesis) {
+            console.warn('当前浏览器不支持 SpeechSynthesis API，朗读功能不可用。');
+            return;
+        }
+
+        // 获取所有带有 data-word 的单词项
+        const wordItems = document.querySelectorAll('.word-item[data-word]');
+        let currentUtterance = null;   // 用于取消正在播放的语音
+
+        // 点击朗读
+        wordItems.forEach(item => {
+            item.addEventListener('click', function(e) {
+                // 阻止冒泡，避免误触父级
+                e.stopPropagation();
+
+                // 获取单词文本
+                const word = this.getAttribute('data-word');
+                if (!word) return;
+
+                // 如果正在朗读，先取消
+                if (currentUtterance) {
+                    window.speechSynthesis.cancel();
+                    currentUtterance = null;
+                    // 移除所有高亮
+                    wordItems.forEach(el => el.classList.remove('speaking'));
+                }
+
+                // 如果点击的是同一个单词且已经朗读完，这里重新触发
+                // 创建一个新的 SpeechSynthesisUtterance
+                const utterance = new SpeechSynthesisUtterance(word);
+                utterance.lang = 'en-US';
+                utterance.rate = 0.9;      // 语速
+                utterance.pitch = 1.0;
+                utterance.volume = 1;
+
+                // 可选：尝试选择美式或英式语音 (根据浏览器支持)
+                const voices = window.speechSynthesis.getVoices();
+                // 优先选择 Google 美式或英式，若没有则用默认
+                const preferredVoice = voices.find(v => /google/i.test(v.name) && /en/i.test(v.lang)) ||
+                                       voices.find(v => /en-US/i.test(v.lang)) ||
+                                       voices.find(v => /en-GB/i.test(v.lang)) ||
+                                       voices.find(v => /en/i.test(v.lang));
+                if (preferredVoice) {
+                    utterance.voice = preferredVoice;
+                }
+
+                // 高亮当前单词
+                this.classList.add('speaking');
+
+                // 朗读结束移除高亮
+                utterance.onend = function() {
+                    wordItems.forEach(el => el.classList.remove('speaking'));
+                    currentUtterance = null;
+                };
+                utterance.onerror = function() {
+                    wordItems.forEach(el => el.classList.remove('speaking'));
+                    currentUtterance = null;
+                };
+
+                // 保存当前 utterance 并开始朗读
+                currentUtterance = utterance;
+                window.speechSynthesis.speak(utterance);
+            });
+        });
+
+        // 如果点击页面其他位置取消高亮 (可选)
+        document.addEventListener('click', function(e) {
+            if (!e.target.closest('.word-item')) {
+                // 点击非单词区域，取消朗读和高亮
+                if (currentUtterance) {
+                    window.speechSynthesis.cancel();
+                    currentUtterance = null;
+                    wordItems.forEach(el => el.classList.remove('speaking'));
+                }
+            }
+        });
+
+        // 预加载 voices (部分浏览器需要)
+        if (window.speechSynthesis) {
+            window.speechSynthesis.getVoices(); // 触发加载
+            window.speechSynthesis.onvoiceschanged = () => {
+                window.speechSynthesis.getVoices();
+            };
+        }
+    })();
+</script>
+</body>
+</html>
