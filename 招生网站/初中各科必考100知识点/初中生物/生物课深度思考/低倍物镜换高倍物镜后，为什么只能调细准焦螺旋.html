@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>显微镜高倍镜调节原理</title>
+  <style>
+    :root {
+      --bg: #f7f9fc;
+      --card: #ffffff;
+      --text: #1e293b;
+      --muted: #64748b;
+      --accent: #2563eb;
+      --accent-light: #dbeafe;
+      --border: #e2e8f0;
+      --warn: #b45309;
+      --warn-bg: #fffbeb;
+      --safe: #15803d;
+      --safe-bg: #f0fdf4;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC",
+        "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.8;
+      padding: 2rem 1rem;
+    }
+
+    .container {
+      max-width: 780px;
+      margin: 0 auto;
+    }
+
+    header {
+      text-align: center;
+      margin-bottom: 2.5rem;
+    }
+
+    header h1 {
+      font-size: 1.75rem;
+      font-weight: 700;
+      color: var(--text);
+      margin-bottom: 0.5rem;
+    }
+
+    header p {
+      color: var(--muted);
+      font-size: 0.95rem;
+    }
+
+    .card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 1.5rem 1.75rem;
+      margin-bottom: 1.25rem;
+      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04);
+    }
+
+    .card h2 {
+      font-size: 1.15rem;
+      font-weight: 600;
+      color: var(--accent);
+      margin-bottom: 0.75rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .card h2 .num {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 1.6rem;
+      height: 1.6rem;
+      background: var(--accent-light);
+      color: var(--accent);
+      border-radius: 50%;
+      font-size: 0.85rem;
+      font-weight: 700;
+      flex-shrink: 0;
+    }
+
+    .card p {
+      margin-bottom: 0.6rem;
+    }
+
+    .card p:last-child {
+      margin-bottom: 0;
+    }
+
+    ul {
+      padding-left: 1.25rem;
+      margin: 0.5rem 0;
+    }
+
+    li {
+      margin-bottom: 0.4rem;
+    }
+
+    strong {
+      color: var(--text);
+      font-weight: 600;
+    }
+
+    .highlight {
+      background: var(--accent-light);
+      color: var(--accent);
+      padding: 0.1em 0.4em;
+      border-radius: 4px;
+      font-weight: 600;
+    }
+
+    .compare {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+      margin: 1rem 0;
+    }
+
+    .compare-box {
+      border-radius: 10px;
+      padding: 1rem 1.25rem;
+    }
+
+    .compare-box.warn {
+      background: var(--warn-bg);
+      border: 1px solid #fde68a;
+    }
+
+    .compare-box.safe {
+      background: var(--safe-bg);
+      border: 1px solid #bbf7d0;
+    }
+
+    .compare-box h3 {
+      font-size: 0.95rem;
+      font-weight: 700;
+      margin-bottom: 0.5rem;
+    }
+
+    .compare-box.warn h3 {
+      color: var(--warn);
+    }
+
+    .compare-box.safe h3 {
+      color: var(--safe);
+    }
+
+    .compare-box ul {
+      padding-left: 1.1rem;
+      font-size: 0.92rem;
+    }
+
+    .steps {
+      counter-reset: step;
+      list-style: none;
+      padding-left: 0;
+    }
+
+    .steps li {
+      counter-increment: step;
+      position: relative;
+      padding-left: 2.2rem;
+      margin-bottom: 0.75rem;
+    }
+
+    .steps li::before {
+      content: counter(step);
+      position: absolute;
+      left: 0;
+      top: 0.15rem;
+      width: 1.5rem;
+      height: 1.5rem;
+      background: var(--accent);
+      color: #fff;
+      border-radius: 50%;
+      font-size: 0.8rem;
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .conclusion {
+      background: linear-gradient(135deg, #eff6ff 0%, #dbeafe 100%);
+      border: 1px solid #bfdbfe;
+      border-radius: 12px;
+      padding: 1.5rem 1.75rem;
+      margin-top: 1.5rem;
+    }
+
+    .conclusion p {
+      font-size: 1.02rem;
+      font-weight: 500;
+    }
+
+    .conclusion strong {
+      color: var(--accent);
+    }
+
+    @media (max-width: 520px) {
+      .compare {
+        grid-template-columns: 1fr;
+      }
+
+      body {
+        padding: 1.25rem 0.75rem;
+      }
+
+      .card {
+        padding: 1.15rem 1.25rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <h1>🔬 低倍换高倍后，为什么只能调细准焦螺旋？</h1>
+      <p>核心原因有两个：防止压碎玻片 &amp; 高倍镜景深极浅</p>
+    </header>
+
+    <section class="card">
+      <h2><span class="num">1</span> 安全原因：高倍镜离玻片太近</h2>
+      <p>高倍物镜的镜头前端离玻片极近，通常只有 <strong>0.1~0.5 毫米</strong> 的工作距离。</p>
+      <div class="compare">
+        <div class="compare-box warn">
+          <h3>⚠️ 粗准焦螺旋</h3>
+          <ul>
+            <li>每转一圈，镜筒升降幅度很大</li>
+            <li>通常几毫米到十几毫米</li>
+            <li>稍一转多，物镜直接撞上玻片</li>
+          </ul>
+        </div>
+        <div class="compare-box safe">
+          <h3>✅ 细准焦螺旋</h3>
+          <ul>
+            <li>升降幅度极小</li>
+            <li>每圈约 0.1 毫米甚至更小</li>
+            <li>可安全地在极小范围内微调</li>
+          </ul>
+        </div>
+      </div>
+      <p>所以在高倍镜下，粗准焦螺旋被设计为 <span class="highlight">几乎不起作用</span>（或者空转），就是为了从机械上避免压碎玻片。</p>
+    </section>
+
+    <section class="card">
+      <h2><span class="num">2</span> 光学原因：高倍镜景深极浅</h2>
+      <ul>
+        <li><strong>低倍镜</strong>：景深大，上下很大一段范围都能看到模糊到清晰的像，用粗准焦螺旋快速找到大致焦点即可。</li>
+        <li><strong>高倍镜</strong>：景深极浅，只有极薄的一层平面在焦点上。此时需要的是 <strong>极其精细的微调</strong>，粗准焦螺旋的调节幅度远大于景深，一转就过头，根本找不到像。</li>
+      </ul>
+    </section>
+
+    <section class="card">
+      <h2><span class="num">3</span> 标准操作流程（配合“齐焦”设计）</h2>
+      <ol class="steps">
+        <li><strong>低倍镜</strong>下用 <strong>粗准焦螺旋</strong> 找到物像，再用 <strong>细准焦螺旋</strong> 调清晰。</li>
+        <li><strong>直接转转换器</strong> 换高倍镜（原装物镜有齐焦设计，此时物像只是略微模糊，不会完全丢失）。</li>
+        <li>只调 <strong>细准焦螺旋</strong>，把略微模糊的像调清晰即可。</li>
+      </ol>
+    </section>
+
+    <div class="conclusion">
+      <p>💡 所以这不是“只能”调细准焦螺旋的限制，而是高倍镜本身的工作距离和景深决定了：<strong>粗准焦螺旋在高倍镜下既危险又没用，细准焦螺旋才是唯一合适的调节方式。</strong></p>
+    </div>
+  </div>
+</body>
+</html>
